@@ -1,6 +1,9 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
+# - 13:35:00 08/07/2026: [UPDATE] Bổ sung kiểm tra kết nối thô db.execute(text("SELECT 1")) để ném exception khi mất kết nối mạng thay vì trả về list rỗng (Lê Thanh Vân/Antigravity)
+# - 13:25:00 08/07/2026: [NEW] Bổ sung ProjectLoaderThread để tải danh sách dự án bất đồng bộ tránh treo UI chính (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:32:00 02/07/2026: [NEW] Khởi tạo luồng phụ tải bản vẽ ngầm tránh block UI Thread (Lê Thanh Vân/Antigravity)
 
@@ -8,9 +11,61 @@ import logging
 from PyQt6.QtCore import QThread, pyqtSignal
 
 from core.database import SessionLocal
-from core.services import drawing_service
+from core.services import drawing_service, project_service
 
 logger = logging.getLogger(__name__)
+
+
+class ProjectLoaderThread(QThread):
+    """Luồng phụ chuyên trách tải danh sách dự án từ cơ sở dữ liệu cloud.
+
+    Giúp giao diện người dùng không bị treo khi khởi động ứng dụng trong môi trường
+    mạng yếu/chậm.
+    """
+
+    finished = pyqtSignal(list)
+    error = pyqtSignal(str)
+
+    def __init__(self) -> None:
+        """Khởi tạo luồng tải dự án ngầm."""
+        super().__init__()
+
+    def run(self) -> None:
+        """Thực thi câu lệnh truy vấn danh sách dự án ở luồng phụ."""
+        logger.info("Bắt đầu tải danh sách dự án ngầm từ Cloud database...")
+        db = SessionLocal()
+        try:
+            from sqlalchemy import text
+
+            db.execute(text("SELECT 1"))
+            projects = project_service.list_active_projects(db)
+
+            # Bóc tách sang danh sách dict thô để truyền an toàn qua Signal,
+            # tránh DetachedInstanceError khi session bị đóng.
+            raw_projects = []
+            for p in projects:
+                raw_projects.append(
+                    {
+                        "project_id": p.project_id,
+                        "project_name": p.project_name,
+                        "status": p.status,
+                    }
+                )
+
+            logger.info(
+                "Tải xong danh sách dự án ngầm (Tìm thấy %d dự án)",
+                len(raw_projects),
+            )
+            self.finished.emit(raw_projects)
+        except Exception as e:
+            logger.error(
+                "Lỗi trong lúc truy vấn dự án ở luồng phụ: %s",
+                str(e),
+                exc_info=True,
+            )
+            self.error.emit(str(e))
+        finally:
+            db.close()
 
 
 class DrawingLoaderThread(QThread):

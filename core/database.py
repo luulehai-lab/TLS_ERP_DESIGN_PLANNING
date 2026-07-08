@@ -1,6 +1,9 @@
 # Tên file: core/database.py
 # CHỨC NĂNG: Cấu hình SQLAlchemy kết nối PostgreSQL (hoặc SQLite dự phòng)
 # CHANGELOG:
+# - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
+# - 13:30:00 08/07/2026: [REFACTOR] Loại bỏ logging.basicConfig() cục bộ để tránh ghi đè cấu hình logging của file chính (Lê Thanh Vân/Antigravity)
+# - 13:21:00 08/07/2026: [UPDATE] Cấu hình connect_timeout cho engine kết nối PostgreSQL để tránh treo vô hạn khi mạng lỗi (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:43:00 02/07/2026: [FIX] Bổ sung Type Hints kiểu trả về cho hàm get_db (Lê Thanh Vân/Antigravity)
 # - 10:58:00 02/07/2026: [NEW] Thiết lập kết nối cơ sở dữ liệu SQLAlchemy (Lê Thanh Vân/Antigravity)
@@ -14,9 +17,6 @@ from config import DATABASE_URL
 
 logger = logging.getLogger(__name__)
 
-# Cấu hình logging cơ bản cho sql
-logging.basicConfig(level=logging.INFO)
-
 # Khởi tạo engine kết nối
 # Đối với PostgreSQL, ta tăng kích thước pool kết nối để đảm bảo tính chịu tải
 if DATABASE_URL.startswith("postgresql"):
@@ -26,6 +26,7 @@ if DATABASE_URL.startswith("postgresql"):
         max_overflow=10,
         pool_timeout=30,
         pool_recycle=1800,
+        connect_args={"connect_timeout": 10},
     )
 else:
     # Đối với SQLite local

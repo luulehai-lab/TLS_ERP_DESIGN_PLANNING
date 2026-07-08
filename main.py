@@ -1,24 +1,38 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
+# - 13:32:00 08/07/2026: [UPDATE] Cấu hình logging lên đầu file và sử dụng RotatingFileHandler trong thư mục logs/ để tránh lỗi mất log và phình file (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:40:00 02/07/2026: [NEW] Khởi tạo tệp khởi chạy chính của ứng dụng PyQt6 (Lê Thanh Vân/Antigravity)
 
 import sys
 import logging
-from PyQt6.QtWidgets import QApplication
-from ui.main_window import MainWindow
+from logging.handlers import RotatingFileHandler
+from pathlib import Path
 
-# Cấu hình logging toàn cục cho ứng dụng
+# Cấu hình logging toàn cục sớm nhất có thể trước khi các module khác được import
+BASE_DIR = Path(__file__).parent.resolve()
+log_dir = BASE_DIR / "logs"
+log_dir.mkdir(exist_ok=True)
+log_file = log_dir / "app_run.log"
+
+log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+stream_handler = logging.StreamHandler(sys.stdout)
+file_handler = RotatingFileHandler(
+    log_file, maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8"
+)
+
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.StreamHandler(sys.stdout),
-        logging.FileHandler("app_run.log", encoding="utf-8"),
-    ],
+    format=log_format,
+    handlers=[stream_handler, file_handler],
 )
 logger = logging.getLogger("main")
+
+from PyQt6.QtWidgets import QApplication  # noqa: E402
+from ui.main_window import MainWindow  # noqa: E402
 
 
 def main() -> None:

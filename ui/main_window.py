@@ -1,6 +1,8 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 13:38:54 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
+# - 13:28:00 08/07/2026: [REFACTOR] Chuyển đổi load_projects sang tải bất đồng bộ sử dụng ProjectLoaderThread để tránh treo ứng dụng (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:25:00 02/07/2026: [NEW] Thiết kế cửa sổ chính với giao diện Premium Slate và QStackedWidget (Lê Thanh Vân/Antigravity)
 # - 11:19:00 02/07/2026: [UPDATE] Di chuyển bộ chọn Dự án từ các View cục bộ sang Sidebar dùng chung (Lê Thanh Vân/Antigravity)
@@ -23,10 +25,9 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt
 
-from core.database import SessionLocal
-from core.services import project_service
 from ui.views.thiet_ke_view import ThietKeView
 from ui.views.ke_hoach_view import KeHoachView
+from ui.common.workers import ProjectLoaderThread
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +45,7 @@ class MainWindow(QMainWindow):
         self.resize(1200, 800)
         self.setMinimumSize(1000, 700)
         self.current_project_id: str = ""
+        self.project_loader_thread: ProjectLoaderThread | None = None
         self._init_ui()
         self.load_projects()
 
@@ -193,37 +195,47 @@ class MainWindow(QMainWindow):
         return header
 
     def load_projects(self) -> None:
-        """Truy vấn database để nạp danh sách dự án vào QListWidget ở Sidebar."""
-        logger.info("Nạp danh sách dự án trải rộng vào Sidebar ListWidget...")
+        """Truy vấn database bất đồng bộ để nạp danh sách dự án vào QListWidget ở Sidebar."""
+        logger.info("Khởi động tiến trình tải danh sách dự án bất đồng bộ...")
         self.lst_projects.blockSignals(True)
-
-        # Lưu lại ID dự án đang chọn trước đó (nếu có) để chọn lại sau khi reload
-        prev_selected_id = None
-        selected_items = self.lst_projects.selectedItems()
-        if selected_items:
-            prev_selected_id = selected_items[0].data(Qt.ItemDataRole.UserRole)
-
         self.lst_projects.clear()
 
-        db = SessionLocal()
-        try:
-            projects = project_service.list_active_projects(db)
-            for p in projects:
-                item = QListWidgetItem(f"🏢 {p.project_id} - {p.project_name}")
-                item.setData(Qt.ItemDataRole.UserRole, p.project_id)
-                self.lst_projects.addItem(item)
-        except Exception as e:
-            logger.error(
-                "Lỗi khi nạp dự án vào Sidebar list: %s", str(e), exc_info=True
-            )
-        finally:
-            db.close()
+        # Hiển thị thông báo đang kết nối database
+        loading_item = QListWidgetItem("🔄 Đang kết nối database Cloud...")
+        loading_item.setFlags(Qt.ItemFlag.NoItemFlags)  # Vô hiệu hóa click
+        self.lst_projects.addItem(loading_item)
+        self.lst_projects.blockSignals(False)
+
+        # Khởi chạy luồng phụ tải dự án
+        self.project_loader_thread = ProjectLoaderThread()
+        self.project_loader_thread.finished.connect(self._on_projects_loaded)
+        self.project_loader_thread.error.connect(self._on_projects_load_error)
+        self.project_loader_thread.start()
+
+    def _on_projects_loaded(self, projects: list[dict]) -> None:
+        """Xử lý nạp danh sách dự án khi luồng phụ hoàn thành.
+
+        Args:
+            projects: Danh sách dự án thô (dạng dict) nhận từ database.
+        """
+        logger.info("Nạp danh sách dự án nhận được từ luồng phụ vào Sidebar...")
+        self.lst_projects.blockSignals(True)
+        self.lst_projects.clear()
+
+        # Lưu lại ID dự án đang chọn trước đó (nếu có)
+        prev_selected_id = self.current_project_id
+
+        for p in projects:
+            p_id = p["project_id"]
+            p_name = p["project_name"]
+            item = QListWidgetItem(f"🏢 {p_id} - {p_name}")
+            item.setData(Qt.ItemDataRole.UserRole, p_id)
+            self.lst_projects.addItem(item)
 
         self.lst_projects.blockSignals(False)
 
         # Thực hiện chọn lại dự án
         if self.lst_projects.count() > 0:
-            # Tìm xem dự án cũ có còn trong danh sách mới không
             found_idx = 0
             if prev_selected_id:
                 for i in range(self.lst_projects.count()):
@@ -231,11 +243,36 @@ class MainWindow(QMainWindow):
                     if item and item.data(Qt.ItemDataRole.UserRole) == prev_selected_id:
                         found_idx = i
                         break
-
-            # Highlight dòng tương ứng
             self.lst_projects.setCurrentRow(found_idx)
         else:
             self._on_project_selected()
+
+    def _on_projects_load_error(self, err_msg: str) -> None:
+        """Xử lý lỗi nạp dự án, thông báo cho người dùng và cho phép thử lại.
+
+        Args:
+            err_msg: Chi tiết thông điệp lỗi.
+        """
+        logger.error("Lỗi khi tải danh sách dự án từ Cloud database: %s", err_msg)
+        self.lst_projects.blockSignals(True)
+        self.lst_projects.clear()
+
+        # Hiển thị thông báo lỗi trên Sidebar để người dùng click tải lại
+        error_item = QListWidgetItem("❌ Lỗi kết nối. Click để tải lại...")
+        error_item.setData(Qt.ItemDataRole.UserRole, "RETRY")
+        self.lst_projects.addItem(error_item)
+        self.lst_projects.blockSignals(False)
+
+        # Hiển thị MessageBox cảnh báo thân thiện
+        from PyQt6.QtWidgets import QMessageBox
+
+        QMessageBox.warning(
+            self,
+            "Lỗi Kết Nối Cơ Sở Dữ Liệu",
+            f"Không thể kết nối đến Database Supabase Cloud.\n\n"
+            f"Lưu ý: Vui lòng kiểm tra lại đường truyền mạng hoặc VPN (nếu có).\n\n"
+            f"Chi tiết lỗi: {err_msg}",
+        )
 
     def _on_project_selected(self) -> None:
         """Xử lý sự kiện khi click chọn dự án trong QListWidget (Lazy Loading)."""
@@ -243,6 +280,12 @@ class MainWindow(QMainWindow):
         if selected_items:
             item = selected_items[0]
             project_id = item.data(Qt.ItemDataRole.UserRole)
+
+            if project_id == "RETRY":
+                logger.info("Người dùng click nút tải lại danh sách dự án...")
+                self.load_projects()
+                return
+
             logger.info("Dự án được chọn ở Sidebar thay đổi thành: %s", project_id)
 
             self.current_project_id = project_id
