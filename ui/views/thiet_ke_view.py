@@ -1,6 +1,7 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Màn hình ban hành bản vẽ dành cho phòng Thiết kế
 # CHANGELOG:
+# - 18:28:04 08/07/2026: [UPDATE] feat(ui): format drawing update time to dd/mm/yy_hh:mm:ss and auto stretch column width (Antigravity)
 # - 18:23:41 08/07/2026: [UPDATE] feat(ui): support project sections and drawings nesting, optimize layout rendering (Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:08:00 08/07/2026: [UPDATE] Cập nhật thiet_ke_view để hỗ trợ lựa chọn Hạng mục khi ban hành bản vẽ và hiển thị cột Hạng mục (Antigravity)
@@ -322,7 +323,10 @@ class ThietKeView(QWidget):
             item_link = QTableWidgetItem(d["drive_link"] or "Trống")
             item_link.setFlags(item_link.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
-            item_time = QTableWidgetItem(d["updated_at"].strftime("%d/%m/%y_%H:%M:%S"))
+            from datetime import timedelta
+
+            local_time = d["updated_at"] + timedelta(hours=7)
+            item_time = QTableWidgetItem(local_time.strftime("%d/%m/%y_%H:%M:%S"))
             item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
             self.tbl_drawings.setItem(r, 0, item_id)

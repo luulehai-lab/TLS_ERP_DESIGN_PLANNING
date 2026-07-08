@@ -1441,105 +1441,105 @@
       "label": "KeHoachView",
       "type": "class",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 42
+      "line": 43
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 49
+      "line": 50
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 62
+      "line": 63
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
       "label": "_create_action_group",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 83
+      "line": 84
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
       "label": "_create_table_group",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 119
+      "line": 120
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView.set_project",
       "label": "set_project",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 183
+      "line": 184
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
       "label": "load_drawings",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 198
+      "line": 199
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
       "label": "_on_drawings_loaded",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 247
+      "line": 248
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
       "label": "_on_load_error",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 306
+      "line": 310
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
       "label": "_on_manual_refresh",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 319
+      "line": 323
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
       "label": "auto_refresh_drawings",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 324
+      "line": 328
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
       "label": "_get_selected_drawing_id",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 332
+      "line": 336
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
       "label": "_on_open_link",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 345
+      "line": 349
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
       "label": "_on_confirm_production",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 392
+      "line": 396
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._apply_view_styles",
       "label": "_apply_view_styles",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 437
+      "line": 441
     },
     {
       "id": "ui.views.thiet_ke_view",
@@ -1552,105 +1552,105 @@
       "label": "ThietKeView",
       "type": "class",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 45
+      "line": 46
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 52
+      "line": 53
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 65
+      "line": 66
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
       "label": "_create_drawing_group",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 87
+      "line": 88
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
       "label": "_create_table_group",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 131
+      "line": 132
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.set_project",
       "label": "set_project",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 201
+      "line": 202
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.load_sections",
       "label": "load_sections",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 218
+      "line": 219
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
       "label": "load_drawings",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 238
+      "line": 239
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
       "label": "_on_drawings_loaded",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 287
+      "line": 288
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
       "label": "_on_load_error",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 346
+      "line": 350
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
       "label": "_get_selected_drawing_id",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 359
+      "line": 363
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
       "label": "_on_manual_refresh",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 372
+      "line": 376
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
       "label": "auto_refresh_drawings",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 377
+      "line": 381
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
       "label": "_on_create_drawing",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 385
+      "line": 389
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._apply_view_styles",
       "label": "_apply_view_styles",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 440
+      "line": 444
     },
     {
       "id": "ui.views.__init__",
@@ -13484,153 +13484,160 @@
     "ui.views.ke_hoach_view": {
       "module_name": "ui.views.ke_hoach_view",
       "file_path": "ui/views/ke_hoach_view.py",
-      "mtime": 1783509766.7739706,
+      "mtime": 1783510042.6427865,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 16
+          "line": 17
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 17
+          "line": 18
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QVBoxLayout",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHBoxLayout",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGridLayout",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLineEdit",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidget",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidgetItem",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGroupBox",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHeaderView",
           "asname": null,
-          "line": 18
+          "line": 19
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "Qt",
           "asname": null,
-          "line": 32
+          "line": 33
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QUrl",
           "asname": null,
-          "line": 32
+          "line": 33
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QTimer",
           "asname": null,
-          "line": 32
+          "line": 33
         },
         {
           "type": "from",
           "module": "PyQt6.QtGui",
           "name": "QDesktopServices",
           "asname": null,
-          "line": 33
+          "line": 34
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 35
+          "line": 36
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "drawing_service",
           "asname": null,
-          "line": 36
+          "line": 37
         },
         {
           "type": "from",
           "module": "ui.common.workers",
           "name": "DrawingLoaderThread",
           "asname": null,
-          "line": 37
+          "line": 38
+        },
+        {
+          "type": "from",
+          "module": "datetime",
+          "name": "timedelta",
+          "asname": null,
+          "line": 285
         }
       ],
       "classes": [
@@ -13640,8 +13647,8 @@
           "bases": [
             "QWidget"
           ],
-          "line": 42,
-          "end_line": 535
+          "line": 43,
+          "end_line": 539
         }
       ],
       "functions": [
@@ -13657,8 +13664,8 @@
             "parent": "Any"
           },
           "return_hint": "None",
-          "line": 49,
-          "end_line": 60
+          "line": 50,
+          "end_line": 61
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._init_ui",
@@ -13668,8 +13675,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 62,
-          "end_line": 81
+          "line": 63,
+          "end_line": 82
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
@@ -13679,8 +13686,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 83,
-          "end_line": 117
+          "line": 84,
+          "end_line": 118
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
@@ -13690,8 +13697,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 119,
-          "end_line": 181
+          "line": 120,
+          "end_line": 182
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView.set_project",
@@ -13705,8 +13712,8 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 183,
-          "end_line": 196
+          "line": 184,
+          "end_line": 197
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
@@ -13720,8 +13727,8 @@
             "silent": "bool"
           },
           "return_hint": "None",
-          "line": 198,
-          "end_line": 245
+          "line": 199,
+          "end_line": 246
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
@@ -13735,8 +13742,8 @@
             "drawings": "list[dict[Tuple[str, Any]]]"
           },
           "return_hint": "None",
-          "line": 247,
-          "end_line": 304
+          "line": 248,
+          "end_line": 308
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
@@ -13750,8 +13757,8 @@
             "error_msg": "str"
           },
           "return_hint": "None",
-          "line": 306,
-          "end_line": 317
+          "line": 310,
+          "end_line": 321
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
@@ -13761,8 +13768,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 319,
-          "end_line": 322
+          "line": 323,
+          "end_line": 326
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
@@ -13772,8 +13779,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 324,
-          "end_line": 330
+          "line": 328,
+          "end_line": 334
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
@@ -13783,8 +13790,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "Any",
-          "line": 332,
-          "end_line": 343
+          "line": 336,
+          "end_line": 347
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
@@ -13794,8 +13801,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 345,
-          "end_line": 390
+          "line": 349,
+          "end_line": 394
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
@@ -13805,8 +13812,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 392,
-          "end_line": 435
+          "line": 396,
+          "end_line": 439
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._apply_view_styles",
@@ -13816,8 +13823,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 437,
-          "end_line": 535
+          "line": 441,
+          "end_line": 539
         }
       ],
       "calls": [
@@ -13825,342 +13832,336 @@
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 50
+          "line": 51
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 50
+          "line": 51
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 54
+          "line": 55
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "QTimer",
           "caller_obj": null,
-          "line": 57
+          "line": 58
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "setInterval",
           "caller_obj": "self.refresh_timer",
-          "line": 58
+          "line": 59
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "connect",
           "caller_obj": "self.refresh_timer.timeout",
-          "line": 59
+          "line": 60
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "start",
           "caller_obj": "self.refresh_timer",
-          "line": 60
+          "line": 61
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 64
+          "line": 65
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 65
+          "line": 66
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "layout",
-          "line": 66
+          "line": 67
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 69
+          "line": 70
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "setStyleSheet",
           "caller_obj": "title_label",
-          "line": 70
+          "line": 71
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 71
+          "line": 72
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "_create_action_group",
           "caller_obj": "self",
-          "line": 74
+          "line": 75
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 75
+          "line": 76
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "_create_table_group",
           "caller_obj": "self",
-          "line": 78
+          "line": 79
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 79
+          "line": 80
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "_apply_view_styles",
           "caller_obj": "self",
-          "line": 81
+          "line": 82
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 89
+          "line": 90
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QGridLayout",
           "caller_obj": null,
-          "line": 90
+          "line": 91
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setSpacing",
           "caller_obj": "grid",
-          "line": 91
+          "line": 92
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 93
+          "line": 94
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 93
+          "line": 94
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QLineEdit",
           "caller_obj": null,
-          "line": 94
+          "line": 95
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setPlaceholderText",
           "caller_obj": "self.txt_performed_by",
-          "line": 95
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
           "line": 96
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 98
+          "line": 97
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 99
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 98
+          "line": 99
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QLineEdit",
           "caller_obj": null,
-          "line": 99
+          "line": 100
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setPlaceholderText",
           "caller_obj": "self.txt_note",
-          "line": 100
+          "line": 101
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 101
+          "line": 102
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QHBoxLayout",
-          "caller_obj": null,
-          "line": 104
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "QPushButton",
           "caller_obj": null,
           "line": 105
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 106
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setStyleSheet",
           "caller_obj": "self.btn_open_link",
-          "line": 106
+          "line": 107
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "connect",
           "caller_obj": "self.btn_open_link.clicked",
-          "line": 107
+          "line": 108
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addWidget",
           "caller_obj": "btn_layout",
-          "line": 108
+          "line": 109
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 110
+          "line": 111
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setStyleSheet",
           "caller_obj": "self.btn_confirm_prod",
-          "line": 111
+          "line": 112
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "connect",
           "caller_obj": "self.btn_confirm_prod.clicked",
-          "line": 112
+          "line": 113
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addWidget",
           "caller_obj": "btn_layout",
-          "line": 113
+          "line": 114
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addLayout",
           "caller_obj": "grid",
-          "line": 115
+          "line": 116
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 125
+          "line": 126
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 126
+          "line": 127
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 127
+          "line": 128
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 130
+          "line": 131
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "addStretch",
           "caller_obj": "table_actions_layout",
-          "line": 131
+          "line": 132
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 133
+          "line": 134
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setFixedWidth",
           "caller_obj": "self.btn_refresh",
-          "line": 134
+          "line": 135
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setStyleSheet",
           "caller_obj": "self.btn_refresh",
-          "line": 135
+          "line": 136
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "connect",
           "caller_obj": "self.btn_refresh.clicked",
-          "line": 150
+          "line": 151
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "addWidget",
           "caller_obj": "table_actions_layout",
-          "line": 151
+          "line": 152
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "addLayout",
           "caller_obj": "layout",
-          "line": 152
+          "line": 153
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QTableWidget",
           "caller_obj": null,
-          "line": 154
+          "line": 155
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setColumnCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 155
+          "line": 156
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setHorizontalHeaderLabels",
           "caller_obj": "self.tbl_drawings",
-          "line": 156
+          "line": 157
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "horizontalHeader",
           "caller_obj": "self.tbl_drawings",
-          "line": 168
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
-          "call_name": "setSectionResizeMode",
-          "caller_obj": "header",
           "line": 169
         },
         {
@@ -14183,351 +14184,339 @@
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "setSectionResizeMode",
+          "caller_obj": "header",
+          "line": 173
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setSelectionBehavior",
           "caller_obj": "self.tbl_drawings",
-          "line": 175
+          "line": 176
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setSelectionMode",
           "caller_obj": "self.tbl_drawings",
-          "line": 178
+          "line": 179
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 180
+          "line": 181
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.set_project",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 191
+          "line": 192
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.set_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 194
+          "line": 195
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.set_project",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 196
+          "line": 197
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 207
+          "line": 208
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "isRunning",
           "caller_obj": "self.loader_thread",
-          "line": 207
+          "line": 208
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.finished",
-          "line": 212
+          "line": 213
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.error",
-          "line": 213
+          "line": 214
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "terminate",
           "caller_obj": "self.loader_thread",
-          "line": 216
+          "line": 217
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "wait",
           "caller_obj": "self.loader_thread",
-          "line": 217
+          "line": 218
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "_get_selected_drawing_id",
           "caller_obj": "self",
-          "line": 220
+          "line": 221
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 223
+          "line": 224
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 226
+          "line": 227
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 233
+          "line": 234
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 235
+          "line": 236
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 236
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "setFlags",
-          "caller_obj": "loading_item",
           "line": 237
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "setForeground",
+          "call_name": "setFlags",
           "caller_obj": "loading_item",
           "line": 238
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "setForeground",
+          "caller_obj": "loading_item",
+          "line": 239
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 239
+          "line": 240
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "DrawingLoaderThread",
           "caller_obj": null,
-          "line": 242
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "connect",
-          "caller_obj": "self.loader_thread.finished",
           "line": 243
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "connect",
-          "caller_obj": "self.loader_thread.error",
+          "caller_obj": "self.loader_thread.finished",
           "line": 244
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "connect",
+          "caller_obj": "self.loader_thread.error",
+          "line": 245
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "start",
           "caller_obj": "self.loader_thread",
-          "line": 245
+          "line": 246
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 253
+          "line": 254
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "len",
           "caller_obj": null,
-          "line": 253
+          "line": 254
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "enumerate",
           "caller_obj": null,
-          "line": 256
+          "line": 257
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 257
+          "line": 258
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_id",
-          "line": 258
+          "line": 259
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_id",
-          "line": 258
+          "line": 259
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 260
+          "line": 261
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "get",
           "caller_obj": "d",
-          "line": 260
+          "line": 261
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_section",
-          "line": 261
+          "line": 262
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_section",
-          "line": 261
+          "line": 262
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 263
+          "line": 264
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_name",
-          "line": 264
+          "line": 265
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_name",
-          "line": 264
+          "line": 265
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 266
+          "line": 267
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_status",
-          "line": 267
+          "line": 268
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_status",
-          "line": 267
+          "line": 268
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 272
+          "line": 273
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 274
+          "line": 275
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 276
+          "line": 277
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 278
+          "line": 279
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_version",
-          "line": 279
+          "line": 280
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_version",
-          "line": 279
+          "line": 280
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 281
+          "line": 282
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_link",
-          "line": 282
+          "line": 283
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_link",
-          "line": 282
+          "line": 283
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
+          "call_name": "timedelta",
           "caller_obj": null,
-          "line": 284
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "strftime",
-          "caller_obj": "",
-          "line": 284
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_time",
-          "line": 285
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_time",
-          "line": 285
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
           "line": 287
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
           "line": 288
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
+          "call_name": "strftime",
+          "caller_obj": "local_time",
+          "line": 288
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_time",
           "line": 289
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
-          "line": 290
+          "call_name": "flags",
+          "caller_obj": "item_time",
+          "line": 289
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
@@ -14549,159 +14538,177 @@
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 294
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 295
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 296
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 297
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "selectRow",
           "caller_obj": "self.tbl_drawings",
-          "line": 304
+          "line": 308
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 312
+          "line": 316
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 313
+          "line": 317
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 314
+          "line": 318
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setFlags",
           "caller_obj": "err_item",
-          "line": 315
+          "line": 319
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setForeground",
           "caller_obj": "err_item",
-          "line": 316
+          "line": 320
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 317
+          "line": 321
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 321
+          "line": 325
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 322
+          "line": 326
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 328
+          "line": 332
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
           "call_name": "isRunning",
           "caller_obj": "self.loader_thread",
-          "line": 328
+          "line": 332
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 330
+          "line": 334
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "selectedRanges",
           "caller_obj": "self.tbl_drawings",
-          "line": 338
+          "line": 342
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "topRow",
           "caller_obj": "",
-          "line": 341
+          "line": 345
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "item",
           "caller_obj": "self.tbl_drawings",
-          "line": 342
+          "line": 346
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "text",
           "caller_obj": "item",
-          "line": 343
+          "line": 347
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "_get_selected_drawing_id",
           "caller_obj": "self",
-          "line": 351
+          "line": 355
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 353
+          "line": 357
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 358
+          "line": 362
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "first",
           "caller_obj": "",
-          "line": 362
+          "line": 366
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 362
+          "line": 366
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 362
+          "line": 366
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "QUrl",
           "caller_obj": null,
-          "line": 368
+          "line": 372
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "openUrl",
           "caller_obj": "QDesktopServices",
-          "line": 369
+          "line": 373
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 371
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
-          "call_name": "warning",
-          "caller_obj": "QMessageBox",
-          "line": 377
+          "line": 375
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
@@ -14711,288 +14718,301 @@
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
+          "call_name": "warning",
+          "caller_obj": "QMessageBox",
+          "line": 385
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 385
+          "line": 389
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "str",
           "caller_obj": null,
-          "line": 385
+          "line": 389
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 386
+          "line": 390
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 390
+          "line": 394
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "_get_selected_drawing_id",
           "caller_obj": "self",
-          "line": 394
+          "line": 398
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 395
+          "line": 399
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "text",
           "caller_obj": "self.txt_performed_by",
-          "line": 395
+          "line": 399
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 396
+          "line": 400
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "text",
           "caller_obj": "self.txt_note",
-          "line": 396
+          "line": 400
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 399
+          "line": 403
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 405
+          "line": 409
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 416
+          "line": 420
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "update_drawing_status",
           "caller_obj": "drawing_service",
-          "line": 418
+          "line": 422
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "information",
           "caller_obj": "QMessageBox",
-          "line": 420
+          "line": 424
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "clear",
           "caller_obj": "self.txt_note",
-          "line": 425
+          "line": 429
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 426
+          "line": 430
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 428
+          "line": 432
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 430
+          "line": 434
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "str",
           "caller_obj": null,
-          "line": 430
+          "line": 434
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 431
+          "line": 435
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 435
+          "line": 439
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._apply_view_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 439
+          "line": 443
         }
       ]
     },
     "ui.views.thiet_ke_view": {
       "module_name": "ui.views.thiet_ke_view",
       "file_path": "ui/views/thiet_ke_view.py",
-      "mtime": 1783509760.0157945,
+      "mtime": 1783510036.5656161,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 19
+          "line": 20
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 20
+          "line": 21
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QVBoxLayout",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHBoxLayout",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGridLayout",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLineEdit",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidget",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidgetItem",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGroupBox",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHeaderView",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QComboBox",
           "asname": null,
-          "line": 21
+          "line": 22
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "Qt",
           "asname": null,
-          "line": 36
+          "line": 37
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QTimer",
           "asname": null,
-          "line": 36
+          "line": 37
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 38
+          "line": 39
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "drawing_service",
           "asname": null,
-          "line": 39
+          "line": 40
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "section_service",
           "asname": null,
-          "line": 39
+          "line": 40
         },
         {
           "type": "from",
           "module": "ui.common.workers",
           "name": "DrawingLoaderThread",
           "asname": null,
-          "line": 40
+          "line": 41
+        },
+        {
+          "type": "from",
+          "module": "datetime",
+          "name": "timedelta",
+          "asname": null,
+          "line": 325
         }
       ],
       "classes": [
@@ -15002,8 +15022,8 @@
           "bases": [
             "QWidget"
           ],
-          "line": 45,
-          "end_line": 552
+          "line": 46,
+          "end_line": 556
         }
       ],
       "functions": [
@@ -15019,8 +15039,8 @@
             "parent": "Any"
           },
           "return_hint": "None",
-          "line": 52,
-          "end_line": 63
+          "line": 53,
+          "end_line": 64
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._init_ui",
@@ -15030,8 +15050,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 65,
-          "end_line": 85
+          "line": 66,
+          "end_line": 86
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
@@ -15041,8 +15061,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 87,
-          "end_line": 129
+          "line": 88,
+          "end_line": 130
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
@@ -15052,8 +15072,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 131,
-          "end_line": 199
+          "line": 132,
+          "end_line": 200
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView.set_project",
@@ -15067,8 +15087,8 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 201,
-          "end_line": 216
+          "line": 202,
+          "end_line": 217
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView.load_sections",
@@ -15078,8 +15098,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 218,
-          "end_line": 236
+          "line": 219,
+          "end_line": 237
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
@@ -15093,8 +15113,8 @@
             "silent": "bool"
           },
           "return_hint": "None",
-          "line": 238,
-          "end_line": 285
+          "line": 239,
+          "end_line": 286
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
@@ -15108,8 +15128,8 @@
             "drawings": "list[dict[Tuple[str, Any]]]"
           },
           "return_hint": "None",
-          "line": 287,
-          "end_line": 344
+          "line": 288,
+          "end_line": 348
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
@@ -15123,8 +15143,8 @@
             "error_msg": "str"
           },
           "return_hint": "None",
-          "line": 346,
-          "end_line": 357
+          "line": 350,
+          "end_line": 361
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
@@ -15134,8 +15154,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "Any",
-          "line": 359,
-          "end_line": 370
+          "line": 363,
+          "end_line": 374
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
@@ -15145,8 +15165,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 372,
-          "end_line": 375
+          "line": 376,
+          "end_line": 379
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
@@ -15156,8 +15176,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 377,
-          "end_line": 383
+          "line": 381,
+          "end_line": 387
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
@@ -15167,8 +15187,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 385,
-          "end_line": 438
+          "line": 389,
+          "end_line": 442
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._apply_view_styles",
@@ -15178,8 +15198,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 440,
-          "end_line": 552
+          "line": 444,
+          "end_line": 556
         }
       ],
       "calls": [
@@ -15187,139 +15207,133 @@
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 53
+          "line": 54
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 53
+          "line": 54
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 57
+          "line": 58
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "QTimer",
           "caller_obj": null,
-          "line": 60
+          "line": 61
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "setInterval",
           "caller_obj": "self.refresh_timer",
-          "line": 61
+          "line": 62
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "connect",
           "caller_obj": "self.refresh_timer.timeout",
-          "line": 62
+          "line": 63
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "start",
           "caller_obj": "self.refresh_timer",
-          "line": 63
+          "line": 64
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 67
+          "line": 68
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 68
+          "line": 69
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "layout",
-          "line": 69
+          "line": 70
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 72
+          "line": 73
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "setStyleSheet",
           "caller_obj": "title_label",
-          "line": 73
+          "line": 74
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 74
+          "line": 75
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "_create_drawing_group",
           "caller_obj": "self",
-          "line": 77
+          "line": 78
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 78
+          "line": 79
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "_create_table_group",
           "caller_obj": "self",
-          "line": 81
+          "line": 82
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 82
+          "line": 83
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "_apply_view_styles",
           "caller_obj": "self",
-          "line": 85
+          "line": 86
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 93
+          "line": 94
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QGridLayout",
           "caller_obj": null,
-          "line": 94
+          "line": 95
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "setSpacing",
           "caller_obj": "grid",
-          "line": 95
+          "line": 96
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 97
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 97
+          "line": 98
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
@@ -15329,242 +15343,242 @@
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.lbl_current_project",
+          "call_name": "QLabel",
+          "caller_obj": null,
           "line": 99
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 102
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.lbl_current_project",
+          "line": 100
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 104
+          "line": 103
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 105
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 104
+          "line": 105
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QComboBox",
           "caller_obj": null,
-          "line": 105
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
           "line": 106
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 108
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 108
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
-          "line": 109
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_drawing_id",
-          "line": 110
+          "line": 107
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
+          "line": 109
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 109
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 110
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_drawing_id",
           "line": 111
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 113
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 113
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
-          "line": 114
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_drawing_name",
-          "line": 115
+          "line": 112
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
+          "line": 114
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 114
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 115
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_drawing_name",
           "line": 116
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 118
+          "line": 117
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 119
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 118
+          "line": 119
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QLineEdit",
           "caller_obj": null,
-          "line": 119
+          "line": 120
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "setPlaceholderText",
           "caller_obj": "self.txt_drive_link",
-          "line": 120
+          "line": 121
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 123
+          "line": 124
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 125
+          "line": 126
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "connect",
           "caller_obj": "self.btn_create_draw.clicked",
-          "line": 126
+          "line": 127
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 127
+          "line": 128
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 137
+          "line": 138
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 138
+          "line": 139
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 139
+          "line": 140
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 142
+          "line": 143
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "addStretch",
           "caller_obj": "table_actions_layout",
-          "line": 143
+          "line": 144
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 145
+          "line": 146
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setFixedWidth",
           "caller_obj": "self.btn_refresh",
-          "line": 146
+          "line": 147
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setStyleSheet",
           "caller_obj": "self.btn_refresh",
-          "line": 147
+          "line": 148
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "connect",
           "caller_obj": "self.btn_refresh.clicked",
-          "line": 162
+          "line": 163
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "addWidget",
           "caller_obj": "table_actions_layout",
-          "line": 163
+          "line": 164
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "addLayout",
           "caller_obj": "layout",
-          "line": 164
+          "line": 165
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QTableWidget",
           "caller_obj": null,
-          "line": 166
+          "line": 167
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setColumnCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 167
+          "line": 168
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setHorizontalHeaderLabels",
           "caller_obj": "self.tbl_drawings",
-          "line": 168
+          "line": 169
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "horizontalHeader",
           "caller_obj": "self.tbl_drawings",
-          "line": 180
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
-          "call_name": "setSectionResizeMode",
-          "caller_obj": "header",
           "line": 181
         },
         {
@@ -15577,421 +15591,409 @@
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 185
+          "line": 183
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 188
+          "line": 186
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "setSectionResizeMode",
+          "caller_obj": "header",
+          "line": 189
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setSelectionBehavior",
           "caller_obj": "self.tbl_drawings",
-          "line": 193
+          "line": 194
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setSelectionMode",
           "caller_obj": "self.tbl_drawings",
-          "line": 196
+          "line": 197
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 198
+          "line": 199
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 209
+          "line": 210
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 212
+          "line": 213
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "setText",
           "caller_obj": "self.lbl_current_project",
-          "line": 214
+          "line": 215
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "load_sections",
           "caller_obj": "self",
-          "line": 215
+          "line": 216
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 216
+          "line": 217
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "clear",
           "caller_obj": "self.cb_sections",
-          "line": 220
+          "line": 221
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "addItem",
           "caller_obj": "self.cb_sections",
-          "line": 221
+          "line": 222
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 224
+          "line": 225
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "list_project_sections",
           "caller_obj": "section_service",
-          "line": 226
+          "line": 227
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "addItem",
           "caller_obj": "self.cb_sections",
-          "line": 230
+          "line": 231
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 234
+          "line": 235
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "str",
           "caller_obj": null,
-          "line": 234
+          "line": 235
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_sections",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 236
+          "line": 237
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 247
+          "line": 248
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "isRunning",
           "caller_obj": "self.loader_thread",
-          "line": 247
+          "line": 248
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.finished",
-          "line": 252
+          "line": 253
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.error",
-          "line": 253
+          "line": 254
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "terminate",
           "caller_obj": "self.loader_thread",
-          "line": 256
+          "line": 257
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "wait",
           "caller_obj": "self.loader_thread",
-          "line": 257
+          "line": 258
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "_get_selected_drawing_id",
           "caller_obj": "self",
-          "line": 260
+          "line": 261
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 263
+          "line": 264
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 266
+          "line": 267
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 273
+          "line": 274
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 275
+          "line": 276
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 276
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
-          "call_name": "setFlags",
-          "caller_obj": "loading_item",
           "line": 277
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
-          "call_name": "setForeground",
+          "call_name": "setFlags",
           "caller_obj": "loading_item",
           "line": 278
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
+          "call_name": "setForeground",
+          "caller_obj": "loading_item",
+          "line": 279
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 279
+          "line": 280
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "DrawingLoaderThread",
           "caller_obj": null,
-          "line": 282
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
-          "call_name": "connect",
-          "caller_obj": "self.loader_thread.finished",
           "line": 283
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "connect",
-          "caller_obj": "self.loader_thread.error",
+          "caller_obj": "self.loader_thread.finished",
           "line": 284
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
+          "call_name": "connect",
+          "caller_obj": "self.loader_thread.error",
+          "line": 285
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "start",
           "caller_obj": "self.loader_thread",
-          "line": 285
+          "line": 286
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 293
+          "line": 294
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "len",
           "caller_obj": null,
-          "line": 293
+          "line": 294
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "enumerate",
           "caller_obj": null,
-          "line": 296
+          "line": 297
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 297
+          "line": 298
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_id",
-          "line": 298
+          "line": 299
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_id",
-          "line": 298
+          "line": 299
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 300
+          "line": 301
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "get",
           "caller_obj": "d",
-          "line": 300
+          "line": 301
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_section",
-          "line": 301
+          "line": 302
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_section",
-          "line": 301
+          "line": 302
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 303
+          "line": 304
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_name",
-          "line": 304
+          "line": 305
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_name",
-          "line": 304
+          "line": 305
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 306
+          "line": 307
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_status",
-          "line": 307
+          "line": 308
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_status",
-          "line": 307
+          "line": 308
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 312
+          "line": 313
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 314
+          "line": 315
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 316
+          "line": 317
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 318
+          "line": 319
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_version",
-          "line": 319
+          "line": 320
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_version",
-          "line": 319
+          "line": 320
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 321
+          "line": 322
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_link",
-          "line": 322
+          "line": 323
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_link",
-          "line": 322
+          "line": 323
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
+          "call_name": "timedelta",
           "caller_obj": null,
-          "line": 324
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "strftime",
-          "caller_obj": "",
-          "line": 324
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_time",
-          "line": 325
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_time",
-          "line": 325
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
           "line": 327
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
           "line": 328
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
+          "call_name": "strftime",
+          "caller_obj": "local_time",
+          "line": 328
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_time",
           "line": 329
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
-          "line": 330
+          "call_name": "flags",
+          "caller_obj": "item_time",
+          "line": 329
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
@@ -16013,225 +16015,249 @@
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 334
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 335
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 336
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 337
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "selectRow",
           "caller_obj": "self.tbl_drawings",
-          "line": 344
+          "line": 348
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 352
+          "line": 356
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 353
+          "line": 357
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 354
+          "line": 358
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setFlags",
           "caller_obj": "err_item",
-          "line": 355
+          "line": 359
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setForeground",
           "caller_obj": "err_item",
-          "line": 356
+          "line": 360
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 357
+          "line": 361
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
           "call_name": "selectedRanges",
           "caller_obj": "self.tbl_drawings",
-          "line": 365
+          "line": 369
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
           "call_name": "topRow",
           "caller_obj": "",
-          "line": 368
+          "line": 372
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
           "call_name": "item",
           "caller_obj": "self.tbl_drawings",
-          "line": 369
+          "line": 373
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
           "call_name": "text",
           "caller_obj": "item",
-          "line": 370
+          "line": 374
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 374
+          "line": 378
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 375
+          "line": 379
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 381
+          "line": 385
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
           "call_name": "isRunning",
           "caller_obj": "self.loader_thread",
-          "line": 381
+          "line": 385
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 383
+          "line": 387
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 388
+          "line": 392
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "text",
           "caller_obj": "self.txt_drawing_id",
-          "line": 388
+          "line": 392
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 389
+          "line": 393
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "text",
           "caller_obj": "self.txt_drawing_name",
-          "line": 389
+          "line": 393
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 390
+          "line": 394
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "text",
           "caller_obj": "self.txt_drive_link",
-          "line": 390
+          "line": 394
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "currentData",
           "caller_obj": "self.cb_sections",
-          "line": 391
+          "line": 395
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 394
+          "line": 398
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 402
+          "line": 406
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 415
+          "line": 419
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "create_drawing",
           "caller_obj": "drawing_service",
-          "line": 417
+          "line": 421
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 421
+          "line": 425
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "str",
           "caller_obj": null,
-          "line": 421
+          "line": 425
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 423
+          "line": 427
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "information",
           "caller_obj": "QMessageBox",
-          "line": 426
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
-          "call_name": "clear",
-          "caller_obj": "self.txt_drawing_id",
-          "line": 429
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
-          "call_name": "clear",
-          "caller_obj": "self.txt_drawing_name",
           "line": 430
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "clear",
+          "caller_obj": "self.txt_drawing_id",
+          "line": 433
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
+          "call_name": "clear",
+          "caller_obj": "self.txt_drawing_name",
+          "line": 434
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
+          "call_name": "clear",
           "caller_obj": "self.txt_drive_link",
-          "line": 431
+          "line": 435
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 432
+          "line": 436
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 434
+          "line": 438
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._apply_view_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 442
+          "line": 446
         }
       ]
     },
