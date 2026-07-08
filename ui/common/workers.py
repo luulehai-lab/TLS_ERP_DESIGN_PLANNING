@@ -1,6 +1,8 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
+# - 16:35:00 08/07/2026: [NEW] Thêm class DatabasePrewarmerThread làm ấm connection pool db khi mở app (Lê Thanh Vân/Antigravity)
 # - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
 # - 13:35:00 08/07/2026: [UPDATE] Bổ sung kiểm tra kết nối thô db.execute(text("SELECT 1")) để ném exception khi mất kết nối mạng thay vì trả về list rỗng (Lê Thanh Vân/Antigravity)
 # - 13:25:00 08/07/2026: [NEW] Bổ sung ProjectLoaderThread để tải danh sách dự án bất đồng bộ tránh treo UI chính (Lê Thanh Vân/Antigravity)
@@ -14,6 +16,30 @@ from core.database import SessionLocal
 from core.services import drawing_service, project_service
 
 logger = logging.getLogger(__name__)
+
+
+class DatabasePrewarmerThread(QThread):
+    """Luồng phụ làm nóng (pre-warm) connection pool tới database.
+
+    Giúp chuẩn bị sẵn kết nối mạng tới Supabase Cloud ngay khi app khởi động,
+    tránh làm đơ giao diện do nghẽn GIL khi tạo kết nối đầu tiên lúc vào MainWindow.
+    """
+
+    def run(self) -> None:
+        """Thực thi câu lệnh truy vấn SELECT 1 để làm nóng connection pool."""
+        logger.info("Khởi động tiến trình làm nóng Connection Pool database ngầm...")
+        db = SessionLocal()
+        try:
+            from sqlalchemy import text
+
+            db.execute(text("SELECT 1"))
+            logger.info(
+                "Làm nóng Connection Pool database thành công. Kết nối đã sẵn sàng."
+            )
+        except Exception as e:
+            logger.warning("Không thể làm nóng Connection Pool database: %s", str(e))
+        finally:
+            db.close()
 
 
 class ProjectLoaderThread(QThread):

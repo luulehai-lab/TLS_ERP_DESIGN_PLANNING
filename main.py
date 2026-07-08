@@ -1,6 +1,8 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
+# - 16:35:00 08/07/2026: [UPDATE] Khởi chạy DatabasePrewarmerThread ngay khi bật app để tối ưu hiệu năng kết nối (Lê Thanh Vân/Antigravity)
 # - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 14:25:00 08/07/2026: [UPDATE] Tích hợp màn hình LoginWindow và định tuyến đăng nhập/phân quyền/đăng xuất (Lê Thanh Vân/Antigravity)
 # - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
@@ -50,6 +52,14 @@ def main() -> None:
 
         # Thiết lập style tổng thể của hệ thống cho đồng bộ
         app.setStyle("Fusion")
+
+        # Khởi chạy tiến trình làm nóng Connection Pool database ngầm ở background
+        from ui.common.workers import DatabasePrewarmerThread
+
+        prewarmer = DatabasePrewarmerThread()
+        prewarmer.start()
+        # Giữ tham chiếu của thread để tránh bị bộ thu gom rác giải phóng sớm
+        app.db_prewarmer = prewarmer  # type: ignore
 
         login_win = LoginWindow()
         main_win: MainWindow | None = None

@@ -1,6 +1,8 @@
 # Tên file: ui/login_window.py
 # CHỨC NĂNG: Màn hình Đăng nhập bằng Google cho ứng dụng ERP (Giao diện Slate Premium)
 # CHANGELOG:
+# - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
+# - 16:35:00 08/07/2026: [FIX] Trì hoãn việc shutdown auth_manager bằng QTimer để tránh deadlock socket (Lê Thanh Vân/Antigravity)
 # - 14:13:50 08/07/2026: [NEW] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 14:20:00 08/07/2026: [NEW] Khởi tạo giao diện đăng nhập Google (Lê Thanh Vân/Antigravity)
 
@@ -15,7 +17,7 @@ from PyQt6.QtWidgets import (
     QMessageBox,
     QFrame,
 )
-from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl
+from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl, QTimer
 from PyQt6.QtGui import QDesktopServices
 
 from core.services.auth_service import GoogleAuthManager
@@ -229,11 +231,13 @@ class LoginWindow(QMainWindow):
         logger.info("Người dùng đăng nhập thành công email: %s", email)
         self.lbl_status.setText("✔ Xác thực thành công! Đang phân quyền...")
 
-        # Dừng luồng ngầm và shutdown server
+        # Dừng luồng ngầm PyQt trước
         if self.auth_thread:
             self.auth_thread.stop()
             self.auth_thread = None
-        self.auth_manager.shutdown()
+
+        # Trì hoãn shutdown local HTTP server 1 giây để đảm bảo socket kết thúc gửi response hoàn toàn
+        QTimer.singleShot(1000, self.auth_manager.shutdown)
 
         # Phân quyền phòng ban
         department = "Kế hoạch"

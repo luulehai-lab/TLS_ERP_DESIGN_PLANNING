@@ -17,3 +17,6 @@ app_run.log
 .ruff_cache/
 backups/
 scratch/
+docs/client_secret_*.json
+docs/client_secret*.json
+client_secret*.json

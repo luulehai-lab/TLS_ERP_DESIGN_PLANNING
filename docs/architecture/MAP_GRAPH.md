@@ -36,6 +36,7 @@ graph TD
     core_services_auth_service_GoogleAuthManager_get_auth_url["⚙️ get_auth_url()"]:::func
     core_services_auth_service_GoogleAuthManager_get_authenticated_email["⚙️ get_authenticated_email()"]:::func
     core_services_auth_service_GoogleAuthManager_shutdown["⚙️ shutdown()"]:::func
+    core_services_auth_service_GoogleAuthManager__async_close["⚙️ _async_close()"]:::func
     core_services_drawing_service["📄 drawing_service.py"]:::file
     core_services_drawing_service_create_drawing["⚙️ create_drawing()"]:::func
     core_services_drawing_service_update_drawing_status["⚙️ update_drawing_status()"]:::func
@@ -62,6 +63,7 @@ graph TD
     core_services_auth_service_GoogleAuthManager -->|contains| core_services_auth_service_GoogleAuthManager_get_auth_url
     core_services_auth_service_GoogleAuthManager -->|contains| core_services_auth_service_GoogleAuthManager_get_authenticated_email
     core_services_auth_service_GoogleAuthManager -->|contains| core_services_auth_service_GoogleAuthManager_shutdown
+    core_services_auth_service_GoogleAuthManager -->|contains| core_services_auth_service_GoogleAuthManager__async_close
     core_services_drawing_service -->|contains| core_services_drawing_service_create_drawing
     core_services_drawing_service -->|contains| core_services_drawing_service_update_drawing_status
     core_services_drawing_service -->|contains| core_services_drawing_service_get_project_drawings
@@ -69,14 +71,14 @@ graph TD
     core_services_project_service -->|contains| core_services_project_service_get_project
     core_services_project_service -->|contains| core_services_project_service_list_active_projects
     core_services_project_service -->|contains| core_services_project_service_update_project_status
+    core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__handle_callback
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__serve_mock_login_page
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__send_html_response
-    core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__handle_callback
     core_services_auth_service_OAuthCallbackHandler__serve_mock_login_page ==>|calls| core_services_auth_service_OAuthCallbackHandler__send_html_response
     core_services_auth_service_OAuthCallbackHandler__handle_callback ==>|calls| core_services_auth_service_OAuthCallbackHandler__send_html_response
     core_services_auth_service_OAuthCallbackHandler__handle_callback ==>|calls| core_services_auth_service_OAuthCallbackHandler__exchange_code_for_email
     core_services_auth_service_GoogleAuthManager_start_server ==>|calls| core_services_auth_service_GoogleAuthServer
-    core_services_auth_service_GoogleAuthManager_shutdown ==>|calls| core_services_auth_service_GoogleAuthManager_shutdown
+    core_services_auth_service_GoogleAuthManager__async_close ==>|calls| core_services_auth_service_GoogleAuthManager_shutdown
 ```
 
 ---

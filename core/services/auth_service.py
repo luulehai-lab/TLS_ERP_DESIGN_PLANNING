@@ -1,6 +1,8 @@
 # Tên file: core/services/auth_service.py
 # CHỨC NĂNG: Xử lý xác thực Google OAuth2 và chạy local HTTP server nhận callback
 # CHANGELOG:
+# - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
+# - 16:35:00 08/07/2026: [FIX] Sửa do_GET hỗ trợ code ở root path và chuyển đóng server sang luồng phụ tránh deadlock socket (Lê Thanh Vân/Antigravity)
 # - 14:13:50 08/07/2026: [NEW] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 14:30:00 08/07/2026: [UPDATE] Tối ưu cấu trúc file, trích xuất HTML constants để giảm độ dài hàm đạt chất lượng Clean Code (Lê Thanh Vân/Antigravity)
 # - 14:10:00 08/07/2026: [NEW] Khởi tạo service xác thực Google OAuth2 kèm cơ chế Mock Login (Lê Thanh Vân/Antigravity)
@@ -181,7 +183,10 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
         parsed_url = urllib.parse.urlparse(self.path)
         query_params = urllib.parse.parse_qs(parsed_url.query)
 
-        if parsed_url.path == "/":
+        # Xử lý đăng nhập nếu nhận được authorization code (hỗ trợ cả / và /callback)
+        if "code" in query_params:
+            self._handle_callback(query_params)
+        elif parsed_url.path == "/":
             if not config.GOOGLE_CLIENT_ID:
                 self._serve_mock_login_page()
             else:
@@ -377,16 +382,22 @@ class GoogleAuthManager:
         return ""
 
     def shutdown(self) -> None:
-        """Dừng local HTTP server một cách an toàn."""
+        """Dừng local HTTP server một cách an toàn ở background để tránh block UI."""
         if self.server and self._is_running:
             logger.info("Đang dừng Local HTTP Server...")
-            try:
-                self.server.shutdown()
-                self.server.server_close()
-            except Exception as e:
-                logger.error("Lỗi khi đóng server: %s", str(e))
-            self.server = None
             self._is_running = False
-            if self.thread:
-                self.thread.join(timeout=1.0)
-                self.thread = None
+
+            server_to_close = self.server
+            self.server = None
+
+            def _async_close() -> None:
+                """Đóng server và socket ở luồng phụ."""
+                try:
+                    server_to_close.shutdown()
+                    server_to_close.server_close()
+                    logger.info("Đã đóng Local HTTP Server thành công ở background.")
+                except Exception as ex:
+                    logger.error("Lỗi khi đóng server ở background: %s", str(ex))
+
+            threading.Thread(target=_async_close, daemon=True).start()
+            self.thread = None
