@@ -1,6 +1,8 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
+# - 14:25:00 08/07/2026: [UPDATE] Tích hợp màn hình LoginWindow và định tuyến đăng nhập/phân quyền/đăng xuất (Lê Thanh Vân/Antigravity)
 # - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
 # - 13:32:00 08/07/2026: [UPDATE] Cấu hình logging lên đầu file và sử dụng RotatingFileHandler trong thư mục logs/ để tránh lỗi mất log và phình file (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
@@ -32,14 +34,15 @@ logging.basicConfig(
 logger = logging.getLogger("main")
 
 from PyQt6.QtWidgets import QApplication  # noqa: E402
+from ui.login_window import LoginWindow  # noqa: E402
 from ui.main_window import MainWindow  # noqa: E402
 
 
 def main() -> None:
     """Hàm khởi động chính của chương trình.
 
-    Thiết lập đối tượng ứng dụng PyQt6, nạp giao diện chính
-    và bắt đầu vòng lặp xử lý sự kiện giao diện.
+    Thiết lập đối tượng ứng dụng PyQt6, nạp giao diện đăng nhập (LoginWindow)
+    và điều phối chuyển đổi sang giao diện chính (MainWindow) khi xác thực thành công.
     """
     logger.info("Khởi động ứng dụng ERP TK-KH TLS...")
     try:
@@ -48,10 +51,37 @@ def main() -> None:
         # Thiết lập style tổng thể của hệ thống cho đồng bộ
         app.setStyle("Fusion")
 
-        window = MainWindow()
-        window.show()
+        login_win = LoginWindow()
+        main_win: MainWindow | None = None
 
-        logger.info("Ứng dụng PyQt6 hiển thị thành công. Bắt đầu vòng lặp sự kiện.")
+        def on_login_success(email: str, dept: str) -> None:
+            """Callback xử lý khi đăng nhập thành công từ LoginWindow."""
+            nonlocal main_win
+            logger.info("Nhận callback đăng nhập thành công. Khởi tạo MainWindow...")
+
+            # Khởi tạo MainWindow với email và phòng ban đã được xác thực
+            main_win = MainWindow(user_email=email, user_dept=dept)
+            main_win.logout_clicked.connect(on_logout_requested)
+
+            login_win.hide()
+            main_win.show()
+
+        def on_logout_requested() -> None:
+            """Callback xử lý khi người dùng click đăng xuất từ MainWindow."""
+            nonlocal main_win
+            logger.info("Nhận yêu cầu đăng xuất. Quay về LoginWindow...")
+            if main_win:
+                main_win.close()
+                main_win = None
+            login_win.show()
+
+        # Kết nối sự kiện đăng nhập thành công
+        login_win.login_success.connect(on_login_success)
+        login_win.show()
+
+        logger.info(
+            "Ứng dụng PyQt6 hiển thị cửa sổ Đăng nhập thành công. Bắt đầu vòng lặp sự kiện."
+        )
         sys.exit(app.exec())
     except Exception as e:
         logger.critical(

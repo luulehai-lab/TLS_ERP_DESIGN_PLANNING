@@ -2,6 +2,7 @@
 File: docs/architecture/ARCHITECTURE_MAP.md
 CHỨC NĂNG: Bản đồ master kiến trúc kỹ thuật dự án ERP Thiết kế - Kế hoạch (TLS)
 CHANGELOG:
+- 14:35:00 08/07/2026: [UPDATE] Tích hợp cấu trúc mô-đun Google Login (auth_service.py, login_window.py) (Lê Thanh Vân/Antigravity)
 - 10:40:00 02/07/2026: [NEW] Khởi tạo bản đồ kiến trúc cho dự án mới (Lê Thanh Vân/Antigravity)
 - 11:32:00 02/07/2026: [UPDATE] Bổ sung module ui/common/workers.py cho kiến trúc đa luồng bất đồng bộ (Lê Thanh Vân/Antigravity)
 -->
@@ -21,8 +22,8 @@ CHANGELOG:
 ```
 55_ERP_TK_KH_01726/
 │
-├── main.py                  # Điểm chạy chính của ứng dụng PyQt6
-├── config.py                # Cấu hình kết nối DB Supabase, Google API, file paths
+├── main.py                  # Điểm chạy chính của ứng dụng PyQt6 (khởi động qua LoginWindow)
+├── config.py                # Cấu hình kết nối DB, Google OAuth, email phòng ban
 ├── .gitignore               # Cấu hình bỏ qua các file rác, file tạm
 │
 ├── core/                    # TẦNG CORE LOGIC & DATABASE (Tuyệt đối cấm import PyQt6 tại đây)
@@ -31,12 +32,14 @@ CHANGELOG:
 │   ├── models.py            # Định nghĩa các bảng (Projects, Drawings, logs, BOM)
 │   └── services/            # Chứa các lớp xử lý nghiệp vụ chính
 │       ├── __init__.py
+│       ├── auth_service.py    # Xử lý Google OAuth2, chạy Local HTTP Server callback & Mock Login
 │       ├── project_service.py # Logic nghiệp vụ Quản lý Dự án
 │       └── drawing_service.py # Logic nghiệp vụ Ban hành, Cập nhật trạng thái bản vẽ
 │
 ├── ui/                      # TẦNG GIAO DIỆN (PyQt6 - Chỉ xử lý hiển thị, cấm truy vấn DB trực tiếp)
 │   ├── __init__.py
-│   ├── main_window.py       # Khung giao diện chính (Sidebar, Header, Content Area)
+│   ├── login_window.py      # Màn hình đăng nhập Google Premium Dark Slate Style
+│   ├── main_window.py       # Khung giao diện chính (Sidebar, Header phân quyền, Content Area)
 │   ├── common/              # Các Widget dùng chung (nút bấm, bảng hiển thị, styles...)
 │   │   ├── __init__.py
 │   │   └── workers.py       # Luồng phụ xử lý bất đồng bộ (QThread Workers)

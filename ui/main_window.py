@@ -1,6 +1,7 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 13:38:54 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
 # - 13:28:00 08/07/2026: [REFACTOR] Chuyển đổi load_projects sang tải bất đồng bộ sử dụng ProjectLoaderThread để tránh treo ứng dụng (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
@@ -23,7 +24,7 @@ from PyQt6.QtWidgets import (
     QListWidget,
     QListWidgetItem,
 )
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, pyqtSignal
 
 from ui.views.thiet_ke_view import ThietKeView
 from ui.views.ke_hoach_view import KeHoachView
@@ -39,11 +40,15 @@ class MainWindow(QMainWindow):
     (Thiết kế / Kế hoạch) dạng tab ngang trên cùng bên phải.
     """
 
-    def __init__(self) -> None:
+    logout_clicked: pyqtSignal = pyqtSignal()
+
+    def __init__(self, user_email: str = "", user_dept: str = "") -> None:
         super().__init__()
         self.setWindowTitle("ERP TK-KH - TUAN LONG STEEL (TLS)")
         self.resize(1200, 800)
         self.setMinimumSize(1000, 700)
+        self.user_email: str = user_email
+        self.user_dept: str = user_dept
         self.current_project_id: str = ""
         self.project_loader_thread: ProjectLoaderThread | None = None
         self._init_ui()
@@ -90,9 +95,13 @@ class MainWindow(QMainWindow):
         # Áp dụng stylesheet tổng thể cho ứng dụng
         self._apply_styles()
 
-        # Hiển thị View Thiết kế mặc định
-        self.content_stack.setCurrentIndex(0)
-        self.btn_thiet_ke.setChecked(True)
+        # Hiển thị View mặc định dựa vào phân quyền phòng ban
+        if self.user_dept == "Kế hoạch":
+            self.content_stack.setCurrentIndex(1)
+            self.btn_ke_hoach.setChecked(True)
+        else:
+            self.content_stack.setCurrentIndex(0)
+            self.btn_thiet_ke.setChecked(True)
 
     def _create_sidebar(self) -> QFrame:
         """Tạo thanh Sidebar bên trái chứa danh sách dự án.
@@ -192,7 +201,73 @@ class MainWindow(QMainWindow):
         self.button_group.addButton(self.btn_ke_hoach)
         header_layout.addWidget(self.btn_ke_hoach)
 
+        # Ẩn nút Thiết kế nếu người dùng là phòng Kế hoạch
+        if self.user_dept == "Kế hoạch":
+            self.btn_thiet_ke.hide()
+
+        # Thêm đường phân tách nhỏ
+        sep = QFrame(header)
+        sep.setFrameShape(QFrame.Shape.VLine)
+        sep.setStyleSheet("background-color: #E2E8F0; margin: 0px 15px;")
+        header_layout.addWidget(sep)
+
+        # Khung thông tin User đăng nhập
+        user_info_widget = QWidget(header)
+        user_info_layout = QHBoxLayout(user_info_widget)
+        user_info_layout.setContentsMargins(0, 0, 0, 0)
+        user_info_layout.setSpacing(10)
+
+        # Avatar tròn giả lập bằng chữ cái đầu của email
+        first_char = self.user_email[0].upper() if self.user_email else "U"
+        self.lbl_avatar = QLabel(first_char, user_info_widget)
+        self.lbl_avatar.setStyleSheet(
+            """
+            background-color: #38BDF8;
+            color: #0F172A;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius: 14px;
+            min-width: 28px;
+            max-width: 28px;
+            min-height: 28px;
+            max-height: 28px;
+            qproperty-alignment: 'AlignCenter';
+            """
+        )
+        user_info_layout.addWidget(self.lbl_avatar)
+
+        # Label email và vai trò
+        dept_display = "Thiết Kế" if self.user_dept == "Thiết kế" else "Kế Hoạch"
+        self.lbl_user = QLabel(f"{self.user_email}\n({dept_display})", user_info_widget)
+        self.lbl_user.setStyleSheet(
+            "font-size: 11px; color: #475569; font-weight: 600;"
+        )
+        user_info_layout.addWidget(self.lbl_user)
+
+        # Nút đăng xuất
+        self.btn_logout = QPushButton("🚪 Đăng xuất", user_info_widget)
+        self.btn_logout.setStyleSheet(
+            """
+            background-color: #F1F5F9;
+            color: #EF4444;
+            border: 1px solid #E2E8F0;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            """
+        )
+        self.btn_logout.clicked.connect(self._on_logout_clicked)
+        user_info_layout.addWidget(self.btn_logout)
+
+        header_layout.addWidget(user_info_widget)
+
         return header
+
+    def _on_logout_clicked(self) -> None:
+        """Xử lý sự kiện click nút đăng xuất."""
+        logger.info("Người dùng click đăng xuất: %s", self.user_email)
+        self.logout_clicked.emit()
 
     def load_projects(self) -> None:
         """Truy vấn database bất đồng bộ để nạp danh sách dự án vào QListWidget ở Sidebar."""

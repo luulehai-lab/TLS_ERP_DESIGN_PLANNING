@@ -17,7 +17,21 @@
       "label": "main",
       "type": "function",
       "file_path": "main.py",
-      "line": 38
+      "line": 40
+    },
+    {
+      "id": "main.on_login_success",
+      "label": "on_login_success",
+      "type": "function",
+      "file_path": "main.py",
+      "line": 56
+    },
+    {
+      "id": "main.on_logout_requested",
+      "label": "on_logout_requested",
+      "type": "function",
+      "file_path": "main.py",
+      "line": 68
     },
     {
       "id": "core.database",
@@ -757,6 +771,96 @@
       "line": 380
     },
     {
+      "id": "ui.login_window",
+      "label": "login_window.py",
+      "type": "file",
+      "file_path": "ui/login_window.py"
+    },
+    {
+      "id": "ui.login_window.AuthWorkerThread",
+      "label": "AuthWorkerThread",
+      "type": "class",
+      "file_path": "ui/login_window.py",
+      "line": 26
+    },
+    {
+      "id": "ui.login_window.LoginWindow",
+      "label": "LoginWindow",
+      "type": "class",
+      "file_path": "ui/login_window.py",
+      "line": 59
+    },
+    {
+      "id": "ui.login_window.AuthWorkerThread.__init__",
+      "label": "__init__",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 32
+    },
+    {
+      "id": "ui.login_window.AuthWorkerThread.run",
+      "label": "run",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 37
+    },
+    {
+      "id": "ui.login_window.AuthWorkerThread.stop",
+      "label": "stop",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 53
+    },
+    {
+      "id": "ui.login_window.LoginWindow.__init__",
+      "label": "__init__",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 67
+    },
+    {
+      "id": "ui.login_window.LoginWindow._init_ui",
+      "label": "_init_ui",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 78
+    },
+    {
+      "id": "ui.login_window.LoginWindow._apply_styles",
+      "label": "_apply_styles",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 146
+    },
+    {
+      "id": "ui.login_window.LoginWindow._on_login_clicked",
+      "label": "_on_login_clicked",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 204
+    },
+    {
+      "id": "ui.login_window.LoginWindow._on_auth_finished",
+      "label": "_on_auth_finished",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 222
+    },
+    {
+      "id": "ui.login_window.LoginWindow._on_auth_error",
+      "label": "_on_auth_error",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 247
+    },
+    {
+      "id": "ui.login_window.LoginWindow.closeEvent",
+      "label": "closeEvent",
+      "type": "function",
+      "file_path": "ui/login_window.py",
+      "line": 268
+    },
+    {
       "id": "ui.main_window",
       "label": "main_window.py",
       "type": "file",
@@ -774,76 +878,201 @@
       "label": "__init__",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 42
+      "line": 44
     },
     {
       "id": "ui.main_window.MainWindow._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 52
+      "line": 56
     },
     {
       "id": "ui.main_window.MainWindow._create_sidebar",
       "label": "_create_sidebar",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 97
+      "line": 105
     },
     {
       "id": "ui.main_window.MainWindow._create_header",
       "label": "_create_header",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 150
+      "line": 158
+    },
+    {
+      "id": "ui.main_window.MainWindow._on_logout_clicked",
+      "label": "_on_logout_clicked",
+      "type": "function",
+      "file_path": "ui/main_window.py",
+      "line": 266
     },
     {
       "id": "ui.main_window.MainWindow.load_projects",
       "label": "load_projects",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 197
+      "line": 271
     },
     {
       "id": "ui.main_window.MainWindow._on_projects_loaded",
       "label": "_on_projects_loaded",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 215
+      "line": 289
     },
     {
       "id": "ui.main_window.MainWindow._on_projects_load_error",
       "label": "_on_projects_load_error",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 250
+      "line": 324
     },
     {
       "id": "ui.main_window.MainWindow._on_project_selected",
       "label": "_on_project_selected",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 277
+      "line": 351
     },
     {
       "id": "ui.main_window.MainWindow._switch_view",
       "label": "_switch_view",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 311
+      "line": 385
     },
     {
       "id": "ui.main_window.MainWindow._apply_styles",
       "label": "_apply_styles",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 326
+      "line": 400
     },
     {
       "id": "ui.__init__",
       "label": "__init__.py",
       "type": "file",
       "file_path": "ui/__init__.py"
+    },
+    {
+      "id": "core.services.auth_service",
+      "label": "auth_service.py",
+      "type": "file",
+      "file_path": "core/services/auth_service.py"
+    },
+    {
+      "id": "core.services.auth_service.OAuthCallbackHandler",
+      "label": "OAuthCallbackHandler",
+      "type": "class",
+      "file_path": "core/services/auth_service.py",
+      "line": 166
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthServer",
+      "label": "GoogleAuthServer",
+      "type": "class",
+      "file_path": "core/services/auth_service.py",
+      "line": 289
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthManager",
+      "label": "GoogleAuthManager",
+      "type": "class",
+      "file_path": "core/services/auth_service.py",
+      "line": 303
+    },
+    {
+      "id": "core.services.auth_service.OAuthCallbackHandler.log_message",
+      "label": "log_message",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 169
+    },
+    {
+      "id": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+      "label": "do_GET",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 178
+    },
+    {
+      "id": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
+      "label": "_serve_mock_login_page",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 196
+    },
+    {
+      "id": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+      "label": "_handle_callback",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 200
+    },
+    {
+      "id": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+      "label": "_exchange_code_for_email",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 232
+    },
+    {
+      "id": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+      "label": "_send_html_response",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 277
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthServer.__init__",
+      "label": "__init__",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 292
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthManager.__init__",
+      "label": "__init__",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 306
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthManager.start_server",
+      "label": "start_server",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 317
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthManager._run_server",
+      "label": "_run_server",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 338
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
+      "label": "get_auth_url",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 346
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
+      "label": "get_authenticated_email",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 368
+    },
+    {
+      "id": "core.services.auth_service.GoogleAuthManager.shutdown",
+      "label": "shutdown",
+      "type": "function",
+      "file_path": "core/services/auth_service.py",
+      "line": 378
     },
     {
       "id": "core.services.drawing_service",
@@ -1165,6 +1394,16 @@
     {
       "source": "main",
       "target": "main.main",
+      "type": "contains"
+    },
+    {
+      "source": "main",
+      "target": "main.on_login_success",
+      "type": "contains"
+    },
+    {
+      "source": "main",
+      "target": "main.on_logout_requested",
       "type": "contains"
     },
     {
@@ -1663,6 +1902,76 @@
       "type": "contains"
     },
     {
+      "source": "ui.login_window",
+      "target": "ui.login_window.AuthWorkerThread",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.AuthWorkerThread",
+      "target": "PyQt6.QtCore.QThread",
+      "type": "inherits_from"
+    },
+    {
+      "source": "ui.login_window",
+      "target": "ui.login_window.LoginWindow",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "PyQt6.QtWidgets.QMainWindow",
+      "type": "inherits_from"
+    },
+    {
+      "source": "ui.login_window.AuthWorkerThread",
+      "target": "ui.login_window.AuthWorkerThread.__init__",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.AuthWorkerThread",
+      "target": "ui.login_window.AuthWorkerThread.run",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.AuthWorkerThread",
+      "target": "ui.login_window.AuthWorkerThread.stop",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "ui.login_window.LoginWindow.__init__",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "ui.login_window.LoginWindow._init_ui",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "ui.login_window.LoginWindow._apply_styles",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "ui.login_window.LoginWindow._on_login_clicked",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "ui.login_window.LoginWindow._on_auth_finished",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "ui.login_window.LoginWindow._on_auth_error",
+      "type": "contains"
+    },
+    {
+      "source": "ui.login_window.LoginWindow",
+      "target": "ui.login_window.LoginWindow.closeEvent",
+      "type": "contains"
+    },
+    {
       "source": "ui.main_window",
       "target": "ui.main_window.MainWindow",
       "type": "contains"
@@ -1694,6 +2003,11 @@
     },
     {
       "source": "ui.main_window.MainWindow",
+      "target": "ui.main_window.MainWindow._on_logout_clicked",
+      "type": "contains"
+    },
+    {
+      "source": "ui.main_window.MainWindow",
       "target": "ui.main_window.MainWindow.load_projects",
       "type": "contains"
     },
@@ -1720,6 +2034,96 @@
     {
       "source": "ui.main_window.MainWindow",
       "target": "ui.main_window.MainWindow._apply_styles",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service",
+      "target": "core.services.auth_service.OAuthCallbackHandler",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler",
+      "target": "http.server.BaseHTTPRequestHandler",
+      "type": "inherits_from"
+    },
+    {
+      "source": "core.services.auth_service",
+      "target": "core.services.auth_service.GoogleAuthServer",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthServer",
+      "target": "http.server.HTTPServer",
+      "type": "inherits_from"
+    },
+    {
+      "source": "core.services.auth_service",
+      "target": "core.services.auth_service.GoogleAuthManager",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler",
+      "target": "core.services.auth_service.OAuthCallbackHandler.log_message",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler",
+      "target": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler",
+      "target": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler",
+      "target": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler",
+      "target": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler",
+      "target": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthServer",
+      "target": "core.services.auth_service.GoogleAuthServer.__init__",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager",
+      "target": "core.services.auth_service.GoogleAuthManager.__init__",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager",
+      "target": "core.services.auth_service.GoogleAuthManager.start_server",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager",
+      "target": "core.services.auth_service.GoogleAuthManager._run_server",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager",
+      "target": "core.services.auth_service.GoogleAuthManager.get_auth_url",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager",
+      "target": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
+      "type": "contains"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager",
+      "target": "core.services.auth_service.GoogleAuthManager.shutdown",
       "type": "contains"
     },
     {
@@ -1939,6 +2343,11 @@
     },
     {
       "source": "main.main",
+      "target": "ui.login_window.LoginWindow",
+      "type": "calls"
+    },
+    {
+      "source": "main.on_login_success",
       "target": "ui.main_window.MainWindow",
       "type": "calls"
     },
@@ -2373,6 +2782,61 @@
       "type": "calls"
     },
     {
+      "source": "ui.login_window.AuthWorkerThread.run",
+      "target": "core.services.auth_service.GoogleAuthManager.start_server",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.AuthWorkerThread.run",
+      "target": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow.__init__",
+      "target": "core.services.auth_service.GoogleAuthManager",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow._on_login_clicked",
+      "target": "ui.login_window.AuthWorkerThread",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow._on_login_clicked",
+      "target": "core.services.auth_service.GoogleAuthManager.get_auth_url",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow._on_auth_finished",
+      "target": "ui.login_window.AuthWorkerThread.stop",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow._on_auth_finished",
+      "target": "core.services.auth_service.GoogleAuthManager.shutdown",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow._on_auth_error",
+      "target": "ui.login_window.AuthWorkerThread.stop",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow._on_auth_error",
+      "target": "core.services.auth_service.GoogleAuthManager.shutdown",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow.closeEvent",
+      "target": "ui.login_window.AuthWorkerThread.stop",
+      "type": "calls"
+    },
+    {
+      "source": "ui.login_window.LoginWindow.closeEvent",
+      "target": "core.services.auth_service.GoogleAuthManager.shutdown",
+      "type": "calls"
+    },
+    {
       "source": "ui.main_window.MainWindow.__init__",
       "target": "ui.main_window.MainWindow.load_projects",
       "type": "calls"
@@ -2398,11 +2862,6 @@
       "type": "calls"
     },
     {
-      "source": "ui.main_window.MainWindow._init_ui",
-      "target": "ui.main_window.MainWindow._apply_styles",
-      "type": "calls"
-    },
-    {
       "source": "ui.main_window.MainWindow._create_header",
       "target": "ui.main_window.MainWindow._switch_view",
       "type": "calls"
@@ -2420,6 +2879,46 @@
     {
       "source": "ui.main_window.MainWindow._on_project_selected",
       "target": "ui.main_window.MainWindow.load_projects",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+      "target": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+      "target": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+      "target": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
+      "target": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+      "target": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+      "target": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager.start_server",
+      "target": "core.services.auth_service.GoogleAuthServer",
+      "type": "calls"
+    },
+    {
+      "source": "core.services.auth_service.GoogleAuthManager.shutdown",
+      "target": "core.services.auth_service.GoogleAuthManager.shutdown",
       "type": "calls"
     },
     {
@@ -2512,27 +3011,27 @@
     "config": {
       "module_name": "config",
       "file_path": "config.py",
-      "mtime": 1782967753.1479783,
+      "mtime": 1783494323.2056441,
       "imports": [
         {
           "type": "direct",
           "name": "os",
           "asname": null,
-          "line": 7
+          "line": 8
         },
         {
           "type": "from",
           "module": "pathlib",
           "name": "Path",
           "asname": null,
-          "line": 8
+          "line": 9
         },
         {
           "type": "from",
           "module": "dotenv",
           "name": "load_dotenv",
           "asname": null,
-          "line": 9
+          "line": 10
         }
       ],
       "classes": [],
@@ -2542,47 +3041,54 @@
     "main": {
       "module_name": "main",
       "file_path": "main.py",
-      "mtime": 1783492733.7867818,
+      "mtime": 1783494409.6644883,
       "imports": [
         {
           "type": "direct",
           "name": "sys",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "logging.handlers",
           "name": "RotatingFileHandler",
           "asname": null,
-          "line": 11
+          "line": 12
         },
         {
           "type": "from",
           "module": "pathlib",
           "name": "Path",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QApplication",
           "asname": null,
-          "line": 34
+          "line": 35
+        },
+        {
+          "type": "from",
+          "module": "ui.login_window",
+          "name": "LoginWindow",
+          "asname": null,
+          "line": 36
         },
         {
           "type": "from",
           "module": "ui.main_window",
           "name": "MainWindow",
           "asname": null,
-          "line": 35
+          "line": 37
         }
       ],
       "classes": [],
@@ -2595,8 +3101,36 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 38,
-          "end_line": 60
+          "line": 40,
+          "end_line": 89
+        },
+        {
+          "id": "main.on_login_success",
+          "name": "on_login_success",
+          "parent_id": "main",
+          "parent_type": "module",
+          "args": [
+            "email",
+            "dept"
+          ],
+          "args_hints": {
+            "email": "str",
+            "dept": "str"
+          },
+          "return_hint": "None",
+          "line": 56,
+          "end_line": 66
+        },
+        {
+          "id": "main.on_logout_requested",
+          "name": "on_logout_requested",
+          "parent_id": "main",
+          "parent_type": "module",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 68,
+          "end_line": 75
         }
       ],
       "calls": [
@@ -2604,67 +3138,121 @@
           "caller": "main.main",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 44
+          "line": 46
         },
         {
           "caller": "main.main",
           "call_name": "QApplication",
           "caller_obj": null,
-          "line": 46
+          "line": 48
         },
         {
           "caller": "main.main",
           "call_name": "setStyle",
           "caller_obj": "app",
-          "line": 49
-        },
-        {
-          "caller": "main.main",
-          "call_name": "MainWindow",
-          "caller_obj": null,
           "line": 51
         },
         {
           "caller": "main.main",
+          "call_name": "LoginWindow",
+          "caller_obj": null,
+          "line": 53
+        },
+        {
+          "caller": "main.on_login_success",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 59
+        },
+        {
+          "caller": "main.on_login_success",
+          "call_name": "MainWindow",
+          "caller_obj": null,
+          "line": 62
+        },
+        {
+          "caller": "main.on_login_success",
+          "call_name": "connect",
+          "caller_obj": "main_win.logout_clicked",
+          "line": 63
+        },
+        {
+          "caller": "main.on_login_success",
+          "call_name": "hide",
+          "caller_obj": "login_win",
+          "line": 65
+        },
+        {
+          "caller": "main.on_login_success",
           "call_name": "show",
-          "caller_obj": "window",
-          "line": 52
+          "caller_obj": "main_win",
+          "line": 66
+        },
+        {
+          "caller": "main.on_logout_requested",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 71
+        },
+        {
+          "caller": "main.on_logout_requested",
+          "call_name": "close",
+          "caller_obj": "main_win",
+          "line": 73
+        },
+        {
+          "caller": "main.on_logout_requested",
+          "call_name": "show",
+          "caller_obj": "login_win",
+          "line": 75
+        },
+        {
+          "caller": "main.main",
+          "call_name": "connect",
+          "caller_obj": "login_win.login_success",
+          "line": 78
+        },
+        {
+          "caller": "main.main",
+          "call_name": "show",
+          "caller_obj": "login_win",
+          "line": 79
         },
         {
           "caller": "main.main",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 54
+          "line": 81
         },
         {
           "caller": "main.main",
           "call_name": "exit",
           "caller_obj": "sys",
-          "line": 55
+          "line": 84
         },
         {
           "caller": "main.main",
           "call_name": "exec",
           "caller_obj": "app",
-          "line": 55
+          "line": 84
         },
         {
           "caller": "main.main",
           "call_name": "critical",
           "caller_obj": "logger",
-          "line": 57
+          "line": 86
         },
         {
           "caller": "main.main",
           "call_name": "str",
           "caller_obj": null,
-          "line": 58
+          "line": 87
         },
         {
           "caller": "main.main",
           "call_name": "exit",
           "caller_obj": "sys",
-          "line": 60
+          "line": 89
         }
       ]
     },
@@ -9852,7 +10440,7 @@
     "ui.main_window": {
       "module_name": "ui.main_window",
       "file_path": "ui/main_window.py",
-      "mtime": 1783492734.0042489,
+      "mtime": 1783494409.691021,
       "imports": [
         {
           "type": "direct",
@@ -9946,6 +10534,13 @@
         },
         {
           "type": "from",
+          "module": "PyQt6.QtCore",
+          "name": "pyqtSignal",
+          "asname": null,
+          "line": 26
+        },
+        {
+          "type": "from",
           "module": "ui.views.thiet_ke_view",
           "name": "ThietKeView",
           "asname": null,
@@ -9970,7 +10565,7 @@
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 267
+          "line": 341
         }
       ],
       "classes": [
@@ -9981,7 +10576,7 @@
             "QMainWindow"
           ],
           "line": 35,
-          "end_line": 407
+          "end_line": 481
         }
       ],
       "functions": [
@@ -9990,11 +10585,17 @@
           "name": "__init__",
           "parent_id": "ui.main_window.MainWindow",
           "parent_type": "class",
-          "args": [],
-          "args_hints": {},
+          "args": [
+            "user_email",
+            "user_dept"
+          ],
+          "args_hints": {
+            "user_email": "str",
+            "user_dept": "str"
+          },
           "return_hint": "None",
-          "line": 42,
-          "end_line": 50
+          "line": 44,
+          "end_line": 54
         },
         {
           "id": "ui.main_window.MainWindow._init_ui",
@@ -10004,8 +10605,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 52,
-          "end_line": 95
+          "line": 56,
+          "end_line": 103
         },
         {
           "id": "ui.main_window.MainWindow._create_sidebar",
@@ -10015,8 +10616,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QFrame",
-          "line": 97,
-          "end_line": 148
+          "line": 105,
+          "end_line": 156
         },
         {
           "id": "ui.main_window.MainWindow._create_header",
@@ -10026,8 +10627,19 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QFrame",
-          "line": 150,
-          "end_line": 195
+          "line": 158,
+          "end_line": 264
+        },
+        {
+          "id": "ui.main_window.MainWindow._on_logout_clicked",
+          "name": "_on_logout_clicked",
+          "parent_id": "ui.main_window.MainWindow",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 266,
+          "end_line": 269
         },
         {
           "id": "ui.main_window.MainWindow.load_projects",
@@ -10037,8 +10649,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 197,
-          "end_line": 213
+          "line": 271,
+          "end_line": 287
         },
         {
           "id": "ui.main_window.MainWindow._on_projects_loaded",
@@ -10052,8 +10664,8 @@
             "projects": "list[dict]"
           },
           "return_hint": "None",
-          "line": 215,
-          "end_line": 248
+          "line": 289,
+          "end_line": 322
         },
         {
           "id": "ui.main_window.MainWindow._on_projects_load_error",
@@ -10067,8 +10679,8 @@
             "err_msg": "str"
           },
           "return_hint": "None",
-          "line": 250,
-          "end_line": 275
+          "line": 324,
+          "end_line": 349
         },
         {
           "id": "ui.main_window.MainWindow._on_project_selected",
@@ -10078,8 +10690,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 277,
-          "end_line": 309
+          "line": 351,
+          "end_line": 383
         },
         {
           "id": "ui.main_window.MainWindow._switch_view",
@@ -10093,8 +10705,8 @@
             "index": "int"
           },
           "return_hint": "None",
-          "line": 311,
-          "end_line": 324
+          "line": 385,
+          "end_line": 398
         },
         {
           "id": "ui.main_window.MainWindow._apply_styles",
@@ -10104,8 +10716,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 326,
-          "end_line": 407
+          "line": 400,
+          "end_line": 481
         }
       ],
       "calls": [
@@ -10113,126 +10725,114 @@
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 43
+          "line": 45
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 43
+          "line": 45
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "setWindowTitle",
           "caller_obj": "self",
-          "line": 44
+          "line": 46
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "resize",
           "caller_obj": "self",
-          "line": 45
+          "line": 47
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "setMinimumSize",
           "caller_obj": "self",
-          "line": 46
+          "line": 48
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 49
+          "line": 53
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "load_projects",
           "caller_obj": "self",
-          "line": 50
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "QWidget",
-          "caller_obj": null,
           "line": 54
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setCentralWidget",
-          "caller_obj": "self",
-          "line": 55
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "QHBoxLayout",
+          "call_name": "QWidget",
           "caller_obj": null,
           "line": 58
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setContentsMargins",
-          "caller_obj": "main_layout",
+          "call_name": "setCentralWidget",
+          "caller_obj": "self",
           "line": 59
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setSpacing",
-          "caller_obj": "main_layout",
-          "line": 60
+          "call_name": "QHBoxLayout",
+          "caller_obj": null,
+          "line": 62
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "_create_sidebar",
-          "caller_obj": "self",
+          "call_name": "setContentsMargins",
+          "caller_obj": "main_layout",
           "line": 63
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
+          "call_name": "setSpacing",
           "caller_obj": "main_layout",
           "line": 64
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "_create_sidebar",
+          "caller_obj": "self",
+          "line": 67
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "main_layout",
+          "line": 68
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QWidget",
           "caller_obj": null,
-          "line": 67
+          "line": 71
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 68
+          "line": 72
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "right_layout",
-          "line": 69
+          "line": 73
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "right_layout",
-          "line": 70
+          "line": 74
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "_create_header",
           "caller_obj": "self",
-          "line": 73
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "right_layout",
-          "line": 74
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "QStackedWidget",
-          "caller_obj": null,
           "line": 77
         },
         {
@@ -10243,218 +10843,218 @@
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "QStackedWidget",
+          "caller_obj": null,
+          "line": 81
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "right_layout",
+          "line": 82
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "main_layout",
-          "line": 80
+          "line": 84
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "ThietKeView",
           "caller_obj": null,
-          "line": 83
+          "line": 87
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "KeHoachView",
           "caller_obj": null,
-          "line": 84
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "self.content_stack",
-          "line": 87
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "self.content_stack",
           "line": 88
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.content_stack",
+          "line": 91
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.content_stack",
+          "line": 92
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "_apply_styles",
           "caller_obj": "self",
-          "line": 91
+          "line": 95
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setCurrentIndex",
           "caller_obj": "self.content_stack",
-          "line": 94
+          "line": 99
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "setChecked",
+          "caller_obj": "self.btn_ke_hoach",
+          "line": 100
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "setCurrentIndex",
+          "caller_obj": "self.content_stack",
+          "line": 102
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setChecked",
           "caller_obj": "self.btn_thiet_ke",
-          "line": 95
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QFrame",
-          "caller_obj": null,
           "line": 103
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setObjectName",
-          "caller_obj": "sidebar",
-          "line": 104
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QVBoxLayout",
-          "caller_obj": null,
-          "line": 106
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setContentsMargins",
-          "caller_obj": "sidebar_layout",
-          "line": 107
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setSpacing",
-          "caller_obj": "sidebar_layout",
-          "line": 108
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QLabel",
+          "call_name": "QFrame",
           "caller_obj": null,
           "line": 111
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
-          "caller_obj": "brand_label",
+          "caller_obj": "sidebar",
           "line": 112
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setAlignment",
-          "caller_obj": "brand_label",
-          "line": 113
+          "call_name": "QVBoxLayout",
+          "caller_obj": null,
+          "line": 114
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "addWidget",
+          "call_name": "setContentsMargins",
           "caller_obj": "sidebar_layout",
-          "line": 114
+          "line": 115
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setSpacing",
+          "caller_obj": "sidebar_layout",
+          "line": 116
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 116
+          "line": 119
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
-          "caller_obj": "sub_brand_label",
-          "line": 117
+          "caller_obj": "brand_label",
+          "line": 120
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setAlignment",
-          "caller_obj": "sub_brand_label",
-          "line": 118
+          "caller_obj": "brand_label",
+          "line": 121
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 119
+          "line": 122
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 124
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setObjectName",
+          "caller_obj": "sub_brand_label",
+          "line": 125
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setAlignment",
+          "caller_obj": "sub_brand_label",
+          "line": 126
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "addWidget",
+          "caller_obj": "sidebar_layout",
+          "line": 127
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 122
+          "line": 130
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setFrameShape",
           "caller_obj": "divider",
-          "line": 123
+          "line": 131
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setFrameShadow",
           "caller_obj": "divider",
-          "line": 124
+          "line": 132
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setStyleSheet",
           "caller_obj": "divider",
-          "line": 125
+          "line": 133
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 126
+          "line": 134
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 129
+          "line": 137
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setStyleSheet",
           "caller_obj": "lbl_select",
-          "line": 130
+          "line": 138
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 133
+          "line": 141
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QListWidget",
           "caller_obj": null,
-          "line": 135
+          "line": 143
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
           "caller_obj": "self.lst_projects",
-          "line": 136
+          "line": 144
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "connect",
           "caller_obj": "self.lst_projects.itemSelectionChanged",
-          "line": 137
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "addWidget",
-          "caller_obj": "sidebar_layout",
-          "line": 138
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 141
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setStyleSheet",
-          "caller_obj": "version_label",
-          "line": 142
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setAlignment",
-          "caller_obj": "version_label",
           "line": 145
         },
         {
@@ -10464,111 +11064,93 @@
           "line": 146
         },
         {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 149
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setStyleSheet",
+          "caller_obj": "version_label",
+          "line": 150
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setAlignment",
+          "caller_obj": "version_label",
+          "line": 153
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "addWidget",
+          "caller_obj": "sidebar_layout",
+          "line": 154
+        },
+        {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 158
+          "line": 166
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setObjectName",
           "caller_obj": "header",
-          "line": 159
+          "line": 167
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 161
+          "line": 169
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setContentsMargins",
           "caller_obj": "header_layout",
-          "line": 162
+          "line": 170
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 165
+          "line": 173
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setObjectName",
           "caller_obj": "self.lbl_header_project",
-          "line": 166
+          "line": 174
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setStyleSheet",
           "caller_obj": "self.lbl_header_project",
-          "line": 167
+          "line": 175
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addWidget",
           "caller_obj": "header_layout",
-          "line": 170
+          "line": 178
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addStretch",
           "caller_obj": "header_layout",
-          "line": 173
+          "line": 181
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QButtonGroup",
           "caller_obj": null,
-          "line": 176
+          "line": 184
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setExclusive",
           "caller_obj": "self.button_group",
-          "line": 177
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QPushButton",
-          "caller_obj": null,
-          "line": 180
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setObjectName",
-          "caller_obj": "self.btn_thiet_ke",
-          "line": 181
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setCheckable",
-          "caller_obj": "self.btn_thiet_ke",
-          "line": 182
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "connect",
-          "caller_obj": "self.btn_thiet_ke.clicked",
-          "line": 183
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "_switch_view",
-          "caller_obj": "self",
-          "line": 183
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addButton",
-          "caller_obj": "self.button_group",
-          "line": 184
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "header_layout",
           "line": 185
         },
         {
@@ -10580,19 +11162,19 @@
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setObjectName",
-          "caller_obj": "self.btn_ke_hoach",
+          "caller_obj": "self.btn_thiet_ke",
           "line": 189
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setCheckable",
-          "caller_obj": "self.btn_ke_hoach",
+          "caller_obj": "self.btn_thiet_ke",
           "line": 190
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "connect",
-          "caller_obj": "self.btn_ke_hoach.clicked",
+          "caller_obj": "self.btn_thiet_ke.clicked",
           "line": 191
         },
         {
@@ -10614,358 +11196,538 @@
           "line": 193
         },
         {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 196
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setObjectName",
+          "caller_obj": "self.btn_ke_hoach",
+          "line": 197
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setCheckable",
+          "caller_obj": "self.btn_ke_hoach",
+          "line": 198
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "connect",
+          "caller_obj": "self.btn_ke_hoach.clicked",
+          "line": 199
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "_switch_view",
+          "caller_obj": "self",
+          "line": 199
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addButton",
+          "caller_obj": "self.button_group",
+          "line": 200
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "header_layout",
+          "line": 201
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "hide",
+          "caller_obj": "self.btn_thiet_ke",
+          "line": 205
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QFrame",
+          "caller_obj": null,
+          "line": 208
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setFrameShape",
+          "caller_obj": "sep",
+          "line": 209
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "sep",
+          "line": 210
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "header_layout",
+          "line": 211
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QWidget",
+          "caller_obj": null,
+          "line": 214
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QHBoxLayout",
+          "caller_obj": null,
+          "line": 215
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setContentsMargins",
+          "caller_obj": "user_info_layout",
+          "line": 216
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setSpacing",
+          "caller_obj": "user_info_layout",
+          "line": 217
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "upper",
+          "caller_obj": "",
+          "line": 220
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 221
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.lbl_avatar",
+          "line": 222
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "user_info_layout",
+          "line": 236
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 240
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.lbl_user",
+          "line": 241
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "user_info_layout",
+          "line": 244
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 247
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.btn_logout",
+          "line": 248
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "connect",
+          "caller_obj": "self.btn_logout.clicked",
+          "line": 259
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "user_info_layout",
+          "line": 260
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "header_layout",
+          "line": 262
+        },
+        {
+          "caller": "ui.main_window.MainWindow._on_logout_clicked",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 268
+        },
+        {
+          "caller": "ui.main_window.MainWindow._on_logout_clicked",
+          "call_name": "emit",
+          "caller_obj": "self.logout_clicked",
+          "line": 269
+        },
+        {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 199
+          "line": 273
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 200
+          "line": 274
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "clear",
           "caller_obj": "self.lst_projects",
-          "line": 201
+          "line": 275
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 204
+          "line": 278
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "setFlags",
           "caller_obj": "loading_item",
-          "line": 205
+          "line": 279
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 206
+          "line": 280
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 207
+          "line": 281
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "ProjectLoaderThread",
           "caller_obj": null,
-          "line": 210
+          "line": 284
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "connect",
           "caller_obj": "self.project_loader_thread.finished",
-          "line": 211
+          "line": 285
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "connect",
           "caller_obj": "self.project_loader_thread.error",
-          "line": 212
+          "line": 286
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "start",
           "caller_obj": "self.project_loader_thread",
-          "line": 213
+          "line": 287
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 221
+          "line": 295
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 222
+          "line": 296
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "clear",
           "caller_obj": "self.lst_projects",
-          "line": 223
+          "line": 297
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 231
+          "line": 305
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "setData",
           "caller_obj": "item",
-          "line": 232
+          "line": 306
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 233
+          "line": 307
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 235
+          "line": 309
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "count",
           "caller_obj": "self.lst_projects",
-          "line": 238
+          "line": 312
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "range",
           "caller_obj": null,
-          "line": 241
+          "line": 315
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "count",
           "caller_obj": "self.lst_projects",
-          "line": 241
+          "line": 315
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "item",
           "caller_obj": "self.lst_projects",
-          "line": 242
+          "line": 316
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "data",
           "caller_obj": "item",
-          "line": 243
+          "line": 317
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "setCurrentRow",
           "caller_obj": "self.lst_projects",
-          "line": 246
+          "line": 320
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "_on_project_selected",
           "caller_obj": "self",
-          "line": 248
+          "line": 322
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 256
+          "line": 330
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 257
+          "line": 331
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "clear",
           "caller_obj": "self.lst_projects",
-          "line": 258
+          "line": 332
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 261
+          "line": 335
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "setData",
           "caller_obj": "error_item",
-          "line": 262
+          "line": 336
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 263
+          "line": 337
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 264
+          "line": 338
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 269
+          "line": 343
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "selectedItems",
           "caller_obj": "self.lst_projects",
-          "line": 279
+          "line": 353
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "data",
           "caller_obj": "item",
-          "line": 282
+          "line": 356
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 285
+          "line": 359
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "load_projects",
           "caller_obj": "self",
-          "line": 286
+          "line": 360
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 289
+          "line": 363
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "setText",
           "caller_obj": "self.lbl_header_project",
-          "line": 292
+          "line": 366
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "text",
           "caller_obj": "item",
-          "line": 292
+          "line": 366
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "currentIndex",
           "caller_obj": "self.content_stack",
-          "line": 295
+          "line": 369
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 296
+          "line": 370
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 297
+          "line": 371
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 298
+          "line": 372
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 299
+          "line": 373
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 301
+          "line": 375
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "setText",
           "caller_obj": "self.lbl_header_project",
-          "line": 303
+          "line": 377
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "currentIndex",
           "caller_obj": "self.content_stack",
-          "line": 305
+          "line": 379
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 306
+          "line": 380
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 307
+          "line": 381
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 308
+          "line": 382
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 309
+          "line": 383
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 317
+          "line": 391
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "setCurrentIndex",
           "caller_obj": "self.content_stack",
-          "line": 318
+          "line": 392
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 321
+          "line": 395
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 322
+          "line": 396
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 323
+          "line": 397
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 324
+          "line": 398
         },
         {
           "caller": "ui.main_window.MainWindow._apply_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 328
+          "line": 402
         }
       ]
     },
@@ -14458,6 +15220,1407 @@
       "classes": [],
       "functions": [],
       "calls": []
+    },
+    "ui.login_window": {
+      "module_name": "ui.login_window",
+      "file_path": "ui/login_window.py",
+      "mtime": 1783494409.6644883,
+      "imports": [
+        {
+          "type": "direct",
+          "name": "logging",
+          "asname": null,
+          "line": 6
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Any",
+          "asname": null,
+          "line": 7
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QMainWindow",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QWidget",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QVBoxLayout",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QLabel",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QPushButton",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QMessageBox",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QFrame",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtCore",
+          "name": "Qt",
+          "asname": null,
+          "line": 17
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtCore",
+          "name": "QThread",
+          "asname": null,
+          "line": 17
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtCore",
+          "name": "pyqtSignal",
+          "asname": null,
+          "line": 17
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtCore",
+          "name": "QUrl",
+          "asname": null,
+          "line": 17
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtGui",
+          "name": "QDesktopServices",
+          "asname": null,
+          "line": 18
+        },
+        {
+          "type": "from",
+          "module": "core.services.auth_service",
+          "name": "GoogleAuthManager",
+          "asname": null,
+          "line": 20
+        },
+        {
+          "type": "direct",
+          "name": "config",
+          "asname": null,
+          "line": 21
+        }
+      ],
+      "classes": [
+        {
+          "id": "ui.login_window.AuthWorkerThread",
+          "name": "AuthWorkerThread",
+          "bases": [
+            "QThread"
+          ],
+          "line": 26,
+          "end_line": 56
+        },
+        {
+          "id": "ui.login_window.LoginWindow",
+          "name": "LoginWindow",
+          "bases": [
+            "QMainWindow"
+          ],
+          "line": 59,
+          "end_line": 278
+        }
+      ],
+      "functions": [
+        {
+          "id": "ui.login_window.AuthWorkerThread.__init__",
+          "name": "__init__",
+          "parent_id": "ui.login_window.AuthWorkerThread",
+          "parent_type": "class",
+          "args": [
+            "auth_manager"
+          ],
+          "args_hints": {
+            "auth_manager": "GoogleAuthManager"
+          },
+          "return_hint": "None",
+          "line": 32,
+          "end_line": 35
+        },
+        {
+          "id": "ui.login_window.AuthWorkerThread.run",
+          "name": "run",
+          "parent_id": "ui.login_window.AuthWorkerThread",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 37,
+          "end_line": 51
+        },
+        {
+          "id": "ui.login_window.AuthWorkerThread.stop",
+          "name": "stop",
+          "parent_id": "ui.login_window.AuthWorkerThread",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 53,
+          "end_line": 56
+        },
+        {
+          "id": "ui.login_window.LoginWindow.__init__",
+          "name": "__init__",
+          "parent_id": "ui.login_window.LoginWindow",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 67,
+          "end_line": 76
+        },
+        {
+          "id": "ui.login_window.LoginWindow._init_ui",
+          "name": "_init_ui",
+          "parent_id": "ui.login_window.LoginWindow",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 78,
+          "end_line": 144
+        },
+        {
+          "id": "ui.login_window.LoginWindow._apply_styles",
+          "name": "_apply_styles",
+          "parent_id": "ui.login_window.LoginWindow",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 146,
+          "end_line": 202
+        },
+        {
+          "id": "ui.login_window.LoginWindow._on_login_clicked",
+          "name": "_on_login_clicked",
+          "parent_id": "ui.login_window.LoginWindow",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 204,
+          "end_line": 220
+        },
+        {
+          "id": "ui.login_window.LoginWindow._on_auth_finished",
+          "name": "_on_auth_finished",
+          "parent_id": "ui.login_window.LoginWindow",
+          "parent_type": "class",
+          "args": [
+            "email"
+          ],
+          "args_hints": {
+            "email": "str"
+          },
+          "return_hint": "None",
+          "line": 222,
+          "end_line": 245
+        },
+        {
+          "id": "ui.login_window.LoginWindow._on_auth_error",
+          "name": "_on_auth_error",
+          "parent_id": "ui.login_window.LoginWindow",
+          "parent_type": "class",
+          "args": [
+            "err_msg"
+          ],
+          "args_hints": {
+            "err_msg": "str"
+          },
+          "return_hint": "None",
+          "line": 247,
+          "end_line": 266
+        },
+        {
+          "id": "ui.login_window.LoginWindow.closeEvent",
+          "name": "closeEvent",
+          "parent_id": "ui.login_window.LoginWindow",
+          "parent_type": "class",
+          "args": [
+            "event"
+          ],
+          "args_hints": {
+            "event": "Any"
+          },
+          "return_hint": "None",
+          "line": 268,
+          "end_line": 278
+        }
+      ],
+      "calls": [
+        {
+          "caller": "ui.login_window.AuthWorkerThread.__init__",
+          "call_name": "__init__",
+          "caller_obj": "",
+          "line": 33
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.__init__",
+          "call_name": "super",
+          "caller_obj": null,
+          "line": 33
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "start_server",
+          "caller_obj": "self.auth_manager",
+          "line": 40
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "get_authenticated_email",
+          "caller_obj": "self.auth_manager",
+          "line": 44
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "emit",
+          "caller_obj": "self.finished",
+          "line": 46
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "msleep",
+          "caller_obj": "self",
+          "line": 48
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 50
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 50
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "emit",
+          "caller_obj": "self.error",
+          "line": 51
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.run",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 51
+        },
+        {
+          "caller": "ui.login_window.AuthWorkerThread.stop",
+          "call_name": "wait",
+          "caller_obj": "self",
+          "line": 56
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.__init__",
+          "call_name": "__init__",
+          "caller_obj": "",
+          "line": 68
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.__init__",
+          "call_name": "super",
+          "caller_obj": null,
+          "line": 68
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.__init__",
+          "call_name": "setWindowTitle",
+          "caller_obj": "self",
+          "line": 69
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.__init__",
+          "call_name": "resize",
+          "caller_obj": "self",
+          "line": 70
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.__init__",
+          "call_name": "setMinimumSize",
+          "caller_obj": "self",
+          "line": 71
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.__init__",
+          "call_name": "GoogleAuthManager",
+          "caller_obj": null,
+          "line": 73
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.__init__",
+          "call_name": "_init_ui",
+          "caller_obj": "self",
+          "line": 76
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QWidget",
+          "caller_obj": null,
+          "line": 80
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setCentralWidget",
+          "caller_obj": "self",
+          "line": 81
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QVBoxLayout",
+          "caller_obj": null,
+          "line": 84
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setContentsMargins",
+          "caller_obj": "layout",
+          "line": 85
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setSpacing",
+          "caller_obj": "layout",
+          "line": 86
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QFrame",
+          "caller_obj": null,
+          "line": 89
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "card",
+          "line": 90
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QVBoxLayout",
+          "caller_obj": null,
+          "line": 91
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setContentsMargins",
+          "caller_obj": "card_layout",
+          "line": 92
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setSpacing",
+          "caller_obj": "card_layout",
+          "line": 93
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 96
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "brand_label",
+          "line": 97
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "brand_label",
+          "line": 98
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "card_layout",
+          "line": 99
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 101
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "sub_brand_label",
+          "line": 102
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "sub_brand_label",
+          "line": 103
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "card_layout",
+          "line": 104
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QFrame",
+          "caller_obj": null,
+          "line": 107
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setFrameShape",
+          "caller_obj": "divider",
+          "line": 108
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setFrameShadow",
+          "caller_obj": "divider",
+          "line": 109
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setStyleSheet",
+          "caller_obj": "divider",
+          "line": 110
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "card_layout",
+          "line": 111
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 114
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "intro_label",
+          "line": 115
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "intro_label",
+          "line": 116
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "card_layout",
+          "line": 117
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 120
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "self.lbl_status",
+          "line": 121
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "self.lbl_status",
+          "line": 122
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setWordWrap",
+          "caller_obj": "self.lbl_status",
+          "line": 123
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "card_layout",
+          "line": 124
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 127
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "self.btn_login",
+          "line": 128
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "connect",
+          "caller_obj": "self.btn_login.clicked",
+          "line": 129
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "card_layout",
+          "line": 130
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addStretch",
+          "caller_obj": "card_layout",
+          "line": 133
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 136
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setStyleSheet",
+          "caller_obj": "version_label",
+          "line": 137
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "version_label",
+          "line": 138
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "card_layout",
+          "line": 139
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "layout",
+          "line": 141
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "_apply_styles",
+          "caller_obj": "self",
+          "line": 144
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._apply_styles",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self",
+          "line": 148
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "setEnabled",
+          "caller_obj": "self.btn_login",
+          "line": 206
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "setText",
+          "caller_obj": "self.lbl_status",
+          "line": 207
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "AuthWorkerThread",
+          "caller_obj": null,
+          "line": 210
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "connect",
+          "caller_obj": "self.auth_thread.finished",
+          "line": 211
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "connect",
+          "caller_obj": "self.auth_thread.error",
+          "line": 212
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "start",
+          "caller_obj": "self.auth_thread",
+          "line": 213
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "get_auth_url",
+          "caller_obj": "self.auth_manager",
+          "line": 216
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "setText",
+          "caller_obj": "self.lbl_status",
+          "line": 217
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "openUrl",
+          "caller_obj": "QDesktopServices",
+          "line": 220
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_login_clicked",
+          "call_name": "QUrl",
+          "caller_obj": null,
+          "line": 220
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 228
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "setText",
+          "caller_obj": "self.lbl_status",
+          "line": 229
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "stop",
+          "caller_obj": "self.auth_thread",
+          "line": 233
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "shutdown",
+          "caller_obj": "self.auth_manager",
+          "line": 235
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "lower",
+          "caller_obj": "email",
+          "line": 239
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "lower",
+          "caller_obj": "e",
+          "line": 239
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 242
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_finished",
+          "call_name": "emit",
+          "caller_obj": "self.login_success",
+          "line": 245
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_error",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 253
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_error",
+          "call_name": "setText",
+          "caller_obj": "self.lbl_status",
+          "line": 254
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_error",
+          "call_name": "setEnabled",
+          "caller_obj": "self.btn_login",
+          "line": 255
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_error",
+          "call_name": "critical",
+          "caller_obj": "QMessageBox",
+          "line": 257
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_error",
+          "call_name": "stop",
+          "caller_obj": "self.auth_thread",
+          "line": 264
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._on_auth_error",
+          "call_name": "shutdown",
+          "caller_obj": "self.auth_manager",
+          "line": 266
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.closeEvent",
+          "call_name": "stop",
+          "caller_obj": "self.auth_thread",
+          "line": 275
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.closeEvent",
+          "call_name": "shutdown",
+          "caller_obj": "self.auth_manager",
+          "line": 277
+        },
+        {
+          "caller": "ui.login_window.LoginWindow.closeEvent",
+          "call_name": "accept",
+          "caller_obj": "event",
+          "line": 278
+        }
+      ]
+    },
+    "core.services.auth_service": {
+      "module_name": "core.services.auth_service",
+      "file_path": "core/services/auth_service.py",
+      "mtime": 1783494583.5649233,
+      "imports": [
+        {
+          "type": "direct",
+          "name": "logging",
+          "asname": null,
+          "line": 7
+        },
+        {
+          "type": "direct",
+          "name": "urllib.parse",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "http.server",
+          "name": "BaseHTTPRequestHandler",
+          "asname": null,
+          "line": 9
+        },
+        {
+          "type": "from",
+          "module": "http.server",
+          "name": "HTTPServer",
+          "asname": null,
+          "line": 9
+        },
+        {
+          "type": "direct",
+          "name": "threading",
+          "asname": null,
+          "line": 10
+        },
+        {
+          "type": "direct",
+          "name": "json",
+          "asname": null,
+          "line": 11
+        },
+        {
+          "type": "direct",
+          "name": "urllib.request",
+          "asname": null,
+          "line": 12
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Any",
+          "asname": null,
+          "line": 13
+        },
+        {
+          "type": "direct",
+          "name": "config",
+          "asname": null,
+          "line": 14
+        }
+      ],
+      "classes": [
+        {
+          "id": "core.services.auth_service.OAuthCallbackHandler",
+          "name": "OAuthCallbackHandler",
+          "bases": [
+            "BaseHTTPRequestHandler"
+          ],
+          "line": 166,
+          "end_line": 286
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthServer",
+          "name": "GoogleAuthServer",
+          "bases": [
+            "HTTPServer"
+          ],
+          "line": 289,
+          "end_line": 300
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthManager",
+          "name": "GoogleAuthManager",
+          "bases": [],
+          "line": 303,
+          "end_line": 391
+        }
+      ],
+      "functions": [
+        {
+          "id": "core.services.auth_service.OAuthCallbackHandler.log_message",
+          "name": "log_message",
+          "parent_id": "core.services.auth_service.OAuthCallbackHandler",
+          "parent_type": "class",
+          "args": [
+            "format_str"
+          ],
+          "args_hints": {
+            "format_str": "str"
+          },
+          "return_hint": "None",
+          "line": 169,
+          "end_line": 176
+        },
+        {
+          "id": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "name": "do_GET",
+          "parent_id": "core.services.auth_service.OAuthCallbackHandler",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 178,
+          "end_line": 194
+        },
+        {
+          "id": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
+          "name": "_serve_mock_login_page",
+          "parent_id": "core.services.auth_service.OAuthCallbackHandler",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 196,
+          "end_line": 198
+        },
+        {
+          "id": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "name": "_handle_callback",
+          "parent_id": "core.services.auth_service.OAuthCallbackHandler",
+          "parent_type": "class",
+          "args": [
+            "query_params"
+          ],
+          "args_hints": {
+            "query_params": "dict[Tuple[str, list[str]]]"
+          },
+          "return_hint": "None",
+          "line": 200,
+          "end_line": 230
+        },
+        {
+          "id": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "name": "_exchange_code_for_email",
+          "parent_id": "core.services.auth_service.OAuthCallbackHandler",
+          "parent_type": "class",
+          "args": [
+            "code"
+          ],
+          "args_hints": {
+            "code": "str"
+          },
+          "return_hint": "str",
+          "line": 232,
+          "end_line": 275
+        },
+        {
+          "id": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+          "name": "_send_html_response",
+          "parent_id": "core.services.auth_service.OAuthCallbackHandler",
+          "parent_type": "class",
+          "args": [
+            "content"
+          ],
+          "args_hints": {
+            "content": "str"
+          },
+          "return_hint": "None",
+          "line": 277,
+          "end_line": 286
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthServer.__init__",
+          "name": "__init__",
+          "parent_id": "core.services.auth_service.GoogleAuthServer",
+          "parent_type": "class",
+          "args": [
+            "server_address",
+            "handler_class"
+          ],
+          "args_hints": {
+            "server_address": "tuple[Tuple[str, int]]",
+            "handler_class": "Any"
+          },
+          "return_hint": "None",
+          "line": 292,
+          "end_line": 300
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthManager.__init__",
+          "name": "__init__",
+          "parent_id": "core.services.auth_service.GoogleAuthManager",
+          "parent_type": "class",
+          "args": [
+            "port"
+          ],
+          "args_hints": {
+            "port": "int"
+          },
+          "return_hint": "None",
+          "line": 306,
+          "end_line": 315
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthManager.start_server",
+          "name": "start_server",
+          "parent_id": "core.services.auth_service.GoogleAuthManager",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 317,
+          "end_line": 336
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthManager._run_server",
+          "name": "_run_server",
+          "parent_id": "core.services.auth_service.GoogleAuthManager",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 338,
+          "end_line": 344
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
+          "name": "get_auth_url",
+          "parent_id": "core.services.auth_service.GoogleAuthManager",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "str",
+          "line": 346,
+          "end_line": 366
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
+          "name": "get_authenticated_email",
+          "parent_id": "core.services.auth_service.GoogleAuthManager",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "str",
+          "line": 368,
+          "end_line": 376
+        },
+        {
+          "id": "core.services.auth_service.GoogleAuthManager.shutdown",
+          "name": "shutdown",
+          "parent_id": "core.services.auth_service.GoogleAuthManager",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 378,
+          "end_line": 391
+        }
+      ],
+      "calls": [
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.log_message",
+          "call_name": "debug",
+          "caller_obj": "logger",
+          "line": 176
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "call_name": "urlparse",
+          "caller_obj": "urllib.parse",
+          "line": 180
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "call_name": "parse_qs",
+          "caller_obj": "urllib.parse",
+          "line": 181
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "call_name": "_serve_mock_login_page",
+          "caller_obj": "self",
+          "line": 185
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "call_name": "_send_html_response",
+          "caller_obj": "self",
+          "line": 187
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "call_name": "_handle_callback",
+          "caller_obj": "self",
+          "line": 191
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "call_name": "send_response",
+          "caller_obj": "self",
+          "line": 193
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
+          "call_name": "end_headers",
+          "caller_obj": "self",
+          "line": 194
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
+          "call_name": "_send_html_response",
+          "caller_obj": "self",
+          "line": 198
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "get",
+          "caller_obj": "query_params",
+          "line": 206
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "_send_html_response",
+          "caller_obj": "self",
+          "line": 208
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "get",
+          "caller_obj": "query_params",
+          "line": 217
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "_exchange_code_for_email",
+          "caller_obj": "self",
+          "line": 221
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "format",
+          "caller_obj": "SUCCESS_LOGIN_HTML_TEMPLATE",
+          "line": 225
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "_send_html_response",
+          "caller_obj": "self",
+          "line": 226
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "_send_html_response",
+          "caller_obj": "self",
+          "line": 228
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "encode",
+          "caller_obj": "",
+          "line": 245
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "urlencode",
+          "caller_obj": "urllib.parse",
+          "line": 245
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "Request",
+          "caller_obj": "urllib.request",
+          "line": 255
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "urlopen",
+          "caller_obj": "urllib.request",
+          "line": 256
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "loads",
+          "caller_obj": "json",
+          "line": 257
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "decode",
+          "caller_obj": "",
+          "line": 257
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "read",
+          "caller_obj": "response",
+          "line": 257
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "get",
+          "caller_obj": "res_data",
+          "line": 258
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "Request",
+          "caller_obj": "urllib.request",
+          "line": 264
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "add_header",
+          "caller_obj": "req_info",
+          "line": 265
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "urlopen",
+          "caller_obj": "urllib.request",
+          "line": 267
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "loads",
+          "caller_obj": "json",
+          "line": 268
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "decode",
+          "caller_obj": "",
+          "line": 268
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "read",
+          "caller_obj": "response_info",
+          "line": 268
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "get",
+          "caller_obj": "user_info",
+          "line": 269
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 272
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 273
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+          "call_name": "send_response",
+          "caller_obj": "self",
+          "line": 283
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+          "call_name": "send_header",
+          "caller_obj": "self",
+          "line": 284
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+          "call_name": "end_headers",
+          "caller_obj": "self",
+          "line": 285
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+          "call_name": "write",
+          "caller_obj": "self.wfile",
+          "line": 286
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
+          "call_name": "encode",
+          "caller_obj": "content",
+          "line": 286
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthServer.__init__",
+          "call_name": "__init__",
+          "caller_obj": "",
+          "line": 299
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthServer.__init__",
+          "call_name": "super",
+          "caller_obj": null,
+          "line": 299
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
+          "call_name": "GoogleAuthServer",
+          "caller_obj": null,
+          "line": 323
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
+          "call_name": "Thread",
+          "caller_obj": "threading",
+          "line": 327
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
+          "call_name": "start",
+          "caller_obj": "self.thread",
+          "line": 328
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 329
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 331
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 334
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager._run_server",
+          "call_name": "serve_forever",
+          "caller_obj": "self.server",
+          "line": 342
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager._run_server",
+          "call_name": "debug",
+          "caller_obj": "logger",
+          "line": 344
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager._run_server",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 344
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.get_auth_url",
+          "call_name": "urlencode",
+          "caller_obj": "urllib.parse",
+          "line": 364
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 381
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
+          "call_name": "shutdown",
+          "caller_obj": "self.server",
+          "line": 383
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
+          "call_name": "server_close",
+          "caller_obj": "self.server",
+          "line": 384
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 386
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 386
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
+          "call_name": "join",
+          "caller_obj": "self.thread",
+          "line": 390
+        }
+      ]
     }
   }
 }
