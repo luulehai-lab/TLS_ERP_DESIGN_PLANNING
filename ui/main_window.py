@@ -1,6 +1,9 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 18:03:18 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
+# - 18:00:00 08/07/2026: [UPDATE] Làm sáng nhãn phiên bản ở chân sidebar (Antigravity)
+# - 17:58:00 08/07/2026: [UPDATE] Tích hợp DuAnView, thêm tab "QUẢN LÝ DỰ ÁN" trên Header và phân quyền điều hướng (Antigravity)
 # - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
 # - 17:30:00 08/07/2026: [FIX] Khắc phục lỗi chữ trắng trên nền trắng trong các ô nhập liệu, bảng dữ liệu và nút bấm hộp thoại cảnh báo trên các máy chạy Windows Dark Mode (Antigravity)
 # - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
@@ -87,10 +90,14 @@ class MainWindow(QMainWindow):
         main_layout.addWidget(right_container)
 
         # Khởi tạo các Views phòng ban
+        from ui.views.du_an_view import DuAnView
+
+        self.du_an_view = DuAnView(self)
         self.thiet_ke_view = ThietKeView(self)
         self.ke_hoach_view = KeHoachView(self)
 
         # Thêm Views vào Stacked Widget
+        self.content_stack.addWidget(self.du_an_view)
         self.content_stack.addWidget(self.thiet_ke_view)
         self.content_stack.addWidget(self.ke_hoach_view)
 
@@ -99,10 +106,11 @@ class MainWindow(QMainWindow):
 
         # Hiển thị View mặc định dựa vào phân quyền phòng ban
         if self.user_dept == "Kế hoạch":
-            self.content_stack.setCurrentIndex(1)
+            self.content_stack.setCurrentIndex(2)
             self.btn_ke_hoach.setChecked(True)
         else:
-            self.content_stack.setCurrentIndex(0)
+            # Mặc định mở tab Ban hành Bản vẽ (Index 1) cho phòng Thiết kế để thuận tiện làm việc ngay
+            self.content_stack.setCurrentIndex(1)
             self.btn_thiet_ke.setChecked(True)
 
     def _create_sidebar(self) -> QFrame:
@@ -151,7 +159,7 @@ class MainWindow(QMainWindow):
         # Thông tin bản quyền / Version ở chân sidebar
         version_label = QLabel("Phiên bản v1.0.0", sidebar)
         version_label.setStyleSheet(
-            "color: #475569; font-size: 11px; margin-top: 10px;"
+            "color: #94A3B8; font-size: 11px; margin-top: 10px;"
         )
         version_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         sidebar_layout.addWidget(version_label)
@@ -187,11 +195,19 @@ class MainWindow(QMainWindow):
         self.button_group = QButtonGroup(self)
         self.button_group.setExclusive(True)
 
+        # Nút chuyển màn hình Dự án
+        self.btn_du_an = QPushButton("🏢 QUẢN LÝ DỰ ÁN", header)
+        self.btn_du_an.setObjectName("navButton")
+        self.btn_du_an.setCheckable(True)
+        self.btn_du_an.clicked.connect(lambda: self._switch_view(0))
+        self.button_group.addButton(self.btn_du_an)
+        header_layout.addWidget(self.btn_du_an)
+
         # Nút chuyển màn hình Thiết kế
         self.btn_thiet_ke = QPushButton("📂 BAN HÀNH BẢN VẼ", header)
         self.btn_thiet_ke.setObjectName("navButton")
         self.btn_thiet_ke.setCheckable(True)
-        self.btn_thiet_ke.clicked.connect(lambda: self._switch_view(0))
+        self.btn_thiet_ke.clicked.connect(lambda: self._switch_view(1))
         self.button_group.addButton(self.btn_thiet_ke)
         header_layout.addWidget(self.btn_thiet_ke)
 
@@ -199,12 +215,13 @@ class MainWindow(QMainWindow):
         self.btn_ke_hoach = QPushButton("⚙️ TIẾP NHẬN SẢN XUẤT", header)
         self.btn_ke_hoach.setObjectName("navButton")
         self.btn_ke_hoach.setCheckable(True)
-        self.btn_ke_hoach.clicked.connect(lambda: self._switch_view(1))
+        self.btn_ke_hoach.clicked.connect(lambda: self._switch_view(2))
         self.button_group.addButton(self.btn_ke_hoach)
         header_layout.addWidget(self.btn_ke_hoach)
 
-        # Ẩn nút Thiết kế nếu người dùng là phòng Kế hoạch
+        # Ẩn nút Thiết kế & Dự án nếu người dùng là phòng Kế hoạch
         if self.user_dept == "Kế hoạch":
+            self.btn_du_an.hide()
             self.btn_thiet_ke.hide()
 
         # Thêm đường phân tách nhỏ
@@ -370,9 +387,13 @@ class MainWindow(QMainWindow):
 
             # Lazy Loading: Chỉ truyền và tải dữ liệu cho View đang hiển thị
             active_idx = self.content_stack.currentIndex()
-            if active_idx == 0 and hasattr(self, "thiet_ke_view"):
+            if active_idx == 0 and hasattr(self, "du_an_view"):
+                # View Quản lý dự án hiển thị danh sách tất cả các dự án trong DB,
+                # không cần set_project theo Sidebar.
+                pass
+            elif active_idx == 1 and hasattr(self, "thiet_ke_view"):
                 self.thiet_ke_view.set_project(project_id)
-            elif active_idx == 1 and hasattr(self, "ke_hoach_view"):
+            elif active_idx == 2 and hasattr(self, "ke_hoach_view"):
                 self.ke_hoach_view.set_project(project_id)
         else:
             logger.info("Không có dự án nào được chọn")
@@ -380,9 +401,11 @@ class MainWindow(QMainWindow):
             self.lbl_header_project.setText("DỰ ÁN HIỆN HÀNH: Chưa chọn")
 
             active_idx = self.content_stack.currentIndex()
-            if active_idx == 0 and hasattr(self, "thiet_ke_view"):
+            if active_idx == 0 and hasattr(self, "du_an_view"):
+                pass
+            elif active_idx == 1 and hasattr(self, "thiet_ke_view"):
                 self.thiet_ke_view.set_project("")
-            elif active_idx == 1 and hasattr(self, "ke_hoach_view"):
+            elif active_idx == 2 and hasattr(self, "ke_hoach_view"):
                 self.ke_hoach_view.set_project("")
 
     def _switch_view(self, index: int) -> None:
@@ -395,9 +418,11 @@ class MainWindow(QMainWindow):
         self.content_stack.setCurrentIndex(index)
 
         # Lazy Loading: Nạp bản vẽ của dự án đang chọn cho view vừa được mở ra
-        if index == 0 and hasattr(self, "thiet_ke_view"):
+        if index == 0 and hasattr(self, "du_an_view"):
+            self.du_an_view.load_projects()
+        elif index == 1 and hasattr(self, "thiet_ke_view"):
             self.thiet_ke_view.set_project(self.current_project_id)
-        elif index == 1 and hasattr(self, "ke_hoach_view"):
+        elif index == 2 and hasattr(self, "ke_hoach_view"):
             self.ke_hoach_view.set_project(self.current_project_id)
 
     def _apply_styles(self) -> None:

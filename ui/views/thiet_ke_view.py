@@ -1,6 +1,9 @@
 # Tên file: ui/views/thiet_ke_view.py
-# CHỨC NĂNG: Màn hình ban hành bản vẽ và quản lý dự án dành cho phòng Thiết kế
+# CHỨC NĂNG: Màn hình ban hành bản vẽ dành cho phòng Thiết kế
 # CHANGELOG:
+# - 18:03:19 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
+# - 18:00:00 08/07/2026: [UPDATE] Cải tiến form ban hành bản vẽ dãn tràn hết chiều ngang trang theo yêu cầu (Antigravity)
+# - 17:58:00 08/07/2026: [REFACTOR] Tách logic Tạo dự án mới sang view độc lập ui/views/du_an_view.py và tinh gọn giao diện Thiết kế (Antigravity)
 # - 17:53:55 08/07/2026: [FIX] fix(ui): fix white text on white background in Windows Dark Mode for QLineEdit, QTableWidget, and QMessageBox (Antigravity)
 # - 17:48:00 08/07/2026: [UPDATE] Cập nhật placeholder Drive link để hỗ trợ cả URL thư mục Google Drive (Lê Thanh Vân/Antigravity)
 # - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
@@ -30,7 +33,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QTimer
 
 from core.database import SessionLocal
-from core.services import project_service, drawing_service
+from core.services import drawing_service
 from ui.common.workers import DrawingLoaderThread
 
 logger = logging.getLogger(__name__)
@@ -67,19 +70,9 @@ class ThietKeView(QWidget):
         title_label.setStyleSheet("font-size: 20px; font-weight: bold; color: #1E293B;")
         layout.addWidget(title_label)
 
-        # Layout ngang chứa 2 panel nhập liệu: Tạo dự án & Ban hành bản vẽ
-        forms_layout = QHBoxLayout()
-        forms_layout.setSpacing(15)
-
-        # 1. Khung tạo dự án mới
-        project_group = self._create_project_group()
-        forms_layout.addWidget(project_group)
-
-        # 2. Khung ban hành bản vẽ
+        # Khung ban hành bản vẽ (tràn hết chiều ngang)
         drawing_group = self._create_drawing_group()
-        forms_layout.addWidget(drawing_group)
-
-        layout.addLayout(forms_layout)
+        layout.addWidget(drawing_group)
 
         # 3. Khung bảng danh sách bản vẽ đã ban hành
         table_group = self._create_table_group()
@@ -87,32 +80,6 @@ class ThietKeView(QWidget):
 
         # Áp dụng CSS QSS cho các controls trong view
         self._apply_view_styles()
-
-    def _create_project_group(self) -> QGroupBox:
-        """Tạo panel điều khiển cho nghiệp vụ Dự án.
-
-        Returns:
-            QGroupBox: Nhóm các ô nhập liệu liên quan tới Dự án.
-        """
-        group = QGroupBox("Tạo Dự án Mới", self)
-        grid = QGridLayout(group)
-        grid.setSpacing(10)
-
-        grid.addWidget(QLabel("Mã Dự án:", group), 0, 0)
-        self.txt_project_id = QLineEdit(group)
-        self.txt_project_id.setPlaceholderText("Ví dụ: TLS-01726")
-        grid.addWidget(self.txt_project_id, 0, 1)
-
-        grid.addWidget(QLabel("Tên Dự án:", group), 1, 0)
-        self.txt_project_name = QLineEdit(group)
-        self.txt_project_name.setPlaceholderText("Nhập tên dự án kết cấu thép...")
-        grid.addWidget(self.txt_project_name, 1, 1)
-
-        self.btn_create_proj = QPushButton("➕ Tạo Dự án", group)
-        self.btn_create_proj.clicked.connect(self._on_create_project)
-        grid.addWidget(self.btn_create_proj, 2, 0, 1, 2)
-
-        return group
 
     def _create_drawing_group(self) -> QGroupBox:
         """Tạo panel điều khiển cho nghiệp vụ Bản vẽ.
@@ -378,44 +345,6 @@ class ThietKeView(QWidget):
         if hasattr(self, "loader_thread") and self.loader_thread.isRunning():
             return
         self.load_drawings(silent=True)
-
-    def _on_create_project(self) -> None:
-        """Xử lý sự kiện click nút [Tạo Dự án]."""
-        project_id = self.txt_project_id.text().strip()
-        project_name = self.txt_project_name.text().strip()
-
-        if not project_id or not project_name:
-            QMessageBox.warning(
-                self, "Cảnh báo", "Vui lòng nhập đầy đủ Mã dự án và Tên dự án!"
-            )
-            return
-
-        db = SessionLocal()
-        try:
-            proj = project_service.create_project(db, project_id, project_name)
-            if proj:
-                QMessageBox.information(
-                    self, "Thông báo", f"Đã tạo thành công dự án: {project_id}"
-                )
-                self.txt_project_id.clear()
-                self.txt_project_name.clear()
-
-                # Gọi ngược lên MainWindow để nạp lại danh sách dự án ở Sidebar
-                if self.main_window and hasattr(self.main_window, "load_projects"):
-                    self.main_window.load_projects()
-            else:
-                QMessageBox.critical(
-                    self,
-                    "Lỗi",
-                    "Tạo dự án thất bại. Vui lòng kiểm tra lại log hệ thống.",
-                )
-        except Exception as e:
-            logger.error("Lỗi khi tạo dự án: %s", str(e), exc_info=True)
-            QMessageBox.critical(
-                self, "Lỗi", "Không thể kết nối đến cơ sở dữ liệu để tạo dự án."
-            )
-        finally:
-            db.close()
 
     def _on_create_drawing(self) -> None:
         """Xử lý sự kiện click nút [Ban hành Bản vẽ]."""

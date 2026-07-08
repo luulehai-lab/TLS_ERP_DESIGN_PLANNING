@@ -1,6 +1,8 @@
 # Tên file: ui/login_window.py
 # CHỨC NĂNG: Màn hình Đăng nhập bằng Google cho ứng dụng ERP (Giao diện Slate Premium)
 # CHANGELOG:
+# - 18:03:18 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
+# - 18:00:00 08/07/2026: [UPDATE] Cập nhật màu sắc nhãn phiên bản sáng lên để dễ nhìn trên nền tối (Antigravity)
 # - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
 # - 17:30:00 08/07/2026: [FIX] Khắc phục lỗi chữ trắng trên nền trắng trong các ô nhập liệu, bảng dữ liệu và nút bấm hộp thoại cảnh báo trên các máy chạy Windows Dark Mode (Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
@@ -139,7 +141,7 @@ class LoginWindow(QMainWindow):
 
         # Phiên bản
         version_label = QLabel("Phiên bản v1.0.0 (Google Login)", card)
-        version_label.setStyleSheet("color: #475569; font-size: 11px;")
+        version_label.setStyleSheet("color: #94A3B8; font-size: 11px;")
         version_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         card_layout.addWidget(version_label)
 
