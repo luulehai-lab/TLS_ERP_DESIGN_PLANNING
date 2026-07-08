@@ -1,6 +1,8 @@
 # Tên file: core/models.py
 # CHỨC NĂNG: Khai báo cấu trúc bảng cơ sở dữ liệu SQLAlchemy cho dự án ERP
 # CHANGELOG:
+# - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
+# - 18:07:00 08/07/2026: [NEW] Khởi tạo model ProjectSection và liên kết cột section_id trong Drawing (Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:44:00 02/07/2026: [UPDATE] Đánh index cho các khóa ngoại drawing_id và bổ sung docstrings cho __repr__ (Lê Thanh Vân/Antigravity)
 # - 10:59:00 02/07/2026: [NEW] Khởi tạo các bảng Projects, Drawings, DrawingLogs, BOMDetails (Lê Thanh Vân/Antigravity)
@@ -30,6 +32,9 @@ class Project(Base):
     drawings = relationship(
         "Drawing", back_populates="project", cascade="all, delete-orphan"
     )
+    sections = relationship(
+        "ProjectSection", back_populates="project", cascade="all, delete-orphan"
+    )
 
     def __repr__(self) -> str:
         """Đại diện dạng chuỗi của đối tượng Project.
@@ -38,6 +43,36 @@ class Project(Base):
             str: Chuỗi thông tin dự án.
         """
         return f"<Project(id='{self.project_id}', name='{self.project_name}', status='{self.status}')>"
+
+
+class ProjectSection(Base):
+    """
+    Model quản lý các hạng mục (NX1, NX2, MN...) của một dự án kết cấu thép.
+    """
+
+    __tablename__ = "project_sections"
+
+    section_id = Column(Integer, primary_key=True, autoincrement=True)
+    project_id = Column(
+        String(50),
+        ForeignKey("projects.project_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    section_code = Column(String(50), nullable=False)  # Ví dụ: NX1, NX2...
+    section_name = Column(String(150), nullable=False)  # Ví dụ: Nhà xưởng 1...
+
+    # Các quan hệ
+    project = relationship("Project", back_populates="sections")
+    drawings = relationship("Drawing", back_populates="section")
+
+    def __repr__(self) -> str:
+        """Đại diện dạng chuỗi của đối tượng ProjectSection.
+
+        Returns:
+            str: Chuỗi thông tin hạng mục.
+        """
+        return f"<ProjectSection(id={self.section_id}, project='{self.project_id}', code='{self.section_code}', name='{self.section_name}')>"
 
 
 class Drawing(Base):
@@ -65,9 +100,16 @@ class Drawing(Base):
         String(50), default="Chờ triển khai"
     )  # Chờ triển khai, Đang sản xuất, Đã hoàn thành
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    section_id = Column(
+        Integer,
+        ForeignKey("project_sections.section_id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
 
     # Các quan hệ
     project = relationship("Project", back_populates="drawings")
+    section = relationship("ProjectSection", back_populates="drawings")
     logs = relationship(
         "DrawingLog", back_populates="drawing", cascade="all, delete-orphan"
     )

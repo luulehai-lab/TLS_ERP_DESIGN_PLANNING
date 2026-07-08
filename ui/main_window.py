@@ -1,6 +1,8 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
+# - 18:08:00 08/07/2026: [UPDATE] Kết nối bộ chọn dự án Sidebar với DuAnView để quản lý Hạng mục (Antigravity)
 # - 18:03:18 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
 # - 18:00:00 08/07/2026: [UPDATE] Làm sáng nhãn phiên bản ở chân sidebar (Antigravity)
 # - 17:58:00 08/07/2026: [UPDATE] Tích hợp DuAnView, thêm tab "QUẢN LÝ DỰ ÁN" trên Header và phân quyền điều hướng (Antigravity)
@@ -388,9 +390,7 @@ class MainWindow(QMainWindow):
             # Lazy Loading: Chỉ truyền và tải dữ liệu cho View đang hiển thị
             active_idx = self.content_stack.currentIndex()
             if active_idx == 0 and hasattr(self, "du_an_view"):
-                # View Quản lý dự án hiển thị danh sách tất cả các dự án trong DB,
-                # không cần set_project theo Sidebar.
-                pass
+                self.du_an_view.set_project(project_id)
             elif active_idx == 1 and hasattr(self, "thiet_ke_view"):
                 self.thiet_ke_view.set_project(project_id)
             elif active_idx == 2 and hasattr(self, "ke_hoach_view"):
@@ -402,7 +402,7 @@ class MainWindow(QMainWindow):
 
             active_idx = self.content_stack.currentIndex()
             if active_idx == 0 and hasattr(self, "du_an_view"):
-                pass
+                self.du_an_view.set_project("")
             elif active_idx == 1 and hasattr(self, "thiet_ke_view"):
                 self.thiet_ke_view.set_project("")
             elif active_idx == 2 and hasattr(self, "ke_hoach_view"):
@@ -419,7 +419,7 @@ class MainWindow(QMainWindow):
 
         # Lazy Loading: Nạp bản vẽ của dự án đang chọn cho view vừa được mở ra
         if index == 0 and hasattr(self, "du_an_view"):
-            self.du_an_view.load_projects()
+            self.du_an_view.set_project(self.current_project_id)
         elif index == 1 and hasattr(self, "thiet_ke_view"):
             self.thiet_ke_view.set_project(self.current_project_id)
         elif index == 2 and hasattr(self, "ke_hoach_view"):

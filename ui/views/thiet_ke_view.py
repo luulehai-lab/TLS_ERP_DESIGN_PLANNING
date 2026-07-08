@@ -1,6 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Màn hình ban hành bản vẽ dành cho phòng Thiết kế
 # CHANGELOG:
+# - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
+# - 18:08:00 08/07/2026: [UPDATE] Cập nhật thiet_ke_view để hỗ trợ lựa chọn Hạng mục khi ban hành bản vẽ và hiển thị cột Hạng mục (Antigravity)
 # - 18:03:19 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
 # - 18:00:00 08/07/2026: [UPDATE] Cải tiến form ban hành bản vẽ dãn tràn hết chiều ngang trang theo yêu cầu (Antigravity)
 # - 17:58:00 08/07/2026: [REFACTOR] Tách logic Tạo dự án mới sang view độc lập ui/views/du_an_view.py và tinh gọn giao diện Thiết kế (Antigravity)
@@ -29,11 +31,12 @@ from PyQt6.QtWidgets import (
     QGroupBox,
     QMessageBox,
     QHeaderView,
+    QComboBox,
 )
 from PyQt6.QtCore import Qt, QTimer
 
 from core.database import SessionLocal
-from core.services import drawing_service
+from core.services import drawing_service, section_service
 from ui.common.workers import DrawingLoaderThread
 
 logger = logging.getLogger(__name__)
@@ -98,26 +101,30 @@ class ThietKeView(QWidget):
         )
         grid.addWidget(self.lbl_current_project, 0, 1)
 
-        grid.addWidget(QLabel("Mã Bản vẽ:", group), 1, 0)
+        grid.addWidget(QLabel("Chọn Hạng mục (nếu có):", group), 1, 0)
+        self.cb_sections = QComboBox(group)
+        grid.addWidget(self.cb_sections, 1, 1)
+
+        grid.addWidget(QLabel("Mã Bản vẽ:", group), 2, 0)
         self.txt_drawing_id = QLineEdit(group)
         self.txt_drawing_id.setPlaceholderText("Ví dụ: TLS-D01")
-        grid.addWidget(self.txt_drawing_id, 1, 1)
+        grid.addWidget(self.txt_drawing_id, 2, 1)
 
-        grid.addWidget(QLabel("Tên Bản vẽ:", group), 2, 0)
+        grid.addWidget(QLabel("Tên Bản vẽ:", group), 3, 0)
         self.txt_drawing_name = QLineEdit(group)
         self.txt_drawing_name.setPlaceholderText("Tên bản vẽ dầm, cột, kèo...")
-        grid.addWidget(self.txt_drawing_name, 2, 1)
+        grid.addWidget(self.txt_drawing_name, 3, 1)
 
-        grid.addWidget(QLabel("Google Drive Link:", group), 3, 0)
+        grid.addWidget(QLabel("Google Drive Link:", group), 4, 0)
         self.txt_drive_link = QLineEdit(group)
         self.txt_drive_link.setPlaceholderText(
             "Dán URL File hoặc Thư mục Google Drive..."
         )
-        grid.addWidget(self.txt_drive_link, 3, 1)
+        grid.addWidget(self.txt_drive_link, 4, 1)
 
         self.btn_create_draw = QPushButton("🚀 Ban hành Bản vẽ", group)
         self.btn_create_draw.clicked.connect(self._on_create_drawing)
-        grid.addWidget(self.btn_create_draw, 4, 0, 1, 2)
+        grid.addWidget(self.btn_create_draw, 5, 0, 1, 2)
 
         return group
 
@@ -157,10 +164,11 @@ class ThietKeView(QWidget):
         layout.addLayout(table_actions_layout)
 
         self.tbl_drawings = QTableWidget(group)
-        self.tbl_drawings.setColumnCount(6)
+        self.tbl_drawings.setColumnCount(7)
         self.tbl_drawings.setHorizontalHeaderLabels(
             [
                 "Mã Bản Vẽ",
+                "Hạng Mục",
                 "Tên Bản Vẽ",
                 "Trạng Thái",
                 "Phiên Bản",
@@ -172,10 +180,10 @@ class ThietKeView(QWidget):
         header = self.tbl_drawings.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
         header.setSectionResizeMode(
-            1, QHeaderView.ResizeMode.Stretch
+            2, QHeaderView.ResizeMode.Stretch
         )  # Tên bản vẽ tự giãn
         header.setSectionResizeMode(
-            4, QHeaderView.ResizeMode.Stretch
+            5, QHeaderView.ResizeMode.Stretch
         )  # Link Drive tự giãn
 
         # Cấu hình chọn nguyên dòng để phục vụ lưu dòng chọn
@@ -201,7 +209,28 @@ class ThietKeView(QWidget):
         logger.info("Thiết lập dự án hiện hành: %s", project_id)
         self.current_project_id = project_id
         self.lbl_current_project.setText(project_id if project_id else "Chưa chọn")
+        self.load_sections()
         self.load_drawings()
+
+    def load_sections(self) -> None:
+        """Nạp danh sách hạng mục của dự án hiện tại vào Combobox chọn hạng mục."""
+        self.cb_sections.clear()
+        self.cb_sections.addItem("--- Không chọn hạng mục ---", None)
+        if not self.current_project_id:
+            return
+        db = SessionLocal()
+        try:
+            sections = section_service.list_project_sections(
+                db, self.current_project_id
+            )
+            for s in sections:
+                self.cb_sections.addItem(
+                    f"{s.section_code} - {s.section_name}", s.section_id
+                )
+        except Exception as e:
+            logger.error("Lỗi khi nạp hạng mục vào Combobox: %s", str(e), exc_info=True)
+        finally:
+            db.close()
 
     def load_drawings(self, silent: bool = False) -> None:
         """Nạp danh sách bản vẽ của dự án đang được chọn vào QTableWidget (Bất đồng bộ).
@@ -265,6 +294,9 @@ class ThietKeView(QWidget):
             item_id = QTableWidgetItem(d["drawing_id"])
             item_id.setFlags(item_id.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
+            item_section = QTableWidgetItem(d.get("section_name", "") or "---")
+            item_section.setFlags(item_section.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
             item_name = QTableWidgetItem(d["drawing_name"])
             item_name.setFlags(item_name.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
@@ -290,11 +322,12 @@ class ThietKeView(QWidget):
             item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
             self.tbl_drawings.setItem(r, 0, item_id)
-            self.tbl_drawings.setItem(r, 1, item_name)
-            self.tbl_drawings.setItem(r, 2, item_status)
-            self.tbl_drawings.setItem(r, 3, item_version)
-            self.tbl_drawings.setItem(r, 4, item_link)
-            self.tbl_drawings.setItem(r, 5, item_time)
+            self.tbl_drawings.setItem(r, 1, item_section)
+            self.tbl_drawings.setItem(r, 2, item_name)
+            self.tbl_drawings.setItem(r, 3, item_status)
+            self.tbl_drawings.setItem(r, 4, item_version)
+            self.tbl_drawings.setItem(r, 5, item_link)
+            self.tbl_drawings.setItem(r, 6, item_time)
 
             # Kiểm tra xem dòng này có khớp với ID đã lưu trước đó không
             if (
@@ -352,6 +385,7 @@ class ThietKeView(QWidget):
         drawing_id = self.txt_drawing_id.text().strip()
         drawing_name = self.txt_drawing_name.text().strip()
         drive_link = self.txt_drive_link.text().strip()
+        section_id = self.cb_sections.currentData()
 
         if not project_id:
             QMessageBox.warning(
@@ -371,32 +405,34 @@ class ThietKeView(QWidget):
             "drawing_id": drawing_id,
             "drawing_name": drawing_name,
             "drive_link": drive_link,
+            "section_id": section_id,
         }
 
+        created_success = False
         db = SessionLocal()
         try:
             draw = drawing_service.create_drawing(db, project_id, drawing_data)
             if draw:
-                QMessageBox.information(
-                    self, "Thông báo", f"Ban hành thành công bản vẽ: {drawing_id}"
-                )
-                self.txt_drawing_id.clear()
-                self.txt_drawing_name.clear()
-                self.txt_drive_link.clear()
-                self.load_drawings()
-            else:
-                QMessageBox.critical(
-                    self,
-                    "Lỗi",
-                    "Ban hành bản vẽ thất bại. Vui lòng xem lại log hệ thống.",
-                )
+                created_success = True
         except Exception as e:
             logger.error("Lỗi khi ban hành bản vẽ: %s", str(e), exc_info=True)
-            QMessageBox.critical(
-                self, "Lỗi", "Không thể kết nối database để ban hành bản vẽ."
-            )
         finally:
             db.close()
+
+        if created_success:
+            QMessageBox.information(
+                self, "Thông báo", f"Ban hành thành công bản vẽ: {drawing_id}"
+            )
+            self.txt_drawing_id.clear()
+            self.txt_drawing_name.clear()
+            self.txt_drive_link.clear()
+            self.load_drawings()
+        else:
+            QMessageBox.critical(
+                self,
+                "Lỗi",
+                "Ban hành bản vẽ thất bại. Vui lòng xem lại log hệ thống hoặc kết nối.",
+            )
 
     def _apply_view_styles(self) -> None:
         """Áp dụng các định dạng giao diện cục bộ (QSS)."""
@@ -432,6 +468,19 @@ class ThietKeView(QWidget):
                 color: #0F172A;
             }
             QLineEdit:focus {
+                border: 1px solid #38BDF8;
+                background-color: #FFFFFF;
+                color: #0F172A;
+            }
+            QComboBox {
+                border: 1px solid #CBD5E1;
+                border-radius: 5px;
+                padding: 6px 10px;
+                font-size: 13px;
+                background-color: #F8FAFC;
+                color: #0F172A;
+            }
+            QComboBox:focus {
                 border: 1px solid #38BDF8;
                 background-color: #FFFFFF;
                 color: #0F172A;

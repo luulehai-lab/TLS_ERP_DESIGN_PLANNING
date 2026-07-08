@@ -1,6 +1,8 @@
 # Tên file: core/services/drawing_service.py
 # CHỨC NĂNG: Xử lý các nghiệp vụ Quản lý bản vẽ (Drawing) và Nhật ký bản vẽ (DrawingLog)
 # CHANGELOG:
+# - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
+# - 18:08:00 08/07/2026: [UPDATE] Cập nhật create_drawing hỗ trợ section_id và get_project_drawings sử dụng joinedload tối ưu (Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:15:00 02/07/2026: [NEW] Khởi tạo tầng dịch vụ quản lý bản vẽ và logs (Lê Thanh Vân/Antigravity)
 
@@ -32,12 +34,14 @@ def create_drawing(
     drawing_id = drawing_data.get("drawing_id", "")
     drawing_name = drawing_data.get("drawing_name", "")
     drive_link = drawing_data.get("drive_link")
+    section_id = drawing_data.get("section_id")
 
     logger.info(
-        "Yêu cầu ban hành bản vẽ mới: ProjectID=%s, DrawingID=%s, Name=%s",
+        "Yêu cầu ban hành bản vẽ mới: ProjectID=%s, DrawingID=%s, Name=%s, SectionID=%s",
         project_id,
         drawing_id,
         drawing_name,
+        section_id,
     )
     try:
         # Kiểm tra trùng lặp bản vẽ
@@ -54,6 +58,7 @@ def create_drawing(
             drawing_name=drawing_name,
             drive_link=drive_link,
             status="Chờ triển khai",
+            section_id=section_id,
         )
         db.add(db_drawing)
 
@@ -154,7 +159,14 @@ def get_project_drawings(db: Session, project_id: str) -> list[Drawing]:
     """
     logger.debug("Lấy danh sách bản vẽ của dự án ID=%s", project_id)
     try:
-        return db.query(Drawing).filter(Drawing.project_id == project_id).all()
+        from sqlalchemy.orm import joinedload
+
+        return (
+            db.query(Drawing)
+            .filter(Drawing.project_id == project_id)
+            .options(joinedload(Drawing.section))
+            .all()
+        )
     except SQLAlchemyError as e:
         logger.error(
             "Lỗi cơ sở dữ liệu khi truy vấn danh sách bản vẽ dự án ID '%s': %s",

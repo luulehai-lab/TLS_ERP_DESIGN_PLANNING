@@ -1,6 +1,8 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
+# - 18:08:00 08/07/2026: [UPDATE] Cập nhật DrawingLoaderThread để nạp thêm section_name của bản vẽ (Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
 # - 16:35:00 08/07/2026: [NEW] Thêm class DatabasePrewarmerThread làm ấm connection pool db khi mở app (Lê Thanh Vân/Antigravity)
 # - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
@@ -132,6 +134,7 @@ class DrawingLoaderThread(QThread):
                         "current_version": d.current_version,
                         "drive_link": d.drive_link,
                         "updated_at": d.updated_at,
+                        "section_name": d.section.section_name if d.section else "",
                     }
                 )
 

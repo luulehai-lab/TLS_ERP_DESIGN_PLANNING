@@ -46,6 +46,10 @@ graph TD
     core_services_project_service_get_project["⚙️ get_project()"]:::func
     core_services_project_service_list_active_projects["⚙️ list_active_projects()"]:::func
     core_services_project_service_update_project_status["⚙️ update_project_status()"]:::func
+    core_services_section_service["📄 section_service.py"]:::file
+    core_services_section_service_create_section["⚙️ create_section()"]:::func
+    core_services_section_service_list_project_sections["⚙️ list_project_sections()"]:::func
+    core_services_section_service_delete_section["⚙️ delete_section()"]:::func
     core_services___init__["📄 __init__.py"]:::file
     core_services_auth_service -->|contains| core_services_auth_service_OAuthCallbackHandler
     core_services_auth_service -->|contains| core_services_auth_service_GoogleAuthServer
@@ -71,6 +75,9 @@ graph TD
     core_services_project_service -->|contains| core_services_project_service_get_project
     core_services_project_service -->|contains| core_services_project_service_list_active_projects
     core_services_project_service -->|contains| core_services_project_service_update_project_status
+    core_services_section_service -->|contains| core_services_section_service_create_section
+    core_services_section_service -->|contains| core_services_section_service_list_project_sections
+    core_services_section_service -->|contains| core_services_section_service_delete_section
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__handle_callback
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__serve_mock_login_page
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__send_html_response

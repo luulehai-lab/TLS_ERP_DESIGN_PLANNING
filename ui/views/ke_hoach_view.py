@@ -1,6 +1,8 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng)
 # CHANGELOG:
+# - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
+# - 18:08:00 08/07/2026: [UPDATE] Thêm cột Hạng mục vào danh sách bản vẽ của phòng Kế hoạch (Antigravity)
 # - 17:53:55 08/07/2026: [FIX] fix(ui): fix white text on white background in Windows Dark Mode for QLineEdit, QTableWidget, and QMessageBox (Antigravity)
 # - 17:48:00 08/07/2026: [UPDATE] Cập nhật nhãn nút mở link Drive để làm rõ hỗ trợ cả file và thư mục Google Drive (Lê Thanh Vân/Antigravity)
 # - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
@@ -150,10 +152,11 @@ class KeHoachView(QWidget):
         layout.addLayout(table_actions_layout)
 
         self.tbl_drawings = QTableWidget(group)
-        self.tbl_drawings.setColumnCount(6)
+        self.tbl_drawings.setColumnCount(7)
         self.tbl_drawings.setHorizontalHeaderLabels(
             [
                 "Mã Bản Vẽ",
+                "Hạng Mục",
                 "Tên Bản Vẽ",
                 "Trạng Thái",
                 "Phiên Bản",
@@ -164,8 +167,8 @@ class KeHoachView(QWidget):
 
         header = self.tbl_drawings.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
-        header.setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(5, QHeaderView.ResizeMode.Stretch)
 
         # Cấu hình chọn nguyên dòng để dễ xử lý thao tác
         self.tbl_drawings.setSelectionBehavior(
@@ -253,6 +256,9 @@ class KeHoachView(QWidget):
             item_id = QTableWidgetItem(d["drawing_id"])
             item_id.setFlags(item_id.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
+            item_section = QTableWidgetItem(d.get("section_name", "") or "---")
+            item_section.setFlags(item_section.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
             item_name = QTableWidgetItem(d["drawing_name"])
             item_name.setFlags(item_name.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
@@ -278,11 +284,12 @@ class KeHoachView(QWidget):
             item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
             self.tbl_drawings.setItem(r, 0, item_id)
-            self.tbl_drawings.setItem(r, 1, item_name)
-            self.tbl_drawings.setItem(r, 2, item_status)
-            self.tbl_drawings.setItem(r, 3, item_version)
-            self.tbl_drawings.setItem(r, 4, item_link)
-            self.tbl_drawings.setItem(r, 5, item_time)
+            self.tbl_drawings.setItem(r, 1, item_section)
+            self.tbl_drawings.setItem(r, 2, item_name)
+            self.tbl_drawings.setItem(r, 3, item_status)
+            self.tbl_drawings.setItem(r, 4, item_version)
+            self.tbl_drawings.setItem(r, 5, item_link)
+            self.tbl_drawings.setItem(r, 6, item_time)
 
             # Kiểm tra xem dòng này có khớp với ID đã lưu trước đó không
             if (
