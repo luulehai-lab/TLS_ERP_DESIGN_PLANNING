@@ -1,6 +1,8 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
+# - 17:30:00 08/07/2026: [FIX] Khắc phục lỗi chữ trắng trên nền trắng trong các ô nhập liệu, bảng dữ liệu và nút bấm hộp thoại cảnh báo trên các máy chạy Windows Dark Mode (Antigravity)
 # - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 13:38:54 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
 # - 13:28:00 08/07/2026: [REFACTOR] Chuyển đổi load_projects sang tải bất đồng bộ sử dụng ProjectLoaderThread để tránh treo ứng dụng (Lê Thanh Vân/Antigravity)
@@ -477,6 +479,28 @@ class MainWindow(QMainWindow):
             #navButton:checked {
                 background-color: #E0F2FE; /* Sky 100 */
                 color: #0369A1; /* Sky 700 */
+            }
+            QMessageBox {
+                background-color: #FFFFFF;
+            }
+            QMessageBox QLabel {
+                color: #0F172A;
+            }
+            QMessageBox QPushButton {
+                background-color: #F1F5F9;
+                color: #0F172A;
+                border: 1px solid #E2E8F0;
+                border-radius: 5px;
+                padding: 6px 14px;
+                font-size: 12px;
+                font-weight: bold;
+                min-width: 70px;
+            }
+            QMessageBox QPushButton:hover {
+                background-color: #E2E8F0;
+            }
+            QMessageBox QPushButton:pressed {
+                background-color: #CBD5E1;
             }
         """
         )

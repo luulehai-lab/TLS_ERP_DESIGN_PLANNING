@@ -1,6 +1,8 @@
 # Tên file: ui/login_window.py
 # CHỨC NĂNG: Màn hình Đăng nhập bằng Google cho ứng dụng ERP (Giao diện Slate Premium)
 # CHANGELOG:
+# - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
+# - 17:30:00 08/07/2026: [FIX] Khắc phục lỗi chữ trắng trên nền trắng trong các ô nhập liệu, bảng dữ liệu và nút bấm hộp thoại cảnh báo trên các máy chạy Windows Dark Mode (Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
 # - 16:35:00 08/07/2026: [FIX] Trì hoãn việc shutdown auth_manager bằng QTimer để tránh deadlock socket (Lê Thanh Vân/Antigravity)
 # - 14:13:50 08/07/2026: [NEW] chore(db): update database port connection and sync codebase graph (Antigravity)
@@ -200,6 +202,28 @@ class LoginWindow(QMainWindow):
             #loginButton:disabled {
                 background-color: #475569;
                 color: #94A3B8;
+            }
+            QMessageBox {
+                background-color: #1E293B;
+            }
+            QMessageBox QLabel {
+                color: #F8FAFC;
+            }
+            QMessageBox QPushButton {
+                background-color: #FFFFFF;
+                color: #0F172A;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 16px;
+                font-size: 12px;
+                font-weight: bold;
+                min-width: 70px;
+            }
+            QMessageBox QPushButton:hover {
+                background-color: #F1F5F9;
+            }
+            QMessageBox QPushButton:pressed {
+                background-color: #CBD5E1;
             }
         """
         )

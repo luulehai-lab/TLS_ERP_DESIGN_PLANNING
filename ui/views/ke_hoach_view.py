@@ -1,6 +1,8 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng)
 # CHANGELOG:
+# - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
+# - 17:30:00 08/07/2026: [FIX] Khắc phục lỗi chữ trắng trên nền trắng trong các ô nhập liệu, bảng dữ liệu và nút bấm hộp thoại cảnh báo trên các máy chạy Windows Dark Mode (Antigravity)
 # - 17:15:26 08/07/2026: [FIX] fix(auth): fix socket deadlock, redirect issues and optimize DB connection performance (Antigravity)
 # - 17:18:00 08/07/2026: [UPDATE] Thêm nút làm mới thủ công và cơ chế auto-refresh 15 giây (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
@@ -453,10 +455,12 @@ class KeHoachView(QWidget):
                 padding: 6px 10px;
                 font-size: 13px;
                 background-color: #F8FAFC;
+                color: #0F172A;
             }
             QLineEdit:focus {
                 border: 1px solid #38BDF8;
                 background-color: #FFFFFF;
+                color: #0F172A;
             }
             QPushButton {
                 color: #FFFFFF;
@@ -476,8 +480,16 @@ class KeHoachView(QWidget):
                 border: 1px solid #E2E8F0;
                 border-radius: 6px;
                 background-color: #FFFFFF;
+                color: #0F172A;
                 gridline-color: #F1F5F9;
                 font-size: 13px;
+            }
+            QTableWidget::item {
+                color: #0F172A;
+            }
+            QTableWidget::item:selected {
+                background-color: #38BDF8;
+                color: #0F172A;
             }
             QHeaderView::section {
                 background-color: #F1F5F9;
@@ -486,6 +498,28 @@ class KeHoachView(QWidget):
                 border: none;
                 font-weight: bold;
                 font-size: 12px;
+            }
+            QMessageBox {
+                background-color: #FFFFFF;
+            }
+            QMessageBox QLabel {
+                color: #0F172A;
+            }
+            QMessageBox QPushButton {
+                background-color: #F1F5F9;
+                color: #0F172A;
+                border: 1px solid #E2E8F0;
+                border-radius: 5px;
+                padding: 6px 14px;
+                font-size: 12px;
+                font-weight: bold;
+                min-width: 70px;
+            }
+            QMessageBox QPushButton:hover {
+                background-color: #E2E8F0;
+            }
+            QMessageBox QPushButton:pressed {
+                background-color: #CBD5E1;
             }
         """
         )

@@ -2,6 +2,7 @@
 File: docs/architecture/ARCHITECTURE_MAP.md
 CHỨC NĂNG: Bản đồ master kiến trúc kỹ thuật dự án ERP Thiết kế - Kế hoạch (TLS)
 CHANGELOG:
+- 17:22:00 08/07/2026: [UPDATE] Cập nhật hoàn thành Giai đoạn 1.6 Đóng gói ứng dụng và tích hợp workflow /build-exe (Lê Thanh Vân/Antigravity)
 - 14:35:00 08/07/2026: [UPDATE] Tích hợp cấu trúc mô-đun Google Login (auth_service.py, login_window.py) (Lê Thanh Vân/Antigravity)
 - 10:40:00 02/07/2026: [NEW] Khởi tạo bản đồ kiến trúc cho dự án mới (Lê Thanh Vân/Antigravity)
 - 11:32:00 02/07/2026: [UPDATE] Bổ sung module ui/common/workers.py cho kiến trúc đa luồng bất đồng bộ (Lê Thanh Vân/Antigravity)
@@ -116,4 +117,4 @@ sequenceDiagram
 - [x] **Giai đoạn 1.3**: Dựng bộ khung giao diện PyQt6 (`ui/main_window.py`).
 - [x] **Giai đoạn 1.4**: Hoàn thiện màn hình Thiết kế (`ui/views/thiet_ke_view.py`).
 - [x] **Giai đoạn 1.5**: Hoàn thiện màn hình Kế hoạch (`ui/views/ke_hoach_view.py`).
-- [ ] **Giai đoạn 1.6**: Đóng gói ứng dụng thành file `.exe` chạy độc lập và bàn giao.
+- [x] **Giai đoạn 1.6**: Đóng gói ứng dụng thành file `.exe` chạy độc lập và bàn giao.
