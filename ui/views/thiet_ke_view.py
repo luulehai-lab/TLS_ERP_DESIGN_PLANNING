@@ -1,6 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Màn hình ban hành bản vẽ và quản lý dự án dành cho phòng Thiết kế
 # CHANGELOG:
+# - 17:53:55 08/07/2026: [FIX] fix(ui): fix white text on white background in Windows Dark Mode for QLineEdit, QTableWidget, and QMessageBox (Antigravity)
+# - 17:48:00 08/07/2026: [UPDATE] Cập nhật placeholder Drive link để hỗ trợ cả URL thư mục Google Drive (Lê Thanh Vân/Antigravity)
 # - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
 # - 17:30:00 08/07/2026: [FIX] Khắc phục lỗi chữ trắng trên nền trắng trong các ô nhập liệu, bảng dữ liệu và nút bấm hộp thoại cảnh báo trên các máy chạy Windows Dark Mode (Antigravity)
 # - 17:15:26 08/07/2026: [FIX] fix(auth): fix socket deadlock, redirect issues and optimize DB connection performance (Antigravity)
@@ -141,7 +143,9 @@ class ThietKeView(QWidget):
 
         grid.addWidget(QLabel("Google Drive Link:", group), 3, 0)
         self.txt_drive_link = QLineEdit(group)
-        self.txt_drive_link.setPlaceholderText("Dán URL file PDF trên Drive...")
+        self.txt_drive_link.setPlaceholderText(
+            "Dán URL File hoặc Thư mục Google Drive..."
+        )
         grid.addWidget(self.txt_drive_link, 3, 1)
 
         self.btn_create_draw = QPushButton("🚀 Ban hành Bản vẽ", group)

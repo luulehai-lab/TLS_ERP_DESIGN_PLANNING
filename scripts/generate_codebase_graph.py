@@ -1,6 +1,8 @@
 # Tên file: scripts/generate_codebase_graph.py
 # CHỨC NĂNG: Quét codebase bằng AST, xây dựng đồ thị tri thức (JSON/Mermaid) hỗ trợ Incremental Cache siêu tốc và phân tích tác động.
 # CHANGELOG:
+# - 17:53:55 08/07/2026: [FIX] fix(ui): fix white text on white background in Windows Dark Mode for QLineEdit, QTableWidget, and QMessageBox (Antigravity)
+# - 17:42:00 08/07/2026: [FIX] Sửa tiêu đề và mô tả đồ thị codebase cho đúng nghiệp vụ ERP (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 17:03:17 19/06/2026: [UPDATE] feat(audit): integrate clean code AST auditor and sync workspace updates (Antigravity)
 # - 17:00:33 19/06/2026: [UPDATE] feat(audit): integrate clean code AST auditor and sync workspace updates (Antigravity)
@@ -37,7 +39,14 @@ class CodebaseParser(ast.NodeVisitor):
     def visit_Import(self, node: ast.Import) -> None:
         """Trích xuất import trực tiếp dạng 'import x'."""
         for alias in node.names:
-            self.imports.append({"type": "direct", "name": alias.name, "asname": alias.asname, "line": node.lineno})
+            self.imports.append(
+                {
+                    "type": "direct",
+                    "name": alias.name,
+                    "asname": alias.asname,
+                    "line": node.lineno,
+                }
+            )
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
@@ -140,7 +149,12 @@ class CodebaseParser(ast.NodeVisitor):
 
         if self.current_function:
             self.calls.append(
-                {"caller": self.current_function, "call_name": call_name, "caller_obj": caller_obj, "line": node.lineno}
+                {
+                    "caller": self.current_function,
+                    "call_name": call_name,
+                    "caller_obj": caller_obj,
+                    "line": node.lineno,
+                }
             )
         self.generic_visit(node)
 
@@ -178,10 +192,17 @@ class CodebaseGraph:
         self.nodes: dict[str, dict[str, Any]] = {}
         self.edges: list[dict[str, str]] = []
         self.adjacency_list: dict[str, set[str]] = {}  # Đồ thị xuôi
-        self.reverse_adjacency_list: dict[str, set[str]] = {}  # Đồ thị ngược để tìm Impact
+        self.reverse_adjacency_list: dict[
+            str, set[str]
+        ] = {}  # Đồ thị ngược để tìm Impact
 
     def add_node(self, node_id: str, label: str, node_type: str, **kwargs: Any) -> None:
-        self.nodes[node_id] = {"id": node_id, "label": label, "type": node_type, **kwargs}
+        self.nodes[node_id] = {
+            "id": node_id,
+            "label": label,
+            "type": node_type,
+            **kwargs,
+        }
 
     def add_edge(self, source: str, target: str, edge_type: str) -> None:
         edge = {"source": source, "target": target, "type": edge_type}
@@ -204,10 +225,18 @@ class CodebaseGraph:
         for pdata in parsers_data:
             module_name = pdata["module_name"]
             file_path = pdata["file_path"]
-            self.add_node(module_name, Path(file_path).name, "file", file_path=file_path)
+            self.add_node(
+                module_name, Path(file_path).name, "file", file_path=file_path
+            )
 
             for cls in pdata["classes"]:
-                self.add_node(cls["id"], cls["name"], "class", file_path=file_path, line=cls["line"])
+                self.add_node(
+                    cls["id"],
+                    cls["name"],
+                    "class",
+                    file_path=file_path,
+                    line=cls["line"],
+                )
                 self.add_edge(module_name, cls["id"], "contains")
 
                 # Liên kết kế thừa (Inheritance)
@@ -217,7 +246,13 @@ class CodebaseGraph:
                         self.add_edge(cls["id"], resolved_base, "inherits_from")
 
             for func in pdata["functions"]:
-                self.add_node(func["id"], func["name"], "function", file_path=file_path, line=func["line"])
+                self.add_node(
+                    func["id"],
+                    func["name"],
+                    "function",
+                    file_path=file_path,
+                    line=func["line"],
+                )
                 self.add_edge(func["parent_id"], func["id"], "contains")
 
         # Bước 2: Phân tích các lệnh gọi hàm (Calls) để tạo các cạnh CALLS
@@ -227,11 +262,15 @@ class CodebaseGraph:
                 call_name = call["call_name"]
                 caller_obj = call["caller_obj"]
 
-                target_id = self._resolve_call_target_from_data(call_name, caller_obj, pdata)
+                target_id = self._resolve_call_target_from_data(
+                    call_name, caller_obj, pdata
+                )
                 if target_id:
                     self.add_edge(caller_id, target_id, "calls")
 
-    def _resolve_class_by_name_from_data(self, class_name: str, pdata: dict[str, Any]) -> str | None:
+    def _resolve_class_by_name_from_data(
+        self, class_name: str, pdata: dict[str, Any]
+    ) -> str | None:
         """Tìm ID đầy đủ của Class dựa trên tên gọi và danh sách imports của file tương ứng."""
         # 1. Tìm trong chính file hiện tại
         local_id = f"{pdata['module_name']}.{class_name}"
@@ -249,7 +288,11 @@ class CodebaseGraph:
                 return imp["name"]
 
         # 3. Quét toàn bộ đồ thị xem có Class nào trùng tên độc nhất không
-        matches = [nid for nid, node in self.nodes.items() if node["type"] == "class" and node["label"] == class_name]
+        matches = [
+            nid
+            for nid, node in self.nodes.items()
+            if node["type"] == "class" and node["label"] == class_name
+        ]
         if len(matches) == 1:
             return matches[0]
 
@@ -260,7 +303,10 @@ class CodebaseGraph:
     ) -> str | None:
         """Dựa trên Type Hints hoặc quy tắc cấu trúc để suy luận phương thức đích từ data trích xuất."""
         # caller_id là hàm chứa cuộc gọi hiện tại
-        caller_func = next((f for f in pdata["functions"] if f["id"] == pdata.get("current_function")), None)
+        caller_func = next(
+            (f for f in pdata["functions"] if f["id"] == pdata.get("current_function")),
+            None,
+        )
         caller_id = caller_func["id"] if caller_func else pdata["module_name"]
 
         # Trường hợp 1: self.method()
@@ -278,7 +324,9 @@ class CodebaseGraph:
                     return target_id
 
                 # Kiểm tra xem có kế thừa từ class cha nào không
-                cls_node = next((c for c in pdata["classes"] if c["id"] == current_class), None)
+                cls_node = next(
+                    (c for c in pdata["classes"] if c["id"] == current_class), None
+                )
                 if cls_node:
                     for base in cls_node["bases"]:
                         base_id = self._resolve_class_by_name_from_data(base, pdata)
@@ -289,7 +337,9 @@ class CodebaseGraph:
 
         # Trường hợp 2: Biến nội bộ có Type Hint rõ ràng trong hàm gọi
         if caller_obj:
-            caller_func = next((f for f in pdata["functions"] if f["id"] == caller_id), None)
+            caller_func = next(
+                (f for f in pdata["functions"] if f["id"] == caller_id), None
+            )
             if caller_func and caller_obj in caller_func.get("args_hints", {}):
                 hint = caller_func["args_hints"][caller_obj]
                 class_id = self._resolve_class_by_name_from_data(hint, pdata)
@@ -304,7 +354,11 @@ class CodebaseGraph:
             return resolved_func
 
         # Trường hợp 4: Quét toàn bộ đồ thị tìm Method trùng tên độc nhất
-        matches = [nid for nid, node in self.nodes.items() if node["type"] == "function" and node["label"] == call_name]
+        matches = [
+            nid
+            for nid, node in self.nodes.items()
+            if node["type"] == "function" and node["label"] == call_name
+        ]
         if len(matches) == 1:
             return matches[0]
         if len(matches) > 1 and caller_obj:
@@ -342,7 +396,11 @@ class CodebaseGraph:
                             break
 
                     impact_chain.append(
-                        {"node": self.nodes[caller], "impact_on": self.nodes[current]["id"], "relation": edge_type}
+                        {
+                            "node": self.nodes[caller],
+                            "impact_on": self.nodes[current]["id"],
+                            "relation": edge_type,
+                        }
                     )
 
         return impact_chain
@@ -358,7 +416,11 @@ class GraphExporter:
 
     def to_json(self, output_path: Path, files_cache: dict[str, Any]) -> None:
         """Xuất toàn bộ đồ thị và tệp cache vào JSON."""
-        data = {"nodes": list(self.graph.nodes.values()), "edges": self.graph.edges, "_files_cache": files_cache}
+        data = {
+            "nodes": list(self.graph.nodes.values()),
+            "edges": self.graph.edges,
+            "_files_cache": files_cache,
+        }
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
@@ -409,7 +471,9 @@ class GraphExporter:
         return "\n".join(lines)
 
 
-def scan_codebase_incremental(project_root: Path, cache_path: Path) -> tuple[CodebaseGraph, dict[str, Any]]:
+def scan_codebase_incremental(
+    project_root: Path, cache_path: Path
+) -> tuple[CodebaseGraph, dict[str, Any]]:
     """
     Quét codebase hỗ trợ Incremental Cache:
     Chỉ parse AST những file đã bị chỉnh sửa mới, giữ lại dữ liệu cũ cho các file không đổi.
@@ -422,7 +486,9 @@ def scan_codebase_incremental(project_root: Path, cache_path: Path) -> tuple[Cod
             with open(cache_path, encoding="utf-8") as f:
                 old_data = json.load(f)
                 files_cache = old_data.get("_files_cache", {})
-                print(f"📦 Đã tìm thấy cache đồ thị hiện tại ({len(files_cache)} files).")
+                print(
+                    f"📦 Đã tìm thấy cache đồ thị hiện tại ({len(files_cache)} files)."
+                )
         except Exception as e:
             print(f"⚠️ Không thể load cache đồ thị cũ: {e}. Quét lại từ đầu.")
 
@@ -467,7 +533,10 @@ def scan_codebase_incremental(project_root: Path, cache_path: Path) -> tuple[Cod
             file_mtime = py_file.stat().st_mtime
 
             # Kiểm tra xem có cache hợp lệ không
-            if module_name in files_cache and files_cache[module_name].get("mtime") == file_mtime:
+            if (
+                module_name in files_cache
+                and files_cache[module_name].get("mtime") == file_mtime
+            ):
                 # Đọc trực tiếp từ cache cũ!
                 parsers_data.append(files_cache[module_name])
                 cached_count += 1
@@ -497,7 +566,9 @@ def scan_codebase_incremental(project_root: Path, cache_path: Path) -> tuple[Cod
         except Exception as e:
             print(f"⚠️ Không thể parse file {py_file}: {e}")
 
-    print(f"⚡ Tối ưu hóa: Phân tích AST {scanned_count} files thay đổi. Đọc nhanh từ Cache {cached_count} files.")
+    print(
+        f"⚡ Tối ưu hóa: Phân tích AST {scanned_count} files thay đổi. Đọc nhanh từ Cache {cached_count} files."
+    )
 
     # 3. Dựng đồ thị
     graph = CodebaseGraph()
@@ -506,9 +577,17 @@ def scan_codebase_incremental(project_root: Path, cache_path: Path) -> tuple[Cod
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Công cụ quét Codebase dạng Graph siêu tốc cho AI Assistant.")
-    parser.add_argument("--scan", action="store_true", help="Quét codebase cập nhật đồ thị bằng Incremental Cache.")
-    parser.add_argument("--impact", type=str, help="Truy vết tác động sửa đổi của thực thể.")
+    parser = argparse.ArgumentParser(
+        description="Công cụ quét Codebase dạng Graph siêu tốc cho AI Assistant."
+    )
+    parser.add_argument(
+        "--scan",
+        action="store_true",
+        help="Quét codebase cập nhật đồ thị bằng Incremental Cache.",
+    )
+    parser.add_argument(
+        "--impact", type=str, help="Truy vết tác động sửa đổi của thực thể."
+    )
     parser.add_argument("--mermaid", type=str, help="Lọc module xuất sơ đồ Mermaid.")
 
     args = parser.parse_args()
@@ -529,7 +608,9 @@ def main() -> None:
         print(f"💾 Đã lưu đồ thị và cache: {json_path}")
 
         # 2. Tạo sơ đồ Mermaid cho các module chính của AI Assistant
-        core_mermaid = exporter.to_mermaid(["core.services", "core.dxf_boq", "orchestrator"])
+        core_mermaid = exporter.to_mermaid(
+            ["core.services", "core.dxf_boq", "orchestrator"]
+        )
         ui_mermaid = exporter.to_mermaid(["ui_qt"])
 
         # 3. Ghi vào file MAP_GRAPH.md
@@ -537,20 +618,20 @@ def main() -> None:
         with open(map_graph_path, "w", encoding="utf-8") as f:
             f.write(f"""<!--
 File: docs/architecture/MAP_GRAPH.md
-Description: 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE AI ASSISTANT
+Description: 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE ERP
 CHANGELOG:
 - 18:00:00 28/05/2026: [UPDATE] Tối ưu hóa quét Incremental Cache (Lê Thanh Vân)
 -->
 
-# 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE AI ASSISTANT
+# 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE ERP TUẤN LONG STEEL
 
 > [!TIP]
 > Tài liệu này được tự động cập nhật bằng cơ chế **Incremental Cache** siêu tốc.
-> Giúp hình dung rõ ràng mối liên kết gọi hàm và kế thừa trong toàn bộ hệ thống AI Assistant.
+> Giúp hình dung rõ ràng mối liên kết gọi hàm và kế thừa trong hệ thống ERP.
 
 ---
 
-## 💾 1. Đồ thị liên kết Core & Services (Nghiệp vụ AI, Garmin, Netflix, DXF BOQ)
+## 💾 1. Đồ thị liên kết Core & Services (Database, Auth, Project, Drawing, BOQ)
 ```mermaid
 {core_mermaid}
 ```
@@ -598,13 +679,19 @@ CHANGELOG:
                     print(f"  - {m}")
                 return
 
-        print(f"🔍 Đang truy vết tác động khi thay đổi: {target} ({graph.nodes[target]['type']})")
+        print(
+            f"🔍 Đang truy vết tác động khi thay đổi: {target} ({graph.nodes[target]['type']})"
+        )
         impacts = graph.find_impact(target)
         if not impacts:
-            print("🟢 Tuyệt vời! Không phát hiện ảnh hưởng trực tiếp nào đến các module khác.")
+            print(
+                "🟢 Tuyệt vời! Không phát hiện ảnh hưởng trực tiếp nào đến các module khác."
+            )
         else:
             print(f"⚠️ Phát hiện {len(impacts)} điểm bị ảnh hưởng trực tiếp/gián tiếp:")
-            print(f"{'Thực thể bị ảnh hưởng':<70} | {'Mối quan hệ':<12} | {'Chi tiết file'}")
+            print(
+                f"{'Thực thể bị ảnh hưởng':<70} | {'Mối quan hệ':<12} | {'Chi tiết file'}"
+            )
             print("-" * 120)
             for imp in impacts:
                 node = imp["node"]

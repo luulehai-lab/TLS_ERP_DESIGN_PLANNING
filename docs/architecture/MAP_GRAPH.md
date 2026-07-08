@@ -1,19 +1,19 @@
 <!--
 File: docs/architecture/MAP_GRAPH.md
-Description: 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE AI ASSISTANT
+Description: 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE ERP
 CHANGELOG:
 - 18:00:00 28/05/2026: [UPDATE] Tối ưu hóa quét Incremental Cache (Lê Thanh Vân)
 -->
 
-# 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE AI ASSISTANT
+# 🌐 ĐỒ THỊ LIÊN KẾT CODEBASE ERP TUẤN LONG STEEL
 
 > [!TIP]
 > Tài liệu này được tự động cập nhật bằng cơ chế **Incremental Cache** siêu tốc.
-> Giúp hình dung rõ ràng mối liên kết gọi hàm và kế thừa trong toàn bộ hệ thống AI Assistant.
+> Giúp hình dung rõ ràng mối liên kết gọi hàm và kế thừa trong hệ thống ERP.
 
 ---
 
-## 💾 1. Đồ thị liên kết Core & Services (Nghiệp vụ AI, Garmin, Netflix, DXF BOQ)
+## 💾 1. Đồ thị liên kết Core & Services (Database, Auth, Project, Drawing, BOQ)
 ```mermaid
 graph TD
     classDef file fill:#f9f,stroke:#333,stroke-width:1px;

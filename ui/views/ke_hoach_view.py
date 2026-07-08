@@ -1,6 +1,8 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng)
 # CHANGELOG:
+# - 17:53:55 08/07/2026: [FIX] fix(ui): fix white text on white background in Windows Dark Mode for QLineEdit, QTableWidget, and QMessageBox (Antigravity)
+# - 17:48:00 08/07/2026: [UPDATE] Cập nhật nhãn nút mở link Drive để làm rõ hỗ trợ cả file và thư mục Google Drive (Lê Thanh Vân/Antigravity)
 # - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
 # - 17:30:00 08/07/2026: [FIX] Khắc phục lỗi chữ trắng trên nền trắng trong các ô nhập liệu, bảng dữ liệu và nút bấm hộp thoại cảnh báo trên các máy chạy Windows Dark Mode (Antigravity)
 # - 17:15:26 08/07/2026: [FIX] fix(auth): fix socket deadlock, redirect issues and optimize DB connection performance (Antigravity)
@@ -98,7 +100,7 @@ class KeHoachView(QWidget):
 
         # Layout chứa 2 nút hành động chính nằm ngang
         btn_layout = QHBoxLayout()
-        self.btn_open_link = QPushButton("🌐 Mở Bản Vẽ (Drive)", group)
+        self.btn_open_link = QPushButton("🌐 Mở File/Thư mục (Drive)", group)
         self.btn_open_link.setStyleSheet("background-color: #0284C7;")  # Sky 600
         self.btn_open_link.clicked.connect(self._on_open_link)
         btn_layout.addWidget(self.btn_open_link)

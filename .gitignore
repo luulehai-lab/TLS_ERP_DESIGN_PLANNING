@@ -19,4 +19,7 @@ backups/
 scratch/
 docs/client_secret_*.json
 docs/client_secret*.json
-client_secret*.json
+
+build/
+dist/
+*.spec
