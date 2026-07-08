@@ -17,21 +17,21 @@
       "label": "main",
       "type": "function",
       "file_path": "main.py",
-      "line": 41
+      "line": 43
     },
     {
       "id": "main.on_login_success",
       "label": "on_login_success",
       "type": "function",
       "file_path": "main.py",
-      "line": 65
+      "line": 67
     },
     {
       "id": "main.on_logout_requested",
       "label": "on_logout_requested",
       "type": "function",
       "file_path": "main.py",
-      "line": 77
+      "line": 79
     },
     {
       "id": "core.database",
@@ -781,84 +781,84 @@
       "label": "AuthWorkerThread",
       "type": "class",
       "file_path": "ui/login_window.py",
-      "line": 27
+      "line": 29
     },
     {
       "id": "ui.login_window.LoginWindow",
       "label": "LoginWindow",
       "type": "class",
       "file_path": "ui/login_window.py",
-      "line": 60
+      "line": 62
     },
     {
       "id": "ui.login_window.AuthWorkerThread.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 33
+      "line": 35
     },
     {
       "id": "ui.login_window.AuthWorkerThread.run",
       "label": "run",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 38
+      "line": 40
     },
     {
       "id": "ui.login_window.AuthWorkerThread.stop",
       "label": "stop",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 54
+      "line": 56
     },
     {
       "id": "ui.login_window.LoginWindow.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 68
+      "line": 70
     },
     {
       "id": "ui.login_window.LoginWindow._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 79
+      "line": 81
     },
     {
       "id": "ui.login_window.LoginWindow._apply_styles",
       "label": "_apply_styles",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 147
+      "line": 149
     },
     {
       "id": "ui.login_window.LoginWindow._on_login_clicked",
       "label": "_on_login_clicked",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 205
+      "line": 207
     },
     {
       "id": "ui.login_window.LoginWindow._on_auth_finished",
       "label": "_on_auth_finished",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 223
+      "line": 225
     },
     {
       "id": "ui.login_window.LoginWindow._on_auth_error",
       "label": "_on_auth_error",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 250
+      "line": 252
     },
     {
       "id": "ui.login_window.LoginWindow.closeEvent",
       "label": "closeEvent",
       "type": "function",
       "file_path": "ui/login_window.py",
-      "line": 271
+      "line": 273
     },
     {
       "id": "ui.main_window",
@@ -967,119 +967,119 @@
       "label": "OAuthCallbackHandler",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 167
+      "line": 169
     },
     {
       "id": "core.services.auth_service.GoogleAuthServer",
       "label": "GoogleAuthServer",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 293
+      "line": 295
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager",
       "label": "GoogleAuthManager",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 307
+      "line": 309
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler.log_message",
       "label": "log_message",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 170
+      "line": 172
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler.do_GET",
       "label": "do_GET",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 179
+      "line": 181
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
       "label": "_serve_mock_login_page",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 200
+      "line": 202
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
       "label": "_handle_callback",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 204
+      "line": 206
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
       "label": "_exchange_code_for_email",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 236
+      "line": 238
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
       "label": "_send_html_response",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 281
+      "line": 283
     },
     {
       "id": "core.services.auth_service.GoogleAuthServer.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 296
+      "line": 298
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 310
+      "line": 312
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.start_server",
       "label": "start_server",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 321
+      "line": 323
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager._run_server",
       "label": "_run_server",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 342
+      "line": 344
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
       "label": "get_auth_url",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 350
+      "line": 352
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
       "label": "get_authenticated_email",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 372
+      "line": 374
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.shutdown",
       "label": "shutdown",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 382
+      "line": 384
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager._async_close",
       "label": "_async_close",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 391
+      "line": 393
     },
     {
       "id": "core.services.drawing_service",
@@ -1159,56 +1159,56 @@
       "label": "DatabasePrewarmerThread",
       "type": "class",
       "file_path": "ui/common/workers.py",
-      "line": 19
+      "line": 21
     },
     {
       "id": "ui.common.workers.ProjectLoaderThread",
       "label": "ProjectLoaderThread",
       "type": "class",
       "file_path": "ui/common/workers.py",
-      "line": 43
+      "line": 45
     },
     {
       "id": "ui.common.workers.DrawingLoaderThread",
       "label": "DrawingLoaderThread",
       "type": "class",
       "file_path": "ui/common/workers.py",
-      "line": 95
+      "line": 97
     },
     {
       "id": "ui.common.workers.DatabasePrewarmerThread.run",
       "label": "run",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 26
+      "line": 28
     },
     {
       "id": "ui.common.workers.ProjectLoaderThread.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 53
+      "line": 55
     },
     {
       "id": "ui.common.workers.ProjectLoaderThread.run",
       "label": "run",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 57
+      "line": 59
     },
     {
       "id": "ui.common.workers.DrawingLoaderThread.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 105
+      "line": 107
     },
     {
       "id": "ui.common.workers.DrawingLoaderThread.run",
       "label": "run",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 114
+      "line": 116
     },
     {
       "id": "ui.views.ke_hoach_view",
@@ -1221,91 +1221,105 @@
       "label": "KeHoachView",
       "type": "class",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 34
+      "line": 35
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 41
+      "line": 42
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 47
+      "line": 55
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
       "label": "_create_action_group",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 68
+      "line": 76
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
       "label": "_create_table_group",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 104
+      "line": 112
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView.set_project",
       "label": "set_project",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 141
+      "line": 174
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
       "label": "load_drawings",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 156
+      "line": 189
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
       "label": "_on_drawings_loaded",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 191
+      "line": 238
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
       "label": "_on_load_error",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 233
+      "line": 293
+    },
+    {
+      "id": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
+      "label": "_on_manual_refresh",
+      "type": "function",
+      "file_path": "ui/views/ke_hoach_view.py",
+      "line": 306
+    },
+    {
+      "id": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
+      "label": "auto_refresh_drawings",
+      "type": "function",
+      "file_path": "ui/views/ke_hoach_view.py",
+      "line": 311
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
       "label": "_get_selected_drawing_id",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 246
+      "line": 319
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
       "label": "_on_open_link",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 259
+      "line": 332
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
       "label": "_on_confirm_production",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 306
+      "line": 379
     },
     {
       "id": "ui.views.ke_hoach_view.KeHoachView._apply_view_styles",
       "label": "_apply_view_styles",
       "type": "function",
       "file_path": "ui/views/ke_hoach_view.py",
-      "line": 351
+      "line": 424
     },
     {
       "id": "ui.views.thiet_ke_view",
@@ -1318,91 +1332,112 @@
       "label": "ThietKeView",
       "type": "class",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 33
+      "line": 34
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 40
+      "line": 41
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 46
+      "line": 54
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
       "label": "_create_project_group",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 78
+      "line": 86
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
       "label": "_create_drawing_group",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 104
+      "line": 112
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
       "label": "_create_table_group",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 142
+      "line": 150
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.set_project",
       "label": "set_project",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 177
+      "line": 216
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
       "label": "load_drawings",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 193
+      "line": 232
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
       "label": "_on_drawings_loaded",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 226
+      "line": 281
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
       "label": "_on_load_error",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 268
+      "line": 336
+    },
+    {
+      "id": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
+      "label": "_get_selected_drawing_id",
+      "type": "function",
+      "file_path": "ui/views/thiet_ke_view.py",
+      "line": 349
+    },
+    {
+      "id": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
+      "label": "_on_manual_refresh",
+      "type": "function",
+      "file_path": "ui/views/thiet_ke_view.py",
+      "line": 362
+    },
+    {
+      "id": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
+      "label": "auto_refresh_drawings",
+      "type": "function",
+      "file_path": "ui/views/thiet_ke_view.py",
+      "line": 367
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
       "label": "_on_create_project",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 283
+      "line": 375
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
       "label": "_on_create_drawing",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 321
+      "line": 413
     },
     {
       "id": "ui.views.thiet_ke_view.ThietKeView._apply_view_styles",
       "label": "_apply_view_styles",
       "type": "function",
       "file_path": "ui/views/thiet_ke_view.py",
-      "line": 373
+      "line": 465
     },
     {
       "id": "ui.views.__init__",
@@ -2294,6 +2329,16 @@
     },
     {
       "source": "ui.views.ke_hoach_view.KeHoachView",
+      "target": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.ke_hoach_view.KeHoachView",
+      "target": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.ke_hoach_view.KeHoachView",
       "target": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
       "type": "contains"
     },
@@ -2365,6 +2410,21 @@
     {
       "source": "ui.views.thiet_ke_view.ThietKeView",
       "target": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.thiet_ke_view.ThietKeView",
+      "target": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.thiet_ke_view.ThietKeView",
+      "target": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.thiet_ke_view.ThietKeView",
+      "target": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
       "type": "contains"
     },
     {
@@ -3003,16 +3063,6 @@
       "type": "calls"
     },
     {
-      "source": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
-      "target": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
-      "type": "calls"
-    },
-    {
-      "source": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
-      "target": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
-      "type": "calls"
-    },
-    {
       "source": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
       "target": "core.services.drawing_service.update_drawing_status",
       "type": "calls"
@@ -3052,7 +3102,7 @@
     "config": {
       "module_name": "config",
       "file_path": "config.py",
-      "mtime": 1783494830.5264208,
+      "mtime": 1783504292.6220412,
       "imports": [
         {
           "type": "direct",
@@ -3073,6 +3123,12 @@
           "name": "load_dotenv",
           "asname": null,
           "line": 11
+        },
+        {
+          "type": "direct",
+          "name": "sys",
+          "asname": null,
+          "line": 13
         }
       ],
       "classes": [],
@@ -3082,61 +3138,61 @@
     "main": {
       "module_name": "main",
       "file_path": "main.py",
-      "mtime": 1783502925.0877512,
+      "mtime": 1783503616.4978058,
       "imports": [
         {
           "type": "direct",
           "name": "sys",
           "asname": null,
-          "line": 11
+          "line": 13
         },
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 12
+          "line": 14
         },
         {
           "type": "from",
           "module": "logging.handlers",
           "name": "RotatingFileHandler",
           "asname": null,
-          "line": 13
+          "line": 15
         },
         {
           "type": "from",
           "module": "pathlib",
           "name": "Path",
           "asname": null,
-          "line": 14
+          "line": 16
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QApplication",
           "asname": null,
-          "line": 36
+          "line": 38
         },
         {
           "type": "from",
           "module": "ui.login_window",
           "name": "LoginWindow",
           "asname": null,
-          "line": 37
+          "line": 39
         },
         {
           "type": "from",
           "module": "ui.main_window",
           "name": "MainWindow",
           "asname": null,
-          "line": 38
+          "line": 40
         },
         {
           "type": "from",
           "module": "ui.common.workers",
           "name": "DatabasePrewarmerThread",
           "asname": null,
-          "line": 55
+          "line": 57
         }
       ],
       "classes": [],
@@ -3149,8 +3205,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 41,
-          "end_line": 98
+          "line": 43,
+          "end_line": 100
         },
         {
           "id": "main.on_login_success",
@@ -3166,8 +3222,8 @@
             "dept": "str"
           },
           "return_hint": "None",
-          "line": 65,
-          "end_line": 75
+          "line": 67,
+          "end_line": 77
         },
         {
           "id": "main.on_logout_requested",
@@ -3177,8 +3233,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 77,
-          "end_line": 84
+          "line": 79,
+          "end_line": 86
         }
       ],
       "calls": [
@@ -3186,133 +3242,133 @@
           "caller": "main.main",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 47
+          "line": 49
         },
         {
           "caller": "main.main",
           "call_name": "QApplication",
           "caller_obj": null,
-          "line": 49
+          "line": 51
         },
         {
           "caller": "main.main",
           "call_name": "setStyle",
           "caller_obj": "app",
-          "line": 52
+          "line": 54
         },
         {
           "caller": "main.main",
           "call_name": "DatabasePrewarmerThread",
           "caller_obj": null,
-          "line": 57
+          "line": 59
         },
         {
           "caller": "main.main",
           "call_name": "start",
           "caller_obj": "prewarmer",
-          "line": 58
+          "line": 60
         },
         {
           "caller": "main.main",
           "call_name": "LoginWindow",
           "caller_obj": null,
-          "line": 62
+          "line": 64
         },
         {
           "caller": "main.on_login_success",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 68
+          "line": 70
         },
         {
           "caller": "main.on_login_success",
           "call_name": "MainWindow",
           "caller_obj": null,
-          "line": 71
+          "line": 73
         },
         {
           "caller": "main.on_login_success",
           "call_name": "connect",
           "caller_obj": "main_win.logout_clicked",
-          "line": 72
+          "line": 74
         },
         {
           "caller": "main.on_login_success",
           "call_name": "hide",
           "caller_obj": "login_win",
-          "line": 74
+          "line": 76
         },
         {
           "caller": "main.on_login_success",
           "call_name": "show",
           "caller_obj": "main_win",
-          "line": 75
+          "line": 77
         },
         {
           "caller": "main.on_logout_requested",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 80
+          "line": 82
         },
         {
           "caller": "main.on_logout_requested",
           "call_name": "close",
           "caller_obj": "main_win",
-          "line": 82
+          "line": 84
         },
         {
           "caller": "main.on_logout_requested",
           "call_name": "show",
           "caller_obj": "login_win",
-          "line": 84
+          "line": 86
         },
         {
           "caller": "main.main",
           "call_name": "connect",
           "caller_obj": "login_win.login_success",
-          "line": 87
+          "line": 89
         },
         {
           "caller": "main.main",
           "call_name": "show",
           "caller_obj": "login_win",
-          "line": 88
+          "line": 90
         },
         {
           "caller": "main.main",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 90
+          "line": 92
         },
         {
           "caller": "main.main",
           "call_name": "exit",
           "caller_obj": "sys",
-          "line": 93
+          "line": 95
         },
         {
           "caller": "main.main",
           "call_name": "exec",
           "caller_obj": "app",
-          "line": 93
+          "line": 95
         },
         {
           "caller": "main.main",
           "call_name": "critical",
           "caller_obj": "logger",
-          "line": 95
+          "line": 97
         },
         {
           "caller": "main.main",
           "call_name": "str",
           "caller_obj": null,
-          "line": 96
+          "line": 98
         },
         {
           "caller": "main.main",
           "call_name": "exit",
           "caller_obj": "sys",
-          "line": 98
+          "line": 100
         }
       ]
     },
@@ -12485,62 +12541,62 @@
     "ui.common.workers": {
       "module_name": "ui.common.workers",
       "file_path": "ui/common/workers.py",
-      "mtime": 1783502929.0903392,
+      "mtime": 1783503616.6046517,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 10
+          "line": 12
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QThread",
           "asname": null,
-          "line": 11
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "pyqtSignal",
           "asname": null,
-          "line": 11
+          "line": 13
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 13
+          "line": 15
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "drawing_service",
           "asname": null,
-          "line": 14
+          "line": 16
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "project_service",
           "asname": null,
-          "line": 14
+          "line": 16
         },
         {
           "type": "from",
           "module": "sqlalchemy",
           "name": "text",
           "asname": null,
-          "line": 31
+          "line": 33
         },
         {
           "type": "from",
           "module": "sqlalchemy",
           "name": "text",
           "asname": null,
-          "line": 62
+          "line": 64
         }
       ],
       "classes": [
@@ -12550,8 +12606,8 @@
           "bases": [
             "QThread"
           ],
-          "line": 19,
-          "end_line": 40
+          "line": 21,
+          "end_line": 42
         },
         {
           "id": "ui.common.workers.ProjectLoaderThread",
@@ -12559,8 +12615,8 @@
           "bases": [
             "QThread"
           ],
-          "line": 43,
-          "end_line": 92
+          "line": 45,
+          "end_line": 94
         },
         {
           "id": "ui.common.workers.DrawingLoaderThread",
@@ -12568,8 +12624,8 @@
           "bases": [
             "QThread"
           ],
-          "line": 95,
-          "end_line": 151
+          "line": 97,
+          "end_line": 153
         }
       ],
       "functions": [
@@ -12581,8 +12637,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 26,
-          "end_line": 40
+          "line": 28,
+          "end_line": 42
         },
         {
           "id": "ui.common.workers.ProjectLoaderThread.__init__",
@@ -12592,8 +12648,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 53,
-          "end_line": 55
+          "line": 55,
+          "end_line": 57
         },
         {
           "id": "ui.common.workers.ProjectLoaderThread.run",
@@ -12603,8 +12659,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 57,
-          "end_line": 92
+          "line": 59,
+          "end_line": 94
         },
         {
           "id": "ui.common.workers.DrawingLoaderThread.__init__",
@@ -12618,8 +12674,8 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 105,
-          "end_line": 112
+          "line": 107,
+          "end_line": 114
         },
         {
           "id": "ui.common.workers.DrawingLoaderThread.run",
@@ -12629,8 +12685,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 114,
-          "end_line": 151
+          "line": 116,
+          "end_line": 153
         }
       ],
       "calls": [
@@ -12638,375 +12694,382 @@
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 28
+          "line": 30
         },
         {
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 29
+          "line": 31
         },
         {
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "execute",
           "caller_obj": "db",
-          "line": 33
+          "line": 35
         },
         {
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "text",
           "caller_obj": null,
-          "line": 33
+          "line": 35
         },
         {
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 34
+          "line": 36
         },
         {
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "warning",
           "caller_obj": "logger",
-          "line": 38
+          "line": 40
         },
         {
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 38
+          "line": 40
         },
         {
           "caller": "ui.common.workers.DatabasePrewarmerThread.run",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 40
+          "line": 42
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 55
+          "line": 57
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 55
+          "line": 57
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 59
+          "line": 61
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 60
+          "line": 62
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "execute",
           "caller_obj": "db",
-          "line": 64
+          "line": 66
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "text",
           "caller_obj": null,
-          "line": 64
+          "line": 66
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "list_active_projects",
           "caller_obj": "project_service",
-          "line": 65
+          "line": 67
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "append",
           "caller_obj": "raw_projects",
-          "line": 71
+          "line": 73
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 79
+          "line": 81
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "len",
           "caller_obj": null,
-          "line": 81
+          "line": 83
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.finished",
-          "line": 83
+          "line": 85
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 85
+          "line": 87
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 87
+          "line": 89
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.error",
-          "line": 90
+          "line": 92
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 90
+          "line": 92
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 92
+          "line": 94
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 111
+          "line": 113
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 111
+          "line": 113
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 116
+          "line": 118
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 117
+          "line": 119
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "get_project_drawings",
           "caller_obj": "drawing_service",
-          "line": 119
+          "line": 121
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "append",
           "caller_obj": "raw_drawings",
-          "line": 125
+          "line": 127
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 136
+          "line": 138
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "len",
           "caller_obj": null,
-          "line": 139
+          "line": 141
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.finished",
-          "line": 141
+          "line": 143
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 143
+          "line": 145
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 146
+          "line": 148
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.error",
-          "line": 149
+          "line": 151
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 149
+          "line": 151
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 151
+          "line": 153
         }
       ]
     },
     "ui.views.ke_hoach_view": {
       "module_name": "ui.views.ke_hoach_view",
       "file_path": "ui/views/ke_hoach_view.py",
-      "mtime": 1782967753.8992622,
+      "mtime": 1783505593.9131224,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 8
+          "line": 9
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QVBoxLayout",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHBoxLayout",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGridLayout",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLineEdit",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidget",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidgetItem",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGroupBox",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHeaderView",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "Qt",
           "asname": null,
-          "line": 24
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QUrl",
           "asname": null,
-          "line": 24
+          "line": 25
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtCore",
+          "name": "QTimer",
+          "asname": null,
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtGui",
           "name": "QDesktopServices",
           "asname": null,
-          "line": 25
+          "line": 26
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 27
+          "line": 28
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "drawing_service",
           "asname": null,
-          "line": 28
+          "line": 29
         },
         {
           "type": "from",
           "module": "ui.common.workers",
           "name": "DrawingLoaderThread",
           "asname": null,
-          "line": 29
+          "line": 30
         }
       ],
       "classes": [
@@ -13016,8 +13079,8 @@
           "bases": [
             "QWidget"
           ],
-          "line": 34,
-          "end_line": 417
+          "line": 35,
+          "end_line": 490
         }
       ],
       "functions": [
@@ -13033,8 +13096,8 @@
             "parent": "Any"
           },
           "return_hint": "None",
-          "line": 41,
-          "end_line": 45
+          "line": 42,
+          "end_line": 53
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._init_ui",
@@ -13044,8 +13107,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 47,
-          "end_line": 66
+          "line": 55,
+          "end_line": 74
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
@@ -13055,8 +13118,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 68,
-          "end_line": 102
+          "line": 76,
+          "end_line": 110
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
@@ -13066,8 +13129,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 104,
-          "end_line": 139
+          "line": 112,
+          "end_line": 172
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView.set_project",
@@ -13081,19 +13144,23 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 141,
-          "end_line": 154
+          "line": 174,
+          "end_line": 187
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "name": "load_drawings",
           "parent_id": "ui.views.ke_hoach_view.KeHoachView",
           "parent_type": "class",
-          "args": [],
-          "args_hints": {},
+          "args": [
+            "silent"
+          ],
+          "args_hints": {
+            "silent": "bool"
+          },
           "return_hint": "None",
-          "line": 156,
-          "end_line": 189
+          "line": 189,
+          "end_line": 236
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
@@ -13107,8 +13174,8 @@
             "drawings": "list[dict[Tuple[str, Any]]]"
           },
           "return_hint": "None",
-          "line": 191,
-          "end_line": 231
+          "line": 238,
+          "end_line": 291
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
@@ -13122,8 +13189,30 @@
             "error_msg": "str"
           },
           "return_hint": "None",
-          "line": 233,
-          "end_line": 244
+          "line": 293,
+          "end_line": 304
+        },
+        {
+          "id": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
+          "name": "_on_manual_refresh",
+          "parent_id": "ui.views.ke_hoach_view.KeHoachView",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 306,
+          "end_line": 309
+        },
+        {
+          "id": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
+          "name": "auto_refresh_drawings",
+          "parent_id": "ui.views.ke_hoach_view.KeHoachView",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 311,
+          "end_line": 317
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
@@ -13133,8 +13222,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "Any",
-          "line": 246,
-          "end_line": 257
+          "line": 319,
+          "end_line": 330
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
@@ -13144,8 +13233,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 259,
-          "end_line": 304
+          "line": 332,
+          "end_line": 377
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
@@ -13155,8 +13244,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 306,
-          "end_line": 349
+          "line": 379,
+          "end_line": 422
         },
         {
           "id": "ui.views.ke_hoach_view.KeHoachView._apply_view_styles",
@@ -13166,8 +13255,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 351,
-          "end_line": 417
+          "line": 424,
+          "end_line": 490
         }
       ],
       "calls": [
@@ -13175,72 +13264,72 @@
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 42
+          "line": 43
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 42
+          "line": 43
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 45
+          "line": 47
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
+          "call_name": "QTimer",
+          "caller_obj": null,
+          "line": 50
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
+          "call_name": "setInterval",
+          "caller_obj": "self.refresh_timer",
+          "line": 51
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
+          "call_name": "connect",
+          "caller_obj": "self.refresh_timer.timeout",
+          "line": 52
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.__init__",
+          "call_name": "start",
+          "caller_obj": "self.refresh_timer",
+          "line": 53
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 49
+          "line": 57
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 50
+          "line": 58
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "layout",
-          "line": 51
+          "line": 59
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 54
+          "line": 62
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "setStyleSheet",
           "caller_obj": "title_label",
-          "line": 55
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "layout",
-          "line": 56
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
-          "call_name": "_create_action_group",
-          "caller_obj": "self",
-          "line": 59
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "layout",
-          "line": 60
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
-          "call_name": "_create_table_group",
-          "caller_obj": "self",
           "line": 63
         },
         {
@@ -13251,81 +13340,51 @@
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
+          "call_name": "_create_action_group",
+          "caller_obj": "self",
+          "line": 67
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "layout",
+          "line": 68
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
+          "call_name": "_create_table_group",
+          "caller_obj": "self",
+          "line": 71
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "layout",
+          "line": 72
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._init_ui",
           "call_name": "_apply_view_styles",
           "caller_obj": "self",
-          "line": 66
+          "line": 74
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 74
+          "line": 82
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QGridLayout",
           "caller_obj": null,
-          "line": 75
+          "line": 83
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setSpacing",
           "caller_obj": "grid",
-          "line": 76
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 78
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 78
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
-          "line": 79
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_performed_by",
-          "line": 80
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 81
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 83
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 83
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
           "line": 84
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_note",
-          "line": 85
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
@@ -13335,844 +13394,1001 @@
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 86
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 87
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_performed_by",
+          "line": 88
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 89
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 91
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 91
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 92
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_note",
+          "line": 93
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 94
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 89
+          "line": 97
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 90
+          "line": 98
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setStyleSheet",
           "caller_obj": "self.btn_open_link",
-          "line": 91
+          "line": 99
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "connect",
           "caller_obj": "self.btn_open_link.clicked",
-          "line": 92
+          "line": 100
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addWidget",
           "caller_obj": "btn_layout",
-          "line": 93
+          "line": 101
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 95
+          "line": 103
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "setStyleSheet",
           "caller_obj": "self.btn_confirm_prod",
-          "line": 96
+          "line": 104
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "connect",
           "caller_obj": "self.btn_confirm_prod.clicked",
-          "line": 97
+          "line": 105
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addWidget",
           "caller_obj": "btn_layout",
-          "line": 98
+          "line": 106
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_action_group",
           "call_name": "addLayout",
           "caller_obj": "grid",
-          "line": 100
+          "line": 108
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 110
+          "line": 118
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 111
+          "line": 119
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 112
+          "line": 120
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "QHBoxLayout",
+          "caller_obj": null,
+          "line": 123
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "addStretch",
+          "caller_obj": "table_actions_layout",
+          "line": 124
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 126
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "setFixedWidth",
+          "caller_obj": "self.btn_refresh",
+          "line": 127
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.btn_refresh",
+          "line": 128
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "connect",
+          "caller_obj": "self.btn_refresh.clicked",
+          "line": 143
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "addWidget",
+          "caller_obj": "table_actions_layout",
+          "line": 144
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
+          "call_name": "addLayout",
+          "caller_obj": "layout",
+          "line": 145
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "QTableWidget",
           "caller_obj": null,
-          "line": 114
+          "line": 147
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setColumnCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 115
+          "line": 148
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setHorizontalHeaderLabels",
           "caller_obj": "self.tbl_drawings",
-          "line": 116
+          "line": 149
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "horizontalHeader",
           "caller_obj": "self.tbl_drawings",
-          "line": 127
+          "line": 160
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 128
+          "line": 161
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 129
+          "line": 162
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 130
+          "line": 163
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setSelectionBehavior",
           "caller_obj": "self.tbl_drawings",
-          "line": 133
+          "line": 166
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "setSelectionMode",
           "caller_obj": "self.tbl_drawings",
-          "line": 136
+          "line": 169
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._create_table_group",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 138
+          "line": 171
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.set_project",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 149
+          "line": 182
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.set_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 152
+          "line": 185
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.set_project",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 154
+          "line": 187
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 161
+          "line": 198
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "isRunning",
           "caller_obj": "self.loader_thread",
-          "line": 161
+          "line": 198
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.finished",
-          "line": 163
+          "line": 203
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.error",
-          "line": 164
+          "line": 204
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "terminate",
           "caller_obj": "self.loader_thread",
-          "line": 167
+          "line": 207
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "wait",
           "caller_obj": "self.loader_thread",
-          "line": 168
+          "line": 208
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "_get_selected_drawing_id",
+          "caller_obj": "self",
+          "line": 211
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 170
+          "line": 214
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 174
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "setRowCount",
-          "caller_obj": "self.tbl_drawings",
-          "line": 179
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 180
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "setFlags",
-          "caller_obj": "loading_item",
-          "line": 181
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "setForeground",
-          "caller_obj": "loading_item",
-          "line": 182
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
-          "line": 183
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "DrawingLoaderThread",
-          "caller_obj": null,
-          "line": 186
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "connect",
-          "caller_obj": "self.loader_thread.finished",
-          "line": 187
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "connect",
-          "caller_obj": "self.loader_thread.error",
-          "line": 188
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
-          "call_name": "start",
-          "caller_obj": "self.loader_thread",
-          "line": 189
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setRowCount",
-          "caller_obj": "self.tbl_drawings",
-          "line": 197
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "len",
-          "caller_obj": null,
-          "line": 197
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "enumerate",
-          "caller_obj": null,
-          "line": 198
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 199
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_id",
-          "line": 200
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_id",
-          "line": 200
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 202
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_name",
-          "line": 203
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_name",
-          "line": 203
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 205
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_status",
-          "line": 206
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_status",
-          "line": 206
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_status",
-          "line": 211
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_status",
-          "line": 213
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_status",
-          "line": 215
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
           "line": 217
         },
         {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_version",
-          "line": 218
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_version",
-          "line": 218
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 220
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_link",
-          "line": 221
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_link",
-          "line": 221
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 223
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "strftime",
-          "caller_obj": "",
-          "line": 223
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_time",
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "setRowCount",
+          "caller_obj": "self.tbl_drawings",
           "line": 224
         },
         {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_time",
-          "line": 224
-        },
-        {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
           "line": 226
         },
         {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
           "line": 227
         },
         {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "setFlags",
+          "caller_obj": "loading_item",
           "line": 228
         },
         {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_drawings",
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "setForeground",
+          "caller_obj": "loading_item",
           "line": 229
         },
         {
-          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
           "line": 230
         },
         {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "DrawingLoaderThread",
+          "caller_obj": null,
+          "line": 233
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "connect",
+          "caller_obj": "self.loader_thread.finished",
+          "line": 234
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "connect",
+          "caller_obj": "self.loader_thread.error",
+          "line": 235
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.load_drawings",
+          "call_name": "start",
+          "caller_obj": "self.loader_thread",
+          "line": 236
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setRowCount",
+          "caller_obj": "self.tbl_drawings",
+          "line": 244
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "len",
+          "caller_obj": null,
+          "line": 244
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "enumerate",
+          "caller_obj": null,
+          "line": 247
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
+          "line": 248
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_id",
+          "line": 249
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "flags",
+          "caller_obj": "item_id",
+          "line": 249
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
+          "line": 251
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_name",
+          "line": 252
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "flags",
+          "caller_obj": "item_name",
+          "line": 252
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
+          "line": 254
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_status",
+          "line": 255
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "flags",
+          "caller_obj": "item_status",
+          "line": 255
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setForeground",
+          "caller_obj": "item_status",
+          "line": 260
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setForeground",
+          "caller_obj": "item_status",
+          "line": 262
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setForeground",
+          "caller_obj": "item_status",
+          "line": 264
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
+          "line": 266
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_version",
+          "line": 267
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "flags",
+          "caller_obj": "item_version",
+          "line": 267
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
+          "line": 269
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_link",
+          "line": 270
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "flags",
+          "caller_obj": "item_link",
+          "line": 270
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "QTableWidgetItem",
+          "caller_obj": null,
+          "line": 272
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "strftime",
+          "caller_obj": "",
+          "line": 272
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setFlags",
+          "caller_obj": "item_time",
+          "line": 273
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "flags",
+          "caller_obj": "item_time",
+          "line": 273
+        },
+        {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 231
+          "line": 275
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 276
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 277
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 278
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 279
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "setItem",
+          "caller_obj": "self.tbl_drawings",
+          "line": 280
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_drawings_loaded",
+          "call_name": "selectRow",
+          "caller_obj": "self.tbl_drawings",
+          "line": 291
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 239
+          "line": 299
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 240
+          "line": 300
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 241
+          "line": 301
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setFlags",
           "caller_obj": "err_item",
-          "line": 242
+          "line": 302
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setForeground",
           "caller_obj": "err_item",
-          "line": 243
+          "line": 303
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_load_error",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 244
+          "line": 304
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 308
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView._on_manual_refresh",
+          "call_name": "load_drawings",
+          "caller_obj": "self",
+          "line": 309
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
+          "call_name": "hasattr",
+          "caller_obj": null,
+          "line": 315
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
+          "call_name": "isRunning",
+          "caller_obj": "self.loader_thread",
+          "line": 315
+        },
+        {
+          "caller": "ui.views.ke_hoach_view.KeHoachView.auto_refresh_drawings",
+          "call_name": "load_drawings",
+          "caller_obj": "self",
+          "line": 317
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "selectedRanges",
           "caller_obj": "self.tbl_drawings",
-          "line": 252
+          "line": 325
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "topRow",
           "caller_obj": "",
-          "line": 255
+          "line": 328
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "item",
           "caller_obj": "self.tbl_drawings",
-          "line": 256
+          "line": 329
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._get_selected_drawing_id",
           "call_name": "text",
           "caller_obj": "item",
-          "line": 257
+          "line": 330
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "_get_selected_drawing_id",
           "caller_obj": "self",
-          "line": 265
+          "line": 338
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 267
+          "line": 340
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 272
+          "line": 345
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "first",
           "caller_obj": "",
-          "line": 276
+          "line": 349
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 276
+          "line": 349
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 276
+          "line": 349
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "QUrl",
           "caller_obj": null,
-          "line": 282
+          "line": 355
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "openUrl",
           "caller_obj": "QDesktopServices",
-          "line": 283
+          "line": 356
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 285
+          "line": 358
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 291
+          "line": 364
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 295
+          "line": 368
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 299
+          "line": 372
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "str",
           "caller_obj": null,
-          "line": 299
+          "line": 372
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 300
+          "line": 373
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_open_link",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 304
+          "line": 377
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "_get_selected_drawing_id",
           "caller_obj": "self",
-          "line": 308
+          "line": 381
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 309
+          "line": 382
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "text",
           "caller_obj": "self.txt_performed_by",
-          "line": 309
+          "line": 382
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 310
+          "line": 383
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "text",
           "caller_obj": "self.txt_note",
-          "line": 310
+          "line": 383
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 313
+          "line": 386
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 319
+          "line": 392
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 330
+          "line": 403
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "update_drawing_status",
           "caller_obj": "drawing_service",
-          "line": 332
+          "line": 405
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "information",
           "caller_obj": "QMessageBox",
-          "line": 334
+          "line": 407
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "clear",
           "caller_obj": "self.txt_note",
-          "line": 339
+          "line": 412
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 340
+          "line": 413
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 342
+          "line": 415
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 344
+          "line": 417
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "str",
           "caller_obj": null,
-          "line": 344
+          "line": 417
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 345
+          "line": 418
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._on_confirm_production",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 349
+          "line": 422
         },
         {
           "caller": "ui.views.ke_hoach_view.KeHoachView._apply_view_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 353
+          "line": 426
         }
       ]
     },
     "ui.views.thiet_ke_view": {
       "module_name": "ui.views.thiet_ke_view",
       "file_path": "ui/views/thiet_ke_view.py",
-      "mtime": 1782967753.9660404,
+      "mtime": 1783505590.8405662,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 8
+          "line": 9
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QVBoxLayout",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHBoxLayout",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGridLayout",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLineEdit",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidget",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QTableWidgetItem",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGroupBox",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHeaderView",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "Qt",
           "asname": null,
-          "line": 24
+          "line": 25
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtCore",
+          "name": "QTimer",
+          "asname": null,
+          "line": 25
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 26
+          "line": 27
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "project_service",
           "asname": null,
-          "line": 27
+          "line": 28
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "drawing_service",
           "asname": null,
-          "line": 27
+          "line": 28
         },
         {
           "type": "from",
           "module": "ui.common.workers",
           "name": "DrawingLoaderThread",
           "asname": null,
-          "line": 28
+          "line": 29
         }
       ],
       "classes": [
@@ -14182,8 +14398,8 @@
           "bases": [
             "QWidget"
           ],
-          "line": 33,
-          "end_line": 440
+          "line": 34,
+          "end_line": 532
         }
       ],
       "functions": [
@@ -14199,8 +14415,8 @@
             "parent": "Any"
           },
           "return_hint": "None",
-          "line": 40,
-          "end_line": 44
+          "line": 41,
+          "end_line": 52
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._init_ui",
@@ -14210,8 +14426,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 46,
-          "end_line": 76
+          "line": 54,
+          "end_line": 84
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
@@ -14221,8 +14437,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 78,
-          "end_line": 102
+          "line": 86,
+          "end_line": 110
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
@@ -14232,8 +14448,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 104,
-          "end_line": 140
+          "line": 112,
+          "end_line": 148
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
@@ -14243,8 +14459,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QGroupBox",
-          "line": 142,
-          "end_line": 175
+          "line": 150,
+          "end_line": 214
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView.set_project",
@@ -14258,19 +14474,23 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 177,
-          "end_line": 191
+          "line": 216,
+          "end_line": 230
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "name": "load_drawings",
           "parent_id": "ui.views.thiet_ke_view.ThietKeView",
           "parent_type": "class",
-          "args": [],
-          "args_hints": {},
+          "args": [
+            "silent"
+          ],
+          "args_hints": {
+            "silent": "bool"
+          },
           "return_hint": "None",
-          "line": 193,
-          "end_line": 224
+          "line": 232,
+          "end_line": 279
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
@@ -14284,8 +14504,8 @@
             "drawings": "list[dict[Tuple[str, Any]]]"
           },
           "return_hint": "None",
-          "line": 226,
-          "end_line": 266
+          "line": 281,
+          "end_line": 334
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
@@ -14299,8 +14519,41 @@
             "error_msg": "str"
           },
           "return_hint": "None",
-          "line": 268,
-          "end_line": 281
+          "line": 336,
+          "end_line": 347
+        },
+        {
+          "id": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
+          "name": "_get_selected_drawing_id",
+          "parent_id": "ui.views.thiet_ke_view.ThietKeView",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "Any",
+          "line": 349,
+          "end_line": 360
+        },
+        {
+          "id": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
+          "name": "_on_manual_refresh",
+          "parent_id": "ui.views.thiet_ke_view.ThietKeView",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 362,
+          "end_line": 365
+        },
+        {
+          "id": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
+          "name": "auto_refresh_drawings",
+          "parent_id": "ui.views.thiet_ke_view.ThietKeView",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 367,
+          "end_line": 373
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
@@ -14310,8 +14563,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 283,
-          "end_line": 319
+          "line": 375,
+          "end_line": 411
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
@@ -14321,8 +14574,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 321,
-          "end_line": 371
+          "line": 413,
+          "end_line": 463
         },
         {
           "id": "ui.views.thiet_ke_view.ThietKeView._apply_view_styles",
@@ -14332,8 +14585,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 373,
-          "end_line": 440
+          "line": 465,
+          "end_line": 532
         }
       ],
       "calls": [
@@ -14341,187 +14594,157 @@
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 41
+          "line": 42
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 41
+          "line": 42
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 44
+          "line": 46
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
+          "call_name": "QTimer",
+          "caller_obj": null,
+          "line": 49
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
+          "call_name": "setInterval",
+          "caller_obj": "self.refresh_timer",
+          "line": 50
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
+          "call_name": "connect",
+          "caller_obj": "self.refresh_timer.timeout",
+          "line": 51
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.__init__",
+          "call_name": "start",
+          "caller_obj": "self.refresh_timer",
+          "line": 52
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 48
+          "line": 56
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 49
+          "line": 57
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "layout",
-          "line": 50
+          "line": 58
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 53
+          "line": 61
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "setStyleSheet",
           "caller_obj": "title_label",
-          "line": 54
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "layout",
-          "line": 55
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
-          "call_name": "QHBoxLayout",
-          "caller_obj": null,
-          "line": 58
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
-          "call_name": "setSpacing",
-          "caller_obj": "forms_layout",
-          "line": 59
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
-          "call_name": "_create_project_group",
-          "caller_obj": "self",
           "line": 62
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "addWidget",
-          "caller_obj": "forms_layout",
+          "caller_obj": "layout",
           "line": 63
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
-          "call_name": "_create_drawing_group",
-          "caller_obj": "self",
+          "call_name": "QHBoxLayout",
+          "caller_obj": null,
           "line": 66
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
-          "call_name": "addWidget",
+          "call_name": "setSpacing",
           "caller_obj": "forms_layout",
           "line": 67
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
+          "call_name": "_create_project_group",
+          "caller_obj": "self",
+          "line": 70
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "forms_layout",
+          "line": 71
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
+          "call_name": "_create_drawing_group",
+          "caller_obj": "self",
+          "line": 74
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "forms_layout",
+          "line": 75
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "addLayout",
           "caller_obj": "layout",
-          "line": 69
+          "line": 77
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "_create_table_group",
           "caller_obj": "self",
-          "line": 72
+          "line": 80
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 73
+          "line": 81
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._init_ui",
           "call_name": "_apply_view_styles",
           "caller_obj": "self",
-          "line": 76
+          "line": 84
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 84
+          "line": 92
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
           "call_name": "QGridLayout",
           "caller_obj": null,
-          "line": 85
+          "line": 93
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
           "call_name": "setSpacing",
           "caller_obj": "grid",
-          "line": 86
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 88
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 88
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
-          "line": 89
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_project_id",
-          "line": 90
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 91
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 93
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 93
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
           "line": 94
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_project_name",
-          "line": 95
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
@@ -14531,123 +14754,123 @@
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "QPushButton",
+          "call_name": "QLabel",
           "caller_obj": null,
+          "line": 96
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 97
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_project_id",
           "line": 98
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
-          "call_name": "connect",
-          "caller_obj": "self.btn_create_proj.clicked",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
           "line": 99
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 100
+          "line": 101
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 101
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 102
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_project_name",
+          "line": 103
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 104
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 106
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "connect",
+          "caller_obj": "self.btn_create_proj.clicked",
+          "line": 107
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_project_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 108
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 110
+          "line": 118
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QGridLayout",
           "caller_obj": null,
-          "line": 111
+          "line": 119
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "setSpacing",
           "caller_obj": "grid",
-          "line": 112
+          "line": 120
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 114
+          "line": 122
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 114
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 115
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.lbl_current_project",
-          "line": 116
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 119
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 121
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 121
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLineEdit",
           "caller_obj": null,
           "line": 122
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_drawing_id",
+          "call_name": "QLabel",
+          "caller_obj": null,
           "line": 123
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.lbl_current_project",
           "line": 124
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 126
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 126
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
           "line": 127
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_drawing_name",
-          "line": 128
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
@@ -14657,27 +14880,27 @@
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 131
-        },
-        {
-          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 131
+          "line": 129
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "QLineEdit",
           "caller_obj": null,
-          "line": 132
+          "line": 130
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_drive_link",
-          "line": 133
+          "caller_obj": "self.txt_drawing_id",
+          "line": 131
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 132
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
@@ -14687,663 +14910,849 @@
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "QPushButton",
+          "call_name": "QLabel",
           "caller_obj": null,
+          "line": 134
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 135
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_drawing_name",
           "line": 136
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
-          "call_name": "connect",
-          "caller_obj": "self.btn_create_draw.clicked",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
           "line": 137
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 138
+          "line": 139
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 139
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 140
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_drive_link",
+          "line": 141
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 142
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 144
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "connect",
+          "caller_obj": "self.btn_create_draw.clicked",
+          "line": 145
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_drawing_group",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 146
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QGroupBox",
           "caller_obj": null,
-          "line": 148
+          "line": 156
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 149
+          "line": 157
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 150
+          "line": 158
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "QHBoxLayout",
+          "caller_obj": null,
+          "line": 161
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "addStretch",
+          "caller_obj": "table_actions_layout",
+          "line": 162
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 164
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "setFixedWidth",
+          "caller_obj": "self.btn_refresh",
+          "line": 165
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.btn_refresh",
+          "line": 166
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "connect",
+          "caller_obj": "self.btn_refresh.clicked",
+          "line": 181
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "addWidget",
+          "caller_obj": "table_actions_layout",
+          "line": 182
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "addLayout",
+          "caller_obj": "layout",
+          "line": 183
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "QTableWidget",
           "caller_obj": null,
-          "line": 152
+          "line": 185
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setColumnCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 153
+          "line": 186
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setHorizontalHeaderLabels",
           "caller_obj": "self.tbl_drawings",
-          "line": 154
+          "line": 187
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "horizontalHeader",
           "caller_obj": "self.tbl_drawings",
-          "line": 165
+          "line": 198
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 166
+          "line": 199
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 167
+          "line": 200
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "setSectionResizeMode",
           "caller_obj": "header",
-          "line": 170
+          "line": 203
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "setSelectionBehavior",
+          "caller_obj": "self.tbl_drawings",
+          "line": 208
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
+          "call_name": "setSelectionMode",
+          "caller_obj": "self.tbl_drawings",
+          "line": 211
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._create_table_group",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 174
+          "line": 213
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 185
+          "line": 224
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 188
+          "line": 227
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "setText",
           "caller_obj": "self.lbl_current_project",
-          "line": 190
+          "line": 229
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.set_project",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 191
+          "line": 230
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 198
+          "line": 241
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "isRunning",
           "caller_obj": "self.loader_thread",
-          "line": 198
+          "line": 241
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.finished",
-          "line": 200
+          "line": 246
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "disconnect",
           "caller_obj": "self.loader_thread.error",
-          "line": 201
+          "line": 247
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "terminate",
           "caller_obj": "self.loader_thread",
-          "line": 204
+          "line": 250
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "wait",
           "caller_obj": "self.loader_thread",
-          "line": 205
+          "line": 251
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
+          "call_name": "_get_selected_drawing_id",
+          "caller_obj": "self",
+          "line": 254
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 207
+          "line": 257
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 211
+          "line": 260
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 214
+          "line": 267
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
+          "call_name": "setRowCount",
+          "caller_obj": "self.tbl_drawings",
+          "line": 269
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 215
+          "line": 270
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setFlags",
           "caller_obj": "loading_item",
-          "line": 216
+          "line": 271
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setForeground",
           "caller_obj": "loading_item",
-          "line": 217
+          "line": 272
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 218
+          "line": 273
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "DrawingLoaderThread",
           "caller_obj": null,
-          "line": 221
+          "line": 276
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "connect",
           "caller_obj": "self.loader_thread.finished",
-          "line": 222
+          "line": 277
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "connect",
           "caller_obj": "self.loader_thread.error",
-          "line": 223
+          "line": 278
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView.load_drawings",
           "call_name": "start",
           "caller_obj": "self.loader_thread",
-          "line": 224
+          "line": 279
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 232
+          "line": 287
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "len",
           "caller_obj": null,
-          "line": 232
+          "line": 287
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "enumerate",
           "caller_obj": null,
-          "line": 233
+          "line": 290
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 234
+          "line": 291
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_id",
-          "line": 235
+          "line": 292
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_id",
-          "line": 235
+          "line": 292
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 237
+          "line": 294
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_name",
-          "line": 238
+          "line": 295
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_name",
-          "line": 238
+          "line": 295
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 240
+          "line": 297
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_status",
-          "line": 241
+          "line": 298
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_status",
-          "line": 241
+          "line": 298
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 246
+          "line": 303
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 248
+          "line": 305
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setForeground",
           "caller_obj": "item_status",
-          "line": 250
+          "line": 307
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 252
+          "line": 309
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_version",
-          "line": 253
+          "line": 310
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_version",
-          "line": 253
+          "line": 310
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 255
+          "line": 312
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_link",
-          "line": 256
+          "line": 313
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_link",
-          "line": 256
+          "line": 313
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 258
+          "line": 315
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "strftime",
           "caller_obj": "",
-          "line": 258
+          "line": 315
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setFlags",
           "caller_obj": "item_time",
-          "line": 259
+          "line": 316
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "flags",
           "caller_obj": "item_time",
-          "line": 259
+          "line": 316
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 261
+          "line": 318
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 262
+          "line": 319
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 263
+          "line": 320
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 264
+          "line": 321
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 265
+          "line": 322
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 266
+          "line": 323
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_drawings_loaded",
+          "call_name": "selectRow",
+          "caller_obj": "self.tbl_drawings",
+          "line": 334
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 274
+          "line": 342
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setRowCount",
           "caller_obj": "self.tbl_drawings",
-          "line": 275
+          "line": 343
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "QTableWidgetItem",
           "caller_obj": null,
-          "line": 276
+          "line": 344
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setFlags",
           "caller_obj": "err_item",
-          "line": 279
+          "line": 345
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setForeground",
           "caller_obj": "err_item",
-          "line": 280
+          "line": 346
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_load_error",
           "call_name": "setItem",
           "caller_obj": "self.tbl_drawings",
-          "line": 281
+          "line": 347
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
+          "call_name": "selectedRanges",
+          "caller_obj": "self.tbl_drawings",
+          "line": 355
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
+          "call_name": "topRow",
+          "caller_obj": "",
+          "line": 358
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
+          "call_name": "item",
+          "caller_obj": "self.tbl_drawings",
+          "line": 359
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._get_selected_drawing_id",
+          "call_name": "text",
+          "caller_obj": "item",
+          "line": 360
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
+          "call_name": "info",
+          "caller_obj": "logger",
+          "line": 364
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView._on_manual_refresh",
+          "call_name": "load_drawings",
+          "caller_obj": "self",
+          "line": 365
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
+          "call_name": "hasattr",
+          "caller_obj": null,
+          "line": 371
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
+          "call_name": "isRunning",
+          "caller_obj": "self.loader_thread",
+          "line": 371
+        },
+        {
+          "caller": "ui.views.thiet_ke_view.ThietKeView.auto_refresh_drawings",
+          "call_name": "load_drawings",
+          "caller_obj": "self",
+          "line": 373
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 285
+          "line": 377
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "text",
           "caller_obj": "self.txt_project_id",
-          "line": 285
+          "line": 377
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 286
+          "line": 378
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "text",
           "caller_obj": "self.txt_project_name",
-          "line": 286
+          "line": 378
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 289
+          "line": 381
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 294
+          "line": 386
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "create_project",
           "caller_obj": "project_service",
-          "line": 296
+          "line": 388
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "information",
           "caller_obj": "QMessageBox",
-          "line": 298
+          "line": 390
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "clear",
           "caller_obj": "self.txt_project_id",
-          "line": 301
+          "line": 393
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "clear",
           "caller_obj": "self.txt_project_name",
-          "line": 302
+          "line": 394
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 305
+          "line": 397
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "load_projects",
           "caller_obj": "self.main_window",
-          "line": 306
+          "line": 398
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 308
+          "line": 400
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 314
+          "line": 406
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "str",
           "caller_obj": null,
-          "line": 314
+          "line": 406
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 315
+          "line": 407
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_project",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 319
+          "line": 411
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 324
+          "line": 416
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "text",
           "caller_obj": "self.txt_drawing_id",
-          "line": 324
+          "line": 416
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 325
+          "line": 417
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "text",
           "caller_obj": "self.txt_drawing_name",
-          "line": 325
+          "line": 417
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "strip",
           "caller_obj": "",
-          "line": 326
+          "line": 418
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "text",
           "caller_obj": "self.txt_drive_link",
-          "line": 326
+          "line": 418
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 329
+          "line": 421
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 337
+          "line": 429
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 348
+          "line": 440
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "create_drawing",
           "caller_obj": "drawing_service",
-          "line": 350
+          "line": 442
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "information",
           "caller_obj": "QMessageBox",
-          "line": 352
+          "line": 444
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "clear",
           "caller_obj": "self.txt_drawing_id",
-          "line": 355
+          "line": 447
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "clear",
           "caller_obj": "self.txt_drawing_name",
-          "line": 356
+          "line": 448
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "clear",
           "caller_obj": "self.txt_drive_link",
-          "line": 357
+          "line": 449
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "load_drawings",
           "caller_obj": "self",
-          "line": 358
+          "line": 450
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 360
+          "line": 452
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 366
+          "line": 458
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "str",
           "caller_obj": null,
-          "line": 366
+          "line": 458
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 367
+          "line": 459
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._on_create_drawing",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 371
+          "line": 463
         },
         {
           "caller": "ui.views.thiet_ke_view.ThietKeView._apply_view_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 375
+          "line": 467
         }
       ]
     },
@@ -15359,124 +15768,124 @@
     "ui.login_window": {
       "module_name": "ui.login_window",
       "file_path": "ui/login_window.py",
-      "mtime": 1783502608.8812132,
+      "mtime": 1783503616.7571428,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 7
+          "line": 9
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 8
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMainWindow",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QVBoxLayout",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QFrame",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "Qt",
           "asname": null,
-          "line": 18
+          "line": 20
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QThread",
           "asname": null,
-          "line": 18
+          "line": 20
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "pyqtSignal",
           "asname": null,
-          "line": 18
+          "line": 20
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QUrl",
           "asname": null,
-          "line": 18
+          "line": 20
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QTimer",
           "asname": null,
-          "line": 18
+          "line": 20
         },
         {
           "type": "from",
           "module": "PyQt6.QtGui",
           "name": "QDesktopServices",
           "asname": null,
-          "line": 19
+          "line": 21
         },
         {
           "type": "from",
           "module": "core.services.auth_service",
           "name": "GoogleAuthManager",
           "asname": null,
-          "line": 21
+          "line": 23
         },
         {
           "type": "direct",
           "name": "config",
           "asname": null,
-          "line": 22
+          "line": 24
         }
       ],
       "classes": [
@@ -15486,8 +15895,8 @@
           "bases": [
             "QThread"
           ],
-          "line": 27,
-          "end_line": 57
+          "line": 29,
+          "end_line": 59
         },
         {
           "id": "ui.login_window.LoginWindow",
@@ -15495,8 +15904,8 @@
           "bases": [
             "QMainWindow"
           ],
-          "line": 60,
-          "end_line": 281
+          "line": 62,
+          "end_line": 283
         }
       ],
       "functions": [
@@ -15512,8 +15921,8 @@
             "auth_manager": "GoogleAuthManager"
           },
           "return_hint": "None",
-          "line": 33,
-          "end_line": 36
+          "line": 35,
+          "end_line": 38
         },
         {
           "id": "ui.login_window.AuthWorkerThread.run",
@@ -15523,8 +15932,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 38,
-          "end_line": 52
+          "line": 40,
+          "end_line": 54
         },
         {
           "id": "ui.login_window.AuthWorkerThread.stop",
@@ -15534,8 +15943,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 54,
-          "end_line": 57
+          "line": 56,
+          "end_line": 59
         },
         {
           "id": "ui.login_window.LoginWindow.__init__",
@@ -15545,8 +15954,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 68,
-          "end_line": 77
+          "line": 70,
+          "end_line": 79
         },
         {
           "id": "ui.login_window.LoginWindow._init_ui",
@@ -15556,8 +15965,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 79,
-          "end_line": 145
+          "line": 81,
+          "end_line": 147
         },
         {
           "id": "ui.login_window.LoginWindow._apply_styles",
@@ -15567,8 +15976,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 147,
-          "end_line": 203
+          "line": 149,
+          "end_line": 205
         },
         {
           "id": "ui.login_window.LoginWindow._on_login_clicked",
@@ -15578,8 +15987,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 205,
-          "end_line": 221
+          "line": 207,
+          "end_line": 223
         },
         {
           "id": "ui.login_window.LoginWindow._on_auth_finished",
@@ -15593,8 +16002,8 @@
             "email": "str"
           },
           "return_hint": "None",
-          "line": 223,
-          "end_line": 248
+          "line": 225,
+          "end_line": 250
         },
         {
           "id": "ui.login_window.LoginWindow._on_auth_error",
@@ -15608,8 +16017,8 @@
             "err_msg": "str"
           },
           "return_hint": "None",
-          "line": 250,
-          "end_line": 269
+          "line": 252,
+          "end_line": 271
         },
         {
           "id": "ui.login_window.LoginWindow.closeEvent",
@@ -15623,8 +16032,8 @@
             "event": "Any"
           },
           "return_hint": "None",
-          "line": 271,
-          "end_line": 281
+          "line": 273,
+          "end_line": 283
         }
       ],
       "calls": [
@@ -15632,599 +16041,599 @@
           "caller": "ui.login_window.AuthWorkerThread.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 34
+          "line": 36
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 34
+          "line": 36
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "start_server",
           "caller_obj": "self.auth_manager",
-          "line": 41
+          "line": 43
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "get_authenticated_email",
           "caller_obj": "self.auth_manager",
-          "line": 45
+          "line": 47
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "emit",
           "caller_obj": "self.finished",
-          "line": 47
+          "line": 49
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "msleep",
           "caller_obj": "self",
-          "line": 49
+          "line": 51
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 51
+          "line": 53
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 51
+          "line": 53
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "emit",
           "caller_obj": "self.error",
-          "line": 52
+          "line": 54
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 52
+          "line": 54
         },
         {
           "caller": "ui.login_window.AuthWorkerThread.stop",
           "call_name": "wait",
           "caller_obj": "self",
-          "line": 57
+          "line": 59
         },
         {
           "caller": "ui.login_window.LoginWindow.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 69
+          "line": 71
         },
         {
           "caller": "ui.login_window.LoginWindow.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 69
+          "line": 71
         },
         {
           "caller": "ui.login_window.LoginWindow.__init__",
           "call_name": "setWindowTitle",
           "caller_obj": "self",
-          "line": 70
+          "line": 72
         },
         {
           "caller": "ui.login_window.LoginWindow.__init__",
           "call_name": "resize",
           "caller_obj": "self",
-          "line": 71
+          "line": 73
         },
         {
           "caller": "ui.login_window.LoginWindow.__init__",
           "call_name": "setMinimumSize",
           "caller_obj": "self",
-          "line": 72
+          "line": 74
         },
         {
           "caller": "ui.login_window.LoginWindow.__init__",
           "call_name": "GoogleAuthManager",
           "caller_obj": null,
-          "line": 74
+          "line": 76
         },
         {
           "caller": "ui.login_window.LoginWindow.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 77
+          "line": 79
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QWidget",
           "caller_obj": null,
-          "line": 81
+          "line": 83
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setCentralWidget",
           "caller_obj": "self",
-          "line": 82
+          "line": 84
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 85
+          "line": 87
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 86
+          "line": 88
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "layout",
-          "line": 87
+          "line": 89
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QFrame",
-          "caller_obj": null,
-          "line": 90
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setObjectName",
-          "caller_obj": "card",
-          "line": 91
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "QVBoxLayout",
           "caller_obj": null,
           "line": 92
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "card",
+          "line": 93
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "QVBoxLayout",
+          "caller_obj": null,
+          "line": 94
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "card_layout",
-          "line": 93
+          "line": 95
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "card_layout",
-          "line": 94
+          "line": 96
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 97
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setObjectName",
-          "caller_obj": "brand_label",
-          "line": 98
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setAlignment",
-          "caller_obj": "brand_label",
           "line": 99
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "brand_label",
+          "line": 100
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "brand_label",
+          "line": 101
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "card_layout",
-          "line": 100
+          "line": 102
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 102
+          "line": 104
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setObjectName",
           "caller_obj": "sub_brand_label",
-          "line": 103
+          "line": 105
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setAlignment",
           "caller_obj": "sub_brand_label",
-          "line": 104
+          "line": 106
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "card_layout",
-          "line": 105
+          "line": 107
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 108
+          "line": 110
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setFrameShape",
           "caller_obj": "divider",
-          "line": 109
+          "line": 111
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setFrameShadow",
           "caller_obj": "divider",
-          "line": 110
+          "line": 112
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setStyleSheet",
           "caller_obj": "divider",
-          "line": 111
+          "line": 113
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "card_layout",
-          "line": 112
+          "line": 114
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 115
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setObjectName",
-          "caller_obj": "intro_label",
-          "line": 116
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setAlignment",
-          "caller_obj": "intro_label",
           "line": 117
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setObjectName",
+          "caller_obj": "intro_label",
+          "line": 118
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "intro_label",
+          "line": 119
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "card_layout",
-          "line": 118
+          "line": 120
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 121
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setObjectName",
-          "caller_obj": "self.lbl_status",
-          "line": 122
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setAlignment",
-          "caller_obj": "self.lbl_status",
           "line": 123
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
-          "call_name": "setWordWrap",
+          "call_name": "setObjectName",
           "caller_obj": "self.lbl_status",
           "line": 124
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "self.lbl_status",
+          "line": 125
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
+          "call_name": "setWordWrap",
+          "caller_obj": "self.lbl_status",
+          "line": 126
+        },
+        {
+          "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "card_layout",
-          "line": 125
+          "line": 127
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 128
+          "line": 130
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setObjectName",
           "caller_obj": "self.btn_login",
-          "line": 129
+          "line": 131
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "connect",
           "caller_obj": "self.btn_login.clicked",
-          "line": 130
+          "line": 132
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "card_layout",
-          "line": 131
+          "line": 133
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addStretch",
           "caller_obj": "card_layout",
-          "line": 134
+          "line": 136
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 137
+          "line": 139
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setStyleSheet",
           "caller_obj": "version_label",
-          "line": 138
+          "line": 140
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "setAlignment",
           "caller_obj": "version_label",
-          "line": 139
+          "line": 141
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "card_layout",
-          "line": 140
+          "line": 142
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "layout",
-          "line": 142
+          "line": 144
         },
         {
           "caller": "ui.login_window.LoginWindow._init_ui",
           "call_name": "_apply_styles",
           "caller_obj": "self",
-          "line": 145
+          "line": 147
         },
         {
           "caller": "ui.login_window.LoginWindow._apply_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 149
+          "line": 151
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "setEnabled",
           "caller_obj": "self.btn_login",
-          "line": 207
+          "line": 209
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "setText",
           "caller_obj": "self.lbl_status",
-          "line": 208
+          "line": 210
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "AuthWorkerThread",
           "caller_obj": null,
-          "line": 211
+          "line": 213
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "connect",
           "caller_obj": "self.auth_thread.finished",
-          "line": 212
+          "line": 214
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "connect",
           "caller_obj": "self.auth_thread.error",
-          "line": 213
+          "line": 215
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "start",
           "caller_obj": "self.auth_thread",
-          "line": 214
+          "line": 216
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "get_auth_url",
           "caller_obj": "self.auth_manager",
-          "line": 217
+          "line": 219
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "setText",
           "caller_obj": "self.lbl_status",
-          "line": 218
+          "line": 220
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "openUrl",
           "caller_obj": "QDesktopServices",
-          "line": 221
+          "line": 223
         },
         {
           "caller": "ui.login_window.LoginWindow._on_login_clicked",
           "call_name": "QUrl",
           "caller_obj": null,
-          "line": 221
+          "line": 223
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 229
+          "line": 231
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "setText",
           "caller_obj": "self.lbl_status",
-          "line": 230
+          "line": 232
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "stop",
           "caller_obj": "self.auth_thread",
-          "line": 234
+          "line": 236
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "singleShot",
           "caller_obj": "QTimer",
-          "line": 238
+          "line": 240
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "lower",
           "caller_obj": "email",
-          "line": 242
+          "line": 244
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "lower",
           "caller_obj": "e",
-          "line": 242
+          "line": 244
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 245
+          "line": 247
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_finished",
           "call_name": "emit",
           "caller_obj": "self.login_success",
-          "line": 248
+          "line": 250
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 256
+          "line": 258
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_error",
           "call_name": "setText",
           "caller_obj": "self.lbl_status",
-          "line": 257
+          "line": 259
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_error",
           "call_name": "setEnabled",
           "caller_obj": "self.btn_login",
-          "line": 258
+          "line": 260
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_error",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 260
+          "line": 262
         },
         {
           "caller": "ui.login_window.LoginWindow._on_auth_error",
           "call_name": "stop",
           "caller_obj": "self.auth_thread",
-          "line": 267
-        },
-        {
-          "caller": "ui.login_window.LoginWindow._on_auth_error",
-          "call_name": "shutdown",
-          "caller_obj": "self.auth_manager",
           "line": 269
         },
         {
+          "caller": "ui.login_window.LoginWindow._on_auth_error",
+          "call_name": "shutdown",
+          "caller_obj": "self.auth_manager",
+          "line": 271
+        },
+        {
           "caller": "ui.login_window.LoginWindow.closeEvent",
           "call_name": "stop",
           "caller_obj": "self.auth_thread",
-          "line": 278
+          "line": 280
         },
         {
           "caller": "ui.login_window.LoginWindow.closeEvent",
           "call_name": "shutdown",
           "caller_obj": "self.auth_manager",
-          "line": 280
+          "line": 282
         },
         {
           "caller": "ui.login_window.LoginWindow.closeEvent",
           "call_name": "accept",
           "caller_obj": "event",
-          "line": 281
+          "line": 283
         }
       ]
     },
     "core.services.auth_service": {
       "module_name": "core.services.auth_service",
       "file_path": "core/services/auth_service.py",
-      "mtime": 1783503400.6847012,
+      "mtime": 1783503616.4129548,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 8
+          "line": 10
         },
         {
           "type": "direct",
           "name": "urllib.parse",
           "asname": null,
-          "line": 9
+          "line": 11
         },
         {
           "type": "from",
           "module": "http.server",
           "name": "BaseHTTPRequestHandler",
           "asname": null,
-          "line": 10
+          "line": 12
         },
         {
           "type": "from",
           "module": "http.server",
           "name": "HTTPServer",
           "asname": null,
-          "line": 10
+          "line": 12
         },
         {
           "type": "direct",
           "name": "threading",
           "asname": null,
-          "line": 11
+          "line": 13
         },
         {
           "type": "direct",
           "name": "json",
           "asname": null,
-          "line": 12
+          "line": 14
         },
         {
           "type": "direct",
           "name": "urllib.request",
           "asname": null,
-          "line": 13
+          "line": 15
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 14
+          "line": 16
         },
         {
           "type": "direct",
           "name": "config",
           "asname": null,
-          "line": 15
+          "line": 17
         }
       ],
       "classes": [
@@ -16234,8 +16643,8 @@
           "bases": [
             "BaseHTTPRequestHandler"
           ],
-          "line": 167,
-          "end_line": 290
+          "line": 169,
+          "end_line": 292
         },
         {
           "id": "core.services.auth_service.GoogleAuthServer",
@@ -16243,15 +16652,15 @@
           "bases": [
             "HTTPServer"
           ],
-          "line": 293,
-          "end_line": 304
+          "line": 295,
+          "end_line": 306
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager",
           "name": "GoogleAuthManager",
           "bases": [],
-          "line": 307,
-          "end_line": 401
+          "line": 309,
+          "end_line": 403
         }
       ],
       "functions": [
@@ -16267,8 +16676,8 @@
             "format_str": "str"
           },
           "return_hint": "None",
-          "line": 170,
-          "end_line": 177
+          "line": 172,
+          "end_line": 179
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler.do_GET",
@@ -16278,8 +16687,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 179,
-          "end_line": 198
+          "line": 181,
+          "end_line": 200
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
@@ -16289,8 +16698,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 200,
-          "end_line": 202
+          "line": 202,
+          "end_line": 204
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
@@ -16304,8 +16713,8 @@
             "query_params": "dict[Tuple[str, list[str]]]"
           },
           "return_hint": "None",
-          "line": 204,
-          "end_line": 234
+          "line": 206,
+          "end_line": 236
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
@@ -16319,8 +16728,8 @@
             "code": "str"
           },
           "return_hint": "str",
-          "line": 236,
-          "end_line": 279
+          "line": 238,
+          "end_line": 281
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
@@ -16334,8 +16743,8 @@
             "content": "str"
           },
           "return_hint": "None",
-          "line": 281,
-          "end_line": 290
+          "line": 283,
+          "end_line": 292
         },
         {
           "id": "core.services.auth_service.GoogleAuthServer.__init__",
@@ -16351,8 +16760,8 @@
             "handler_class": "Any"
           },
           "return_hint": "None",
-          "line": 296,
-          "end_line": 304
+          "line": 298,
+          "end_line": 306
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.__init__",
@@ -16366,8 +16775,8 @@
             "port": "int"
           },
           "return_hint": "None",
-          "line": 310,
-          "end_line": 319
+          "line": 312,
+          "end_line": 321
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.start_server",
@@ -16377,8 +16786,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 321,
-          "end_line": 340
+          "line": 323,
+          "end_line": 342
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager._run_server",
@@ -16388,8 +16797,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 342,
-          "end_line": 348
+          "line": 344,
+          "end_line": 350
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
@@ -16399,8 +16808,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 350,
-          "end_line": 370
+          "line": 352,
+          "end_line": 372
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
@@ -16410,8 +16819,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 372,
-          "end_line": 380
+          "line": 374,
+          "end_line": 382
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.shutdown",
@@ -16421,8 +16830,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 382,
-          "end_line": 401
+          "line": 384,
+          "end_line": 403
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager._async_close",
@@ -16432,8 +16841,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 391,
-          "end_line": 398
+          "line": 393,
+          "end_line": 400
         }
       ],
       "calls": [
@@ -16441,97 +16850,91 @@
           "caller": "core.services.auth_service.OAuthCallbackHandler.log_message",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 177
+          "line": 179
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "urlparse",
           "caller_obj": "urllib.parse",
-          "line": 181
+          "line": 183
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "parse_qs",
           "caller_obj": "urllib.parse",
-          "line": 182
+          "line": 184
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_handle_callback",
           "caller_obj": "self",
-          "line": 186
+          "line": 188
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_serve_mock_login_page",
           "caller_obj": "self",
-          "line": 189
+          "line": 191
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 191
+          "line": 193
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_handle_callback",
           "caller_obj": "self",
-          "line": 195
+          "line": 197
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "send_response",
           "caller_obj": "self",
-          "line": 197
+          "line": 199
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "end_headers",
           "caller_obj": "self",
-          "line": 198
+          "line": 200
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 202
+          "line": 204
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "get",
           "caller_obj": "query_params",
-          "line": 210
+          "line": 212
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 212
+          "line": 214
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "get",
           "caller_obj": "query_params",
-          "line": 221
+          "line": 223
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "_exchange_code_for_email",
           "caller_obj": "self",
-          "line": 225
+          "line": 227
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "format",
           "caller_obj": "SUCCESS_LOGIN_HTML_TEMPLATE",
-          "line": 229
-        },
-        {
-          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
-          "call_name": "_send_html_response",
-          "caller_obj": "self",
-          "line": 230
+          "line": 231
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
@@ -16540,256 +16943,262 @@
           "line": 232
         },
         {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
+          "call_name": "_send_html_response",
+          "caller_obj": "self",
+          "line": 234
+        },
+        {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "encode",
           "caller_obj": "",
-          "line": 249
+          "line": 251
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlencode",
           "caller_obj": "urllib.parse",
-          "line": 249
+          "line": 251
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "Request",
           "caller_obj": "urllib.request",
-          "line": 259
+          "line": 261
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlopen",
           "caller_obj": "urllib.request",
-          "line": 260
+          "line": 262
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "loads",
           "caller_obj": "json",
-          "line": 261
+          "line": 263
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "decode",
           "caller_obj": "",
-          "line": 261
+          "line": 263
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "read",
           "caller_obj": "response",
-          "line": 261
+          "line": 263
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "get",
           "caller_obj": "res_data",
-          "line": 262
+          "line": 264
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "Request",
           "caller_obj": "urllib.request",
-          "line": 268
+          "line": 270
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "add_header",
           "caller_obj": "req_info",
-          "line": 269
+          "line": 271
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlopen",
           "caller_obj": "urllib.request",
-          "line": 271
+          "line": 273
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "loads",
           "caller_obj": "json",
-          "line": 272
+          "line": 274
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "decode",
           "caller_obj": "",
-          "line": 272
+          "line": 274
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "read",
           "caller_obj": "response_info",
-          "line": 272
+          "line": 274
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "get",
           "caller_obj": "user_info",
-          "line": 273
+          "line": 275
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 276
+          "line": 278
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "str",
           "caller_obj": null,
-          "line": 277
+          "line": 279
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "send_response",
           "caller_obj": "self",
-          "line": 287
+          "line": 289
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "send_header",
           "caller_obj": "self",
-          "line": 288
+          "line": 290
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "end_headers",
           "caller_obj": "self",
-          "line": 289
+          "line": 291
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "write",
           "caller_obj": "self.wfile",
-          "line": 290
+          "line": 292
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "encode",
           "caller_obj": "content",
-          "line": 290
+          "line": 292
         },
         {
           "caller": "core.services.auth_service.GoogleAuthServer.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 303
+          "line": 305
         },
         {
           "caller": "core.services.auth_service.GoogleAuthServer.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 303
+          "line": 305
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "GoogleAuthServer",
           "caller_obj": null,
-          "line": 327
+          "line": 329
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "Thread",
           "caller_obj": "threading",
-          "line": 331
+          "line": 333
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "start",
           "caller_obj": "self.thread",
-          "line": 332
+          "line": 334
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "info",
-          "caller_obj": "logger",
-          "line": 333
-        },
-        {
-          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
-          "call_name": "error",
           "caller_obj": "logger",
           "line": 335
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 337
+        },
+        {
+          "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "str",
           "caller_obj": null,
-          "line": 338
+          "line": 340
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "serve_forever",
           "caller_obj": "self.server",
-          "line": 346
+          "line": 348
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 348
+          "line": 350
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "str",
           "caller_obj": null,
-          "line": 348
+          "line": 350
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.get_auth_url",
           "call_name": "urlencode",
           "caller_obj": "urllib.parse",
-          "line": 368
+          "line": 370
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 385
+          "line": 387
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "shutdown",
           "caller_obj": "server_to_close",
-          "line": 394
+          "line": 396
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "server_close",
           "caller_obj": "server_to_close",
-          "line": 395
+          "line": 397
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 396
+          "line": 398
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 398
+          "line": 400
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "str",
           "caller_obj": null,
-          "line": 398
+          "line": 400
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "start",
           "caller_obj": "",
-          "line": 400
+          "line": 402
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "Thread",
           "caller_obj": "threading",
-          "line": 400
+          "line": 402
         }
       ]
     }

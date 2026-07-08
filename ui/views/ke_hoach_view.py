@@ -1,6 +1,8 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng)
 # CHANGELOG:
+# - 17:15:26 08/07/2026: [FIX] fix(auth): fix socket deadlock, redirect issues and optimize DB connection performance (Antigravity)
+# - 17:18:00 08/07/2026: [UPDATE] Thêm nút làm mới thủ công và cơ chế auto-refresh 15 giây (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:35:00 02/07/2026: [NEW] Khởi tạo giao diện Kế hoạch view và liên kết QDesktopServices mở link (Lê Thanh Vân/Antigravity)
 # - 11:19:00 02/07/2026: [UPDATE] Di chuyển bộ chọn Dự án lên Sidebar dùng chung, làm gọn giao diện cục bộ (Lê Thanh Vân/Antigravity)
@@ -21,7 +23,7 @@ from PyQt6.QtWidgets import (
     QMessageBox,
     QHeaderView,
 )
-from PyQt6.QtCore import Qt, QUrl
+from PyQt6.QtCore import Qt, QUrl, QTimer
 from PyQt6.QtGui import QDesktopServices
 
 from core.database import SessionLocal
@@ -42,7 +44,14 @@ class KeHoachView(QWidget):
         super().__init__(parent)
         self.main_window = parent
         self.current_project_id: str = ""
+        self.last_selected_drawing_id: str | None = None
         self._init_ui()
+
+        # Khởi chạy timer tự động làm mới ngầm mỗi 15 giây
+        self.refresh_timer = QTimer(self)
+        self.refresh_timer.setInterval(15000)
+        self.refresh_timer.timeout.connect(self.auto_refresh_drawings)
+        self.refresh_timer.start()
 
     def _init_ui(self) -> None:
         """Khởi tạo và sắp xếp các thành phần giao diện của view Kế hoạch."""
@@ -111,6 +120,31 @@ class KeHoachView(QWidget):
         layout = QVBoxLayout(group)
         layout.setContentsMargins(10, 15, 10, 10)
 
+        # Thanh tiêu đề / công cụ cho bảng
+        table_actions_layout = QHBoxLayout()
+        table_actions_layout.addStretch()
+
+        self.btn_refresh = QPushButton("🔄 Làm mới", group)
+        self.btn_refresh.setFixedWidth(100)
+        self.btn_refresh.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #0284C7;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 5px 10px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #0369A1;
+            }
+            """
+        )
+        self.btn_refresh.clicked.connect(self._on_manual_refresh)
+        table_actions_layout.addWidget(self.btn_refresh)
+        layout.addLayout(table_actions_layout)
+
         self.tbl_drawings = QTableWidget(group)
         self.tbl_drawings.setColumnCount(6)
         self.tbl_drawings.setHorizontalHeaderLabels(
@@ -153,12 +187,19 @@ class KeHoachView(QWidget):
         self.current_project_id = project_id
         self.load_drawings()
 
-    def load_drawings(self) -> None:
-        """Nạp danh sách bản vẽ của dự án đang chọn (Bất đồng bộ)."""
+    def load_drawings(self, silent: bool = False) -> None:
+        """Nạp danh sách bản vẽ của dự án đang chọn (Bất đồng bộ).
+
+        Args:
+            silent: Nếu True, không xóa bảng cũ và không hiển thị loading item.
+        """
         project_id = self.current_project_id
 
         # Nếu đã có thread cũ đang chạy, ngắt kết nối và dừng nó để tránh chồng chéo
         if hasattr(self, "loader_thread") and self.loader_thread.isRunning():
+            if silent:
+                # Nếu chạy ngầm, bỏ qua đợt load mới để chờ thread cũ hoàn tất
+                return
             try:
                 self.loader_thread.finished.disconnect()
                 self.loader_thread.error.disconnect()
@@ -167,20 +208,27 @@ class KeHoachView(QWidget):
             self.loader_thread.terminate()
             self.loader_thread.wait()
 
-        self.tbl_drawings.setRowCount(0)
+        # Lưu lại dòng bản vẽ đang được chọn trước khi reload
+        self.last_selected_drawing_id = self._get_selected_drawing_id()
+
         if not project_id:
+            self.tbl_drawings.setRowCount(0)
             return
 
         logger.info(
-            "Yêu cầu tải danh sách bản vẽ ngầm (Kế hoạch) cho dự án: %s", project_id
+            "Yêu cầu tải danh sách bản vẽ ngầm (Kế hoạch) cho dự án: %s (silent=%s)",
+            project_id,
+            silent,
         )
 
-        # Hiển thị trạng thái loading chuyên nghiệp trên bảng
-        self.tbl_drawings.setRowCount(1)
-        loading_item = QTableWidgetItem("⏳ Đang tải bản vẽ từ database...")
-        loading_item.setFlags(Qt.ItemFlag.NoItemFlags)
-        loading_item.setForeground(Qt.GlobalColor.gray)
-        self.tbl_drawings.setItem(0, 1, loading_item)
+        if not silent:
+            self.tbl_drawings.setRowCount(0)
+            # Hiển thị trạng thái loading chuyên nghiệp trên bảng
+            self.tbl_drawings.setRowCount(1)
+            loading_item = QTableWidgetItem("⏳ Đang tải bản vẽ từ database...")
+            loading_item.setFlags(Qt.ItemFlag.NoItemFlags)
+            loading_item.setForeground(Qt.GlobalColor.gray)
+            self.tbl_drawings.setItem(0, 1, loading_item)
 
         # Khởi tạo và chạy luồng phụ
         self.loader_thread = DrawingLoaderThread(project_id)
@@ -195,6 +243,8 @@ class KeHoachView(QWidget):
             drawings: Danh sách bản vẽ dạng dict thô.
         """
         self.tbl_drawings.setRowCount(len(drawings))
+        target_row_to_select: int = -1
+
         for r, d in enumerate(drawings):
             item_id = QTableWidgetItem(d["drawing_id"])
             item_id.setFlags(item_id.flags() ^ Qt.ItemFlag.ItemIsEditable)
@@ -230,6 +280,17 @@ class KeHoachView(QWidget):
             self.tbl_drawings.setItem(r, 4, item_link)
             self.tbl_drawings.setItem(r, 5, item_time)
 
+            # Kiểm tra xem dòng này có khớp với ID đã lưu trước đó không
+            if (
+                self.last_selected_drawing_id
+                and d["drawing_id"] == self.last_selected_drawing_id
+            ):
+                target_row_to_select = r
+
+        # Khôi phục dòng chọn
+        if target_row_to_select != -1:
+            self.tbl_drawings.selectRow(target_row_to_select)
+
     def _on_load_error(self, error_msg: str) -> None:
         """Callback hiển thị thông báo lỗi khi không thể tải bản vẽ từ luồng phụ.
 
@@ -242,6 +303,19 @@ class KeHoachView(QWidget):
         err_item.setFlags(Qt.ItemFlag.NoItemFlags)
         err_item.setForeground(Qt.GlobalColor.red)
         self.tbl_drawings.setItem(0, 1, err_item)
+
+    def _on_manual_refresh(self) -> None:
+        """Xử lý làm mới danh sách bản vẽ thủ công khi bấm nút."""
+        logger.info("Nhận yêu cầu làm mới dữ liệu thủ công từ người dùng Kế hoạch.")
+        self.load_drawings(silent=False)
+
+    def auto_refresh_drawings(self) -> None:
+        """Tự động làm mới danh sách bản vẽ ngầm định kỳ bằng QTimer."""
+        if not self.current_project_id:
+            return
+        if hasattr(self, "loader_thread") and self.loader_thread.isRunning():
+            return
+        self.load_drawings(silent=True)
 
     def _get_selected_drawing_id(self) -> str | None:
         """Lấy Mã bản vẽ của dòng đang được người dùng click chọn trong bảng.

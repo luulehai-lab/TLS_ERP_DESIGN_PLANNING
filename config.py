@@ -1,6 +1,7 @@
 # Tên file: config.py
 # CHỨC NĂNG: Quản lý cấu hình dự án (Database, API, Thư mục)
 # CHANGELOG:
+# - 17:15:26 08/07/2026: [FIX] fix(auth): fix socket deadlock, redirect issues and optimize DB connection performance (Antigravity)
 # - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 14:05:00 08/07/2026: [UPDATE] Bổ sung cấu hình OAuth và phân quyền email phòng ban (Lê Thanh Vân/Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
@@ -10,8 +11,13 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Thư mục gốc của dự án
-BASE_DIR: Path = Path(__file__).parent.resolve()
+import sys
+
+# Thư mục gốc của dự án (tương thích cả khi đóng gói PyInstaller và chạy code trực tiếp)
+if getattr(sys, "frozen", False):
+    BASE_DIR: Path = Path(sys.executable).parent.resolve()
+else:
+    BASE_DIR: Path = Path(__file__).parent.resolve()
 
 # Load file .env nếu có
 env_path: Path = BASE_DIR / ".env"
