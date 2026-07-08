@@ -17,7 +17,7 @@
       "label": "main",
       "type": "function",
       "file_path": "main.py",
-      "line": 37
+      "line": 38
     },
     {
       "id": "core.database",
@@ -30,7 +30,7 @@
       "label": "get_db",
       "type": "function",
       "file_path": "core/database.py",
-      "line": 41
+      "line": 42
     },
     {
       "id": "core.models",
@@ -767,77 +767,77 @@
       "label": "MainWindow",
       "type": "class",
       "file_path": "ui/main_window.py",
-      "line": 34
+      "line": 35
     },
     {
       "id": "ui.main_window.MainWindow.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 41
+      "line": 42
     },
     {
       "id": "ui.main_window.MainWindow._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 51
+      "line": 52
     },
     {
       "id": "ui.main_window.MainWindow._create_sidebar",
       "label": "_create_sidebar",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 96
+      "line": 97
     },
     {
       "id": "ui.main_window.MainWindow._create_header",
       "label": "_create_header",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 149
+      "line": 150
     },
     {
       "id": "ui.main_window.MainWindow.load_projects",
       "label": "load_projects",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 196
+      "line": 197
     },
     {
       "id": "ui.main_window.MainWindow._on_projects_loaded",
       "label": "_on_projects_loaded",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 214
+      "line": 215
     },
     {
       "id": "ui.main_window.MainWindow._on_projects_load_error",
       "label": "_on_projects_load_error",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 249
+      "line": 250
     },
     {
       "id": "ui.main_window.MainWindow._on_project_selected",
       "label": "_on_project_selected",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 276
+      "line": 277
     },
     {
       "id": "ui.main_window.MainWindow._switch_view",
       "label": "_switch_view",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 310
+      "line": 311
     },
     {
       "id": "ui.main_window.MainWindow._apply_styles",
       "label": "_apply_styles",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 325
+      "line": 326
     },
     {
       "id": "ui.__init__",
@@ -923,42 +923,42 @@
       "label": "ProjectLoaderThread",
       "type": "class",
       "file_path": "ui/common/workers.py",
-      "line": 18
+      "line": 19
     },
     {
       "id": "ui.common.workers.DrawingLoaderThread",
       "label": "DrawingLoaderThread",
       "type": "class",
       "file_path": "ui/common/workers.py",
-      "line": 70
+      "line": 71
     },
     {
       "id": "ui.common.workers.ProjectLoaderThread.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 28
+      "line": 29
     },
     {
       "id": "ui.common.workers.ProjectLoaderThread.run",
       "label": "run",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 32
+      "line": 33
     },
     {
       "id": "ui.common.workers.DrawingLoaderThread.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 80
+      "line": 81
     },
     {
       "id": "ui.common.workers.DrawingLoaderThread.run",
       "label": "run",
       "type": "function",
       "file_path": "ui/common/workers.py",
-      "line": 89
+      "line": 90
     },
     {
       "id": "ui.views.ke_hoach_view",
@@ -2542,47 +2542,47 @@
     "main": {
       "module_name": "main",
       "file_path": "main.py",
-      "mtime": 1783492118.3141,
+      "mtime": 1783492733.7867818,
       "imports": [
         {
           "type": "direct",
           "name": "sys",
           "asname": null,
-          "line": 8
+          "line": 9
         },
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "logging.handlers",
           "name": "RotatingFileHandler",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "pathlib",
           "name": "Path",
           "asname": null,
-          "line": 11
+          "line": 12
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QApplication",
           "asname": null,
-          "line": 33
+          "line": 34
         },
         {
           "type": "from",
           "module": "ui.main_window",
           "name": "MainWindow",
           "asname": null,
-          "line": 34
+          "line": 35
         }
       ],
       "classes": [],
@@ -2595,8 +2595,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 37,
-          "end_line": 59
+          "line": 38,
+          "end_line": 60
         }
       ],
       "calls": [
@@ -2604,122 +2604,122 @@
           "caller": "main.main",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 43
+          "line": 44
         },
         {
           "caller": "main.main",
           "call_name": "QApplication",
           "caller_obj": null,
-          "line": 45
+          "line": 46
         },
         {
           "caller": "main.main",
           "call_name": "setStyle",
           "caller_obj": "app",
-          "line": 48
+          "line": 49
         },
         {
           "caller": "main.main",
           "call_name": "MainWindow",
           "caller_obj": null,
-          "line": 50
+          "line": 51
         },
         {
           "caller": "main.main",
           "call_name": "show",
           "caller_obj": "window",
-          "line": 51
+          "line": 52
         },
         {
           "caller": "main.main",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 53
+          "line": 54
         },
         {
           "caller": "main.main",
           "call_name": "exit",
           "caller_obj": "sys",
-          "line": 54
+          "line": 55
         },
         {
           "caller": "main.main",
           "call_name": "exec",
           "caller_obj": "app",
-          "line": 54
+          "line": 55
         },
         {
           "caller": "main.main",
           "call_name": "critical",
           "caller_obj": "logger",
-          "line": 56
+          "line": 57
         },
         {
           "caller": "main.main",
           "call_name": "str",
           "caller_obj": null,
-          "line": 57
+          "line": 58
         },
         {
           "caller": "main.main",
           "call_name": "exit",
           "caller_obj": "sys",
-          "line": 59
+          "line": 60
         }
       ]
     },
     "core.database": {
       "module_name": "core.database",
       "file_path": "core/database.py",
-      "mtime": 1783492077.6970332,
+      "mtime": 1783492733.7058308,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Generator",
           "asname": null,
-          "line": 11
+          "line": 12
         },
         {
           "type": "from",
           "module": "sqlalchemy",
           "name": "create_engine",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "sqlalchemy.orm",
           "name": "declarative_base",
           "asname": null,
-          "line": 13
+          "line": 14
         },
         {
           "type": "from",
           "module": "sqlalchemy.orm",
           "name": "sessionmaker",
           "asname": null,
-          "line": 13
+          "line": 14
         },
         {
           "type": "from",
           "module": "sqlalchemy.orm",
           "name": "Session",
           "asname": null,
-          "line": 13
+          "line": 14
         },
         {
           "type": "from",
           "module": "config",
           "name": "DATABASE_URL",
           "asname": null,
-          "line": 15
+          "line": 16
         }
       ],
       "classes": [],
@@ -2732,8 +2732,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "Generator[Tuple[Session, None, None]]",
-          "line": 41,
-          "end_line": 54
+          "line": 42,
+          "end_line": 55
         }
       ],
       "calls": [
@@ -2741,13 +2741,13 @@
           "caller": "core.database.get_db",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 50
+          "line": 51
         },
         {
           "caller": "core.database.get_db",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 54
+          "line": 55
         }
       ]
     },
@@ -9852,125 +9852,125 @@
     "ui.main_window": {
       "module_name": "ui.main_window",
       "file_path": "ui/main_window.py",
-      "mtime": 1783491718.1964593,
+      "mtime": 1783492734.0042489,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 11
+          "line": 12
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMainWindow",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHBoxLayout",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QVBoxLayout",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QStackedWidget",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QFrame",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QButtonGroup",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QListWidget",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QListWidgetItem",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "Qt",
           "asname": null,
-          "line": 25
+          "line": 26
         },
         {
           "type": "from",
           "module": "ui.views.thiet_ke_view",
           "name": "ThietKeView",
           "asname": null,
-          "line": 27
+          "line": 28
         },
         {
           "type": "from",
           "module": "ui.views.ke_hoach_view",
           "name": "KeHoachView",
           "asname": null,
-          "line": 28
+          "line": 29
         },
         {
           "type": "from",
           "module": "ui.common.workers",
           "name": "ProjectLoaderThread",
           "asname": null,
-          "line": 29
+          "line": 30
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 266
+          "line": 267
         }
       ],
       "classes": [
@@ -9980,8 +9980,8 @@
           "bases": [
             "QMainWindow"
           ],
-          "line": 34,
-          "end_line": 406
+          "line": 35,
+          "end_line": 407
         }
       ],
       "functions": [
@@ -9993,8 +9993,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 41,
-          "end_line": 49
+          "line": 42,
+          "end_line": 50
         },
         {
           "id": "ui.main_window.MainWindow._init_ui",
@@ -10004,8 +10004,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 51,
-          "end_line": 94
+          "line": 52,
+          "end_line": 95
         },
         {
           "id": "ui.main_window.MainWindow._create_sidebar",
@@ -10015,8 +10015,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QFrame",
-          "line": 96,
-          "end_line": 147
+          "line": 97,
+          "end_line": 148
         },
         {
           "id": "ui.main_window.MainWindow._create_header",
@@ -10026,8 +10026,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QFrame",
-          "line": 149,
-          "end_line": 194
+          "line": 150,
+          "end_line": 195
         },
         {
           "id": "ui.main_window.MainWindow.load_projects",
@@ -10037,8 +10037,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 196,
-          "end_line": 212
+          "line": 197,
+          "end_line": 213
         },
         {
           "id": "ui.main_window.MainWindow._on_projects_loaded",
@@ -10052,8 +10052,8 @@
             "projects": "list[dict]"
           },
           "return_hint": "None",
-          "line": 214,
-          "end_line": 247
+          "line": 215,
+          "end_line": 248
         },
         {
           "id": "ui.main_window.MainWindow._on_projects_load_error",
@@ -10067,8 +10067,8 @@
             "err_msg": "str"
           },
           "return_hint": "None",
-          "line": 249,
-          "end_line": 274
+          "line": 250,
+          "end_line": 275
         },
         {
           "id": "ui.main_window.MainWindow._on_project_selected",
@@ -10078,8 +10078,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 276,
-          "end_line": 308
+          "line": 277,
+          "end_line": 309
         },
         {
           "id": "ui.main_window.MainWindow._switch_view",
@@ -10093,8 +10093,8 @@
             "index": "int"
           },
           "return_hint": "None",
-          "line": 310,
-          "end_line": 323
+          "line": 311,
+          "end_line": 324
         },
         {
           "id": "ui.main_window.MainWindow._apply_styles",
@@ -10104,8 +10104,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 325,
-          "end_line": 406
+          "line": 326,
+          "end_line": 407
         }
       ],
       "calls": [
@@ -10113,157 +10113,151 @@
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 42
+          "line": 43
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 42
+          "line": 43
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "setWindowTitle",
           "caller_obj": "self",
-          "line": 43
+          "line": 44
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "resize",
           "caller_obj": "self",
-          "line": 44
+          "line": 45
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "setMinimumSize",
           "caller_obj": "self",
-          "line": 45
+          "line": 46
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 48
+          "line": 49
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "load_projects",
           "caller_obj": "self",
-          "line": 49
+          "line": 50
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QWidget",
           "caller_obj": null,
-          "line": 53
+          "line": 54
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setCentralWidget",
           "caller_obj": "self",
-          "line": 54
+          "line": 55
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 57
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setContentsMargins",
-          "caller_obj": "main_layout",
           "line": 58
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setSpacing",
+          "call_name": "setContentsMargins",
           "caller_obj": "main_layout",
           "line": 59
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "setSpacing",
+          "caller_obj": "main_layout",
+          "line": 60
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "_create_sidebar",
           "caller_obj": "self",
-          "line": 62
+          "line": 63
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "main_layout",
-          "line": 63
+          "line": 64
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QWidget",
           "caller_obj": null,
-          "line": 66
+          "line": 67
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 67
+          "line": 68
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "right_layout",
-          "line": 68
+          "line": 69
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "right_layout",
-          "line": 69
+          "line": 70
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "_create_header",
           "caller_obj": "self",
-          "line": 72
+          "line": 73
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "right_layout",
-          "line": 73
+          "line": 74
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QStackedWidget",
           "caller_obj": null,
-          "line": 76
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "right_layout",
           "line": 77
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "addWidget",
+          "caller_obj": "right_layout",
+          "line": 78
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
           "caller_obj": "main_layout",
-          "line": 79
+          "line": 80
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "ThietKeView",
           "caller_obj": null,
-          "line": 82
+          "line": 83
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "KeHoachView",
           "caller_obj": null,
-          "line": 83
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "self.content_stack",
-          "line": 86
+          "line": 84
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
@@ -10273,699 +10267,705 @@
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.content_stack",
+          "line": 88
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "_apply_styles",
           "caller_obj": "self",
-          "line": 90
+          "line": 91
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setCurrentIndex",
           "caller_obj": "self.content_stack",
-          "line": 93
+          "line": 94
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setChecked",
           "caller_obj": "self.btn_thiet_ke",
-          "line": 94
+          "line": 95
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 102
+          "line": 103
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
           "caller_obj": "sidebar",
-          "line": 103
+          "line": 104
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 105
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setContentsMargins",
-          "caller_obj": "sidebar_layout",
           "line": 106
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setSpacing",
+          "call_name": "setContentsMargins",
           "caller_obj": "sidebar_layout",
           "line": 107
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 110
+          "call_name": "setSpacing",
+          "caller_obj": "sidebar_layout",
+          "line": 108
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setObjectName",
-          "caller_obj": "brand_label",
+          "call_name": "QLabel",
+          "caller_obj": null,
           "line": 111
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setAlignment",
+          "call_name": "setObjectName",
           "caller_obj": "brand_label",
           "line": 112
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setAlignment",
+          "caller_obj": "brand_label",
+          "line": 113
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 113
+          "line": 114
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 115
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setObjectName",
-          "caller_obj": "sub_brand_label",
           "line": 116
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setAlignment",
+          "call_name": "setObjectName",
           "caller_obj": "sub_brand_label",
           "line": 117
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setAlignment",
+          "caller_obj": "sub_brand_label",
+          "line": 118
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 118
+          "line": 119
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 121
+          "line": 122
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setFrameShape",
           "caller_obj": "divider",
-          "line": 122
+          "line": 123
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setFrameShadow",
           "caller_obj": "divider",
-          "line": 123
+          "line": 124
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setStyleSheet",
           "caller_obj": "divider",
-          "line": 124
+          "line": 125
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 125
+          "line": 126
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 128
+          "line": 129
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setStyleSheet",
           "caller_obj": "lbl_select",
-          "line": 129
+          "line": 130
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 132
+          "line": 133
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QListWidget",
           "caller_obj": null,
-          "line": 134
+          "line": 135
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
           "caller_obj": "self.lst_projects",
-          "line": 135
+          "line": 136
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "connect",
           "caller_obj": "self.lst_projects.itemSelectionChanged",
-          "line": 136
+          "line": 137
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 137
+          "line": 138
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 140
+          "line": 141
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setStyleSheet",
           "caller_obj": "version_label",
-          "line": 141
+          "line": 142
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setAlignment",
           "caller_obj": "version_label",
-          "line": 144
+          "line": 145
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 145
+          "line": 146
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 157
+          "line": 158
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setObjectName",
           "caller_obj": "header",
-          "line": 158
+          "line": 159
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 160
+          "line": 161
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setContentsMargins",
           "caller_obj": "header_layout",
-          "line": 161
+          "line": 162
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 164
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setObjectName",
-          "caller_obj": "self.lbl_header_project",
           "line": 165
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setStyleSheet",
+          "call_name": "setObjectName",
           "caller_obj": "self.lbl_header_project",
           "line": 166
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.lbl_header_project",
+          "line": 167
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addWidget",
           "caller_obj": "header_layout",
-          "line": 169
+          "line": 170
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addStretch",
           "caller_obj": "header_layout",
-          "line": 172
+          "line": 173
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QButtonGroup",
           "caller_obj": null,
-          "line": 175
+          "line": 176
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setExclusive",
           "caller_obj": "self.button_group",
-          "line": 176
+          "line": 177
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 179
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setObjectName",
-          "caller_obj": "self.btn_thiet_ke",
           "line": 180
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setCheckable",
+          "call_name": "setObjectName",
           "caller_obj": "self.btn_thiet_ke",
           "line": 181
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setCheckable",
+          "caller_obj": "self.btn_thiet_ke",
+          "line": 182
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "connect",
           "caller_obj": "self.btn_thiet_ke.clicked",
-          "line": 182
+          "line": 183
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "_switch_view",
           "caller_obj": "self",
-          "line": 182
+          "line": 183
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addButton",
           "caller_obj": "self.button_group",
-          "line": 183
+          "line": 184
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addWidget",
           "caller_obj": "header_layout",
-          "line": 184
+          "line": 185
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 187
+          "line": 188
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setObjectName",
           "caller_obj": "self.btn_ke_hoach",
-          "line": 188
+          "line": 189
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setCheckable",
           "caller_obj": "self.btn_ke_hoach",
-          "line": 189
+          "line": 190
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "connect",
           "caller_obj": "self.btn_ke_hoach.clicked",
-          "line": 190
+          "line": 191
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "_switch_view",
           "caller_obj": "self",
-          "line": 190
+          "line": 191
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addButton",
           "caller_obj": "self.button_group",
-          "line": 191
+          "line": 192
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addWidget",
           "caller_obj": "header_layout",
-          "line": 192
+          "line": 193
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 198
-        },
-        {
-          "caller": "ui.main_window.MainWindow.load_projects",
-          "call_name": "blockSignals",
-          "caller_obj": "self.lst_projects",
           "line": 199
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
-          "call_name": "clear",
+          "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
           "line": 200
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
+          "call_name": "clear",
+          "caller_obj": "self.lst_projects",
+          "line": 201
+        },
+        {
+          "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 203
+          "line": 204
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "setFlags",
           "caller_obj": "loading_item",
-          "line": 204
-        },
-        {
-          "caller": "ui.main_window.MainWindow.load_projects",
-          "call_name": "addItem",
-          "caller_obj": "self.lst_projects",
           "line": 205
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
-          "call_name": "blockSignals",
+          "call_name": "addItem",
           "caller_obj": "self.lst_projects",
           "line": 206
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
-          "call_name": "ProjectLoaderThread",
-          "caller_obj": null,
-          "line": 209
+          "call_name": "blockSignals",
+          "caller_obj": "self.lst_projects",
+          "line": 207
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
-          "call_name": "connect",
-          "caller_obj": "self.project_loader_thread.finished",
+          "call_name": "ProjectLoaderThread",
+          "caller_obj": null,
           "line": 210
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "connect",
-          "caller_obj": "self.project_loader_thread.error",
+          "caller_obj": "self.project_loader_thread.finished",
           "line": 211
+        },
+        {
+          "caller": "ui.main_window.MainWindow.load_projects",
+          "call_name": "connect",
+          "caller_obj": "self.project_loader_thread.error",
+          "line": 212
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "start",
           "caller_obj": "self.project_loader_thread",
-          "line": 212
+          "line": 213
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 220
-        },
-        {
-          "caller": "ui.main_window.MainWindow._on_projects_loaded",
-          "call_name": "blockSignals",
-          "caller_obj": "self.lst_projects",
           "line": 221
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
-          "call_name": "clear",
+          "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
           "line": 222
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
+          "call_name": "clear",
+          "caller_obj": "self.lst_projects",
+          "line": 223
+        },
+        {
+          "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 230
+          "line": 231
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "setData",
           "caller_obj": "item",
-          "line": 231
+          "line": 232
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 232
+          "line": 233
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 234
+          "line": 235
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "count",
           "caller_obj": "self.lst_projects",
-          "line": 237
+          "line": 238
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "range",
           "caller_obj": null,
-          "line": 240
+          "line": 241
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "count",
           "caller_obj": "self.lst_projects",
-          "line": 240
+          "line": 241
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "item",
           "caller_obj": "self.lst_projects",
-          "line": 241
+          "line": 242
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "data",
           "caller_obj": "item",
-          "line": 242
+          "line": 243
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "setCurrentRow",
           "caller_obj": "self.lst_projects",
-          "line": 245
+          "line": 246
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "_on_project_selected",
           "caller_obj": "self",
-          "line": 247
+          "line": 248
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 255
-        },
-        {
-          "caller": "ui.main_window.MainWindow._on_projects_load_error",
-          "call_name": "blockSignals",
-          "caller_obj": "self.lst_projects",
           "line": 256
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
-          "call_name": "clear",
+          "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
           "line": 257
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
+          "call_name": "clear",
+          "caller_obj": "self.lst_projects",
+          "line": 258
+        },
+        {
+          "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 260
+          "line": 261
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "setData",
           "caller_obj": "error_item",
-          "line": 261
+          "line": 262
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 262
+          "line": 263
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 263
+          "line": 264
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 268
+          "line": 269
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "selectedItems",
           "caller_obj": "self.lst_projects",
-          "line": 278
+          "line": 279
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "data",
           "caller_obj": "item",
-          "line": 281
+          "line": 282
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 284
+          "line": 285
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "load_projects",
           "caller_obj": "self",
-          "line": 285
+          "line": 286
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 288
+          "line": 289
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "setText",
           "caller_obj": "self.lbl_header_project",
-          "line": 291
+          "line": 292
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "text",
           "caller_obj": "item",
-          "line": 291
+          "line": 292
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "currentIndex",
           "caller_obj": "self.content_stack",
-          "line": 294
+          "line": 295
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 295
+          "line": 296
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 296
+          "line": 297
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 297
+          "line": 298
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 298
+          "line": 299
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 300
+          "line": 301
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "setText",
           "caller_obj": "self.lbl_header_project",
-          "line": 302
+          "line": 303
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "currentIndex",
           "caller_obj": "self.content_stack",
-          "line": 304
+          "line": 305
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 305
+          "line": 306
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 306
+          "line": 307
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 307
+          "line": 308
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 308
+          "line": 309
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 316
+          "line": 317
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "setCurrentIndex",
           "caller_obj": "self.content_stack",
-          "line": 317
+          "line": 318
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 320
+          "line": 321
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 321
+          "line": 322
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 322
+          "line": 323
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 323
+          "line": 324
         },
         {
           "caller": "ui.main_window.MainWindow._apply_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 327
+          "line": 328
         }
       ]
     },
@@ -11663,55 +11663,55 @@
     "ui.common.workers": {
       "module_name": "ui.common.workers",
       "file_path": "ui/common/workers.py",
-      "mtime": 1783492257.773057,
+      "mtime": 1783492733.8659792,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QThread",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "pyqtSignal",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "drawing_service",
           "asname": null,
-          "line": 13
+          "line": 14
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "project_service",
           "asname": null,
-          "line": 13
+          "line": 14
         },
         {
           "type": "from",
           "module": "sqlalchemy",
           "name": "text",
           "asname": null,
-          "line": 37
+          "line": 38
         }
       ],
       "classes": [
@@ -11721,8 +11721,8 @@
           "bases": [
             "QThread"
           ],
-          "line": 18,
-          "end_line": 67
+          "line": 19,
+          "end_line": 68
         },
         {
           "id": "ui.common.workers.DrawingLoaderThread",
@@ -11730,8 +11730,8 @@
           "bases": [
             "QThread"
           ],
-          "line": 70,
-          "end_line": 126
+          "line": 71,
+          "end_line": 127
         }
       ],
       "functions": [
@@ -11743,8 +11743,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 28,
-          "end_line": 30
+          "line": 29,
+          "end_line": 31
         },
         {
           "id": "ui.common.workers.ProjectLoaderThread.run",
@@ -11754,8 +11754,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 32,
-          "end_line": 67
+          "line": 33,
+          "end_line": 68
         },
         {
           "id": "ui.common.workers.DrawingLoaderThread.__init__",
@@ -11769,8 +11769,8 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 80,
-          "end_line": 87
+          "line": 81,
+          "end_line": 88
         },
         {
           "id": "ui.common.workers.DrawingLoaderThread.run",
@@ -11780,8 +11780,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 89,
-          "end_line": 126
+          "line": 90,
+          "end_line": 127
         }
       ],
       "calls": [
@@ -11789,181 +11789,181 @@
           "caller": "ui.common.workers.ProjectLoaderThread.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 30
+          "line": 31
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 30
+          "line": 31
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 34
+          "line": 35
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 35
+          "line": 36
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "execute",
           "caller_obj": "db",
-          "line": 39
+          "line": 40
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "text",
           "caller_obj": null,
-          "line": 39
+          "line": 40
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "list_active_projects",
           "caller_obj": "project_service",
-          "line": 40
+          "line": 41
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "append",
           "caller_obj": "raw_projects",
-          "line": 46
+          "line": 47
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 54
+          "line": 55
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "len",
           "caller_obj": null,
-          "line": 56
+          "line": 57
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.finished",
-          "line": 58
+          "line": 59
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 60
+          "line": 61
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 62
+          "line": 63
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.error",
-          "line": 65
+          "line": 66
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 65
+          "line": 66
         },
         {
           "caller": "ui.common.workers.ProjectLoaderThread.run",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 67
+          "line": 68
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 86
+          "line": 87
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 86
+          "line": 87
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 91
+          "line": 92
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 92
+          "line": 93
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "get_project_drawings",
           "caller_obj": "drawing_service",
-          "line": 94
+          "line": 95
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "append",
           "caller_obj": "raw_drawings",
-          "line": 100
+          "line": 101
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 111
+          "line": 112
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "len",
           "caller_obj": null,
-          "line": 114
+          "line": 115
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.finished",
-          "line": 116
+          "line": 117
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 118
+          "line": 119
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 121
+          "line": 122
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "emit",
           "caller_obj": "self.error",
-          "line": 124
+          "line": 125
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "str",
           "caller_obj": null,
-          "line": 124
+          "line": 125
         },
         {
           "caller": "ui.common.workers.DrawingLoaderThread.run",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 126
+          "line": 127
         }
       ]
     },
