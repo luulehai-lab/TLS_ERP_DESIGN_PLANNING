@@ -1,6 +1,7 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng)
 # CHANGELOG:
+# - 18:23:41 08/07/2026: [UPDATE] feat(ui): support project sections and drawings nesting, optimize layout rendering (Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:08:00 08/07/2026: [UPDATE] Thêm cột Hạng mục vào danh sách bản vẽ của phòng Kế hoạch (Antigravity)
 # - 17:53:55 08/07/2026: [FIX] fix(ui): fix white text on white background in Windows Dark Mode for QLineEdit, QTableWidget, and QMessageBox (Antigravity)
@@ -169,6 +170,7 @@ class KeHoachView(QWidget):
         header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
         header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
         header.setSectionResizeMode(5, QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
 
         # Cấu hình chọn nguyên dòng để dễ xử lý thao tác
         self.tbl_drawings.setSelectionBehavior(
@@ -280,7 +282,7 @@ class KeHoachView(QWidget):
             item_link = QTableWidgetItem(d["drive_link"] or "Trống")
             item_link.setFlags(item_link.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
-            item_time = QTableWidgetItem(d["updated_at"].strftime("%H:%M:%S %d/%m/%Y"))
+            item_time = QTableWidgetItem(d["updated_at"].strftime("%d/%m/%y_%H:%M:%S"))
             item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
             self.tbl_drawings.setItem(r, 0, item_id)

@@ -1,6 +1,7 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Màn hình ban hành bản vẽ dành cho phòng Thiết kế
 # CHANGELOG:
+# - 18:23:41 08/07/2026: [UPDATE] feat(ui): support project sections and drawings nesting, optimize layout rendering (Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:08:00 08/07/2026: [UPDATE] Cập nhật thiet_ke_view để hỗ trợ lựa chọn Hạng mục khi ban hành bản vẽ và hiển thị cột Hạng mục (Antigravity)
 # - 18:03:19 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
@@ -185,6 +186,9 @@ class ThietKeView(QWidget):
         header.setSectionResizeMode(
             5, QHeaderView.ResizeMode.Stretch
         )  # Link Drive tự giãn
+        header.setSectionResizeMode(
+            6, QHeaderView.ResizeMode.ResizeToContents
+        )  # Cập nhật lúc tự giãn theo nội dung
 
         # Cấu hình chọn nguyên dòng để phục vụ lưu dòng chọn
         self.tbl_drawings.setSelectionBehavior(
@@ -318,7 +322,7 @@ class ThietKeView(QWidget):
             item_link = QTableWidgetItem(d["drive_link"] or "Trống")
             item_link.setFlags(item_link.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
-            item_time = QTableWidgetItem(d["updated_at"].strftime("%H:%M:%S %d/%m/%Y"))
+            item_time = QTableWidgetItem(d["updated_at"].strftime("%d/%m/%y_%H:%M:%S"))
             item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
             self.tbl_drawings.setItem(r, 0, item_id)
