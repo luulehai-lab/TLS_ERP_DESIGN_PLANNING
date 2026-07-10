@@ -1,6 +1,7 @@
 # Tên file: ui/sidebar.py
 # CHỨC NĂNG: Thanh Sidebar bên trái chứa danh sách dự án và các nút tạo mới/xóa dự án
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:28:00 10/07/2026: [NEW] Tách SidebarWidget từ MainWindow để tối ưu cấu trúc module (Lê Thanh Vân/Antigravity)
 
@@ -19,8 +20,9 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, pyqtSignal, QPoint
 
 from ui.common.workers import ProjectLoaderThread
-from core.database import SessionLocal
+from core.services.project_service import delete_project_safe
 from ui.views.du_an.project_dialog import CreateProjectDialog
+from ui.styles.theme import TLSTheme
 
 logger = logging.getLogger(__name__)
 
@@ -65,50 +67,59 @@ class SidebarWidget(QFrame):
         sidebar_layout.setContentsMargins(15, 25, 15, 20)
         sidebar_layout.setSpacing(10)
 
-        # Phần tiêu đề thương hiệu TLS
+        # 1. Phần tiêu đề thương hiệu TLS
+        self._setup_branding(sidebar_layout)
+
+        # 2. Danh sách dự án và các nút điều khiển
+        self._setup_project_list(sidebar_layout)
+
+        # Thông tin bản quyền / Version ở chân sidebar
+        version_label = QLabel("Phiên bản v1.0.0", self)
+        version_label.setStyleSheet(
+            "color: #94A3B8; font-size: 11px; margin-top: 10px;"
+        )
+        version_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        sidebar_layout.addWidget(version_label)
+
+    def _setup_branding(self, layout: QVBoxLayout) -> None:
+        """Thiết lập phần thương hiệu TLS trên đầu Sidebar.
+
+        Args:
+            layout: Bố cục chính của Sidebar.
+        """
         brand_label = QLabel("TUAN LONG STEEL", self)
         brand_label.setObjectName("brandLabel")
         brand_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        sidebar_layout.addWidget(brand_label)
+        layout.addWidget(brand_label)
 
         sub_brand_label = QLabel("ERP TK-KH SYSTEM", self)
         sub_brand_label.setObjectName("subBrandLabel")
         sub_brand_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        sidebar_layout.addWidget(sub_brand_label)
+        layout.addWidget(sub_brand_label)
 
         # Đường gạch trang trí
         divider = QFrame(self)
         divider.setFrameShape(QFrame.Shape.HLine)
         divider.setFrameShadow(QFrame.Shadow.Sunken)
         divider.setStyleSheet("background-color: #1E293B; margin: 10px 0px;")
-        sidebar_layout.addWidget(divider)
+        layout.addWidget(divider)
 
+    def _setup_project_list(self, layout: QVBoxLayout) -> None:
+        """Thiết lập nút bấm tạo dự án và list widget dự án.
+
+        Args:
+            layout: Bố cục chính của Sidebar.
+        """
         # Tiêu đề danh sách
         lbl_select = QLabel("DANH SÁCH DỰ ÁN:", self)
         lbl_select.setStyleSheet(
             "color: #38BDF8; font-size: 11px; font-weight: bold; margin-left: 2px;"
         )
-        sidebar_layout.addWidget(lbl_select)
+        layout.addWidget(lbl_select)
 
         # Nút tạo dự án mới (chỉ hiển thị với luu.lehai@gmail.com)
         self.btn_new_project = QPushButton("➕ Tạo dự án mới", self)
-        self.btn_new_project.setStyleSheet(
-            """
-            QPushButton {
-                background-color: #0284C7;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                padding: 8px 12px;
-                font-weight: bold;
-                font-size: 12px;
-                margin: 5px 0px;
-            }
-            QPushButton:hover {
-                background-color: #0369A1;
-            }
-            """
-        )
+        self.btn_new_project.setStyleSheet(TLSTheme.new_project_button_stylesheet())
         self.btn_new_project.clicked.connect(self._show_create_project_dialog)
 
         if self.user_email == "luu.lehai@gmail.com":
@@ -116,7 +127,7 @@ class SidebarWidget(QFrame):
         else:
             self.btn_new_project.hide()
 
-        sidebar_layout.addWidget(self.btn_new_project)
+        layout.addWidget(self.btn_new_project)
 
         # Danh sách dự án
         self.lst_projects = QListWidget(self)
@@ -126,15 +137,7 @@ class SidebarWidget(QFrame):
             self._show_project_context_menu
         )
         self.lst_projects.itemSelectionChanged.connect(self._on_project_selected)
-        sidebar_layout.addWidget(self.lst_projects)
-
-        # Thông tin bản quyền / Version ở chân sidebar
-        version_label = QLabel("Phiên bản v1.0.0", self)
-        version_label.setStyleSheet(
-            "color: #94A3B8; font-size: 11px; margin-top: 10px;"
-        )
-        version_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        sidebar_layout.addWidget(version_label)
+        layout.addWidget(self.lst_projects)
 
     def load_projects(self) -> None:
         """Truy vấn database bất đồng bộ để nạp danh sách dự án vào QListWidget."""
@@ -289,17 +292,12 @@ class SidebarWidget(QFrame):
             return
 
         success = False
-        db = SessionLocal()
         try:
-            from core.services import project_service
-
-            success = project_service.delete_project(db, project_id)
+            success = delete_project_safe(project_id)
         except Exception as e:
             logger.error(
                 "Lỗi khi xóa dự án '%s': %s", project_id, str(e), exc_info=True
             )
-        finally:
-            db.close()
 
         if success:
             QMessageBox.information(

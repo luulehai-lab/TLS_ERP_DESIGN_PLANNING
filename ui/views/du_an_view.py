@@ -1,4 +1,7 @@
+# Tên file: ui/views/du_an_view.py
+# CHỨC NĂNG: Màn hình tích hợp Quản lý Dự án & Hạng mục của phòng Thiết kế.
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 16:23:44 10/07/2026: [UPDATE] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
 # - 16:15:00 10/07/2026: [REFACTOR] Thay đổi từ layout 2 cột sang layout xếp dọc, hiển thị ProjectWidget ở trên, SectionWidget ở dưới. Thêm Welcome widget khi chưa chọn dự án. (Lê Thanh Vân/Antigravity)
@@ -37,14 +40,14 @@ class DuAnView(QWidget):
 
     def _init_ui(self) -> None:
         """Thiết lập các thành phần giao diện lắp ghép ProjectWidget và SectionWidget theo chiều dọc."""
-        self.main_layout = QVBoxLayout(self)
-        self.main_layout.setContentsMargins(20, 20, 20, 20)
-        self.main_layout.setSpacing(15)
+        self.layout_main = QVBoxLayout(self)
+        self.layout_main.setContentsMargins(20, 20, 20, 20)
+        self.layout_main.setSpacing(15)
 
         # 1. Phần tiêu đề màn hình
         title_label = QLabel("QUẢN LÝ DỰ ÁN & HẠNG MỤC DỰ ÁN", self)
         title_label.setStyleSheet("font-size: 20px; font-weight: bold; color: #1E293B;")
-        self.main_layout.addWidget(title_label)
+        self.layout_main.addWidget(title_label)
 
         # 2. Widget Chào mừng khi chưa chọn Dự án
         self.welcome_widget = QWidget(self)
@@ -67,7 +70,7 @@ class DuAnView(QWidget):
         welcome_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
         welcome_layout.addWidget(welcome_text)
 
-        self.main_layout.addWidget(self.welcome_widget)
+        self.layout_main.addWidget(self.welcome_widget)
 
         # 3. Khởi tạo 2 widget con nghiệp vụ
         self.project_widget = ProjectWidget(self)
@@ -76,8 +79,8 @@ class DuAnView(QWidget):
         # Kết nối tín hiệu cập nhật dự án để load lại Sidebar ở MainWindow
         self.project_widget.project_updated.connect(self._on_project_updated)
 
-        self.main_layout.addWidget(self.project_widget)
-        self.main_layout.addWidget(self.section_widget)
+        self.layout_main.addWidget(self.project_widget)
+        self.layout_main.addWidget(self.section_widget)
 
         # Áp dụng CSS QSS dùng chung
         self._apply_view_styles()
@@ -116,7 +119,11 @@ class DuAnView(QWidget):
             self.project_widget.set_project_id(self.current_project_id)
 
     def _on_project_updated(self, project_id: str) -> None:
-        """Xử lý khi cập nhật dự án thành công."""
+        """Xử lý khi cập nhật dự án thành công.
+
+        Args:
+            project_id: Mã định danh dự án được cập nhật.
+        """
         # Gọi làm mới danh sách dự án ở Sidebar của MainWindow
         if self.main_window and hasattr(self.main_window, "load_projects"):
             self.main_window.load_projects()

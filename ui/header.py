@@ -1,6 +1,7 @@
 # Tên file: ui/header.py
 # CHỨC NĂNG: Thanh Header nằm ngang phía trên điều phối đăng xuất và chuyển đổi các màn hình nghiệp vụ
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:30:00 10/07/2026: [NEW] Tách HeaderWidget từ MainWindow phục vụ tối ưu hóa cấu trúc (Lê Thanh Vân/Antigravity)
 
@@ -15,6 +16,8 @@ from PyQt6.QtWidgets import (
     QSizePolicy,
 )
 from PyQt6.QtCore import pyqtSignal
+
+from ui.styles.theme import TLSTheme
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +54,27 @@ class HeaderWidget(QFrame):
         header_layout = QHBoxLayout(self)
         header_layout.setContentsMargins(20, 10, 20, 10)
 
+        # 1. Thiết lập hiển thị dự án hiện hành và các tab điều hướng
+        self._setup_project_and_navigation(header_layout)
+
+        # Spacer đẩy các tab điều hướng sang phải
+        header_layout.addStretch()
+
+        # Thêm đường phân tách nhỏ
+        sep = QFrame(self)
+        sep.setFrameShape(QFrame.Shape.VLine)
+        sep.setStyleSheet("background-color: #E2E8F0; margin: 0px 15px;")
+        header_layout.addWidget(sep)
+
+        # 2. Thiết lập thông tin người dùng và đăng xuất
+        self._setup_user_profile(header_layout)
+
+    def _setup_project_and_navigation(self, header_layout: QHBoxLayout) -> None:
+        """Thiết lập phần hiển thị tên dự án hiện hành và các nút tab nghiệp vụ.
+
+        Args:
+            header_layout: Layout chính của Header để gắn các nút điều hướng.
+        """
         # Tên dự án hiện hành bên trái
         self.lbl_header_project = QLabel("DỰ ÁN HIỆN HÀNH: Chưa chọn", self)
         self.lbl_header_project.setObjectName("headerProjectLabel")
@@ -58,9 +82,6 @@ class HeaderWidget(QFrame):
             QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred
         )
         header_layout.addWidget(self.lbl_header_project)
-
-        # Spacer đẩy các tab điều hướng sang phải
-        header_layout.addStretch()
 
         # Group button quản lý trạng thái checked độc quyền cho tab ngang
         self.button_group = QButtonGroup(self)
@@ -95,13 +116,12 @@ class HeaderWidget(QFrame):
             self.btn_du_an.hide()
             self.btn_thiet_ke.hide()
 
-        # Thêm đường phân tách nhỏ
-        sep = QFrame(self)
-        sep.setFrameShape(QFrame.Shape.VLine)
-        sep.setStyleSheet("background-color: #E2E8F0; margin: 0px 15px;")
-        header_layout.addWidget(sep)
+    def _setup_user_profile(self, header_layout: QHBoxLayout) -> None:
+        """Thiết lập phần hiển thị thông tin người dùng đăng nhập và nút đăng xuất.
 
-        # Khung thông tin User đăng nhập
+        Args:
+            header_layout: Layout chính của Header để gắn thông tin user.
+        """
         user_info_widget = QWidget(self)
         user_info_layout = QHBoxLayout(user_info_widget)
         user_info_layout.setContentsMargins(0, 0, 0, 0)
@@ -110,20 +130,7 @@ class HeaderWidget(QFrame):
         # Avatar tròn giả lập bằng chữ cái đầu của email
         first_char = self.user_email[0].upper() if self.user_email else "U"
         self.lbl_avatar = QLabel(first_char, user_info_widget)
-        self.lbl_avatar.setStyleSheet(
-            """
-            background-color: #38BDF8;
-            color: #0F172A;
-            font-weight: bold;
-            font-size: 13px;
-            border-radius: 14px;
-            min-width: 28px;
-            max-width: 28px;
-            min-height: 28px;
-            max-height: 28px;
-            qproperty-alignment: 'AlignCenter';
-            """
-        )
+        self.lbl_avatar.setStyleSheet(TLSTheme.avatar_stylesheet())
         user_info_layout.addWidget(self.lbl_avatar)
 
         # Label email và vai trò
@@ -136,17 +143,7 @@ class HeaderWidget(QFrame):
 
         # Nút đăng xuất
         self.btn_logout = QPushButton("🚪 Đăng xuất", user_info_widget)
-        self.btn_logout.setStyleSheet(
-            """
-            background-color: #F1F5F9;
-            color: #EF4444;
-            border: 1px solid #E2E8F0;
-            border-radius: 5px;
-            padding: 5px 10px;
-            font-size: 11px;
-            font-weight: bold;
-            """
-        )
+        self.btn_logout.setStyleSheet(TLSTheme.logout_button_stylesheet())
         self.btn_logout.clicked.connect(self.logout_clicked.emit)
         user_info_layout.addWidget(self.btn_logout)
 

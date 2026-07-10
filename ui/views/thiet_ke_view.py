@@ -1,6 +1,7 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:45:00 10/07/2026: [REFACTOR] Kế thừa BaseDrawingView để tối ưu hóa code và sử dụng theme dùng chung (Lê Thanh Vân/Antigravity)
 
@@ -19,8 +20,8 @@ from PyQt6.QtWidgets import (
 
 from ui.styles.theme import TLSTheme
 from ui.common.base_drawing_view import BaseDrawingView
-from core.database import SessionLocal
-from core.services import drawing_service, section_service
+from core.services.section_service import list_project_sections_safe
+from core.services.drawing_service import create_drawing_safe
 
 logger = logging.getLogger(__name__)
 
@@ -119,11 +120,8 @@ class ThietKeView(BaseDrawingView):
         self.cb_sections.addItem("--- Không chọn hạng mục ---", None)
         if not self.current_project_id:
             return
-        db = SessionLocal()
         try:
-            sections = section_service.list_project_sections(
-                db, self.current_project_id
-            )
+            sections = list_project_sections_safe(self.current_project_id)
             for s in sections:
                 self.cb_sections.addItem(
                     f"{s.section_code} - {s.section_name}", s.section_id
@@ -134,8 +132,6 @@ class ThietKeView(BaseDrawingView):
                 str(e),
                 exc_info=True,
             )
-        finally:
-            db.close()
 
     def _on_create_drawing(self) -> None:
         """Xử lý sự kiện click nút [Ban hành Bản vẽ]."""
@@ -167,17 +163,14 @@ class ThietKeView(BaseDrawingView):
         }
 
         created_success = False
-        db = SessionLocal()
         try:
-            draw = drawing_service.create_drawing(db, project_id, drawing_data)
+            draw = create_drawing_safe(project_id, drawing_data)
             if draw:
                 created_success = True
         except Exception as e:
             logger.error(
                 "ThietKeView: Lỗi khi ban hành bản vẽ: %s", str(e), exc_info=True
             )
-        finally:
-            db.close()
 
         if created_success:
             QMessageBox.information(

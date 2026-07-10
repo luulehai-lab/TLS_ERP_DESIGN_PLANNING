@@ -1,4 +1,7 @@
+# Tên file: ui/login_window.py
+# CHỨC NĂNG: Giao diện và luồng xử lý xác thực đăng nhập Google OAuth2 của hệ thống.
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 18:03:18 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
 # - 18:00:00 08/07/2026: [UPDATE] Cập nhật màu sắc nhãn phiên bản sáng lên để dễ nhìn trên nền tối (Antigravity)
@@ -9,6 +12,7 @@
 # - 14:13:50 08/07/2026: [NEW] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 14:20:00 08/07/2026: [NEW] Khởi tạo giao diện đăng nhập Google (Lê Thanh Vân/Antigravity)
 # - 17:52:00 10/07/2026: [REFACTOR] Thay thế styles thô bằng TLSTheme dùng chung (Lê Thanh Vân/Antigravity)
+
 
 import logging
 from typing import Any
@@ -38,6 +42,11 @@ class AuthWorkerThread(QThread):
     error: pyqtSignal = pyqtSignal(str)
 
     def __init__(self, auth_manager: GoogleAuthManager) -> None:
+        """Khởi tạo luồng phụ xác thực đăng nhập Google.
+
+        Args:
+            auth_manager: Đối tượng quản lý kết nối OAuth2 backend.
+        """
         super().__init__()
         self.auth_manager: GoogleAuthManager = auth_manager
         self._is_running: bool = True
@@ -73,6 +82,7 @@ class LoginWindow(QMainWindow):
     login_success: pyqtSignal = pyqtSignal(str, str)  # Phát đi: (email, department)
 
     def __init__(self) -> None:
+        """Khởi tạo cửa sổ Đăng nhập LoginWindow."""
         super().__init__()
         self.setWindowTitle("Đăng nhập hệ thống - TUAN LONG STEEL")
         self.resize(450, 550)
@@ -100,7 +110,21 @@ class LoginWindow(QMainWindow):
         card_layout.setContentsMargins(30, 40, 30, 40)
         card_layout.setSpacing(15)
 
-        # Tiêu đề thương hiệu
+        self._setup_branding(card, card_layout)
+        self._setup_login_controls(card, card_layout)
+
+        layout.addWidget(card)
+
+        # Áp dụng stylesheet
+        self._apply_styles()
+
+    def _setup_branding(self, card: QFrame, card_layout: QVBoxLayout) -> None:
+        """Thiết lập logo và tiêu đề thương hiệu TLS.
+
+        Args:
+            card: Khung Card chứa nhãn.
+            card_layout: Bố cục dọc của Card.
+        """
         brand_label = QLabel("TUAN LONG STEEL", card)
         brand_label.setObjectName("brandLabel")
         brand_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -118,6 +142,13 @@ class LoginWindow(QMainWindow):
         divider.setStyleSheet("background-color: #334155; margin: 15px 0px;")
         card_layout.addWidget(divider)
 
+    def _setup_login_controls(self, card: QFrame, card_layout: QVBoxLayout) -> None:
+        """Thiết lập các nút đăng nhập và phiên bản ở dưới Card.
+
+        Args:
+            card: Khung Card chứa.
+            card_layout: Bố cục dọc của Card.
+        """
         # Dòng giới thiệu
         intro_label = QLabel("Chào mừng anh đến với hệ thống quản lý.", card)
         intro_label.setObjectName("introLabel")
@@ -145,11 +176,6 @@ class LoginWindow(QMainWindow):
         version_label.setStyleSheet("color: #94A3B8; font-size: 11px;")
         version_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         card_layout.addWidget(version_label)
-
-        layout.addWidget(card)
-
-        # Áp dụng stylesheet
-        self._apply_styles()
 
     def _apply_styles(self) -> None:
         """Áp dụng bộ CSS QSS Premium Dark Slate từ TLSTheme."""

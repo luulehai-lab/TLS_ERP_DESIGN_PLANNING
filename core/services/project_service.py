@@ -1,6 +1,7 @@
 # Tên file: core/services/project_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Dự án (Project)
 # CHANGELOG:
+# - 18:28:00 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 15:33:49 10/07/2026: [UPDATE] feat(ui): add edit mode and designer roles for projects and sections (Antigravity)
 # - 15:28:00 10/07/2026: [UPDATE] Thêm hàm delete_project để xóa dự án theo ID (Lê Thanh Vân/Antigravity)
 # - 15:24:09 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
@@ -237,3 +238,89 @@ def delete_project(db: Session, project_id: str) -> bool:
             exc_info=True,
         )
         return False
+
+
+def delete_project_safe(project_id: str) -> bool:
+    """Xóa dự án tự động quản lý vòng đời Session (Safe).
+
+    Args:
+        project_id: Mã dự án cần xóa.
+
+    Returns:
+        True nếu xóa thành công, ngược lại False.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return delete_project(db, project_id)
+    finally:
+        db.close()
+
+
+def create_project_safe(
+    project_id: str,
+    project_name: str,
+    roles: dict[str, str | None] | None = None,
+) -> Project | None:
+    """Tạo dự án mới tự động quản lý vòng đời Session (Safe).
+
+    Args:
+        project_id: Mã dự án mới.
+        project_name: Tên dự án mới.
+        roles: Dictionary chứa các email vai trò.
+
+    Returns:
+        Project đối tượng được tạo hoặc None nếu lỗi.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return create_project(db, project_id, project_name, roles)
+    finally:
+        db.close()
+
+
+def update_project_safe(
+    project_id: str,
+    project_name: str,
+    roles: dict[str, str | None] | None = None,
+) -> Project | None:
+    """Cập nhật thông tin dự án tự động quản lý vòng đời Session (Safe).
+
+    Args:
+        project_id: Mã dự án cần cập nhật.
+        project_name: Tên dự án mới.
+        roles: Dictionary chứa các email vai trò mới.
+
+    Returns:
+        Project đối tượng sau cập nhật hoặc None.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return update_project(db, project_id, project_name, roles)
+    finally:
+        db.close()
+
+
+def get_project_safe(project_id: str) -> Project | None:
+    """Nạp dữ liệu dự án tự động quản lý vòng đời Session (Safe).
+
+    Args:
+        project_id: Mã dự án cần lấy thông tin.
+
+    Returns:
+        Project đối tượng tìm thấy hoặc None.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return db.query(Project).filter(Project.project_id == project_id).first()
+    finally:
+        db.close()
+
+

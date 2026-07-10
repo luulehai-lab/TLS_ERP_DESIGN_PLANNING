@@ -1,6 +1,7 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Tích hợp Sidebar và Header modular)
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:35:00 10/07/2026: [REFACTOR] Tách logic Sidebar và Header ra các widget con độc lập, áp dụng TLSTheme dùng chung (Lê Thanh Vân/Antigravity)
 
@@ -63,31 +64,15 @@ class MainWindow(QMainWindow):
         main_layout.setSpacing(0)
 
         # Tạo QSplitter nằm ngang giữa Sidebar và Content
-        self.main_splitter = QSplitter(Qt.Orientation.Horizontal, central_widget)
-        self.main_splitter.setHandleWidth(4)
-        self.main_splitter.setStyleSheet(
-            """
-            QSplitter::handle {
-                background-color: #CBD5E1;
-            }
-            QSplitter::handle:hover {
-                background-color: #38BDF8;
-            }
-            """
-        )
-        main_layout.addWidget(self.main_splitter)
+        self.splitter_main = QSplitter(Qt.Orientation.Horizontal, central_widget)
+        self.splitter_main.setHandleWidth(4)
+        self.splitter_main.setStyleSheet(TLSTheme.splitter_stylesheet())
+        main_layout.addWidget(self.splitter_main)
 
-        # 1. Sidebar bên trái (Chuyên hiển thị logo và danh sách dự án trải rộng)
-        self.sidebar = SidebarWidget(
-            self.main_splitter, self.user_email, self.user_dept
-        )
-        self.sidebar.setMinimumWidth(200)
-        self.sidebar.setMaximumWidth(500)
-        self.sidebar.project_selected.connect(self._on_project_selected_by_sidebar)
-        self.sidebar.project_deleted.connect(self._on_project_deleted_by_sidebar)
-        self.main_splitter.addWidget(self.sidebar)
+        # 1. Khởi tạo Sidebar bên trái
+        self._setup_left_sidebar()
 
-        # 2. Vùng bên phải (Bao gồm Header nằm ngang và Content Stack bên dưới)
+        # 2. Khởi tạo Vùng bên phải (Header và Content Stack)
         right_container = QWidget(self)
         right_container.setSizePolicy(
             QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred
@@ -97,6 +82,41 @@ class MainWindow(QMainWindow):
         right_layout.setContentsMargins(0, 0, 0, 0)
         right_layout.setSpacing(0)
 
+        self._setup_right_content(right_container, right_layout)
+
+        # Kết nối sự kiện di chuyển splitter để lưu lại trạng thái
+        self.splitter_main.splitterMoved.connect(self._save_splitter_state)
+
+        # Khôi phục trạng thái splitter nếu có
+        state = self.settings.value("main_splitter_state")
+        if state:
+            self.splitter_main.restoreState(state)
+        else:
+            self.splitter_main.setSizes([250, 950])
+
+        # Áp dụng stylesheet tổng thể sử dụng theme chung
+        self.setStyleSheet(TLSTheme.main_window_stylesheet())
+
+    def _setup_left_sidebar(self) -> None:
+        """Thiết lập Sidebar bên trái của MainWindow."""
+        self.sidebar = SidebarWidget(
+            self.splitter_main, self.user_email, self.user_dept
+        )
+        self.sidebar.setMinimumWidth(200)
+        self.sidebar.setMaximumWidth(500)
+        self.sidebar.project_selected.connect(self._on_project_selected_by_sidebar)
+        self.sidebar.project_deleted.connect(self._on_project_deleted_by_sidebar)
+        self.splitter_main.addWidget(self.sidebar)
+
+    def _setup_right_content(
+        self, right_container: QWidget, right_layout: QVBoxLayout
+    ) -> None:
+        """Thiết lập Header và Stacked Widget chứa các View phòng ban.
+
+        Args:
+            right_container: Widget chứa nội dung bên phải.
+            right_layout: Bố cục dọc của nội dung bên phải.
+        """
         # 2a. Header nằm ngang phía trên
         self.header = HeaderWidget(right_container, self.user_email, self.user_dept)
         self.header.view_switched.connect(self._switch_view)
@@ -107,17 +127,7 @@ class MainWindow(QMainWindow):
         self.content_stack = QStackedWidget(right_container)
         right_layout.addWidget(self.content_stack)
 
-        self.main_splitter.addWidget(right_container)
-
-        # Kết nối sự kiện di chuyển splitter để lưu lại trạng thái
-        self.main_splitter.splitterMoved.connect(self._save_splitter_state)
-
-        # Khôi phục trạng thái splitter nếu có
-        state = self.settings.value("main_splitter_state")
-        if state:
-            self.main_splitter.restoreState(state)
-        else:
-            self.main_splitter.setSizes([250, 950])
+        self.splitter_main.addWidget(right_container)
 
         # Khởi tạo các Views phòng ban
         from ui.views.du_an_view import DuAnView
@@ -131,9 +141,6 @@ class MainWindow(QMainWindow):
         self.content_stack.addWidget(self.thiet_ke_view)
         self.content_stack.addWidget(self.ke_hoach_view)
 
-        # Áp dụng stylesheet tổng thể sử dụng theme chung
-        self.setStyleSheet(TLSTheme.main_window_stylesheet())
-
         # Hiển thị View mặc định dựa vào phân quyền phòng ban
         if self.user_dept == "Kế hoạch":
             self._switch_view(2)
@@ -146,7 +153,7 @@ class MainWindow(QMainWindow):
 
     def _save_splitter_state(self) -> None:
         """Lưu lại trạng thái kích thước thanh kéo Sidebar."""
-        self.settings.setValue("main_splitter_state", self.main_splitter.saveState())
+        self.settings.setValue("main_splitter_state", self.splitter_main.saveState())
 
     def _on_project_selected_by_sidebar(
         self, project_id: str, display_text: str

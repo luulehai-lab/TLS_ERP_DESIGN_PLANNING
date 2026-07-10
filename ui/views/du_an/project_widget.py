@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/project_widget.py
 # CHỨC NĂNG: Giao diện hiển thị & chỉnh sửa thông tin Dự án hiện hành dạng hàng ngang nhỏ gọn
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 16:23:44 10/07/2026: [UPDATE] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
 # - 16:10:00 10/07/2026: [REFACTOR] Thay đổi thành Form xem/sửa dự án hiện hành dạng hàng ngang nhỏ gọn, loại bỏ bảng danh sách dự án (Lê Thanh Vân/Antigravity)
 # - 15:24:10 10/07/2026: [NEW] feat(auth): support auto login with SessionManager (Antigravity)
@@ -20,8 +21,8 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import pyqtSignal
 
-from core.database import SessionLocal
-from core.services import project_service
+from core.services.project_service import get_project_safe, update_project_safe
+from ui.styles.theme import TLSTheme
 
 logger = logging.getLogger(__name__)
 
@@ -53,6 +54,23 @@ class ProjectWidget(QWidget):
         grid.setSpacing(10)
         grid.setContentsMargins(15, 15, 15, 15)
 
+        # 1. Các trường thông tin nhập liệu
+        self._setup_info_fields(grid)
+
+        # 2. Nút hành động Lưu thay đổi
+        self._setup_action_buttons(grid)
+
+        layout.addWidget(self.group_box, 0, 0)
+
+        # Mặc định ban đầu khi chưa chọn dự án
+        self.set_project_id("")
+
+    def _setup_info_fields(self, grid: QGridLayout) -> None:
+        """Khởi tạo các trường nhập liệu thông tin dự án.
+
+        Args:
+            grid: Bố cục lưới của GroupBox.
+        """
         # Hàng 0: Mã dự án và Tên dự án
         grid.addWidget(QLabel("Mã Dự án:", self.group_box), 0, 0)
         self.txt_project_id = QLineEdit(self.group_box)
@@ -65,7 +83,7 @@ class ProjectWidget(QWidget):
         self.txt_project_name.setPlaceholderText("Tên dự án kết cấu thép...")
         grid.addWidget(self.txt_project_name, 0, 3)
 
-        # Hàng 1: Sales, Designer và Nút lưu
+        # Hàng 1: Sales, Designer
         grid.addWidget(QLabel("Kinh doanh (Sales):", self.group_box), 1, 0)
         self.cb_sales = QComboBox(self.group_box)
         self.cb_sales.addItem(
@@ -86,30 +104,16 @@ class ProjectWidget(QWidget):
         )
         grid.addWidget(self.cb_designer, 1, 3)
 
+    def _setup_action_buttons(self, grid: QGridLayout) -> None:
+        """Thiết lập các nút điều khiển của Form.
+
+        Args:
+            grid: Bố cục lưới của GroupBox.
+        """
         self.btn_save = QPushButton("💾 Lưu Thay Đổi", self.group_box)
-        self.btn_save.setStyleSheet(
-            """
-            QPushButton {
-                background-color: #0F172A;
-                color: #FFFFFF;
-                border: none;
-                border-radius: 5px;
-                padding: 6px 16px;
-                font-size: 13px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #1E293B;
-            }
-            """
-        )
+        self.btn_save.setStyleSheet(TLSTheme.save_button_stylesheet())
         self.btn_save.clicked.connect(self._on_save_project)
         grid.addWidget(self.btn_save, 1, 4)
-
-        layout.addWidget(self.group_box, 0, 0)
-
-        # Mặc định ban đầu khi chưa chọn dự án
-        self.set_project_id("")
 
     def set_project_id(self, project_id: str) -> None:
         """Nạp dữ liệu dự án tương ứng từ database lên Form.
@@ -131,9 +135,8 @@ class ProjectWidget(QWidget):
         self.group_box.setEnabled(True)
         self.group_box.setTitle(f"Thông tin chi tiết dự án: {project_id}")
 
-        db = SessionLocal()
         try:
-            proj = project_service.get_project(db, project_id)
+            proj = get_project_safe(project_id)
             if proj:
                 self.txt_project_id.setText(proj.project_id)
                 self.txt_project_name.setText(proj.project_name)
@@ -154,8 +157,6 @@ class ProjectWidget(QWidget):
                 str(e),
                 exc_info=True,
             )
-        finally:
-            db.close()
 
     def _on_save_project(self) -> None:
         """Xử lý sự kiện khi bấm nút [Lưu Thay Đổi] để lưu lại cấu hình dự án."""
@@ -169,11 +170,10 @@ class ProjectWidget(QWidget):
             return
 
         success = False
-        db = SessionLocal()
         try:
             roles = {"sales": sales_email, "designer": designer_email}
-            updated_proj = project_service.update_project(
-                db, project_id=project_id, project_name=project_name, roles=roles
+            updated_proj = update_project_safe(
+                project_id=project_id, project_name=project_name, roles=roles
             )
             if updated_proj:
                 success = True
@@ -181,8 +181,6 @@ class ProjectWidget(QWidget):
             logger.error(
                 "Lỗi khi cập nhật dự án '%s': %s", project_id, str(e), exc_info=True
             )
-        finally:
-            db.close()
 
         if success:
             QMessageBox.information(

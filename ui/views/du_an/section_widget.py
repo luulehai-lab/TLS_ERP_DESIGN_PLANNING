@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/section_widget.py
 # CHỨC NĂNG: Giao diện quản lý Hạng mục Dự án cho phòng Thiết kế
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:05:31 10/07/2026: [REFACTOR] refactor(ui): modularize CreateProjectDialog and restructure project management to vertical stacked layout (Antigravity)
 # - 16:35:00 10/07/2026: [UPDATE] Tích hợp lưu và khôi phục chiều rộng cột cho bảng hạng mục bằng QSettings (Lê Thanh Vân/Antigravity)
 # - 15:24:10 10/07/2026: [NEW] feat(auth): support auto login with SessionManager (Antigravity)
@@ -26,8 +27,13 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt, pyqtSignal, QSettings
 
-from core.database import SessionLocal
-from core.services import section_service
+from core.services.section_service import (
+    list_project_sections_safe,
+    delete_section_safe,
+    create_section_safe,
+    update_section_safe,
+)
+from ui.styles.theme import TLSTheme
 
 logger = logging.getLogger(__name__)
 
@@ -76,6 +82,21 @@ class SectionWidget(QWidget):
         grid = QGridLayout(group)
         grid.setSpacing(10)
 
+        # 1. Khởi tạo các trường nhập liệu
+        self._setup_form_inputs(grid, group)
+
+        # 2. Khởi tạo các nút hành động thêm/hủy
+        self._setup_form_buttons(grid, group)
+
+        return group
+
+    def _setup_form_inputs(self, grid: QGridLayout, group: QGroupBox) -> None:
+        """Thiết lập các trường nhập liệu thông tin hạng mục.
+
+        Args:
+            grid: Bố cục lưới của GroupBox.
+            group: GroupBox chứa các thành phần.
+        """
         grid.addWidget(QLabel("Dự án hiện hành:", group), 0, 0)
         self.lbl_selected_project_section = QLabel("Chưa chọn dự án ở Sidebar", group)
         self.lbl_selected_project_section.setStyleSheet(
@@ -103,35 +124,25 @@ class SectionWidget(QWidget):
         )
         grid.addWidget(self.cb_designer, 3, 1)
 
-        # Layout ngang chứa nút tạo/cập nhật và nút hủy
+    def _setup_form_buttons(self, grid: QGridLayout, group: QGroupBox) -> None:
+        """Thiết lập layout chứa nút Lưu/Hủy của Hạng mục.
+
+        Args:
+            grid: Bố cục lưới của GroupBox.
+            group: GroupBox chứa các thành phần.
+        """
         btn_layout = QHBoxLayout()
         self.btn_create_sect = QPushButton("➕ Thêm Hạng mục", group)
         self.btn_create_sect.clicked.connect(self._on_create_section)
         btn_layout.addWidget(self.btn_create_sect)
 
         self.btn_cancel_edit = QPushButton("❌ Hủy / Tạo mới", group)
-        self.btn_cancel_edit.setStyleSheet(
-            """
-            QPushButton {
-                background-color: #64748B;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                padding: 8px 16px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #475569;
-            }
-            """
-        )
+        self.btn_cancel_edit.setStyleSheet(TLSTheme.cancel_button_stylesheet())
         self.btn_cancel_edit.clicked.connect(self.clear_form)
         self.btn_cancel_edit.hide()
         btn_layout.addWidget(self.btn_cancel_edit)
 
         grid.addLayout(btn_layout, 4, 0, 1, 2)
-
-        return group
 
     def _create_table_sect_group(self) -> QGroupBox:
         """Tạo khung hiển thị bảng danh sách các hạng mục của dự án hiện hành.
@@ -183,11 +194,8 @@ class SectionWidget(QWidget):
             self.tbl_sections.blockSignals(False)
             return
 
-        db = SessionLocal()
         try:
-            sections = section_service.list_project_sections(
-                db, self.current_project_id
-            )
+            sections = list_project_sections_safe(self.current_project_id)
             self.current_sections_data = sections
             self.tbl_sections.setRowCount(len(sections))
 
@@ -217,22 +225,7 @@ class SectionWidget(QWidget):
                     item_designer.setForeground(Qt.GlobalColor.gray)
 
                 btn_delete = QPushButton("🗑 Xóa", self.tbl_sections)
-                btn_delete.setStyleSheet(
-                    """
-                    QPushButton {
-                        background-color: #EF4444;
-                        color: white;
-                        border: none;
-                        border-radius: 4px;
-                        padding: 3px 10px;
-                        font-weight: bold;
-                        font-size: 11px;
-                    }
-                    QPushButton:hover {
-                        background-color: #DC2626;
-                    }
-                    """
-                )
+                btn_delete.setStyleSheet(TLSTheme.delete_button_stylesheet())
                 btn_delete.setProperty("section_id", s.section_id)
                 btn_delete.clicked.connect(self._on_delete_section)
 
@@ -245,7 +238,6 @@ class SectionWidget(QWidget):
                 "Lỗi cơ sở dữ liệu khi tải hạng mục: %s", str(e), exc_info=True
             )
         finally:
-            db.close()
             self._restore_column_widths()
             self.tbl_sections.blockSignals(False)
 
@@ -268,9 +260,8 @@ class SectionWidget(QWidget):
         )
 
         if reply == QMessageBox.StandardButton.Yes:
-            db = SessionLocal()
             try:
-                success = section_service.delete_section(db, int(section_id))
+                success = delete_section_safe(int(section_id))
                 if success:
                     QMessageBox.information(
                         self, "Thông báo", "Đã xóa hạng mục thành công!"
@@ -295,8 +286,6 @@ class SectionWidget(QWidget):
                     "Lỗi khi xóa hạng mục ID %d: %s", section_id, str(e), exc_info=True
                 )
                 QMessageBox.critical(self, "Lỗi", "Lỗi kết nối cơ sở dữ liệu.")
-            finally:
-                db.close()
 
     def _on_create_section(self) -> None:
         """Xử lý sự kiện click nút [Thêm Hạng mục] hoặc [Lưu Thay Đổi]."""
@@ -317,62 +306,75 @@ class SectionWidget(QWidget):
             )
             return
 
-        success = False
-        db = SessionLocal()
-        try:
-            if self.edit_mode:
-                # Chế độ cập nhật hạng mục hiện có
-                sect = section_service.update_section(
-                    db,
-                    self.current_section_id,
-                    details={
-                        "name": section_name,
-                        "designer": designer_email,
-                    },
-                )
-                if sect:
-                    success = True
-            else:
-                # Chế độ tạo mới hạng mục
-                sect = section_service.create_section(
-                    db,
-                    project_id,
-                    details={
-                        "code": section_code,
-                        "name": section_name,
-                        "designer": designer_email,
-                    },
-                )
-                if sect:
-                    success = True
-        except Exception as e:
-            logger.error("Lỗi khi xử lý dữ liệu hạng mục: %s", str(e), exc_info=True)
-        finally:
-            db.close()
+        success = self._perform_save_section(
+            project_id, section_code, section_name, designer_email
+        )
 
         if success:
-            action_str = "Cập nhật" if self.edit_mode else "Thêm"
-            QMessageBox.information(
-                self,
-                "Thông báo",
-                f"Đã {action_str.lower()} thành công hạng mục: {section_code}",
-            )
-            self.load_sections()
-            self.clear_form()
-            self.section_changed.emit()
-
-            # Đồng thời reload combobox hạng mục của thiet_ke_view nếu có
-            if (
-                self.main_window
-                and hasattr(self.main_window, "main_window")
-                and hasattr(self.main_window.main_window, "thiet_ke_view")
-                and hasattr(self.main_window.main_window.thiet_ke_view, "load_sections")
-            ):
-                self.main_window.main_window.thiet_ke_view.load_sections()
+            self._trigger_view_reload(section_code)
         else:
             QMessageBox.critical(
                 self, "Lỗi", "Không thể xử lý hạng mục này hoặc lỗi kết nối database."
             )
+
+    def _perform_save_section(
+        self, project_id: str, code: str, name: str, designer: str | None
+    ) -> bool:
+        """Gọi service để thực thi việc lưu hoặc cập nhật hạng mục.
+
+        Args:
+            project_id: ID dự án liên kết.
+            code: Mã hạng mục.
+            name: Tên hạng mục.
+            designer: Email thiết kế phụ trách.
+
+        Returns:
+            True nếu lưu thành công, ngược lại False.
+        """
+        try:
+            if self.edit_mode:
+                sect = update_section_safe(
+                    self.current_section_id,
+                    name=name,
+                    designer=designer,
+                )
+                return sect is not None
+            else:
+                sect = create_section_safe(
+                    project_id,
+                    code=code,
+                    name=name,
+                    designer=designer,
+                )
+                return sect is not None
+        except Exception as e:
+            logger.error("Lỗi khi xử lý dữ liệu hạng mục: %s", str(e), exc_info=True)
+            return False
+
+    def _trigger_view_reload(self, code: str) -> None:
+        """Hiển thị thông báo lưu thành công và phát tín hiệu reload các màn hình liên quan.
+
+        Args:
+            code: Mã hạng mục vừa lưu.
+        """
+        action_str = "Cập nhật" if self.edit_mode else "Thêm"
+        QMessageBox.information(
+            self,
+            "Thông báo",
+            f"Đã {action_str.lower()} thành công hạng mục: {code}",
+        )
+        self.load_sections()
+        self.clear_form()
+        self.section_changed.emit()
+
+        # Đồng thời reload combobox hạng mục của thiet_ke_view nếu có
+        if (
+            self.main_window
+            and hasattr(self.main_window, "main_window")
+            and hasattr(self.main_window.main_window, "thiet_ke_view")
+            and hasattr(self.main_window.main_window.thiet_ke_view, "load_sections")
+        ):
+            self.main_window.main_window.thiet_ke_view.load_sections()
 
     def _on_item_selection_changed(self) -> None:
         """Xử lý khi chọn dòng trên bảng hạng mục."""

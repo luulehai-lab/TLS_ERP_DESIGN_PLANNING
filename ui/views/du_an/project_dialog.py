@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/project_dialog.py
 # CHỨC NĂNG: Hộp thoại popup nhập liệu để tạo mới một Dự án kết cấu thép
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 16:23:44 10/07/2026: [NEW] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
 # - 16:22:00 10/07/2026: [NEW] Khởi tạo CreateProjectDialog tách từ main_window.py để tuân thủ giới hạn 800 dòng (Lê Thanh Vân/Antigravity)
 
@@ -15,8 +16,8 @@ from PyQt6.QtWidgets import (
     QMessageBox,
 )
 
-from core.database import SessionLocal
-from core.services import project_service
+from core.services.project_service import create_project_safe
+from ui.styles.theme import TLSTheme
 
 logger = logging.getLogger(__name__)
 
@@ -25,12 +26,18 @@ class CreateProjectDialog(QDialog):
     """Hộp thoại popup nhập liệu để tạo mới một Dự án kết cấu thép."""
 
     def __init__(self, parent: Any = None) -> None:
+        """Khởi tạo hộp thoại CreateProjectDialog.
+
+        Args:
+            parent: Widget cha chứa hộp thoại.
+        """
         super().__init__(parent)
         self.setWindowTitle("➕ Tạo Dự án Mới")
         self.resize(450, 250)
         self._init_ui()
 
     def _init_ui(self) -> None:
+        """Thiết lập các thành phần giao diện của hộp thoại."""
         layout = QFormLayout(self)
         layout.setContentsMargins(20, 20, 20, 20)
         layout.setSpacing(12)
@@ -70,39 +77,10 @@ class CreateProjectDialog(QDialog):
         self.button_box.rejected.connect(self.reject)
         layout.addRow(self.button_box)
 
-        self.setStyleSheet(
-            """
-            QDialog {
-                background-color: #FFFFFF;
-            }
-            QLabel {
-                font-size: 13px;
-                color: #475569;
-                font-weight: bold;
-            }
-            QLineEdit, QComboBox {
-                border: 1px solid #CBD5E1;
-                border-radius: 5px;
-                padding: 6px 10px;
-                font-size: 13px;
-                background-color: #F8FAFC;
-                color: #0F172A;
-            }
-            QLineEdit:focus, QComboBox:focus {
-                border: 1px solid #38BDF8;
-                background-color: #FFFFFF;
-                color: #0F172A;
-            }
-            QPushButton {
-                font-size: 13px;
-                font-weight: bold;
-                padding: 6px 14px;
-                border-radius: 5px;
-            }
-            """
-        )
+        self.setStyleSheet(TLSTheme.project_dialog_stylesheet())
 
     def _on_save(self) -> None:
+        """Xử lý sự kiện lưu dự án khi người dùng đồng ý."""
         project_id = self.txt_project_id.text().strip()
         project_name = self.txt_project_name.text().strip()
         sales_email = self.cb_sales.currentData()
@@ -114,11 +92,10 @@ class CreateProjectDialog(QDialog):
             )
             return
 
-        db = SessionLocal()
         try:
             roles = {"sales": sales_email, "designer": designer_email}
-            new_proj = project_service.create_project(
-                db, project_id=project_id, project_name=project_name, roles=roles
+            new_proj = create_project_safe(
+                project_id=project_id, project_name=project_name, roles=roles
             )
             if new_proj:
                 QMessageBox.information(
@@ -134,5 +111,3 @@ class CreateProjectDialog(QDialog):
         except Exception as e:
             logger.error("Lỗi khi tạo dự án mới: %s", str(e), exc_info=True)
             QMessageBox.critical(self, "Lỗi", f"Lỗi kết nối cơ sở dữ liệu: {str(e)}")
-        finally:
-            db.close()

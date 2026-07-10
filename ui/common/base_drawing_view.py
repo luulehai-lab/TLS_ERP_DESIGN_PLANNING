@@ -1,6 +1,7 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
+# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:40:00 10/07/2026: [NEW] Khởi tạo BaseDrawingView gom logic bảng bản vẽ bất đồng bộ (Lê Thanh Vân/Antigravity)
 
@@ -19,6 +20,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QTimer, QSettings
 
 from ui.common.workers import DrawingLoaderThread
+from ui.styles.theme import TLSTheme
 
 logger = logging.getLogger(__name__)
 
@@ -72,21 +74,7 @@ class BaseDrawingView(QWidget):
 
         self.btn_refresh = QPushButton("🔄 Làm mới", group)
         self.btn_refresh.setFixedWidth(100)
-        self.btn_refresh.setStyleSheet(
-            """
-            QPushButton {
-                background-color: #0284C7;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                padding: 5px 10px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #0369A1;
-            }
-            """
-        )
+        self.btn_refresh.setStyleSheet(TLSTheme.refresh_button_stylesheet())
         self.btn_refresh.clicked.connect(self._on_manual_refresh)
         table_actions_layout.addWidget(self.btn_refresh)
         layout.addLayout(table_actions_layout)
