@@ -50,6 +50,11 @@ graph TD
     core_services_section_service_create_section["⚙️ create_section()"]:::func
     core_services_section_service_list_project_sections["⚙️ list_project_sections()"]:::func
     core_services_section_service_delete_section["⚙️ delete_section()"]:::func
+    core_services_session_manager["📄 session_manager.py"]:::file
+    core_services_session_manager_SessionManager["🧩 SessionManager"]:::cls
+    core_services_session_manager_SessionManager_save_session["⚙️ save_session()"]:::func
+    core_services_session_manager_SessionManager_load_session["⚙️ load_session()"]:::func
+    core_services_session_manager_SessionManager_clear_session["⚙️ clear_session()"]:::func
     core_services___init__["📄 __init__.py"]:::file
     core_services_auth_service -->|contains| core_services_auth_service_OAuthCallbackHandler
     core_services_auth_service -->|contains| core_services_auth_service_GoogleAuthServer
@@ -78,6 +83,10 @@ graph TD
     core_services_section_service -->|contains| core_services_section_service_create_section
     core_services_section_service -->|contains| core_services_section_service_list_project_sections
     core_services_section_service -->|contains| core_services_section_service_delete_section
+    core_services_session_manager -->|contains| core_services_session_manager_SessionManager
+    core_services_session_manager_SessionManager -->|contains| core_services_session_manager_SessionManager_save_session
+    core_services_session_manager_SessionManager -->|contains| core_services_session_manager_SessionManager_load_session
+    core_services_session_manager_SessionManager -->|contains| core_services_session_manager_SessionManager_clear_session
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__handle_callback
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__serve_mock_login_page
     core_services_auth_service_OAuthCallbackHandler_do_GET ==>|calls| core_services_auth_service_OAuthCallbackHandler__send_html_response

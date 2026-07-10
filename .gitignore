@@ -23,3 +23,4 @@ docs/client_secret*.json
 build/
 dist/
 *.spec
+.session.json

@@ -1,6 +1,8 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 12:35:53 10/07/2026: [FIX] fix(ui): convert database UTC time representation to GMT+7 local time for display (Antigravity)
+# - 12:40:00 10/07/2026: [UPDATE] Tích hợp SessionManager hỗ trợ tự động đăng nhập và đăng xuất (Lê Thanh Vân/Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
 # - 16:35:00 08/07/2026: [UPDATE] Khởi chạy DatabasePrewarmerThread ngay khi bật app để tối ưu hiệu năng kết nối (Lê Thanh Vân/Antigravity)
 # - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
@@ -38,6 +40,7 @@ logger = logging.getLogger("main")
 from PyQt6.QtWidgets import QApplication  # noqa: E402
 from ui.login_window import LoginWindow  # noqa: E402
 from ui.main_window import MainWindow  # noqa: E402
+from core.services.session_manager import SessionManager  # noqa: E402
 
 
 def main() -> None:
@@ -69,6 +72,9 @@ def main() -> None:
             nonlocal main_win
             logger.info("Nhận callback đăng nhập thành công. Khởi tạo MainWindow...")
 
+            # Lưu phiên đăng nhập
+            SessionManager.save_session(email, dept)
+
             # Khởi tạo MainWindow với email và phòng ban đã được xác thực
             main_win = MainWindow(user_email=email, user_dept=dept)
             main_win.logout_clicked.connect(on_logout_requested)
@@ -80,6 +86,10 @@ def main() -> None:
             """Callback xử lý khi người dùng click đăng xuất từ MainWindow."""
             nonlocal main_win
             logger.info("Nhận yêu cầu đăng xuất. Quay về LoginWindow...")
+
+            # Xóa phiên đăng nhập
+            SessionManager.clear_session()
+
             if main_win:
                 main_win.close()
                 main_win = None
@@ -87,7 +97,21 @@ def main() -> None:
 
         # Kết nối sự kiện đăng nhập thành công
         login_win.login_success.connect(on_login_success)
-        login_win.show()
+
+        # Kiểm tra và xử lý tự động đăng nhập
+        session = SessionManager.load_session()
+        if session:
+            logger.info(
+                "Phát hiện phiên đăng nhập cũ (%s). Tự động đăng nhập...",
+                session["email"],
+            )
+            main_win = MainWindow(
+                user_email=session["email"], user_dept=session["department"]
+            )
+            main_win.logout_clicked.connect(on_logout_requested)
+            main_win.show()
+        else:
+            login_win.show()
 
         logger.info(
             "Ứng dụng PyQt6 hiển thị cửa sổ Đăng nhập thành công. Bắt đầu vòng lặp sự kiện."

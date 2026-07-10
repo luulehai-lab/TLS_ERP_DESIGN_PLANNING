@@ -2,6 +2,7 @@
 File: docs/architecture/ARCHITECTURE_MAP.md
 CHỨC NĂNG: Bản đồ master kiến trúc kỹ thuật dự án ERP Thiết kế - Kế hoạch (TLS)
 CHANGELOG:
+- 12:50:00 10/07/2026: [UPDATE] Bổ sung cấu trúc session_manager.py quản lý tự động đăng nhập (Lê Thanh Vân/Antigravity)
 - 17:22:00 08/07/2026: [UPDATE] Cập nhật hoàn thành Giai đoạn 1.6 Đóng gói ứng dụng và tích hợp workflow /build-exe (Lê Thanh Vân/Antigravity)
 - 14:35:00 08/07/2026: [UPDATE] Tích hợp cấu trúc mô-đun Google Login (auth_service.py, login_window.py) (Lê Thanh Vân/Antigravity)
 - 10:40:00 02/07/2026: [NEW] Khởi tạo bản đồ kiến trúc cho dự án mới (Lê Thanh Vân/Antigravity)
@@ -34,6 +35,7 @@ CHANGELOG:
 │   └── services/            # Chứa các lớp xử lý nghiệp vụ chính
 │       ├── __init__.py
 │       ├── auth_service.py    # Xử lý Google OAuth2, chạy Local HTTP Server callback & Mock Login
+│       ├── session_manager.py # Quản lý phiên đăng nhập (Session) của người dùng cục bộ
 │       ├── project_service.py # Logic nghiệp vụ Quản lý Dự án
 │       └── drawing_service.py # Logic nghiệp vụ Ban hành, Cập nhật trạng thái bản vẽ
 │
