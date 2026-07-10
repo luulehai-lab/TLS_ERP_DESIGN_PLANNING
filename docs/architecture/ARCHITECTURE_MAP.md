@@ -2,6 +2,7 @@
 File: docs/architecture/ARCHITECTURE_MAP.md
 CHỨC NĂNG: Bản đồ master kiến trúc kỹ thuật dự án ERP Thiết kế - Kế hoạch (TLS)
 CHANGELOG:
+- 17:55:00 10/07/2026: [REFACTOR] Modular hóa UI MainWindow thành SidebarWidget & HeaderWidget, tạo BaseDrawingView dùng chung cho ThietKeView/KeHoachView và áp dụng TLSTheme (Lê Thanh Vân/Antigravity)
 - 16:30:00 10/07/2026: [UPDATE] Tái cấu trúc UI màn hình Quản lý Dự án xếp lớp dọc, tách project_dialog.py và nút tạo Sidebar (Lê Thanh Vân/Antigravity)
 - 15:20:00 10/07/2026: [UPDATE] Bổ sung trường designer_email vào model ProjectSection và script migrate_section_roles.py (Lê Thanh Vân/Antigravity)
 - 15:15:00 10/07/2026: [REFACTOR] Module hóa DuAnView thành các component con ProjectWidget và SectionWidget (Lê Thanh Vân/Antigravity)
@@ -47,9 +48,15 @@ CHANGELOG:
 │   ├── __init__.py
 │   ├── login_window.py      # Màn hình đăng nhập Google Premium Dark Slate Style
 │   ├── main_window.py       # Khung giao diện chính (Sidebar, Header phân quyền, Content Area)
+│   ├── sidebar.py           # Widget Sidebar quản lý chọn/tạo/xóa dự án cục bộ
+│   ├── header.py            # Widget Header quản lý dự án hiện hành, điều chuyển tab, thông tin user
+│   ├── styles/              # Design System QSS dùng chung cho toàn bộ app
+│   │   ├── __init__.py
+│   │   └── theme.py         # Chứa mã màu tokens và bộ tạo style QSS thống nhất
 │   ├── common/              # Các Widget dùng chung (nút bấm, bảng hiển thị, styles...)
 │   │   ├── __init__.py
-│   │   └── workers.py       # Luồng phụ xử lý bất đồng bộ (QThread Workers)
+│   │   ├── workers.py       # Luồng phụ xử lý bất đồng bộ (QThread Workers)
+│   │   └── base_drawing_view.py # Class cha chứa logic tải và quản lý bảng bản vẽ dùng chung
 │   └── views/               # Giao diện của từng phòng ban
 │       ├── __init__.py
 │       ├── du_an_view.py    # Màn hình quản lý dự án (Container ghép nối)

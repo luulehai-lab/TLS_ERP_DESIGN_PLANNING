@@ -1,6 +1,5 @@
-# Tên file: ui/login_window.py
-# CHỨC NĂNG: Màn hình Đăng nhập bằng Google cho ứng dụng ERP (Giao diện Slate Premium)
 # CHANGELOG:
+# - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 18:03:18 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
 # - 18:00:00 08/07/2026: [UPDATE] Cập nhật màu sắc nhãn phiên bản sáng lên để dễ nhìn trên nền tối (Antigravity)
 # - 17:37:32 08/07/2026: [FIX] fix(ui): synchronize drawing status between Design and Planning views with manual and auto refresh (Antigravity)
@@ -9,6 +8,7 @@
 # - 16:35:00 08/07/2026: [FIX] Trì hoãn việc shutdown auth_manager bằng QTimer để tránh deadlock socket (Lê Thanh Vân/Antigravity)
 # - 14:13:50 08/07/2026: [NEW] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 14:20:00 08/07/2026: [NEW] Khởi tạo giao diện đăng nhập Google (Lê Thanh Vân/Antigravity)
+# - 17:52:00 10/07/2026: [REFACTOR] Thay thế styles thô bằng TLSTheme dùng chung (Lê Thanh Vân/Antigravity)
 
 import logging
 from typing import Any
@@ -24,6 +24,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl, QTimer
 from PyQt6.QtGui import QDesktopServices
 
+from ui.styles.theme import TLSTheme
 from core.services.auth_service import GoogleAuthManager
 import config
 
@@ -151,84 +152,8 @@ class LoginWindow(QMainWindow):
         self._apply_styles()
 
     def _apply_styles(self) -> None:
-        """Áp dụng bộ CSS QSS Premium Dark Slate."""
-        self.setStyleSheet(
-            """
-            QMainWindow {
-                background-color: #0F172A; /* Slate 900 */
-            }
-            #loginCard {
-                background-color: #1E293B; /* Slate 800 */
-                border: 1px solid #334155;
-                border-radius: 12px;
-            }
-            #brandLabel {
-                color: #F8FAFC;
-                font-size: 24px;
-                font-weight: 800;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                letter-spacing: 1px;
-            }
-            #subBrandLabel {
-                color: #38BDF8; /* Sky 400 */
-                font-size: 11px;
-                font-weight: 700;
-                letter-spacing: 0.5px;
-            }
-            #introLabel {
-                color: #94A3B8;
-                font-size: 13px;
-            }
-            #statusLabel {
-                color: #64748B;
-                font-size: 12px;
-                margin-top: 10px;
-                min-height: 40px;
-            }
-            #loginButton {
-                background-color: #FFFFFF;
-                color: #0F172A;
-                border: none;
-                border-radius: 6px;
-                padding: 12px 20px;
-                font-size: 14px;
-                font-weight: bold;
-                margin-top: 10px;
-            }
-            #loginButton:hover {
-                background-color: #F1F5F9;
-            }
-            #loginButton:pressed {
-                background-color: #CBD5E1;
-            }
-            #loginButton:disabled {
-                background-color: #475569;
-                color: #94A3B8;
-            }
-            QMessageBox {
-                background-color: #1E293B;
-            }
-            QMessageBox QLabel {
-                color: #F8FAFC;
-            }
-            QMessageBox QPushButton {
-                background-color: #FFFFFF;
-                color: #0F172A;
-                border: none;
-                border-radius: 6px;
-                padding: 8px 16px;
-                font-size: 12px;
-                font-weight: bold;
-                min-width: 70px;
-            }
-            QMessageBox QPushButton:hover {
-                background-color: #F1F5F9;
-            }
-            QMessageBox QPushButton:pressed {
-                background-color: #CBD5E1;
-            }
-        """
-        )
+        """Áp dụng bộ CSS QSS Premium Dark Slate từ TLSTheme."""
+        self.setStyleSheet(TLSTheme.login_stylesheet())
 
     def _on_login_clicked(self) -> None:
         """Xử lý khi click vào nút đăng nhập Google."""

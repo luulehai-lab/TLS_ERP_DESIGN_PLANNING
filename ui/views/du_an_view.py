@@ -1,16 +1,17 @@
-# Tên file: ui/views/du_an_view.py
-# CHỨC NĂNG: Container kết nối ProjectWidget và SectionWidget dạng xếp lớp dọc của màn hình Quản lý Dự án
 # CHANGELOG:
+# - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 16:23:44 10/07/2026: [UPDATE] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
 # - 16:15:00 10/07/2026: [REFACTOR] Thay đổi từ layout 2 cột sang layout xếp dọc, hiển thị ProjectWidget ở trên, SectionWidget ở dưới. Thêm Welcome widget khi chưa chọn dự án. (Lê Thanh Vân/Antigravity)
 # - 15:33:00 10/07/2026: [UPDATE] Thêm phương thức reload_projects để cập nhật bảng sau khi xóa dự án (Lê Thanh Vân/Antigravity)
 # - 15:24:10 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
+# - 17:50:00 10/07/2026: [REFACTOR] Thay thế stylesheet thô bằng TLSTheme dùng chung (Lê Thanh Vân/Antigravity)
 
 import logging
 from typing import Any
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel
 from PyQt6.QtCore import Qt
 
+from ui.styles.theme import TLSTheme
 from ui.views.du_an.project_widget import ProjectWidget
 from ui.views.du_an.section_widget import SectionWidget
 
@@ -121,102 +122,5 @@ class DuAnView(QWidget):
             self.main_window.load_projects()
 
     def _apply_view_styles(self) -> None:
-        """Áp dụng các định dạng giao diện QSS cho view."""
-        self.setStyleSheet(
-            """
-            QGroupBox {
-                font-size: 14px;
-                font-weight: bold;
-                color: #334155;
-                border: 1px solid #E2E8F0;
-                border-radius: 8px;
-                margin-top: 10px;
-                padding-top: 15px;
-                background-color: #FFFFFF;
-            }
-            QGroupBox::title {
-                subcontrol-origin: margin;
-                subcontrol-position: top left;
-                left: 15px;
-                padding: 0 5px;
-            }
-            QLabel {
-                font-size: 13px;
-                color: #475569;
-                font-weight: 500;
-            }
-            QLineEdit, QComboBox {
-                border: 1px solid #CBD5E1;
-                border-radius: 5px;
-                padding: 6px 10px;
-                font-size: 13px;
-                background-color: #F8FAFC;
-                color: #0F172A;
-            }
-            QLineEdit:focus, QComboBox:focus {
-                border: 1px solid #38BDF8;
-                background-color: #FFFFFF;
-                color: #0F172A;
-            }
-            QPushButton {
-                background-color: #0F172A;
-                color: #FFFFFF;
-                border: none;
-                border-radius: 5px;
-                padding: 8px 16px;
-                font-size: 13px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #1E293B;
-            }
-            QPushButton:pressed {
-                background-color: #020617;
-            }
-            QTableWidget {
-                border: 1px solid #E2E8F0;
-                border-radius: 6px;
-                background-color: #FFFFFF;
-                color: #0F172A;
-                gridline-color: #F1F5F9;
-                font-size: 13px;
-            }
-            QTableWidget::item {
-                color: #0F172A;
-            }
-            QTableWidget::item:selected {
-                background-color: #38BDF8;
-                color: #0F172A;
-            }
-            QHeaderView::section {
-                background-color: #F1F5F9;
-                color: #475569;
-                padding: 6px;
-                border: none;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QMessageBox {
-                background-color: #FFFFFF;
-            }
-            QMessageBox QLabel {
-                color: #0F172A;
-            }
-            QMessageBox QPushButton {
-                background-color: #F1F5F9;
-                color: #0F172A;
-                border: 1px solid #E2E8F0;
-                border-radius: 5px;
-                padding: 6px 14px;
-                font-size: 12px;
-                font-weight: bold;
-                min-width: 70px;
-            }
-            QMessageBox QPushButton:hover {
-                background-color: #E2E8F0;
-            }
-            QMessageBox QPushButton:pressed {
-                background-color: #CBD5E1;
-            }
-        """
-        )
+        """Áp dụng các định dạng giao diện QSS cho view từ TLSTheme."""
+        self.setStyleSheet(TLSTheme.content_view_stylesheet())
