@@ -2,6 +2,7 @@
 File: .agents/rules/rules.md
 Description: Giúp Agent hiểu quy tắc làm việc - Bản cập nhật Linh Hồn & Tầm Nhìn 2026.
 CHANGELOG:
+- 17:33:00 10/07/2026: [UPDATE] Cập nhật Chương 22: Thêm quy tắc cứng phân tách Backend/UI và nghiêm cấm copy-paste QSS/CSS thô giữa các file giao diện. (Lê Thanh Vân/Antigravity)
 - 18:05:00 23/06/2026: [UPDATE] Cập nhật vai trò Lê Thanh Vân thành Senior Software Architect siêu khó tính, chủ động thiết lập rào chắn kỹ thuật cho dự án. (Lê Thanh Vân/Antigravity)
 - 11:57:00 23/06/2026: [UPDATE] Cập nhật Chương 24: Kỷ luật Tự Kiểm toán Cục bộ (Pre-Handover Self-Audit) và cụ thể hóa các ràng buộc Clean Code (hàm <50/100 dòng, đối số <=4, type hints, docstrings, logger) để tránh lỗi Git Guard. (Lê Thanh Vân/Antigravity)
 - 17:30:00 12/06/2026: [STRICT] Cập nhật quy tắc Safe Git Commit: Nghiêm cấm AI Agent tự động commit code khi chưa có phê duyệt thủ công từ Anh Lưu. (Lê Thanh Vân/Antigravity)
@@ -388,6 +389,23 @@ class ModularityGuard:
         """
         assert old_file.changes == ["imports", "minimal_routing"], "Old files must only bridge/route."
         assert self.update_architecture_map() == True, "Architecture Maps must be updated with the new module."
+
+    def enforce_ui_backend_separation(self) -> None:
+        """
+        [QUY TẮC CỨNG] Tách biệt tuyệt đối Backend (Core/Services) và UI (ui/):
+        - UI (folder ui/) chỉ thực hiện logic hiển thị, layout và xử lý sự kiện giao diện.
+        - UI KHÔNG được truy vấn DB trực tiếp hoặc chứa logic nghiệp vụ nặng. Tất cả phải gọi qua Services.
+        - Core & Services (folder core/) tuyệt đối KHÔNG import bất kỳ thư viện PyQt6 nào.
+        """
+        pass
+
+    def enforce_no_duplicate_css(self) -> None:
+        """
+        [QUY TẮC CỨNG] Nghiêm cấm sao chép, copy-paste stylesheet CSS/QSS thô giữa các file UI:
+        - Toàn bộ màu sắc (Design Tokens) và stylesheet dùng chung bắt buộc phải được khai báo tập trung trong ui/styles/theme.py (TLSTheme).
+        - Các file UI con tuyệt đối không viết các khối setStyleSheet() thô dài quá 5 dòng. Tất cả phải gọi qua TLSTheme.
+        """
+        pass
 ```
 
 ---
