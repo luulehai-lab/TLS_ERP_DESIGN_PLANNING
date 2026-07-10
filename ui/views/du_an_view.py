@@ -1,6 +1,8 @@
 # Tên file: ui/views/du_an_view.py
 # CHỨC NĂNG: Container kết nối ProjectWidget và SectionWidget của màn hình Quản lý Dự án
 # CHANGELOG:
+# - 15:33:49 10/07/2026: [UPDATE] feat(ui): add edit mode and designer roles for projects and sections (Antigravity)
+# - 15:33:00 10/07/2026: [UPDATE] Thêm phương thức reload_projects để cập nhật bảng sau khi xóa dự án (Lê Thanh Vân/Antigravity)
 # - 15:24:10 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
 # - 15:05:00 10/07/2026: [REFACTOR] Khắc phục phình code bằng cách tách thành các sub-widgets và đóng vai trò làm Container điều phối (Lê Thanh Vân/Antigravity)
 
@@ -90,6 +92,13 @@ class DuAnView(QWidget):
         # Gọi làm mới danh sách dự án ở Sidebar của MainWindow
         if self.main_window and hasattr(self.main_window, "load_projects"):
             self.main_window.load_projects()
+
+    def reload_projects(self) -> None:
+        """Yêu cầu project_widget làm mới lại danh sách dự án trên bảng hiển thị."""
+        if hasattr(self, "project_widget") and hasattr(
+            self.project_widget, "load_projects"
+        ):
+            self.project_widget.load_projects()
 
     def _apply_view_styles(self) -> None:
         """Áp dụng các định dạng giao diện QSS cho view."""

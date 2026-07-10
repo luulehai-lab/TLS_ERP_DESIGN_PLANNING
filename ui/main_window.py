@@ -1,6 +1,8 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 15:33:49 10/07/2026: [UPDATE] feat(ui): add edit mode and designer roles for projects and sections (Antigravity)
+# - 15:30:00 10/07/2026: [UPDATE] Tích hợp menu chuột phải trên Sidebar để xóa dự án kèm xác nhận an toàn 2 bước (Lê Thanh Vân/Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:08:00 08/07/2026: [UPDATE] Kết nối bộ chọn dự án Sidebar với DuAnView để quản lý Hạng mục (Antigravity)
 # - 18:03:18 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
@@ -30,12 +32,15 @@ from PyQt6.QtWidgets import (
     QButtonGroup,
     QListWidget,
     QListWidgetItem,
+    QMenu,
+    QMessageBox,
 )
-from PyQt6.QtCore import Qt, pyqtSignal
+from PyQt6.QtCore import Qt, pyqtSignal, QPoint
 
 from ui.views.thiet_ke_view import ThietKeView
 from ui.views.ke_hoach_view import KeHoachView
 from ui.common.workers import ProjectLoaderThread
+from core.database import SessionLocal
 
 logger = logging.getLogger(__name__)
 
@@ -155,6 +160,10 @@ class MainWindow(QMainWindow):
 
         self.lst_projects = QListWidget(sidebar)
         self.lst_projects.setObjectName("projectList")
+        self.lst_projects.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.lst_projects.customContextMenuRequested.connect(
+            self._show_project_context_menu
+        )
         self.lst_projects.itemSelectionChanged.connect(self._on_project_selected)
         sidebar_layout.addWidget(self.lst_projects)
 
@@ -289,6 +298,110 @@ class MainWindow(QMainWindow):
         """Xử lý sự kiện click nút đăng xuất."""
         logger.info("Người dùng click đăng xuất: %s", self.user_email)
         self.logout_clicked.emit()
+
+    def _show_project_context_menu(self, pos: QPoint) -> None:
+        """Hiển thị menu ngữ cảnh (chuột phải) trên danh sách dự án.
+
+        Args:
+            pos: Vị trí click chuột.
+        """
+        item = self.lst_projects.itemAt(pos)
+        if not item:
+            return
+
+        project_id = item.data(Qt.ItemDataRole.UserRole)
+        # Bỏ qua các item trạng thái đặc biệt
+        if not project_id or project_id in [
+            "RETRY",
+            "🔄 Đang kết nối database Cloud...",
+        ]:
+            return
+
+        # Tạo menu ngữ cảnh
+        menu = QMenu(self)
+        delete_action = menu.addAction("🗑 Xóa dự án")
+
+        # Hiển thị menu tại vị trí click
+        action = menu.exec(self.lst_projects.mapToGlobal(pos))
+        if action == delete_action:
+            self._confirm_and_delete_project(project_id, item.text())
+
+    def _confirm_and_delete_project(self, project_id: str, display_text: str) -> None:
+        """Thực hiện đối soát và xác nhận xóa dự án an toàn (xác nhận 2 bước).
+
+        Args:
+            project_id: Mã dự án cần xóa.
+            display_text: Tên hiển thị của dự án.
+        """
+        # Xác nhận lần 1
+        reply = QMessageBox.warning(
+            self,
+            "⚠️ Xác nhận Xóa Dự án",
+            f"Bạn có chắc chắn muốn xóa dự án:\n\n{display_text}?\n\n"
+            f"LƯU Ý: Hành động này sẽ xóa vĩnh viễn dự án này khỏi hệ thống!",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
+        )
+        if reply != QMessageBox.StandardButton.Yes:
+            return
+
+        # Cảnh báo CASCADE mạnh mẽ lần 2 (Impact Verification)
+        reply2 = QMessageBox.critical(
+            self,
+            "🛑 CẢNH BÁO NGUY HIỂM",
+            f"Dự án '{project_id}' chứa các Hạng mục và Bản vẽ đi kèm.\n\n"
+            f"Khi xóa dự án, TOÀN BỘ HẠNG MỤC VÀ BẢN VẼ liên quan cũng sẽ bị xóa vĩnh viễn và KHÔNG THỂ KHÔI PHỤC!\n\n"
+            f"Bạn vẫn chắc chắn muốn thực hiện hành động này?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
+        )
+        if reply2 != QMessageBox.StandardButton.Yes:
+            return
+
+        # Thực thi xóa
+        success = False
+        db = SessionLocal()
+        try:
+            from core.services import project_service
+
+            success = project_service.delete_project(db, project_id)
+        except Exception as e:
+            logger.error(
+                "Lỗi khi xóa dự án '%s': %s", project_id, str(e), exc_info=True
+            )
+        finally:
+            db.close()
+
+        if success:
+            QMessageBox.information(
+                self, "Thành công", f"Đã xóa thành công dự án: {project_id}"
+            )
+            # Reset current project ID nếu dự án bị xóa là dự án đang chọn
+            if self.current_project_id == project_id:
+                self.current_project_id = ""
+                self.lbl_header_project.setText("DỰ ÁN HIỆN HÀNH: Chưa chọn")
+
+                if hasattr(self, "du_an_view"):
+                    self.du_an_view.set_project("")
+                if hasattr(self, "thiet_ke_view"):
+                    self.thiet_ke_view.set_project("")
+                if hasattr(self, "ke_hoach_view"):
+                    self.ke_hoach_view.set_project("")
+
+            # Reload bảng danh sách dự án ở màn hình Quản lý Dự án
+            if hasattr(self, "du_an_view") and hasattr(
+                self.du_an_view, "reload_projects"
+            ):
+                self.du_an_view.reload_projects()
+
+            # Reload danh sách dự án
+            self.load_projects()
+        else:
+            QMessageBox.critical(
+                self,
+                "Lỗi",
+                f"Không thể xóa dự án '{project_id}'. Vui lòng kiểm tra lại kết nối database.",
+            )
 
     def load_projects(self) -> None:
         """Truy vấn database bất đồng bộ để nạp danh sách dự án vào QListWidget ở Sidebar."""

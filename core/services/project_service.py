@@ -1,6 +1,8 @@
 # Tên file: core/services/project_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Dự án (Project)
 # CHANGELOG:
+# - 15:33:49 10/07/2026: [UPDATE] feat(ui): add edit mode and designer roles for projects and sections (Antigravity)
+# - 15:28:00 10/07/2026: [UPDATE] Thêm hàm delete_project để xóa dự án theo ID (Lê Thanh Vân/Antigravity)
 # - 15:24:09 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
 # - 15:03:00 10/07/2026: [UPDATE] Thêm hàm update_project để chỉnh sửa thông tin dự án (Lê Thanh Vân/Antigravity)
 # - 14:55:00 10/07/2026: [UPDATE] Cập nhật create_project nhận thêm sales_email và designer_email (Lê Thanh Vân/Antigravity)
@@ -203,3 +205,35 @@ def update_project(
             exc_info=True,
         )
         return None
+
+
+def delete_project(db: Session, project_id: str) -> bool:
+    """Xóa dự án khỏi cơ sở dữ liệu dựa trên project_id.
+
+    Args:
+        db: Session kết nối database hiện thời.
+        project_id: Mã dự án cần xóa.
+
+    Returns:
+        bool: True nếu xóa thành công, False nếu thất bại.
+    """
+    logger.info("Yêu cầu xóa dự án: %s", project_id)
+    try:
+        project = db.query(Project).filter(Project.project_id == project_id).first()
+        if not project:
+            logger.warning("Không tìm thấy dự án '%s' để xóa.", project_id)
+            return False
+
+        db.delete(project)
+        db.commit()
+        logger.info("Xóa dự án '%s' thành công.", project_id)
+        return True
+    except SQLAlchemyError as e:
+        db.rollback()
+        logger.error(
+            "Lỗi cơ sở dữ liệu khi xóa dự án '%s': %s",
+            project_id,
+            str(e),
+            exc_info=True,
+        )
+        return False

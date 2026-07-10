@@ -47,6 +47,7 @@ graph TD
     core_services_project_service_list_active_projects["⚙️ list_active_projects()"]:::func
     core_services_project_service_update_project_status["⚙️ update_project_status()"]:::func
     core_services_project_service_update_project["⚙️ update_project()"]:::func
+    core_services_project_service_delete_project["⚙️ delete_project()"]:::func
     core_services_section_service["📄 section_service.py"]:::file
     core_services_section_service_create_section["⚙️ create_section()"]:::func
     core_services_section_service_list_project_sections["⚙️ list_project_sections()"]:::func
@@ -83,6 +84,7 @@ graph TD
     core_services_project_service -->|contains| core_services_project_service_list_active_projects
     core_services_project_service -->|contains| core_services_project_service_update_project_status
     core_services_project_service -->|contains| core_services_project_service_update_project
+    core_services_project_service -->|contains| core_services_project_service_delete_project
     core_services_section_service -->|contains| core_services_section_service_create_section
     core_services_section_service -->|contains| core_services_section_service_list_project_sections
     core_services_section_service -->|contains| core_services_section_service_delete_section
