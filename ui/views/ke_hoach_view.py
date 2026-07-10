@@ -1,6 +1,7 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng)
 # CHANGELOG:
+# - 17:05:31 10/07/2026: [REFACTOR] refactor(ui): modularize CreateProjectDialog and restructure project management to vertical stacked layout (Antigravity)
 # - 18:28:04 08/07/2026: [UPDATE] feat(ui): format drawing update time to dd/mm/yy_hh:mm:ss and auto stretch column width (Antigravity)
 # - 18:23:41 08/07/2026: [UPDATE] feat(ui): support project sections and drawings nesting, optimize layout rendering (Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
@@ -31,7 +32,7 @@ from PyQt6.QtWidgets import (
     QMessageBox,
     QHeaderView,
 )
-from PyQt6.QtCore import Qt, QUrl, QTimer
+from PyQt6.QtCore import Qt, QUrl, QTimer, QSettings
 from PyQt6.QtGui import QDesktopServices
 
 from core.database import SessionLocal
@@ -53,6 +54,7 @@ class KeHoachView(QWidget):
         self.main_window = parent
         self.current_project_id: str = ""
         self.last_selected_drawing_id: str | None = None
+        self.settings = QSettings("TuanLongSteel", "ERP_TK_KH")
         self._init_ui()
 
         # Khởi chạy timer tự động làm mới ngầm mỗi 15 giây
@@ -169,9 +171,7 @@ class KeHoachView(QWidget):
 
         header = self.tbl_drawings.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-        header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
-        header.setSectionResizeMode(5, QHeaderView.ResizeMode.Stretch)
-        header.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
+        header.sectionResized.connect(self._save_column_widths)
 
         # Cấu hình chọn nguyên dòng để dễ xử lý thao tác
         self.tbl_drawings.setSelectionBehavior(
@@ -308,6 +308,9 @@ class KeHoachView(QWidget):
         if target_row_to_select != -1:
             self.tbl_drawings.selectRow(target_row_to_select)
 
+        # Khôi phục độ rộng cột đã lưu
+        self._restore_column_widths()
+
     def _on_load_error(self, error_msg: str) -> None:
         """Callback hiển thị thông báo lỗi khi không thể tải bản vẽ từ luồng phụ.
 
@@ -438,6 +441,33 @@ class KeHoachView(QWidget):
             )
         finally:
             db.close()
+
+    def _save_column_widths(self) -> None:
+        """Lưu lại độ rộng các cột của bảng bản vẽ kế hoạch."""
+        widths = [
+            self.tbl_drawings.columnWidth(i)
+            for i in range(self.tbl_drawings.columnCount())
+        ]
+        self.settings.setValue("ke_hoach_table_widths", widths)
+
+    def _restore_column_widths(self) -> None:
+        """Khôi phục độ rộng các cột của bảng bản vẽ kế hoạch."""
+        widths = self.settings.value("ke_hoach_table_widths")
+        if widths:
+            self.tbl_drawings.horizontalHeader().blockSignals(True)
+            try:
+                for i, w in enumerate(widths):
+                    if i < self.tbl_drawings.columnCount():
+                        self.tbl_drawings.setColumnWidth(i, int(w))
+            except Exception as e:
+                logger.error("Lỗi khi khôi phục độ rộng cột bảng kế hoạch: %s", str(e))
+            self.tbl_drawings.horizontalHeader().blockSignals(False)
+        else:
+            # Mặc định dãn cột Tên bản vẽ, Link drive và resize nội dung
+            header = self.tbl_drawings.horizontalHeader()
+            header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(5, QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
 
     def _apply_view_styles(self) -> None:
         """Áp dụng stylesheet QSS cho các thành phần giao diện của view Kế hoạch."""

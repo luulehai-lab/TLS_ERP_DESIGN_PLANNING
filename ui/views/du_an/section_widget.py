@@ -1,6 +1,8 @@
 # Tên file: ui/views/du_an/section_widget.py
 # CHỨC NĂNG: Giao diện quản lý Hạng mục Dự án cho phòng Thiết kế
 # CHANGELOG:
+# - 17:05:31 10/07/2026: [REFACTOR] refactor(ui): modularize CreateProjectDialog and restructure project management to vertical stacked layout (Antigravity)
+# - 16:35:00 10/07/2026: [UPDATE] Tích hợp lưu và khôi phục chiều rộng cột cho bảng hạng mục bằng QSettings (Lê Thanh Vân/Antigravity)
 # - 15:24:10 10/07/2026: [NEW] feat(auth): support auto login with SessionManager (Antigravity)
 # - 15:18:00 10/07/2026: [UPDATE] Bổ sung dropdown gán Thiết kế phụ trách từng Hạng mục và cột hiển thị trên bảng (Lê Thanh Vân/Antigravity)
 # - 15:00:00 10/07/2026: [NEW] Khởi tạo component SectionWidget tách từ du_an_view.py (Lê Thanh Vân/Antigravity)
@@ -22,7 +24,7 @@ from PyQt6.QtWidgets import (
     QHeaderView,
     QComboBox,
 )
-from PyQt6.QtCore import Qt, pyqtSignal
+from PyQt6.QtCore import Qt, pyqtSignal, QSettings
 
 from core.database import SessionLocal
 from core.services import section_service
@@ -47,6 +49,7 @@ class SectionWidget(QWidget):
         self.edit_mode: bool = False
         self.current_section_id: int = 0
         self.current_sections_data: list[Any] = []
+        self.settings = QSettings("TuanLongSteel", "ERP_TK_KH")
         self._init_ui()
 
     def _init_ui(self) -> None:
@@ -148,7 +151,7 @@ class SectionWidget(QWidget):
 
         header = self.tbl_sections.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        header.sectionResized.connect(self._save_column_widths)
 
         self.tbl_sections.setSelectionBehavior(
             QTableWidget.SelectionBehavior.SelectRows
@@ -243,6 +246,7 @@ class SectionWidget(QWidget):
             )
         finally:
             db.close()
+            self._restore_column_widths()
             self.tbl_sections.blockSignals(False)
 
     def _on_delete_section(self) -> None:
@@ -438,3 +442,29 @@ class SectionWidget(QWidget):
         self.tbl_sections.blockSignals(True)
         self.tbl_sections.clearSelection()
         self.tbl_sections.blockSignals(False)
+
+    def _save_column_widths(self) -> None:
+        """Lưu lại độ rộng các cột của bảng hạng mục."""
+        widths = [
+            self.tbl_sections.columnWidth(i)
+            for i in range(self.tbl_sections.columnCount())
+        ]
+        self.settings.setValue("section_table_widths", widths)
+
+    def _restore_column_widths(self) -> None:
+        """Khôi phục độ rộng các cột của bảng hạng mục."""
+        widths = self.settings.value("section_table_widths")
+        if widths:
+            self.tbl_sections.horizontalHeader().blockSignals(True)
+            try:
+                for i, w in enumerate(widths):
+                    if i < self.tbl_sections.columnCount():
+                        self.tbl_sections.setColumnWidth(i, int(w))
+            except Exception as e:
+                logger.error("Lỗi khi khôi phục độ rộng cột bảng hạng mục: %s", str(e))
+            self.tbl_sections.horizontalHeader().blockSignals(False)
+        else:
+            # Mặc định dãn cột Tên hạng mục
+            self.tbl_sections.horizontalHeader().setSectionResizeMode(
+                1, QHeaderView.ResizeMode.Stretch
+            )

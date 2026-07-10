@@ -1,6 +1,8 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 17:05:31 10/07/2026: [REFACTOR] refactor(ui): modularize CreateProjectDialog and restructure project management to vertical stacked layout (Antigravity)
+# - 16:58:00 10/07/2026: [FIX] Sửa lỗi QSplitter sidebar không kéo được 2 chiều: Xóa QSS min/max-width, dùng SizePolicy.Ignored cho right_container (Lê Thanh Vân/Antigravity)
 # - 16:23:44 10/07/2026: [UPDATE] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
 # - 16:22:00 10/07/2026: [UPDATE] Tách CreateProjectDialog sang module project_dialog.py để bảo đảm giới hạn 800 dòng (Lê Thanh Vân/Antigravity)
 # - 16:20:00 10/07/2026: [UPDATE] Tích hợp nút Tạo dự án mới ở Sidebar (chỉ hiện với luu.lehai@gmail.com) và CreateProjectDialog popup (Lê Thanh Vân/Antigravity)
@@ -38,8 +40,9 @@ from PyQt6.QtWidgets import (
     QMenu,
     QMessageBox,
     QDialog,
+    QSplitter,
 )
-from PyQt6.QtCore import Qt, pyqtSignal, QPoint
+from PyQt6.QtCore import Qt, pyqtSignal, QPoint, QSettings
 
 from ui.views.thiet_ke_view import ThietKeView
 from ui.views.ke_hoach_view import KeHoachView
@@ -68,6 +71,7 @@ class MainWindow(QMainWindow):
         self.user_dept: str = user_dept
         self.current_project_id: str = ""
         self.project_loader_thread: ProjectLoaderThread | None = None
+        self.settings = QSettings("TuanLongSteel", "ERP_TK_KH")
         self._init_ui()
         self.load_projects()
 
@@ -76,17 +80,45 @@ class MainWindow(QMainWindow):
         central_widget = QWidget(self)
         self.setCentralWidget(central_widget)
 
-        # Layout chính dạng ngang chia đôi
+        # Layout chính chứa splitter
         main_layout = QHBoxLayout(central_widget)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
+        # Tạo QSplitter nằm ngang giữa Sidebar và Content
+        self.main_splitter = QSplitter(Qt.Orientation.Horizontal, central_widget)
+        self.main_splitter.setHandleWidth(4)
+        self.main_splitter.setStyleSheet(
+            """
+            QSplitter::handle {
+                background-color: #CBD5E1;
+            }
+            QSplitter::handle:hover {
+                background-color: #38BDF8;
+            }
+            """
+        )
+        main_layout.addWidget(self.main_splitter)
+
         # 1. Sidebar bên trái (Chuyên hiển thị logo và danh sách dự án trải rộng)
         sidebar = self._create_sidebar()
-        main_layout.addWidget(sidebar)
+        # Giới hạn chiều rộng sidebar bằng code để QSplitter hoạt động đúng;
+        # KHÔNG dùng QSS min/max-width vì sẽ gây xung đột với QSplitter.
+        sidebar.setMinimumWidth(200)
+        sidebar.setMaximumWidth(500)
+        self.main_splitter.addWidget(sidebar)
 
         # 2. Vùng bên phải (Bao gồm Header nằm ngang và Content Stack bên dưới)
         right_container = QWidget(self)
+        # QSplitter dùng max(minimumWidth, minimumSizeHint) để tính giới hạn.
+        # Header có nhiều button ngang → minimumSizeHint ~832px → chặn kéo sidebar sang phải.
+        # SizePolicy.Ignored bảo QSplitter bỏ qua minimumSizeHint, chỉ dùng minimumWidth.
+        from PyQt6.QtWidgets import QSizePolicy
+
+        right_container.setSizePolicy(
+            QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred
+        )
+        right_container.setMinimumWidth(400)
         right_layout = QVBoxLayout(right_container)
         right_layout.setContentsMargins(0, 0, 0, 0)
         right_layout.setSpacing(0)
@@ -99,7 +131,17 @@ class MainWindow(QMainWindow):
         self.content_stack = QStackedWidget(right_container)
         right_layout.addWidget(self.content_stack)
 
-        main_layout.addWidget(right_container)
+        self.main_splitter.addWidget(right_container)
+
+        # Kết nối sự kiện di chuyển splitter để lưu lại trạng thái
+        self.main_splitter.splitterMoved.connect(self._save_splitter_state)
+
+        # Khôi phục trạng thái splitter nếu có
+        state = self.settings.value("main_splitter_state")
+        if state:
+            self.main_splitter.restoreState(state)
+        else:
+            self.main_splitter.setSizes([250, 950])
 
         # Khởi tạo các Views phòng ban
         from ui.views.du_an_view import DuAnView
@@ -220,15 +262,24 @@ class MainWindow(QMainWindow):
         """
         header = QFrame(self)
         header.setObjectName("headerBar")
+        # Cho phép header co nhỏ cùng QSplitter (không ép minimum từ tổng width các button)
+        header.setMinimumWidth(0)
 
         header_layout = QHBoxLayout(header)
         header_layout.setContentsMargins(20, 10, 20, 10)
+        header_layout.setSizeConstraint(QHBoxLayout.SizeConstraint.SetNoConstraint)
 
         # Tên dự án hiện hành bên trái
         self.lbl_header_project = QLabel("DỰ ÁN HIỆN HÀNH: Chưa chọn", header)
         self.lbl_header_project.setObjectName("headerProjectLabel")
         self.lbl_header_project.setStyleSheet(
             "font-size: 15px; font-weight: bold; color: #1E293B;"
+        )
+        # Cho phép label co lại khi cửa sổ thiếu chỗ (hỗ trợ QSplitter)
+        from PyQt6.QtWidgets import QSizePolicy
+
+        self.lbl_header_project.setSizePolicy(
+            QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred
         )
         header_layout.addWidget(self.lbl_header_project)
 
@@ -331,6 +382,10 @@ class MainWindow(QMainWindow):
         """Xử lý sự kiện click nút đăng xuất."""
         logger.info("Người dùng click đăng xuất: %s", self.user_email)
         self.logout_clicked.emit()
+
+    def _save_splitter_state(self) -> None:
+        """Lưu lại trạng thái kích thước thanh kéo Sidebar."""
+        self.settings.setValue("main_splitter_state", self.main_splitter.saveState())
 
     def _show_create_project_dialog(self) -> None:
         """Hiển thị hộp thoại tạo dự án mới."""
@@ -593,8 +648,6 @@ class MainWindow(QMainWindow):
             #sidebar {
                 background-color: #0F172A; /* Slate 900 */
                 border-right: 1px solid #1E293B;
-                min-width: 260px;
-                max-width: 260px;
             }
             #brandLabel {
                 color: #F1F5F9;

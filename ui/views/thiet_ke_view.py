@@ -1,6 +1,7 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Màn hình ban hành bản vẽ dành cho phòng Thiết kế
 # CHANGELOG:
+# - 17:05:31 10/07/2026: [REFACTOR] refactor(ui): modularize CreateProjectDialog and restructure project management to vertical stacked layout (Antigravity)
 # - 18:28:04 08/07/2026: [UPDATE] feat(ui): format drawing update time to dd/mm/yy_hh:mm:ss and auto stretch column width (Antigravity)
 # - 18:23:41 08/07/2026: [UPDATE] feat(ui): support project sections and drawings nesting, optimize layout rendering (Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
@@ -35,7 +36,7 @@ from PyQt6.QtWidgets import (
     QHeaderView,
     QComboBox,
 )
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtCore import Qt, QTimer, QSettings
 
 from core.database import SessionLocal
 from core.services import drawing_service, section_service
@@ -56,6 +57,7 @@ class ThietKeView(QWidget):
         self.main_window = parent
         self.current_project_id: str = ""
         self.last_selected_drawing_id: str | None = None
+        self.settings = QSettings("TuanLongSteel", "ERP_TK_KH")
         self._init_ui()
 
         # Khởi chạy timer tự động làm mới ngầm mỗi 15 giây
@@ -181,15 +183,7 @@ class ThietKeView(QWidget):
 
         header = self.tbl_drawings.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-        header.setSectionResizeMode(
-            2, QHeaderView.ResizeMode.Stretch
-        )  # Tên bản vẽ tự giãn
-        header.setSectionResizeMode(
-            5, QHeaderView.ResizeMode.Stretch
-        )  # Link Drive tự giãn
-        header.setSectionResizeMode(
-            6, QHeaderView.ResizeMode.ResizeToContents
-        )  # Cập nhật lúc tự giãn theo nội dung
+        header.sectionResized.connect(self._save_column_widths)
 
         # Cấu hình chọn nguyên dòng để phục vụ lưu dòng chọn
         self.tbl_drawings.setSelectionBehavior(
@@ -348,6 +342,9 @@ class ThietKeView(QWidget):
         if target_row_to_select != -1:
             self.tbl_drawings.selectRow(target_row_to_select)
 
+        # Khôi phục độ rộng cột đã lưu
+        self._restore_column_widths()
+
     def _on_load_error(self, error_msg: str) -> None:
         """Callback nhận thông báo lỗi từ luồng phụ.
 
@@ -441,6 +438,33 @@ class ThietKeView(QWidget):
                 "Lỗi",
                 "Ban hành bản vẽ thất bại. Vui lòng xem lại log hệ thống hoặc kết nối.",
             )
+
+    def _save_column_widths(self) -> None:
+        """Lưu lại độ rộng các cột của bảng bản vẽ thiết kế."""
+        widths = [
+            self.tbl_drawings.columnWidth(i)
+            for i in range(self.tbl_drawings.columnCount())
+        ]
+        self.settings.setValue("thiet_ke_table_widths", widths)
+
+    def _restore_column_widths(self) -> None:
+        """Khôi phục độ rộng các cột của bảng bản vẽ thiết kế."""
+        widths = self.settings.value("thiet_ke_table_widths")
+        if widths:
+            self.tbl_drawings.horizontalHeader().blockSignals(True)
+            try:
+                for i, w in enumerate(widths):
+                    if i < self.tbl_drawings.columnCount():
+                        self.tbl_drawings.setColumnWidth(i, int(w))
+            except Exception as e:
+                logger.error("Lỗi khi khôi phục độ rộng cột bảng thiết kế: %s", str(e))
+            self.tbl_drawings.horizontalHeader().blockSignals(False)
+        else:
+            # Mặc định dãn cột Tên bản vẽ, Link drive và resize nội dung
+            header = self.tbl_drawings.horizontalHeader()
+            header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(5, QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
 
     def _apply_view_styles(self) -> None:
         """Áp dụng các định dạng giao diện cục bộ (QSS)."""
