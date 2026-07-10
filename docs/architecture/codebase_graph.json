@@ -965,98 +965,105 @@
       "label": "MainWindow",
       "type": "class",
       "file_path": "ui/main_window.py",
-      "line": 47
+      "line": 52
     },
     {
       "id": "ui.main_window.MainWindow.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 56
+      "line": 61
     },
     {
       "id": "ui.main_window.MainWindow._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 68
+      "line": 73
     },
     {
       "id": "ui.main_window.MainWindow._create_sidebar",
       "label": "_create_sidebar",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 122
+      "line": 127
     },
     {
       "id": "ui.main_window.MainWindow._create_header",
       "label": "_create_header",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 179
+      "line": 212
     },
     {
       "id": "ui.main_window.MainWindow._on_logout_clicked",
       "label": "_on_logout_clicked",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 296
+      "line": 329
+    },
+    {
+      "id": "ui.main_window.MainWindow._show_create_project_dialog",
+      "label": "_show_create_project_dialog",
+      "type": "function",
+      "file_path": "ui/main_window.py",
+      "line": 334
     },
     {
       "id": "ui.main_window.MainWindow._show_project_context_menu",
       "label": "_show_project_context_menu",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 301
+      "line": 346
     },
     {
       "id": "ui.main_window.MainWindow._confirm_and_delete_project",
       "label": "_confirm_and_delete_project",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 328
+      "line": 373
     },
     {
       "id": "ui.main_window.MainWindow.load_projects",
       "label": "load_projects",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 405
+      "line": 450
     },
     {
       "id": "ui.main_window.MainWindow._on_projects_loaded",
       "label": "_on_projects_loaded",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 423
+      "line": 468
     },
     {
       "id": "ui.main_window.MainWindow._on_projects_load_error",
       "label": "_on_projects_load_error",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 458
+      "line": 503
     },
     {
       "id": "ui.main_window.MainWindow._on_project_selected",
       "label": "_on_project_selected",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 485
+      "line": 530
     },
     {
       "id": "ui.main_window.MainWindow._switch_view",
       "label": "_switch_view",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 523
+      "line": 568
     },
     {
       "id": "ui.main_window.MainWindow._apply_styles",
       "label": "_apply_styles",
       "type": "function",
       "file_path": "ui/main_window.py",
-      "line": 540
+      "line": 585
     },
     {
       "id": "ui.__init__",
@@ -1227,42 +1234,42 @@
       "label": "create_project",
       "type": "function",
       "file_path": "core/services/project_service.py",
-      "line": 19
+      "line": 20
     },
     {
       "id": "core.services.project_service.get_project",
       "label": "get_project",
       "type": "function",
       "file_path": "core/services/project_service.py",
-      "line": 76
+      "line": 77
     },
     {
       "id": "core.services.project_service.list_active_projects",
       "label": "list_active_projects",
       "type": "function",
       "file_path": "core/services/project_service.py",
-      "line": 99
+      "line": 100
     },
     {
       "id": "core.services.project_service.update_project_status",
       "label": "update_project_status",
       "type": "function",
       "file_path": "core/services/project_service.py",
-      "line": 118
+      "line": 119
     },
     {
       "id": "core.services.project_service.update_project",
       "label": "update_project",
       "type": "function",
       "file_path": "core/services/project_service.py",
-      "line": 158
+      "line": 159
     },
     {
       "id": "core.services.project_service.delete_project",
       "label": "delete_project",
       "type": "function",
       "file_path": "core/services/project_service.py",
-      "line": 209
+      "line": 210
     },
     {
       "id": "core.services.section_service",
@@ -1411,56 +1418,49 @@
       "label": "DuAnView",
       "type": "class",
       "file_path": "ui/views/du_an_view.py",
-      "line": 18
+      "line": 19
     },
     {
       "id": "ui.views.du_an_view.DuAnView.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/views/du_an_view.py",
-      "line": 24
+      "line": 25
     },
     {
       "id": "ui.views.du_an_view.DuAnView._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/views/du_an_view.py",
-      "line": 35
+      "line": 36
     },
     {
       "id": "ui.views.du_an_view.DuAnView.set_project",
       "label": "set_project",
       "type": "function",
       "file_path": "ui/views/du_an_view.py",
-      "line": 66
-    },
-    {
-      "id": "ui.views.du_an_view.DuAnView._on_project_selected",
-      "label": "_on_project_selected",
-      "type": "function",
-      "file_path": "ui/views/du_an_view.py",
-      "line": 80
-    },
-    {
-      "id": "ui.views.du_an_view.DuAnView._on_project_created",
-      "label": "_on_project_created",
-      "type": "function",
-      "file_path": "ui/views/du_an_view.py",
-      "line": 89
+      "line": 86
     },
     {
       "id": "ui.views.du_an_view.DuAnView.reload_projects",
       "label": "reload_projects",
       "type": "function",
       "file_path": "ui/views/du_an_view.py",
-      "line": 95
+      "line": 109
+    },
+    {
+      "id": "ui.views.du_an_view.DuAnView._on_project_updated",
+      "label": "_on_project_updated",
+      "type": "function",
+      "file_path": "ui/views/du_an_view.py",
+      "line": 116
     },
     {
       "id": "ui.views.du_an_view.DuAnView._apply_view_styles",
       "label": "_apply_view_styles",
       "type": "function",
       "file_path": "ui/views/du_an_view.py",
-      "line": 102
+      "line": 122
     },
     {
       "id": "ui.views.ke_hoach_view",
@@ -1691,6 +1691,40 @@
       "file_path": "ui/views/__init__.py"
     },
     {
+      "id": "ui.views.du_an.project_dialog",
+      "label": "project_dialog.py",
+      "type": "file",
+      "file_path": "ui/views/du_an/project_dialog.py"
+    },
+    {
+      "id": "ui.views.du_an.project_dialog.CreateProjectDialog",
+      "label": "CreateProjectDialog",
+      "type": "class",
+      "file_path": "ui/views/du_an/project_dialog.py",
+      "line": 23
+    },
+    {
+      "id": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+      "label": "__init__",
+      "type": "function",
+      "file_path": "ui/views/du_an/project_dialog.py",
+      "line": 26
+    },
+    {
+      "id": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+      "label": "_init_ui",
+      "type": "function",
+      "file_path": "ui/views/du_an/project_dialog.py",
+      "line": 32
+    },
+    {
+      "id": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+      "label": "_on_save",
+      "type": "function",
+      "file_path": "ui/views/du_an/project_dialog.py",
+      "line": 104
+    },
+    {
       "id": "ui.views.du_an.project_widget",
       "label": "project_widget.py",
       "type": "file",
@@ -1701,91 +1735,35 @@
       "label": "ProjectWidget",
       "type": "class",
       "file_path": "ui/views/du_an/project_widget.py",
-      "line": 33
+      "line": 28
     },
     {
       "id": "ui.views.du_an.project_widget.ProjectWidget.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "ui/views/du_an/project_widget.py",
-      "line": 39
+      "line": 33
     },
     {
       "id": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
       "label": "_init_ui",
       "type": "function",
       "file_path": "ui/views/du_an/project_widget.py",
-      "line": 53
+      "line": 44
     },
     {
-      "id": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-      "label": "_create_project_group",
+      "id": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+      "label": "set_project_id",
       "type": "function",
       "file_path": "ui/views/du_an/project_widget.py",
-      "line": 67
+      "line": 113
     },
     {
-      "id": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-      "label": "_create_table_proj_group",
+      "id": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+      "label": "_on_save_project",
       "type": "function",
       "file_path": "ui/views/du_an/project_widget.py",
-      "line": 137
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-      "label": "load_projects",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 196
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-      "label": "_on_projects_loaded",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 213
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-      "label": "_on_load_error",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 275
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-      "label": "_on_create_project",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 288
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-      "label": "_on_item_selection_changed",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 346
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-      "label": "set_edit_project",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 358
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-      "label": "clear_form",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 395
-    },
-    {
-      "id": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-      "label": "select_project_by_id",
-      "type": "function",
-      "file_path": "ui/views/du_an/project_widget.py",
-      "line": 414
+      "line": 159
     },
     {
       "id": "ui.views.du_an.section_widget",
@@ -2551,6 +2529,11 @@
     },
     {
       "source": "ui.main_window.MainWindow",
+      "target": "ui.main_window.MainWindow._show_create_project_dialog",
+      "type": "contains"
+    },
+    {
+      "source": "ui.main_window.MainWindow",
       "target": "ui.main_window.MainWindow._show_project_context_menu",
       "type": "contains"
     },
@@ -2851,17 +2834,12 @@
     },
     {
       "source": "ui.views.du_an_view.DuAnView",
-      "target": "ui.views.du_an_view.DuAnView._on_project_selected",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an_view.DuAnView",
-      "target": "ui.views.du_an_view.DuAnView._on_project_created",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an_view.DuAnView",
       "target": "ui.views.du_an_view.DuAnView.reload_projects",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.du_an_view.DuAnView",
+      "target": "ui.views.du_an_view.DuAnView._on_project_updated",
       "type": "contains"
     },
     {
@@ -3030,6 +3008,31 @@
       "type": "contains"
     },
     {
+      "source": "ui.views.du_an.project_dialog",
+      "target": "ui.views.du_an.project_dialog.CreateProjectDialog",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.du_an.project_dialog.CreateProjectDialog",
+      "target": "PyQt6.QtWidgets.QDialog",
+      "type": "inherits_from"
+    },
+    {
+      "source": "ui.views.du_an.project_dialog.CreateProjectDialog",
+      "target": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.du_an.project_dialog.CreateProjectDialog",
+      "target": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+      "type": "contains"
+    },
+    {
+      "source": "ui.views.du_an.project_dialog.CreateProjectDialog",
+      "target": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+      "type": "contains"
+    },
+    {
       "source": "ui.views.du_an.project_widget",
       "target": "ui.views.du_an.project_widget.ProjectWidget",
       "type": "contains"
@@ -3051,52 +3054,12 @@
     },
     {
       "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
+      "target": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
       "type": "contains"
     },
     {
       "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-      "type": "contains"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget",
-      "target": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
+      "target": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
       "type": "contains"
     },
     {
@@ -3700,6 +3663,11 @@
       "type": "calls"
     },
     {
+      "source": "ui.main_window.MainWindow.__init__",
+      "target": "ui.main_window.MainWindow.load_projects",
+      "type": "calls"
+    },
+    {
       "source": "ui.main_window.MainWindow._init_ui",
       "target": "ui.main_window.MainWindow._create_sidebar",
       "type": "calls"
@@ -3730,6 +3698,21 @@
       "type": "calls"
     },
     {
+      "source": "ui.main_window.MainWindow._show_create_project_dialog",
+      "target": "ui.views.du_an.project_dialog.CreateProjectDialog",
+      "type": "calls"
+    },
+    {
+      "source": "ui.main_window.MainWindow._show_create_project_dialog",
+      "target": "ui.main_window.MainWindow.load_projects",
+      "type": "calls"
+    },
+    {
+      "source": "ui.main_window.MainWindow._show_create_project_dialog",
+      "target": "ui.views.du_an_view.DuAnView.reload_projects",
+      "type": "calls"
+    },
+    {
       "source": "ui.main_window.MainWindow._show_project_context_menu",
       "target": "ui.main_window.MainWindow._confirm_and_delete_project",
       "type": "calls"
@@ -3745,8 +3728,23 @@
       "type": "calls"
     },
     {
+      "source": "ui.main_window.MainWindow._confirm_and_delete_project",
+      "target": "ui.main_window.MainWindow.load_projects",
+      "type": "calls"
+    },
+    {
       "source": "ui.main_window.MainWindow.load_projects",
       "target": "ui.common.workers.ProjectLoaderThread",
+      "type": "calls"
+    },
+    {
+      "source": "ui.main_window.MainWindow._on_projects_loaded",
+      "target": "ui.main_window.MainWindow._on_project_selected",
+      "type": "calls"
+    },
+    {
+      "source": "ui.main_window.MainWindow._on_project_selected",
+      "target": "ui.main_window.MainWindow.load_projects",
       "type": "calls"
     },
     {
@@ -3836,7 +3834,17 @@
     },
     {
       "source": "ui.views.du_an_view.DuAnView.set_project",
-      "target": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
+      "target": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+      "type": "calls"
+    },
+    {
+      "source": "ui.views.du_an_view.DuAnView.reload_projects",
+      "target": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+      "type": "calls"
+    },
+    {
+      "source": "ui.views.du_an_view.DuAnView._on_project_updated",
+      "target": "ui.main_window.MainWindow.load_projects",
       "type": "calls"
     },
     {
@@ -3875,38 +3883,23 @@
       "type": "calls"
     },
     {
-      "source": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-      "type": "calls"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
-      "target": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-      "type": "calls"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-      "target": "ui.common.workers.ProjectLoaderThread",
-      "type": "calls"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-      "target": "core.services.project_service.update_project",
-      "type": "calls"
-    },
-    {
-      "source": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
+      "source": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
       "target": "core.services.project_service.create_project",
       "type": "calls"
     },
     {
-      "source": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-      "target": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
+      "source": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+      "target": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
       "type": "calls"
     },
     {
-      "source": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-      "target": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
+      "source": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+      "target": "core.services.project_service.get_project",
+      "type": "calls"
+    },
+    {
+      "source": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+      "target": "core.services.project_service.update_project",
       "type": "calls"
     },
     {
@@ -3940,8 +3933,18 @@
       "type": "calls"
     },
     {
+      "source": "ui.views.du_an.section_widget.SectionWidget._on_create_section",
+      "target": "ui.views.du_an.section_widget.SectionWidget.clear_form",
+      "type": "calls"
+    },
+    {
       "source": "ui.views.du_an.section_widget.SectionWidget._on_item_selection_changed",
       "target": "ui.views.du_an.section_widget.SectionWidget.set_edit_section",
+      "type": "calls"
+    },
+    {
+      "source": "ui.views.du_an.section_widget.SectionWidget._on_item_selection_changed",
+      "target": "ui.views.du_an.section_widget.SectionWidget.clear_form",
       "type": "calls"
     }
   ],
@@ -11472,174 +11475,188 @@
     "ui.main_window": {
       "module_name": "ui.main_window",
       "file_path": "ui/main_window.py",
-      "mtime": 1783672350.73577,
+      "mtime": 1783675223.9719398,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 21
+          "line": 24
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMainWindow",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QHBoxLayout",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QVBoxLayout",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QStackedWidget",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QFrame",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QButtonGroup",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QListWidget",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QListWidgetItem",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMenu",
           "asname": null,
-          "line": 22
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 22
+          "line": 25
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QDialog",
+          "asname": null,
+          "line": 25
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "Qt",
           "asname": null,
-          "line": 37
+          "line": 41
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "pyqtSignal",
           "asname": null,
-          "line": 37
+          "line": 41
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "QPoint",
           "asname": null,
-          "line": 37
+          "line": 41
         },
         {
           "type": "from",
           "module": "ui.views.thiet_ke_view",
           "name": "ThietKeView",
           "asname": null,
-          "line": 39
+          "line": 43
         },
         {
           "type": "from",
           "module": "ui.views.ke_hoach_view",
           "name": "KeHoachView",
           "asname": null,
-          "line": 40
+          "line": 44
         },
         {
           "type": "from",
           "module": "ui.common.workers",
           "name": "ProjectLoaderThread",
           "asname": null,
-          "line": 41
+          "line": 45
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 42
+          "line": 46
+        },
+        {
+          "type": "from",
+          "module": "ui.views.du_an.project_dialog",
+          "name": "CreateProjectDialog",
+          "asname": null,
+          "line": 47
         },
         {
           "type": "from",
           "module": "ui.views.du_an_view",
           "name": "DuAnView",
           "asname": null,
-          "line": 99
+          "line": 104
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "project_service",
           "asname": null,
-          "line": 364
+          "line": 409
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 475
+          "line": 520
         }
       ],
       "classes": [
@@ -11649,8 +11666,8 @@
           "bases": [
             "QMainWindow"
           ],
-          "line": 47,
-          "end_line": 643
+          "line": 52,
+          "end_line": 688
         }
       ],
       "functions": [
@@ -11668,8 +11685,8 @@
             "user_dept": "str"
           },
           "return_hint": "None",
-          "line": 56,
-          "end_line": 66
+          "line": 61,
+          "end_line": 71
         },
         {
           "id": "ui.main_window.MainWindow._init_ui",
@@ -11679,8 +11696,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 68,
-          "end_line": 120
+          "line": 73,
+          "end_line": 125
         },
         {
           "id": "ui.main_window.MainWindow._create_sidebar",
@@ -11690,8 +11707,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QFrame",
-          "line": 122,
-          "end_line": 177
+          "line": 127,
+          "end_line": 210
         },
         {
           "id": "ui.main_window.MainWindow._create_header",
@@ -11701,8 +11718,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "QFrame",
-          "line": 179,
-          "end_line": 294
+          "line": 212,
+          "end_line": 327
         },
         {
           "id": "ui.main_window.MainWindow._on_logout_clicked",
@@ -11712,8 +11729,19 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 296,
-          "end_line": 299
+          "line": 329,
+          "end_line": 332
+        },
+        {
+          "id": "ui.main_window.MainWindow._show_create_project_dialog",
+          "name": "_show_create_project_dialog",
+          "parent_id": "ui.main_window.MainWindow",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 334,
+          "end_line": 344
         },
         {
           "id": "ui.main_window.MainWindow._show_project_context_menu",
@@ -11727,8 +11755,8 @@
             "pos": "QPoint"
           },
           "return_hint": "None",
-          "line": 301,
-          "end_line": 326
+          "line": 346,
+          "end_line": 371
         },
         {
           "id": "ui.main_window.MainWindow._confirm_and_delete_project",
@@ -11744,8 +11772,8 @@
             "display_text": "str"
           },
           "return_hint": "None",
-          "line": 328,
-          "end_line": 403
+          "line": 373,
+          "end_line": 448
         },
         {
           "id": "ui.main_window.MainWindow.load_projects",
@@ -11755,8 +11783,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 405,
-          "end_line": 421
+          "line": 450,
+          "end_line": 466
         },
         {
           "id": "ui.main_window.MainWindow._on_projects_loaded",
@@ -11770,8 +11798,8 @@
             "projects": "list[dict]"
           },
           "return_hint": "None",
-          "line": 423,
-          "end_line": 456
+          "line": 468,
+          "end_line": 501
         },
         {
           "id": "ui.main_window.MainWindow._on_projects_load_error",
@@ -11785,8 +11813,8 @@
             "err_msg": "str"
           },
           "return_hint": "None",
-          "line": 458,
-          "end_line": 483
+          "line": 503,
+          "end_line": 528
         },
         {
           "id": "ui.main_window.MainWindow._on_project_selected",
@@ -11796,8 +11824,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 485,
-          "end_line": 521
+          "line": 530,
+          "end_line": 566
         },
         {
           "id": "ui.main_window.MainWindow._switch_view",
@@ -11811,8 +11839,8 @@
             "index": "int"
           },
           "return_hint": "None",
-          "line": 523,
-          "end_line": 538
+          "line": 568,
+          "end_line": 583
         },
         {
           "id": "ui.main_window.MainWindow._apply_styles",
@@ -11822,8 +11850,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 540,
-          "end_line": 643
+          "line": 585,
+          "end_line": 688
         }
       ],
       "calls": [
@@ -11831,259 +11859,235 @@
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 57
+          "line": 62
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 57
+          "line": 62
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "setWindowTitle",
           "caller_obj": "self",
-          "line": 58
+          "line": 63
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "resize",
           "caller_obj": "self",
-          "line": 59
+          "line": 64
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "setMinimumSize",
           "caller_obj": "self",
-          "line": 60
+          "line": 65
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 65
+          "line": 70
         },
         {
           "caller": "ui.main_window.MainWindow.__init__",
           "call_name": "load_projects",
           "caller_obj": "self",
-          "line": 66
+          "line": 71
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QWidget",
           "caller_obj": null,
-          "line": 70
+          "line": 75
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setCentralWidget",
           "caller_obj": "self",
-          "line": 71
+          "line": 76
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 74
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setContentsMargins",
-          "caller_obj": "main_layout",
-          "line": 75
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setSpacing",
-          "caller_obj": "main_layout",
-          "line": 76
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "_create_sidebar",
-          "caller_obj": "self",
           "line": 79
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
+          "call_name": "setContentsMargins",
           "caller_obj": "main_layout",
           "line": 80
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "QWidget",
-          "caller_obj": null,
-          "line": 83
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "QVBoxLayout",
-          "caller_obj": null,
-          "line": 84
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setContentsMargins",
-          "caller_obj": "right_layout",
-          "line": 85
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setSpacing",
-          "caller_obj": "right_layout",
-          "line": 86
+          "caller_obj": "main_layout",
+          "line": 81
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "_create_header",
+          "call_name": "_create_sidebar",
           "caller_obj": "self",
-          "line": 89
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "right_layout",
-          "line": 90
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "QStackedWidget",
-          "caller_obj": null,
-          "line": 93
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "right_layout",
-          "line": 94
+          "line": 84
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "addWidget",
           "caller_obj": "main_layout",
-          "line": 96
+          "line": 85
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "QWidget",
+          "caller_obj": null,
+          "line": 88
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "QVBoxLayout",
+          "caller_obj": null,
+          "line": 89
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "setContentsMargins",
+          "caller_obj": "right_layout",
+          "line": 90
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "setSpacing",
+          "caller_obj": "right_layout",
+          "line": 91
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "_create_header",
+          "caller_obj": "self",
+          "line": 94
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "right_layout",
+          "line": 95
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "QStackedWidget",
+          "caller_obj": null,
+          "line": 98
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "right_layout",
+          "line": 99
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "main_layout",
+          "line": 101
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "DuAnView",
           "caller_obj": null,
-          "line": 101
+          "line": 106
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "ThietKeView",
           "caller_obj": null,
-          "line": 102
+          "line": 107
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "KeHoachView",
           "caller_obj": null,
-          "line": 103
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "self.content_stack",
-          "line": 106
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "self.content_stack",
-          "line": 107
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "self.content_stack",
           "line": 108
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.content_stack",
+          "line": 111
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.content_stack",
+          "line": 112
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.content_stack",
+          "line": 113
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "_apply_styles",
           "caller_obj": "self",
-          "line": 111
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setCurrentIndex",
-          "caller_obj": "self.content_stack",
-          "line": 115
-        },
-        {
-          "caller": "ui.main_window.MainWindow._init_ui",
-          "call_name": "setChecked",
-          "caller_obj": "self.btn_ke_hoach",
           "line": 116
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setCurrentIndex",
           "caller_obj": "self.content_stack",
-          "line": 119
+          "line": 120
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "setChecked",
+          "caller_obj": "self.btn_ke_hoach",
+          "line": 121
+        },
+        {
+          "caller": "ui.main_window.MainWindow._init_ui",
+          "call_name": "setCurrentIndex",
+          "caller_obj": "self.content_stack",
+          "line": 124
         },
         {
           "caller": "ui.main_window.MainWindow._init_ui",
           "call_name": "setChecked",
           "caller_obj": "self.btn_thiet_ke",
-          "line": 120
+          "line": 125
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 128
+          "line": 133
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
           "caller_obj": "sidebar",
-          "line": 129
+          "line": 134
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 131
+          "line": 136
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setContentsMargins",
           "caller_obj": "sidebar_layout",
-          "line": 132
+          "line": 137
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setSpacing",
           "caller_obj": "sidebar_layout",
-          "line": 133
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 136
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setObjectName",
-          "caller_obj": "brand_label",
-          "line": 137
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setAlignment",
-          "caller_obj": "brand_label",
           "line": 138
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "addWidget",
-          "caller_obj": "sidebar_layout",
-          "line": 139
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
@@ -12094,13 +12098,13 @@
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
-          "caller_obj": "sub_brand_label",
+          "caller_obj": "brand_label",
           "line": 142
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setAlignment",
-          "caller_obj": "sub_brand_label",
+          "caller_obj": "brand_label",
           "line": 143
         },
         {
@@ -12111,1005 +12115,1101 @@
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QFrame",
+          "call_name": "QLabel",
           "caller_obj": null,
+          "line": 146
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setObjectName",
+          "caller_obj": "sub_brand_label",
           "line": 147
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setFrameShape",
-          "caller_obj": "divider",
+          "call_name": "setAlignment",
+          "caller_obj": "sub_brand_label",
           "line": 148
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setFrameShadow",
-          "caller_obj": "divider",
-          "line": 149
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "setStyleSheet",
-          "caller_obj": "divider",
-          "line": 150
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 151
+          "line": 149
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
-          "call_name": "QLabel",
+          "call_name": "QFrame",
           "caller_obj": null,
+          "line": 152
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setFrameShape",
+          "caller_obj": "divider",
+          "line": 153
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setFrameShadow",
+          "caller_obj": "divider",
           "line": 154
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setStyleSheet",
-          "caller_obj": "lbl_select",
+          "caller_obj": "divider",
           "line": 155
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 158
+          "line": 156
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 159
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setStyleSheet",
+          "caller_obj": "lbl_select",
+          "line": 160
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "addWidget",
+          "caller_obj": "sidebar_layout",
+          "line": 163
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 166
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.btn_new_project",
+          "line": 167
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "connect",
+          "caller_obj": "self.btn_new_project.clicked",
+          "line": 184
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "show",
+          "caller_obj": "self.btn_new_project",
+          "line": 187
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "hide",
+          "caller_obj": "self.btn_new_project",
+          "line": 189
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_sidebar",
+          "call_name": "addWidget",
+          "caller_obj": "sidebar_layout",
+          "line": 191
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QListWidget",
           "caller_obj": null,
-          "line": 160
+          "line": 193
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setObjectName",
           "caller_obj": "self.lst_projects",
-          "line": 161
+          "line": 194
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setContextMenuPolicy",
           "caller_obj": "self.lst_projects",
-          "line": 162
+          "line": 195
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "connect",
           "caller_obj": "self.lst_projects.customContextMenuRequested",
-          "line": 163
+          "line": 196
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "connect",
           "caller_obj": "self.lst_projects.itemSelectionChanged",
-          "line": 166
+          "line": 199
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 167
+          "line": 200
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 170
+          "line": 203
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setStyleSheet",
           "caller_obj": "version_label",
-          "line": 171
+          "line": 204
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "setAlignment",
           "caller_obj": "version_label",
-          "line": 174
+          "line": 207
         },
         {
           "caller": "ui.main_window.MainWindow._create_sidebar",
           "call_name": "addWidget",
           "caller_obj": "sidebar_layout",
-          "line": 175
+          "line": 208
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QFrame",
           "caller_obj": null,
-          "line": 187
+          "line": 220
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setObjectName",
           "caller_obj": "header",
-          "line": 188
+          "line": 221
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QHBoxLayout",
           "caller_obj": null,
-          "line": 190
+          "line": 223
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setContentsMargins",
           "caller_obj": "header_layout",
-          "line": 191
+          "line": 224
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 194
+          "line": 227
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setObjectName",
           "caller_obj": "self.lbl_header_project",
-          "line": 195
+          "line": 228
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "setStyleSheet",
           "caller_obj": "self.lbl_header_project",
-          "line": 196
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "header_layout",
-          "line": 199
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addStretch",
-          "caller_obj": "header_layout",
-          "line": 202
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QButtonGroup",
-          "caller_obj": null,
-          "line": 205
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setExclusive",
-          "caller_obj": "self.button_group",
-          "line": 206
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QPushButton",
-          "caller_obj": null,
-          "line": 209
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setObjectName",
-          "caller_obj": "self.btn_du_an",
-          "line": 210
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setCheckable",
-          "caller_obj": "self.btn_du_an",
-          "line": 211
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "connect",
-          "caller_obj": "self.btn_du_an.clicked",
-          "line": 212
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "_switch_view",
-          "caller_obj": "self",
-          "line": 212
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addButton",
-          "caller_obj": "self.button_group",
-          "line": 213
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "header_layout",
-          "line": 214
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QPushButton",
-          "caller_obj": null,
-          "line": 217
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setObjectName",
-          "caller_obj": "self.btn_thiet_ke",
-          "line": 218
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setCheckable",
-          "caller_obj": "self.btn_thiet_ke",
-          "line": 219
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "connect",
-          "caller_obj": "self.btn_thiet_ke.clicked",
-          "line": 220
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "_switch_view",
-          "caller_obj": "self",
-          "line": 220
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addButton",
-          "caller_obj": "self.button_group",
-          "line": 221
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "header_layout",
-          "line": 222
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QPushButton",
-          "caller_obj": null,
-          "line": 225
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setObjectName",
-          "caller_obj": "self.btn_ke_hoach",
-          "line": 226
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setCheckable",
-          "caller_obj": "self.btn_ke_hoach",
-          "line": 227
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "connect",
-          "caller_obj": "self.btn_ke_hoach.clicked",
-          "line": 228
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "_switch_view",
-          "caller_obj": "self",
-          "line": 228
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addButton",
-          "caller_obj": "self.button_group",
           "line": 229
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addWidget",
           "caller_obj": "header_layout",
-          "line": 230
+          "line": 232
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "hide",
-          "caller_obj": "self.btn_du_an",
-          "line": 234
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "hide",
-          "caller_obj": "self.btn_thiet_ke",
+          "call_name": "addStretch",
+          "caller_obj": "header_layout",
           "line": 235
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QFrame",
+          "call_name": "QButtonGroup",
           "caller_obj": null,
           "line": 238
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setFrameShape",
-          "caller_obj": "sep",
+          "call_name": "setExclusive",
+          "caller_obj": "self.button_group",
           "line": 239
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setStyleSheet",
-          "caller_obj": "sep",
-          "line": 240
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "header_layout",
-          "line": 241
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QWidget",
-          "caller_obj": null,
-          "line": 244
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QHBoxLayout",
-          "caller_obj": null,
-          "line": 245
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setContentsMargins",
-          "caller_obj": "user_info_layout",
-          "line": 246
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setSpacing",
-          "caller_obj": "user_info_layout",
-          "line": 247
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "upper",
-          "caller_obj": "",
-          "line": 250
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 251
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.lbl_avatar",
-          "line": 252
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "user_info_layout",
-          "line": 266
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 270
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.lbl_user",
-          "line": 271
-        },
-        {
-          "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "user_info_layout",
-          "line": 274
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "QPushButton",
           "caller_obj": null,
-          "line": 277
+          "line": 242
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.btn_logout",
-          "line": 278
+          "call_name": "setObjectName",
+          "caller_obj": "self.btn_du_an",
+          "line": 243
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setCheckable",
+          "caller_obj": "self.btn_du_an",
+          "line": 244
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "connect",
-          "caller_obj": "self.btn_logout.clicked",
-          "line": 289
+          "caller_obj": "self.btn_du_an.clicked",
+          "line": 245
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
-          "call_name": "addWidget",
-          "caller_obj": "user_info_layout",
-          "line": 290
+          "call_name": "_switch_view",
+          "caller_obj": "self",
+          "line": 245
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addButton",
+          "caller_obj": "self.button_group",
+          "line": 246
         },
         {
           "caller": "ui.main_window.MainWindow._create_header",
           "call_name": "addWidget",
           "caller_obj": "header_layout",
-          "line": 292
+          "line": 247
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 250
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setObjectName",
+          "caller_obj": "self.btn_thiet_ke",
+          "line": 251
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setCheckable",
+          "caller_obj": "self.btn_thiet_ke",
+          "line": 252
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "connect",
+          "caller_obj": "self.btn_thiet_ke.clicked",
+          "line": 253
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "_switch_view",
+          "caller_obj": "self",
+          "line": 253
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addButton",
+          "caller_obj": "self.button_group",
+          "line": 254
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "header_layout",
+          "line": 255
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 258
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setObjectName",
+          "caller_obj": "self.btn_ke_hoach",
+          "line": 259
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setCheckable",
+          "caller_obj": "self.btn_ke_hoach",
+          "line": 260
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "connect",
+          "caller_obj": "self.btn_ke_hoach.clicked",
+          "line": 261
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "_switch_view",
+          "caller_obj": "self",
+          "line": 261
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addButton",
+          "caller_obj": "self.button_group",
+          "line": 262
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "header_layout",
+          "line": 263
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "hide",
+          "caller_obj": "self.btn_du_an",
+          "line": 267
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "hide",
+          "caller_obj": "self.btn_thiet_ke",
+          "line": 268
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QFrame",
+          "caller_obj": null,
+          "line": 271
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setFrameShape",
+          "caller_obj": "sep",
+          "line": 272
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "sep",
+          "line": 273
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "header_layout",
+          "line": 274
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QWidget",
+          "caller_obj": null,
+          "line": 277
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QHBoxLayout",
+          "caller_obj": null,
+          "line": 278
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setContentsMargins",
+          "caller_obj": "user_info_layout",
+          "line": 279
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setSpacing",
+          "caller_obj": "user_info_layout",
+          "line": 280
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "upper",
+          "caller_obj": "",
+          "line": 283
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 284
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.lbl_avatar",
+          "line": 285
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "user_info_layout",
+          "line": 299
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 303
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.lbl_user",
+          "line": 304
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "user_info_layout",
+          "line": 307
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "QPushButton",
+          "caller_obj": null,
+          "line": 310
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.btn_logout",
+          "line": 311
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "connect",
+          "caller_obj": "self.btn_logout.clicked",
+          "line": 322
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "user_info_layout",
+          "line": 323
+        },
+        {
+          "caller": "ui.main_window.MainWindow._create_header",
+          "call_name": "addWidget",
+          "caller_obj": "header_layout",
+          "line": 325
         },
         {
           "caller": "ui.main_window.MainWindow._on_logout_clicked",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 298
+          "line": 331
         },
         {
           "caller": "ui.main_window.MainWindow._on_logout_clicked",
           "call_name": "emit",
           "caller_obj": "self.logout_clicked",
-          "line": 299
+          "line": 332
+        },
+        {
+          "caller": "ui.main_window.MainWindow._show_create_project_dialog",
+          "call_name": "CreateProjectDialog",
+          "caller_obj": null,
+          "line": 336
+        },
+        {
+          "caller": "ui.main_window.MainWindow._show_create_project_dialog",
+          "call_name": "exec",
+          "caller_obj": "dialog",
+          "line": 337
+        },
+        {
+          "caller": "ui.main_window.MainWindow._show_create_project_dialog",
+          "call_name": "load_projects",
+          "caller_obj": "self",
+          "line": 339
+        },
+        {
+          "caller": "ui.main_window.MainWindow._show_create_project_dialog",
+          "call_name": "hasattr",
+          "caller_obj": null,
+          "line": 341
+        },
+        {
+          "caller": "ui.main_window.MainWindow._show_create_project_dialog",
+          "call_name": "hasattr",
+          "caller_obj": null,
+          "line": 341
+        },
+        {
+          "caller": "ui.main_window.MainWindow._show_create_project_dialog",
+          "call_name": "reload_projects",
+          "caller_obj": "self.du_an_view",
+          "line": 344
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "itemAt",
           "caller_obj": "self.lst_projects",
-          "line": 307
+          "line": 352
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "data",
           "caller_obj": "item",
-          "line": 311
+          "line": 356
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "QMenu",
           "caller_obj": null,
-          "line": 320
+          "line": 365
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "addAction",
           "caller_obj": "menu",
-          "line": 321
+          "line": 366
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "exec",
           "caller_obj": "menu",
-          "line": 324
+          "line": 369
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "mapToGlobal",
           "caller_obj": "self.lst_projects",
-          "line": 324
+          "line": 369
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "_confirm_and_delete_project",
           "caller_obj": "self",
-          "line": 326
+          "line": 371
         },
         {
           "caller": "ui.main_window.MainWindow._show_project_context_menu",
           "call_name": "text",
           "caller_obj": "item",
-          "line": 326
+          "line": 371
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 336
+          "line": 381
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 348
+          "line": 393
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "SessionLocal",
           "caller_obj": null,
-          "line": 362
+          "line": 407
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "delete_project",
           "caller_obj": "project_service",
-          "line": 366
+          "line": 411
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 368
+          "line": 413
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "str",
           "caller_obj": null,
-          "line": 369
+          "line": 414
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "close",
           "caller_obj": "db",
-          "line": 372
+          "line": 417
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "information",
           "caller_obj": "QMessageBox",
-          "line": 375
+          "line": 420
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "setText",
           "caller_obj": "self.lbl_header_project",
-          "line": 381
+          "line": 426
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 383
+          "line": 428
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "set_project",
           "caller_obj": "self.du_an_view",
-          "line": 384
+          "line": 429
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 385
+          "line": 430
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 386
+          "line": 431
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 387
+          "line": 432
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 388
+          "line": 433
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 391
+          "line": 436
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 391
+          "line": 436
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "reload_projects",
           "caller_obj": "self.du_an_view",
-          "line": 394
+          "line": 439
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "load_projects",
           "caller_obj": "self",
-          "line": 397
+          "line": 442
         },
         {
           "caller": "ui.main_window.MainWindow._confirm_and_delete_project",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 399
+          "line": 444
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 407
+          "line": 452
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 408
+          "line": 453
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "clear",
           "caller_obj": "self.lst_projects",
-          "line": 409
+          "line": 454
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 412
+          "line": 457
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "setFlags",
           "caller_obj": "loading_item",
-          "line": 413
+          "line": 458
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 414
+          "line": 459
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 415
+          "line": 460
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "ProjectLoaderThread",
           "caller_obj": null,
-          "line": 418
+          "line": 463
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "connect",
           "caller_obj": "self.project_loader_thread.finished",
-          "line": 419
+          "line": 464
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "connect",
           "caller_obj": "self.project_loader_thread.error",
-          "line": 420
+          "line": 465
         },
         {
           "caller": "ui.main_window.MainWindow.load_projects",
           "call_name": "start",
           "caller_obj": "self.project_loader_thread",
-          "line": 421
+          "line": 466
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 429
+          "line": 474
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 430
+          "line": 475
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "clear",
           "caller_obj": "self.lst_projects",
-          "line": 431
+          "line": 476
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 439
+          "line": 484
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "setData",
           "caller_obj": "item",
-          "line": 440
+          "line": 485
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 441
+          "line": 486
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 443
+          "line": 488
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "count",
           "caller_obj": "self.lst_projects",
-          "line": 446
+          "line": 491
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "range",
           "caller_obj": null,
-          "line": 449
+          "line": 494
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "count",
           "caller_obj": "self.lst_projects",
-          "line": 449
+          "line": 494
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "item",
           "caller_obj": "self.lst_projects",
-          "line": 450
+          "line": 495
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "data",
           "caller_obj": "item",
-          "line": 451
+          "line": 496
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "setCurrentRow",
           "caller_obj": "self.lst_projects",
-          "line": 454
+          "line": 499
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_loaded",
           "call_name": "_on_project_selected",
           "caller_obj": "self",
-          "line": 456
+          "line": 501
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 464
+          "line": 509
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 465
+          "line": 510
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "clear",
           "caller_obj": "self.lst_projects",
-          "line": 466
+          "line": 511
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "QListWidgetItem",
           "caller_obj": null,
-          "line": 469
+          "line": 514
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "setData",
           "caller_obj": "error_item",
-          "line": 470
+          "line": 515
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "addItem",
           "caller_obj": "self.lst_projects",
-          "line": 471
+          "line": 516
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "blockSignals",
           "caller_obj": "self.lst_projects",
-          "line": 472
+          "line": 517
         },
         {
           "caller": "ui.main_window.MainWindow._on_projects_load_error",
           "call_name": "warning",
           "caller_obj": "QMessageBox",
-          "line": 477
+          "line": 522
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "selectedItems",
           "caller_obj": "self.lst_projects",
-          "line": 487
+          "line": 532
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "data",
           "caller_obj": "item",
-          "line": 490
+          "line": 535
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 493
+          "line": 538
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "load_projects",
           "caller_obj": "self",
-          "line": 494
+          "line": 539
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 497
+          "line": 542
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "setText",
           "caller_obj": "self.lbl_header_project",
-          "line": 500
+          "line": 545
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "text",
           "caller_obj": "item",
-          "line": 500
+          "line": 545
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "currentIndex",
           "caller_obj": "self.content_stack",
-          "line": 503
+          "line": 548
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 504
+          "line": 549
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.du_an_view",
-          "line": 505
+          "line": 550
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 506
+          "line": 551
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 507
+          "line": 552
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 508
+          "line": 553
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 509
+          "line": 554
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 511
+          "line": 556
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "setText",
           "caller_obj": "self.lbl_header_project",
-          "line": 513
+          "line": 558
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "currentIndex",
           "caller_obj": "self.content_stack",
-          "line": 515
+          "line": 560
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 516
+          "line": 561
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.du_an_view",
-          "line": 517
+          "line": 562
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 518
+          "line": 563
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 519
+          "line": 564
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 520
+          "line": 565
         },
         {
           "caller": "ui.main_window.MainWindow._on_project_selected",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 521
+          "line": 566
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 529
+          "line": 574
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "setCurrentIndex",
           "caller_obj": "self.content_stack",
-          "line": 530
+          "line": 575
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 533
+          "line": 578
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "set_project",
           "caller_obj": "self.du_an_view",
-          "line": 534
+          "line": 579
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 535
+          "line": 580
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "set_project",
           "caller_obj": "self.thiet_ke_view",
-          "line": 536
+          "line": 581
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 537
+          "line": 582
         },
         {
           "caller": "ui.main_window.MainWindow._switch_view",
           "call_name": "set_project",
           "caller_obj": "self.ke_hoach_view",
-          "line": 538
+          "line": 583
         },
         {
           "caller": "ui.main_window.MainWindow._apply_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 542
+          "line": 587
         }
       ]
     },
@@ -13498,34 +13598,34 @@
     "core.services.project_service": {
       "module_name": "core.services.project_service",
       "file_path": "core/services/project_service.py",
-      "mtime": 1783672037.8586795,
+      "mtime": 1783672429.243227,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 11
+          "line": 12
         },
         {
           "type": "from",
           "module": "sqlalchemy.orm",
           "name": "Session",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "sqlalchemy.exc",
           "name": "SQLAlchemyError",
           "asname": null,
-          "line": 13
+          "line": 14
         },
         {
           "type": "from",
           "module": "core.models",
           "name": "Project",
           "asname": null,
-          "line": 14
+          "line": 15
         }
       ],
       "classes": [],
@@ -13548,8 +13648,8 @@
             "roles": "Any"
           },
           "return_hint": "Any",
-          "line": 19,
-          "end_line": 73
+          "line": 20,
+          "end_line": 74
         },
         {
           "id": "core.services.project_service.get_project",
@@ -13565,8 +13665,8 @@
             "project_id": "str"
           },
           "return_hint": "Any",
-          "line": 76,
-          "end_line": 96
+          "line": 77,
+          "end_line": 97
         },
         {
           "id": "core.services.project_service.list_active_projects",
@@ -13580,8 +13680,8 @@
             "db": "Session"
           },
           "return_hint": "list[Project]",
-          "line": 99,
-          "end_line": 115
+          "line": 100,
+          "end_line": 116
         },
         {
           "id": "core.services.project_service.update_project_status",
@@ -13599,8 +13699,8 @@
             "status": "str"
           },
           "return_hint": "Any",
-          "line": 118,
-          "end_line": 155
+          "line": 119,
+          "end_line": 156
         },
         {
           "id": "core.services.project_service.update_project",
@@ -13620,8 +13720,8 @@
             "roles": "Any"
           },
           "return_hint": "Any",
-          "line": 158,
-          "end_line": 206
+          "line": 159,
+          "end_line": 207
         },
         {
           "id": "core.services.project_service.delete_project",
@@ -13637,8 +13737,8 @@
             "project_id": "str"
           },
           "return_hint": "bool",
-          "line": 209,
-          "end_line": 238
+          "line": 210,
+          "end_line": 239
         }
       ],
       "calls": [
@@ -13646,13 +13746,7 @@
           "caller": "core.services.project_service.create_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 36
-        },
-        {
-          "caller": "core.services.project_service.create_project",
-          "call_name": "get",
-          "caller_obj": "roles",
-          "line": 42
+          "line": 37
         },
         {
           "caller": "core.services.project_service.create_project",
@@ -13662,225 +13756,225 @@
         },
         {
           "caller": "core.services.project_service.create_project",
+          "call_name": "get",
+          "caller_obj": "roles",
+          "line": 44
+        },
+        {
+          "caller": "core.services.project_service.create_project",
           "call_name": "first",
           "caller_obj": "",
-          "line": 47
+          "line": 48
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 47
+          "line": 48
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 47
+          "line": 48
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "warning",
           "caller_obj": "logger",
-          "line": 49
+          "line": 50
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "Project",
           "caller_obj": null,
-          "line": 54
+          "line": 55
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "add",
           "caller_obj": "db",
-          "line": 60
-        },
-        {
-          "caller": "core.services.project_service.create_project",
-          "call_name": "commit",
-          "caller_obj": "db",
           "line": 61
         },
         {
           "caller": "core.services.project_service.create_project",
-          "call_name": "refresh",
+          "call_name": "commit",
           "caller_obj": "db",
           "line": 62
         },
         {
           "caller": "core.services.project_service.create_project",
+          "call_name": "refresh",
+          "caller_obj": "db",
+          "line": 63
+        },
+        {
+          "caller": "core.services.project_service.create_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 63
+          "line": 64
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "rollback",
           "caller_obj": "db",
-          "line": 66
+          "line": 67
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 67
+          "line": 68
         },
         {
           "caller": "core.services.project_service.create_project",
           "call_name": "str",
           "caller_obj": null,
-          "line": 70
+          "line": 71
         },
         {
           "caller": "core.services.project_service.get_project",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 86
+          "line": 87
         },
         {
           "caller": "core.services.project_service.get_project",
           "call_name": "first",
           "caller_obj": "",
-          "line": 88
+          "line": 89
         },
         {
           "caller": "core.services.project_service.get_project",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 88
+          "line": 89
         },
         {
           "caller": "core.services.project_service.get_project",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 88
+          "line": 89
         },
         {
           "caller": "core.services.project_service.get_project",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 90
+          "line": 91
         },
         {
           "caller": "core.services.project_service.get_project",
           "call_name": "str",
           "caller_obj": null,
-          "line": 93
+          "line": 94
         },
         {
           "caller": "core.services.project_service.list_active_projects",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 108
+          "line": 109
         },
         {
           "caller": "core.services.project_service.list_active_projects",
           "call_name": "all",
           "caller_obj": "",
-          "line": 110
+          "line": 111
         },
         {
           "caller": "core.services.project_service.list_active_projects",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 110
+          "line": 111
         },
         {
           "caller": "core.services.project_service.list_active_projects",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 110
+          "line": 111
         },
         {
           "caller": "core.services.project_service.list_active_projects",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 112
+          "line": 113
         },
         {
           "caller": "core.services.project_service.list_active_projects",
           "call_name": "str",
           "caller_obj": null,
-          "line": 113
+          "line": 114
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 129
+          "line": 130
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "first",
           "caller_obj": "",
-          "line": 133
+          "line": 134
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 133
+          "line": 134
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 133
+          "line": 134
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "warning",
           "caller_obj": "logger",
-          "line": 135
+          "line": 136
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "commit",
           "caller_obj": "db",
-          "line": 141
+          "line": 142
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "refresh",
           "caller_obj": "db",
-          "line": 142
+          "line": 143
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 143
+          "line": 144
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "rollback",
           "caller_obj": "db",
-          "line": 148
+          "line": 149
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 149
+          "line": 150
         },
         {
           "caller": "core.services.project_service.update_project_status",
           "call_name": "str",
           "caller_obj": null,
-          "line": 152
+          "line": 153
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 175
-        },
-        {
-          "caller": "core.services.project_service.update_project",
-          "call_name": "get",
-          "caller_obj": "roles",
-          "line": 181
+          "line": 176
         },
         {
           "caller": "core.services.project_service.update_project",
@@ -13890,129 +13984,135 @@
         },
         {
           "caller": "core.services.project_service.update_project",
+          "call_name": "get",
+          "caller_obj": "roles",
+          "line": 183
+        },
+        {
+          "caller": "core.services.project_service.update_project",
           "call_name": "first",
           "caller_obj": "",
-          "line": 185
+          "line": 186
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 185
+          "line": 186
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 185
+          "line": 186
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "warning",
           "caller_obj": "logger",
-          "line": 187
+          "line": 188
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "commit",
-          "caller_obj": "db",
-          "line": 194
-        },
-        {
-          "caller": "core.services.project_service.update_project",
-          "call_name": "refresh",
           "caller_obj": "db",
           "line": 195
         },
         {
           "caller": "core.services.project_service.update_project",
+          "call_name": "refresh",
+          "caller_obj": "db",
+          "line": 196
+        },
+        {
+          "caller": "core.services.project_service.update_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 196
+          "line": 197
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "rollback",
           "caller_obj": "db",
-          "line": 199
+          "line": 200
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 200
+          "line": 201
         },
         {
           "caller": "core.services.project_service.update_project",
           "call_name": "str",
           "caller_obj": null,
-          "line": 203
+          "line": 204
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 219
+          "line": 220
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "first",
           "caller_obj": "",
-          "line": 221
+          "line": 222
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "filter",
           "caller_obj": "",
-          "line": 221
+          "line": 222
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "query",
           "caller_obj": "db",
-          "line": 221
+          "line": 222
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "warning",
           "caller_obj": "logger",
-          "line": 223
+          "line": 224
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "delete",
           "caller_obj": "db",
-          "line": 226
+          "line": 227
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "commit",
           "caller_obj": "db",
-          "line": 227
+          "line": 228
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 228
+          "line": 229
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "rollback",
           "caller_obj": "db",
-          "line": 231
+          "line": 232
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 232
+          "line": 233
         },
         {
           "caller": "core.services.project_service.delete_project",
           "call_name": "str",
           "caller_obj": null,
-          "line": 235
+          "line": 236
         }
       ]
     },
@@ -19052,7 +19152,7 @@
     "ui.views.du_an_view": {
       "module_name": "ui.views.du_an_view",
       "file_path": "ui/views/du_an_view.py",
-      "mtime": 1783672350.73577,
+      "mtime": 1783674686.0173104,
       "imports": [
         {
           "type": "direct",
@@ -19077,7 +19177,7 @@
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
-          "name": "QHBoxLayout",
+          "name": "QVBoxLayout",
           "asname": null,
           "line": 10
         },
@@ -19090,24 +19190,24 @@
         },
         {
           "type": "from",
-          "module": "PyQt6.QtWidgets",
-          "name": "QVBoxLayout",
+          "module": "PyQt6.QtCore",
+          "name": "Qt",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "from",
           "module": "ui.views.du_an.project_widget",
           "name": "ProjectWidget",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "ui.views.du_an.section_widget",
           "name": "SectionWidget",
           "asname": null,
-          "line": 13
+          "line": 14
         }
       ],
       "classes": [
@@ -19117,8 +19217,8 @@
           "bases": [
             "QWidget"
           ],
-          "line": 18,
-          "end_line": 201
+          "line": 19,
+          "end_line": 221
         }
       ],
       "functions": [
@@ -19134,8 +19234,8 @@
             "parent": "Any"
           },
           "return_hint": "None",
-          "line": 24,
-          "end_line": 33
+          "line": 25,
+          "end_line": 34
         },
         {
           "id": "ui.views.du_an_view.DuAnView._init_ui",
@@ -19145,8 +19245,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 35,
-          "end_line": 64
+          "line": 36,
+          "end_line": 84
         },
         {
           "id": "ui.views.du_an_view.DuAnView.set_project",
@@ -19160,34 +19260,8 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 66,
-          "end_line": 78
-        },
-        {
-          "id": "ui.views.du_an_view.DuAnView._on_project_selected",
-          "name": "_on_project_selected",
-          "parent_id": "ui.views.du_an_view.DuAnView",
-          "parent_type": "class",
-          "args": [
-            "project_id"
-          ],
-          "args_hints": {
-            "project_id": "str"
-          },
-          "return_hint": "None",
-          "line": 80,
-          "end_line": 87
-        },
-        {
-          "id": "ui.views.du_an_view.DuAnView._on_project_created",
-          "name": "_on_project_created",
-          "parent_id": "ui.views.du_an_view.DuAnView",
-          "parent_type": "class",
-          "args": [],
-          "args_hints": {},
-          "return_hint": "None",
-          "line": 89,
-          "end_line": 93
+          "line": 86,
+          "end_line": 107
         },
         {
           "id": "ui.views.du_an_view.DuAnView.reload_projects",
@@ -19197,8 +19271,23 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 95,
-          "end_line": 100
+          "line": 109,
+          "end_line": 114
+        },
+        {
+          "id": "ui.views.du_an_view.DuAnView._on_project_updated",
+          "name": "_on_project_updated",
+          "parent_id": "ui.views.du_an_view.DuAnView",
+          "parent_type": "class",
+          "args": [
+            "project_id"
+          ],
+          "args_hints": {
+            "project_id": "str"
+          },
+          "return_hint": "None",
+          "line": 116,
+          "end_line": 120
         },
         {
           "id": "ui.views.du_an_view.DuAnView._apply_view_styles",
@@ -19208,8 +19297,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 102,
-          "end_line": 201
+          "line": 122,
+          "end_line": 221
         }
       ],
       "calls": [
@@ -19217,169 +19306,259 @@
           "caller": "ui.views.du_an_view.DuAnView.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 30
+          "line": 31
         },
         {
           "caller": "ui.views.du_an_view.DuAnView.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 30
+          "line": 31
         },
         {
           "caller": "ui.views.du_an_view.DuAnView.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 33
+          "line": 34
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "QVBoxLayout",
           "caller_obj": null,
-          "line": 37
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "setContentsMargins",
-          "caller_obj": "layout",
           "line": 38
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "setSpacing",
-          "caller_obj": "layout",
+          "call_name": "setContentsMargins",
+          "caller_obj": "self.main_layout",
           "line": 39
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "setSpacing",
+          "caller_obj": "self.main_layout",
+          "line": 40
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "QLabel",
           "caller_obj": null,
-          "line": 42
+          "line": 43
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "setStyleSheet",
           "caller_obj": "title_label",
-          "line": 43
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "layout",
           "line": 44
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "QHBoxLayout",
+          "call_name": "addWidget",
+          "caller_obj": "self.main_layout",
+          "line": 45
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "QWidget",
           "caller_obj": null,
-          "line": 47
+          "line": 48
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "QVBoxLayout",
+          "caller_obj": null,
+          "line": 49
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "setContentsMargins",
+          "caller_obj": "welcome_layout",
+          "line": 50
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "setSpacing",
-          "caller_obj": "content_layout",
-          "line": 48
+          "caller_obj": "welcome_layout",
+          "line": 51
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 53
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "setStyleSheet",
+          "caller_obj": "welcome_icon",
+          "line": 54
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "welcome_icon",
+          "line": 55
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "welcome_layout",
+          "line": 56
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 58
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "setStyleSheet",
+          "caller_obj": "welcome_text",
+          "line": 62
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "setAlignment",
+          "caller_obj": "welcome_text",
+          "line": 65
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "welcome_layout",
+          "line": 66
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.main_layout",
+          "line": 68
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "ProjectWidget",
           "caller_obj": null,
-          "line": 51
+          "line": 71
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "SectionWidget",
           "caller_obj": null,
-          "line": 52
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "content_layout",
-          "line": 54
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "addWidget",
-          "caller_obj": "content_layout",
-          "line": 55
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "addLayout",
-          "caller_obj": "layout",
-          "line": 57
+          "line": 72
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "connect",
-          "caller_obj": "self.project_widget.project_selected",
-          "line": 60
+          "caller_obj": "self.project_widget.project_updated",
+          "line": 75
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
-          "call_name": "connect",
-          "caller_obj": "self.project_widget.project_created",
-          "line": 61
+          "call_name": "addWidget",
+          "caller_obj": "self.main_layout",
+          "line": 77
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "self.main_layout",
+          "line": 78
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._init_ui",
           "call_name": "_apply_view_styles",
           "caller_obj": "self",
-          "line": 64
+          "line": 81
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._init_ui",
+          "call_name": "set_project",
+          "caller_obj": "self",
+          "line": 84
         },
         {
           "caller": "ui.views.du_an_view.DuAnView.set_project",
-          "call_name": "select_project_by_id",
+          "call_name": "show",
+          "caller_obj": "self.welcome_widget",
+          "line": 96
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
+          "call_name": "hide",
           "caller_obj": "self.project_widget",
-          "line": 75
+          "line": 97
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
+          "call_name": "hide",
+          "caller_obj": "self.section_widget",
+          "line": 98
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
+          "call_name": "set_project_id",
+          "caller_obj": "self.project_widget",
+          "line": 99
         },
         {
           "caller": "ui.views.du_an_view.DuAnView.set_project",
           "call_name": "set_project",
           "caller_obj": "self.section_widget",
-          "line": 78
+          "line": 100
         },
         {
-          "caller": "ui.views.du_an_view.DuAnView._on_project_selected",
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
+          "call_name": "hide",
+          "caller_obj": "self.welcome_widget",
+          "line": 103
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
+          "call_name": "show",
+          "caller_obj": "self.project_widget",
+          "line": 104
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
+          "call_name": "show",
+          "caller_obj": "self.section_widget",
+          "line": 105
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
+          "call_name": "set_project_id",
+          "caller_obj": "self.project_widget",
+          "line": 106
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView.set_project",
           "call_name": "set_project",
           "caller_obj": "self.section_widget",
-          "line": 87
+          "line": 107
         },
         {
-          "caller": "ui.views.du_an_view.DuAnView._on_project_created",
+          "caller": "ui.views.du_an_view.DuAnView.reload_projects",
+          "call_name": "set_project_id",
+          "caller_obj": "self.project_widget",
+          "line": 114
+        },
+        {
+          "caller": "ui.views.du_an_view.DuAnView._on_project_updated",
           "call_name": "hasattr",
           "caller_obj": null,
-          "line": 92
+          "line": 119
         },
         {
-          "caller": "ui.views.du_an_view.DuAnView._on_project_created",
+          "caller": "ui.views.du_an_view.DuAnView._on_project_updated",
           "call_name": "load_projects",
           "caller_obj": "self.main_window",
-          "line": 93
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView.reload_projects",
-          "call_name": "hasattr",
-          "caller_obj": null,
-          "line": 97
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView.reload_projects",
-          "call_name": "hasattr",
-          "caller_obj": null,
-          "line": 97
-        },
-        {
-          "caller": "ui.views.du_an_view.DuAnView.reload_projects",
-          "call_name": "load_projects",
-          "caller_obj": "self.project_widget",
-          "line": 100
+          "line": 120
         },
         {
           "caller": "ui.views.du_an_view.DuAnView._apply_view_styles",
           "call_name": "setStyleSheet",
           "caller_obj": "self",
-          "line": 104
+          "line": 124
         }
       ]
     },
@@ -20477,146 +20656,97 @@
     "ui.views.du_an.project_widget": {
       "module_name": "ui.views.du_an.project_widget",
       "file_path": "ui/views/du_an/project_widget.py",
-      "mtime": 1783671850.0509753,
+      "mtime": 1783674686.0173104,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 7
+          "line": 8
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 8
+          "line": 9
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QWidget",
           "asname": null,
-          "line": 9
-        },
-        {
-          "type": "from",
-          "module": "PyQt6.QtWidgets",
-          "name": "QVBoxLayout",
-          "asname": null,
-          "line": 9
-        },
-        {
-          "type": "from",
-          "module": "PyQt6.QtWidgets",
-          "name": "QHBoxLayout",
-          "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGridLayout",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLabel",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QLineEdit",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QPushButton",
           "asname": null,
-          "line": 9
-        },
-        {
-          "type": "from",
-          "module": "PyQt6.QtWidgets",
-          "name": "QTableWidget",
-          "asname": null,
-          "line": 9
-        },
-        {
-          "type": "from",
-          "module": "PyQt6.QtWidgets",
-          "name": "QTableWidgetItem",
-          "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QGroupBox",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QMessageBox",
           "asname": null,
-          "line": 9
-        },
-        {
-          "type": "from",
-          "module": "PyQt6.QtWidgets",
-          "name": "QHeaderView",
-          "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtWidgets",
           "name": "QComboBox",
           "asname": null,
-          "line": 9
-        },
-        {
-          "type": "from",
-          "module": "PyQt6.QtCore",
-          "name": "Qt",
-          "asname": null,
-          "line": 24
+          "line": 10
         },
         {
           "type": "from",
           "module": "PyQt6.QtCore",
           "name": "pyqtSignal",
           "asname": null,
-          "line": 24
+          "line": 20
         },
         {
           "type": "from",
           "module": "core.database",
           "name": "SessionLocal",
           "asname": null,
-          "line": 26
+          "line": 22
         },
         {
           "type": "from",
           "module": "core.services",
           "name": "project_service",
           "asname": null,
-          "line": 27
-        },
-        {
-          "type": "from",
-          "module": "ui.common.workers",
-          "name": "ProjectLoaderThread",
-          "asname": null,
-          "line": 28
+          "line": 23
         }
       ],
       "classes": [
@@ -20626,8 +20756,8 @@
           "bases": [
             "QWidget"
           ],
-          "line": 33,
-          "end_line": 434
+          "line": 28,
+          "end_line": 198
         }
       ],
       "functions": [
@@ -20643,8 +20773,8 @@
             "parent": "Any"
           },
           "return_hint": "None",
-          "line": 39,
-          "end_line": 51
+          "line": 33,
+          "end_line": 42
         },
         {
           "id": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
@@ -20654,97 +20784,12 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 53,
-          "end_line": 65
+          "line": 44,
+          "end_line": 111
         },
         {
-          "id": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "name": "_create_project_group",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [],
-          "args_hints": {},
-          "return_hint": "QGroupBox",
-          "line": 67,
-          "end_line": 135
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "name": "_create_table_proj_group",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [],
-          "args_hints": {},
-          "return_hint": "QGroupBox",
-          "line": 137,
-          "end_line": 194
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "name": "load_projects",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [],
-          "args_hints": {},
-          "return_hint": "None",
-          "line": 196,
-          "end_line": 211
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "name": "_on_projects_loaded",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [
-            "projects"
-          ],
-          "args_hints": {
-            "projects": "list[dict[Tuple[str, Any]]]"
-          },
-          "return_hint": "None",
-          "line": 213,
-          "end_line": 273
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-          "name": "_on_load_error",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [
-            "error_msg"
-          ],
-          "args_hints": {
-            "error_msg": "str"
-          },
-          "return_hint": "None",
-          "line": 275,
-          "end_line": 286
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "name": "_on_create_project",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [],
-          "args_hints": {},
-          "return_hint": "None",
-          "line": 288,
-          "end_line": 344
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-          "name": "_on_item_selection_changed",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [],
-          "args_hints": {},
-          "return_hint": "None",
-          "line": 346,
-          "end_line": 356
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "name": "set_edit_project",
+          "id": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "name": "set_project_id",
           "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
           "parent_type": "class",
           "args": [
@@ -20754,34 +20799,19 @@
             "project_id": "str"
           },
           "return_hint": "None",
-          "line": 358,
-          "end_line": 393
+          "line": 113,
+          "end_line": 157
         },
         {
-          "id": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "name": "clear_form",
+          "id": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "name": "_on_save_project",
           "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
           "parent_type": "class",
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 395,
-          "end_line": 412
-        },
-        {
-          "id": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "name": "select_project_by_id",
-          "parent_id": "ui.views.du_an.project_widget.ProjectWidget",
-          "parent_type": "class",
-          "args": [
-            "project_id"
-          ],
-          "args_hints": {
-            "project_id": "str"
-          },
-          "return_hint": "None",
-          "line": 414,
-          "end_line": 434
+          "line": 159,
+          "end_line": 198
         }
       ],
       "calls": [
@@ -20789,1051 +20819,427 @@
           "caller": "ui.views.du_an.project_widget.ProjectWidget.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 45
+          "line": 39
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 45
+          "line": 39
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget.__init__",
           "call_name": "_init_ui",
           "caller_obj": "self",
-          "line": 50
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.__init__",
-          "call_name": "load_projects",
-          "caller_obj": "self",
-          "line": 51
+          "line": 42
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
-          "call_name": "QVBoxLayout",
+          "call_name": "QGridLayout",
           "caller_obj": null,
-          "line": 55
+          "line": 46
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
           "call_name": "setContentsMargins",
           "caller_obj": "layout",
-          "line": 56
+          "line": 47
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
           "call_name": "setSpacing",
           "caller_obj": "layout",
+          "line": 48
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QGroupBox",
+          "caller_obj": null,
+          "line": 50
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QGridLayout",
+          "caller_obj": null,
+          "line": 51
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "setSpacing",
+          "caller_obj": "grid",
+          "line": 52
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "setContentsMargins",
+          "caller_obj": "grid",
+          "line": 53
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 56
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 56
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
           "line": 57
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
-          "call_name": "_create_project_group",
-          "caller_obj": "self",
+          "call_name": "setReadOnly",
+          "caller_obj": "self.txt_project_id",
+          "line": 58
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.txt_project_id",
+          "line": 59
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
           "line": 60
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
           "call_name": "addWidget",
-          "caller_obj": "layout",
-          "line": 61
+          "caller_obj": "grid",
+          "line": 62
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
-          "call_name": "_create_table_proj_group",
-          "caller_obj": "self",
+          "call_name": "QLabel",
+          "caller_obj": null,
+          "line": 62
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 63
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_project_name",
           "line": 64
         },
         {
           "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
           "call_name": "addWidget",
-          "caller_obj": "layout",
+          "caller_obj": "grid",
           "line": 65
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QGroupBox",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 68
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QLabel",
           "caller_obj": null,
+          "line": 68
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QComboBox",
+          "caller_obj": null,
+          "line": 69
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_sales",
+          "line": 70
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_sales",
           "line": 73
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QGridLayout",
-          "caller_obj": null,
-          "line": 74
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "setSpacing",
-          "caller_obj": "grid",
-          "line": 75
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 77
+          "line": 76
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 78
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
           "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 77
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QLineEdit",
           "caller_obj": null,
           "line": 78
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_project_id",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QComboBox",
+          "caller_obj": null,
           "line": 79
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_designer",
           "line": 80
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 82
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 82
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QLineEdit",
-          "caller_obj": null,
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_designer",
           "line": 83
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "setPlaceholderText",
-          "caller_obj": "self.txt_project_name",
-          "line": 84
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
           "call_name": "addWidget",
           "caller_obj": "grid",
-          "line": 85
+          "line": 86
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 87
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 87
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QComboBox",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "QPushButton",
           "caller_obj": null,
           "line": 88
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addItem",
-          "caller_obj": "self.cb_sales",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self.btn_save",
           "line": 89
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addItem",
-          "caller_obj": "self.cb_sales",
-          "line": 92
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 95
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
-          "line": 97
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QLabel",
-          "caller_obj": null,
-          "line": 97
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QComboBox",
-          "caller_obj": null,
-          "line": 98
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addItem",
-          "caller_obj": "self.cb_designer",
-          "line": 99
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addItem",
-          "caller_obj": "self.cb_designer",
-          "line": 102
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "grid",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "connect",
+          "caller_obj": "self.btn_save.clicked",
           "line": 105
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QHBoxLayout",
-          "caller_obj": null,
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "grid",
+          "line": 106
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "addWidget",
+          "caller_obj": "layout",
           "line": 108
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QPushButton",
-          "caller_obj": null,
-          "line": 109
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "connect",
-          "caller_obj": "self.btn_create_proj.clicked",
-          "line": 110
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "btn_layout",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._init_ui",
+          "call_name": "set_project_id",
+          "caller_obj": "self",
           "line": 111
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "QPushButton",
-          "caller_obj": null,
-          "line": 113
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "clear",
+          "caller_obj": "self.txt_project_id",
+          "line": 122
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.btn_cancel_edit",
-          "line": 114
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "clear",
+          "caller_obj": "self.txt_project_name",
+          "line": 123
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "connect",
-          "caller_obj": "self.btn_cancel_edit.clicked",
-          "line": 129
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setCurrentIndex",
+          "caller_obj": "self.cb_sales",
+          "line": 124
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "hide",
-          "caller_obj": "self.btn_cancel_edit",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setCurrentIndex",
+          "caller_obj": "self.cb_designer",
+          "line": 125
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setEnabled",
+          "caller_obj": "self.group_box",
+          "line": 126
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setTitle",
+          "caller_obj": "self.group_box",
+          "line": 127
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setEnabled",
+          "caller_obj": "self.group_box",
           "line": 130
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addWidget",
-          "caller_obj": "btn_layout",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setTitle",
+          "caller_obj": "self.group_box",
           "line": 131
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_project_group",
-          "call_name": "addLayout",
-          "caller_obj": "grid",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "SessionLocal",
+          "caller_obj": null,
           "line": 133
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "QGroupBox",
-          "caller_obj": null,
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "get_project",
+          "caller_obj": "project_service",
+          "line": 135
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setText",
+          "caller_obj": "self.txt_project_id",
+          "line": 137
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setText",
+          "caller_obj": "self.txt_project_name",
+          "line": 138
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "findData",
+          "caller_obj": "self.cb_sales",
+          "line": 141
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setCurrentIndex",
+          "caller_obj": "self.cb_sales",
           "line": 143
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "QVBoxLayout",
-          "caller_obj": null,
-          "line": 144
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "findData",
+          "caller_obj": "self.cb_designer",
+          "line": 146
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setContentsMargins",
-          "caller_obj": "layout",
-          "line": 145
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "QHBoxLayout",
-          "caller_obj": null,
-          "line": 147
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "addStretch",
-          "caller_obj": "table_actions_layout",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "setCurrentIndex",
+          "caller_obj": "self.cb_designer",
           "line": 148
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "QPushButton",
-          "caller_obj": null,
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "error",
+          "caller_obj": "logger",
           "line": 150
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setFixedWidth",
-          "caller_obj": "self.btn_refresh",
-          "line": 151
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 153
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.btn_refresh",
-          "line": 152
+          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_project_id",
+          "call_name": "close",
+          "caller_obj": "db",
+          "line": 157
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "connect",
-          "caller_obj": "self.btn_refresh.clicked",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "strip",
+          "caller_obj": "",
+          "line": 162
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "text",
+          "caller_obj": "self.txt_project_name",
+          "line": 162
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "currentData",
+          "caller_obj": "self.cb_sales",
+          "line": 163
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "currentData",
+          "caller_obj": "self.cb_designer",
+          "line": 164
+        },
+        {
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "warning",
+          "caller_obj": "QMessageBox",
           "line": 167
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "addWidget",
-          "caller_obj": "table_actions_layout",
-          "line": 168
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "addLayout",
-          "caller_obj": "layout",
-          "line": 169
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "QTableWidget",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "SessionLocal",
           "caller_obj": null,
           "line": 171
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setColumnCount",
-          "caller_obj": "self.tbl_projects",
-          "line": 172
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "update_project",
+          "caller_obj": "project_service",
+          "line": 174
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setHorizontalHeaderLabels",
-          "caller_obj": "self.tbl_projects",
-          "line": 173
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 180
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "horizontalHeader",
-          "caller_obj": "self.tbl_projects",
-          "line": 183
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 181
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setSectionResizeMode",
-          "caller_obj": "header",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "close",
+          "caller_obj": "db",
           "line": 184
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setSectionResizeMode",
-          "caller_obj": "header",
-          "line": 185
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setSelectionBehavior",
-          "caller_obj": "self.tbl_projects",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
+          "call_name": "information",
+          "caller_obj": "QMessageBox",
           "line": 187
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "setSelectionMode",
-          "caller_obj": "self.tbl_projects",
-          "line": 190
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "connect",
-          "caller_obj": "self.tbl_projects.itemSelectionChanged",
-          "line": 191
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._create_table_proj_group",
-          "call_name": "addWidget",
-          "caller_obj": "layout",
-          "line": 193
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "isRunning",
-          "caller_obj": "self.project_loader_thread",
-          "line": 198
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "setRowCount",
-          "caller_obj": "self.tbl_projects",
-          "line": 201
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "setRowCount",
-          "caller_obj": "self.tbl_projects",
-          "line": 202
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 203
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "setFlags",
-          "caller_obj": "loading_item",
-          "line": 204
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "setForeground",
-          "caller_obj": "loading_item",
-          "line": 205
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_projects",
-          "line": 206
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "ProjectLoaderThread",
-          "caller_obj": null,
-          "line": 208
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "connect",
-          "caller_obj": "self.project_loader_thread.finished",
-          "line": 209
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "connect",
-          "caller_obj": "self.project_loader_thread.error",
-          "line": 210
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.load_projects",
-          "call_name": "start",
-          "caller_obj": "self.project_loader_thread",
-          "line": 211
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "blockSignals",
-          "caller_obj": "self.tbl_projects",
-          "line": 220
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setRowCount",
-          "caller_obj": "self.tbl_projects",
-          "line": 221
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "len",
-          "caller_obj": null,
-          "line": 221
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "enumerate",
-          "caller_obj": null,
-          "line": 230
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 231
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_id",
-          "line": 232
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_id",
-          "line": 232
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 234
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_name",
-          "line": 235
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_name",
-          "line": 235
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "get",
-          "caller_obj": "p",
-          "line": 237
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "get",
-          "caller_obj": "user_names",
-          "line": 238
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 241
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_sales",
-          "line": 242
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_sales",
-          "line": 242
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_sales",
-          "line": 244
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "get",
-          "caller_obj": "p",
-          "line": 246
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "get",
-          "caller_obj": "user_names",
-          "line": 247
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 251
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_designer",
-          "line": 252
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_designer",
-          "line": 252
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_designer",
-          "line": 254
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 256
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setFlags",
-          "caller_obj": "item_status",
-          "line": 257
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "flags",
-          "caller_obj": "item_status",
-          "line": 257
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_status",
-          "line": 261
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_status",
-          "line": 263
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setForeground",
-          "caller_obj": "item_status",
-          "line": 265
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_projects",
-          "line": 267
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_projects",
-          "line": 268
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_projects",
-          "line": 269
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_projects",
-          "line": 270
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_projects",
-          "line": 271
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_projects_loaded",
-          "call_name": "blockSignals",
-          "caller_obj": "self.tbl_projects",
-          "line": 273
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-          "call_name": "error",
-          "caller_obj": "logger",
-          "line": 281
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-          "call_name": "setRowCount",
-          "caller_obj": "self.tbl_projects",
-          "line": 282
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-          "call_name": "QTableWidgetItem",
-          "caller_obj": null,
-          "line": 283
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-          "call_name": "setFlags",
-          "caller_obj": "err_item",
-          "line": 284
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-          "call_name": "setForeground",
-          "caller_obj": "err_item",
-          "line": 285
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_load_error",
-          "call_name": "setItem",
-          "caller_obj": "self.tbl_projects",
-          "line": 286
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "strip",
-          "caller_obj": "",
-          "line": 290
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "text",
-          "caller_obj": "self.txt_project_id",
-          "line": 290
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "strip",
-          "caller_obj": "",
-          "line": 291
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "text",
-          "caller_obj": "self.txt_project_name",
-          "line": 291
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "currentData",
-          "caller_obj": "self.cb_sales",
-          "line": 292
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "currentData",
-          "caller_obj": "self.cb_designer",
-          "line": 293
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "warning",
-          "caller_obj": "QMessageBox",
-          "line": 296
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "SessionLocal",
-          "caller_obj": null,
-          "line": 302
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "update_project",
-          "caller_obj": "project_service",
-          "line": 306
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "create_project",
-          "caller_obj": "project_service",
-          "line": 316
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "error",
-          "caller_obj": "logger",
-          "line": 325
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "str",
-          "caller_obj": null,
-          "line": 325
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "close",
-          "caller_obj": "db",
-          "line": 327
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "information",
-          "caller_obj": "QMessageBox",
-          "line": 331
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "lower",
-          "caller_obj": "action_str",
-          "line": 334
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "load_projects",
-          "caller_obj": "self",
-          "line": 336
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
-          "call_name": "clear_form",
-          "caller_obj": "self",
-          "line": 337
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
           "call_name": "emit",
-          "caller_obj": "self.project_created",
-          "line": 338
+          "caller_obj": "self.project_updated",
+          "line": 192
         },
         {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_create_project",
+          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_save_project",
           "call_name": "critical",
           "caller_obj": "QMessageBox",
-          "line": 340
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-          "call_name": "selectedItems",
-          "caller_obj": "self.tbl_projects",
-          "line": 348
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-          "call_name": "row",
-          "caller_obj": "",
-          "line": 350
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-          "call_name": "item",
-          "caller_obj": "self.tbl_projects",
-          "line": 351
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-          "call_name": "text",
-          "caller_obj": "item_id",
-          "line": 353
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-          "call_name": "set_edit_project",
-          "caller_obj": "self",
-          "line": 354
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget._on_item_selection_changed",
-          "call_name": "clear_form",
-          "caller_obj": "self",
-          "line": 356
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "setText",
-          "caller_obj": "self.txt_project_id",
-          "line": 374
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "setReadOnly",
-          "caller_obj": "self.txt_project_id",
-          "line": 375
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.txt_project_id",
-          "line": 376
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "setText",
-          "caller_obj": "self.txt_project_name",
-          "line": 378
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "get",
-          "caller_obj": "proj_data",
-          "line": 381
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "findData",
-          "caller_obj": "self.cb_sales",
-          "line": 382
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "setCurrentIndex",
-          "caller_obj": "self.cb_sales",
-          "line": 384
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "get",
-          "caller_obj": "proj_data",
-          "line": 386
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "findData",
-          "caller_obj": "self.cb_designer",
-          "line": 387
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "setCurrentIndex",
-          "caller_obj": "self.cb_designer",
-          "line": 389
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "setText",
-          "caller_obj": "self.btn_create_proj",
-          "line": 391
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.set_edit_project",
-          "call_name": "show",
-          "caller_obj": "self.btn_cancel_edit",
-          "line": 392
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "clear",
-          "caller_obj": "self.txt_project_id",
-          "line": 397
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "setReadOnly",
-          "caller_obj": "self.txt_project_id",
-          "line": 398
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "setStyleSheet",
-          "caller_obj": "self.txt_project_id",
-          "line": 399
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "clear",
-          "caller_obj": "self.txt_project_name",
-          "line": 401
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "setCurrentIndex",
-          "caller_obj": "self.cb_sales",
-          "line": 402
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "setCurrentIndex",
-          "caller_obj": "self.cb_designer",
-          "line": 403
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "setText",
-          "caller_obj": "self.btn_create_proj",
-          "line": 405
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "hide",
-          "caller_obj": "self.btn_cancel_edit",
-          "line": 406
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "blockSignals",
-          "caller_obj": "self.tbl_projects",
-          "line": 410
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "clearSelection",
-          "caller_obj": "self.tbl_projects",
-          "line": 411
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.clear_form",
-          "call_name": "blockSignals",
-          "caller_obj": "self.tbl_projects",
-          "line": 412
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "blockSignals",
-          "caller_obj": "self.tbl_projects",
-          "line": 420
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "range",
-          "caller_obj": null,
-          "line": 422
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "rowCount",
-          "caller_obj": "self.tbl_projects",
-          "line": 422
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "item",
-          "caller_obj": "self.tbl_projects",
-          "line": 423
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "text",
-          "caller_obj": "item",
-          "line": 424
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "setCurrentCell",
-          "caller_obj": "self.tbl_projects",
-          "line": 425
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "set_edit_project",
-          "caller_obj": "self",
-          "line": 427
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "clear_form",
-          "caller_obj": "self",
-          "line": 432
-        },
-        {
-          "caller": "ui.views.du_an.project_widget.ProjectWidget.select_project_by_id",
-          "call_name": "blockSignals",
-          "caller_obj": "self.tbl_projects",
-          "line": 434
+          "line": 194
         }
       ]
     },
@@ -23294,6 +22700,398 @@
           "call_name": "close",
           "caller_obj": "db",
           "line": 75
+        }
+      ]
+    },
+    "ui.views.du_an.project_dialog": {
+      "module_name": "ui.views.du_an.project_dialog",
+      "file_path": "ui/views/du_an/project_dialog.py",
+      "mtime": 1783675223.9719398,
+      "imports": [
+        {
+          "type": "direct",
+          "name": "logging",
+          "asname": null,
+          "line": 6
+        },
+        {
+          "type": "from",
+          "module": "typing",
+          "name": "Any",
+          "asname": null,
+          "line": 7
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QDialog",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QFormLayout",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QDialogButtonBox",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QComboBox",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QLineEdit",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "PyQt6.QtWidgets",
+          "name": "QMessageBox",
+          "asname": null,
+          "line": 8
+        },
+        {
+          "type": "from",
+          "module": "core.database",
+          "name": "SessionLocal",
+          "asname": null,
+          "line": 17
+        },
+        {
+          "type": "from",
+          "module": "core.services",
+          "name": "project_service",
+          "asname": null,
+          "line": 18
+        }
+      ],
+      "classes": [
+        {
+          "id": "ui.views.du_an.project_dialog.CreateProjectDialog",
+          "name": "CreateProjectDialog",
+          "bases": [
+            "QDialog"
+          ],
+          "line": 23,
+          "end_line": 137
+        }
+      ],
+      "functions": [
+        {
+          "id": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+          "name": "__init__",
+          "parent_id": "ui.views.du_an.project_dialog.CreateProjectDialog",
+          "parent_type": "class",
+          "args": [
+            "parent"
+          ],
+          "args_hints": {
+            "parent": "Any"
+          },
+          "return_hint": "None",
+          "line": 26,
+          "end_line": 30
+        },
+        {
+          "id": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "name": "_init_ui",
+          "parent_id": "ui.views.du_an.project_dialog.CreateProjectDialog",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 32,
+          "end_line": 102
+        },
+        {
+          "id": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "name": "_on_save",
+          "parent_id": "ui.views.du_an.project_dialog.CreateProjectDialog",
+          "parent_type": "class",
+          "args": [],
+          "args_hints": {},
+          "return_hint": "None",
+          "line": 104,
+          "end_line": 137
+        }
+      ],
+      "calls": [
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+          "call_name": "__init__",
+          "caller_obj": "",
+          "line": 27
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+          "call_name": "super",
+          "caller_obj": null,
+          "line": 27
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+          "call_name": "setWindowTitle",
+          "caller_obj": "self",
+          "line": 28
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+          "call_name": "resize",
+          "caller_obj": "self",
+          "line": 29
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog.__init__",
+          "call_name": "_init_ui",
+          "caller_obj": "self",
+          "line": 30
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "QFormLayout",
+          "caller_obj": null,
+          "line": 33
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "setContentsMargins",
+          "caller_obj": "layout",
+          "line": 34
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "setSpacing",
+          "caller_obj": "layout",
+          "line": 35
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 37
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_project_id",
+          "line": 38
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addRow",
+          "caller_obj": "layout",
+          "line": 39
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "QLineEdit",
+          "caller_obj": null,
+          "line": 41
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "setPlaceholderText",
+          "caller_obj": "self.txt_project_name",
+          "line": 42
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addRow",
+          "caller_obj": "layout",
+          "line": 43
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "QComboBox",
+          "caller_obj": null,
+          "line": 45
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_sales",
+          "line": 46
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_sales",
+          "line": 49
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addRow",
+          "caller_obj": "layout",
+          "line": 52
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "QComboBox",
+          "caller_obj": null,
+          "line": 54
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_designer",
+          "line": 55
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addItem",
+          "caller_obj": "self.cb_designer",
+          "line": 58
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addRow",
+          "caller_obj": "layout",
+          "line": 61
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "QDialogButtonBox",
+          "caller_obj": null,
+          "line": 63
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "connect",
+          "caller_obj": "self.button_box.accepted",
+          "line": 68
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "connect",
+          "caller_obj": "self.button_box.rejected",
+          "line": 69
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "addRow",
+          "caller_obj": "layout",
+          "line": 70
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._init_ui",
+          "call_name": "setStyleSheet",
+          "caller_obj": "self",
+          "line": 72
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "strip",
+          "caller_obj": "",
+          "line": 105
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "text",
+          "caller_obj": "self.txt_project_id",
+          "line": 105
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "strip",
+          "caller_obj": "",
+          "line": 106
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "text",
+          "caller_obj": "self.txt_project_name",
+          "line": 106
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "currentData",
+          "caller_obj": "self.cb_sales",
+          "line": 107
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "currentData",
+          "caller_obj": "self.cb_designer",
+          "line": 108
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "warning",
+          "caller_obj": "QMessageBox",
+          "line": 111
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "SessionLocal",
+          "caller_obj": null,
+          "line": 116
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "create_project",
+          "caller_obj": "project_service",
+          "line": 119
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "information",
+          "caller_obj": "QMessageBox",
+          "line": 123
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "accept",
+          "caller_obj": "self",
+          "line": 126
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "warning",
+          "caller_obj": "QMessageBox",
+          "line": 128
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "error",
+          "caller_obj": "logger",
+          "line": 134
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 134
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "critical",
+          "caller_obj": "QMessageBox",
+          "line": 135
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "str",
+          "caller_obj": null,
+          "line": 135
+        },
+        {
+          "caller": "ui.views.du_an.project_dialog.CreateProjectDialog._on_save",
+          "call_name": "close",
+          "caller_obj": "db",
+          "line": 137
         }
       ]
     }

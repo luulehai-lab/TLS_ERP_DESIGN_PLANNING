@@ -2,6 +2,7 @@
 File: docs/architecture/ARCHITECTURE_MAP.md
 CHỨC NĂNG: Bản đồ master kiến trúc kỹ thuật dự án ERP Thiết kế - Kế hoạch (TLS)
 CHANGELOG:
+- 16:30:00 10/07/2026: [UPDATE] Tái cấu trúc UI màn hình Quản lý Dự án xếp lớp dọc, tách project_dialog.py và nút tạo Sidebar (Lê Thanh Vân/Antigravity)
 - 15:20:00 10/07/2026: [UPDATE] Bổ sung trường designer_email vào model ProjectSection và script migrate_section_roles.py (Lê Thanh Vân/Antigravity)
 - 15:15:00 10/07/2026: [REFACTOR] Module hóa DuAnView thành các component con ProjectWidget và SectionWidget (Lê Thanh Vân/Antigravity)
 - 15:08:00 10/07/2026: [UPDATE] Bổ sung cấu trúc vai trò Sales & Thiết kế của dự án và script migrate_project_roles.py (Lê Thanh Vân/Antigravity)
@@ -53,7 +54,8 @@ CHANGELOG:
 │       ├── __init__.py
 │       ├── du_an_view.py    # Màn hình quản lý dự án (Container ghép nối)
 │       ├── du_an/           # Thư mục chứa các module con quản lý dự án
-│       │   ├── project_widget.py # Widget quản lý thông tin dự án
+│       │   ├── project_widget.py # Widget quản lý thông tin dự án hiện hành dạng hàng ngang
+│       │   ├── project_dialog.py # Hộp thoại popup nhập liệu tạo mới dự án
 │       │   └── section_widget.py # Widget quản lý hạng mục dự án
 │       ├── thiet_ke_view.py # Màn hình ban hành bản vẽ (Thiết kế)
 │       └── ke_hoach_view.py # Màn hình tiếp nhận, in ấn bản vẽ (Kế hoạch)

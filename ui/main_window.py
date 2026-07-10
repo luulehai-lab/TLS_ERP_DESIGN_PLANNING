@@ -1,6 +1,9 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Sidebar list dự án, Header tab bar)
 # CHANGELOG:
+# - 16:23:44 10/07/2026: [UPDATE] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
+# - 16:22:00 10/07/2026: [UPDATE] Tách CreateProjectDialog sang module project_dialog.py để bảo đảm giới hạn 800 dòng (Lê Thanh Vân/Antigravity)
+# - 16:20:00 10/07/2026: [UPDATE] Tích hợp nút Tạo dự án mới ở Sidebar (chỉ hiện với luu.lehai@gmail.com) và CreateProjectDialog popup (Lê Thanh Vân/Antigravity)
 # - 15:33:49 10/07/2026: [UPDATE] feat(ui): add edit mode and designer roles for projects and sections (Antigravity)
 # - 15:30:00 10/07/2026: [UPDATE] Tích hợp menu chuột phải trên Sidebar để xóa dự án kèm xác nhận an toàn 2 bước (Lê Thanh Vân/Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
@@ -34,6 +37,7 @@ from PyQt6.QtWidgets import (
     QListWidgetItem,
     QMenu,
     QMessageBox,
+    QDialog,
 )
 from PyQt6.QtCore import Qt, pyqtSignal, QPoint
 
@@ -41,6 +45,7 @@ from ui.views.thiet_ke_view import ThietKeView
 from ui.views.ke_hoach_view import KeHoachView
 from ui.common.workers import ProjectLoaderThread
 from core.database import SessionLocal
+from ui.views.du_an.project_dialog import CreateProjectDialog
 
 logger = logging.getLogger(__name__)
 
@@ -157,6 +162,34 @@ class MainWindow(QMainWindow):
             "color: #38BDF8; font-size: 11px; font-weight: bold; margin-left: 2px;"
         )
         sidebar_layout.addWidget(lbl_select)
+
+        # Nút tạo dự án mới (chỉ hiển thị với luu.lehai@gmail.com)
+        self.btn_new_project = QPushButton("➕ Tạo dự án mới", sidebar)
+        self.btn_new_project.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #0284C7;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 12px;
+                font-weight: bold;
+                font-size: 12px;
+                margin: 5px 0px;
+            }
+            QPushButton:hover {
+                background-color: #0369A1;
+            }
+            """
+        )
+        self.btn_new_project.clicked.connect(self._show_create_project_dialog)
+
+        if self.user_email == "luu.lehai@gmail.com":
+            self.btn_new_project.show()
+        else:
+            self.btn_new_project.hide()
+
+        sidebar_layout.addWidget(self.btn_new_project)
 
         self.lst_projects = QListWidget(sidebar)
         self.lst_projects.setObjectName("projectList")
@@ -298,6 +331,18 @@ class MainWindow(QMainWindow):
         """Xử lý sự kiện click nút đăng xuất."""
         logger.info("Người dùng click đăng xuất: %s", self.user_email)
         self.logout_clicked.emit()
+
+    def _show_create_project_dialog(self) -> None:
+        """Hiển thị hộp thoại tạo dự án mới."""
+        dialog = CreateProjectDialog(self)
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            # Tải lại danh sách dự án
+            self.load_projects()
+            # Reload bảng dự án của du_an_view nếu có
+            if hasattr(self, "du_an_view") and hasattr(
+                self.du_an_view, "reload_projects"
+            ):
+                self.du_an_view.reload_projects()
 
     def _show_project_context_menu(self, pos: QPoint) -> None:
         """Hiển thị menu ngữ cảnh (chuột phải) trên danh sách dự án.
