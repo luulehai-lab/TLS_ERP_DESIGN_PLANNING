@@ -2,6 +2,9 @@
 File: docs/architecture/ARCHITECTURE_MAP.md
 CHỨC NĂNG: Bản đồ master kiến trúc kỹ thuật dự án ERP Thiết kế - Kế hoạch (TLS)
 CHANGELOG:
+- 15:20:00 10/07/2026: [UPDATE] Bổ sung trường designer_email vào model ProjectSection và script migrate_section_roles.py (Lê Thanh Vân/Antigravity)
+- 15:15:00 10/07/2026: [REFACTOR] Module hóa DuAnView thành các component con ProjectWidget và SectionWidget (Lê Thanh Vân/Antigravity)
+- 15:08:00 10/07/2026: [UPDATE] Bổ sung cấu trúc vai trò Sales & Thiết kế của dự án và script migrate_project_roles.py (Lê Thanh Vân/Antigravity)
 - 12:50:00 10/07/2026: [UPDATE] Bổ sung cấu trúc session_manager.py quản lý tự động đăng nhập (Lê Thanh Vân/Antigravity)
 - 17:22:00 08/07/2026: [UPDATE] Cập nhật hoàn thành Giai đoạn 1.6 Đóng gói ứng dụng và tích hợp workflow /build-exe (Lê Thanh Vân/Antigravity)
 - 14:35:00 08/07/2026: [UPDATE] Tích hợp cấu trúc mô-đun Google Login (auth_service.py, login_window.py) (Lê Thanh Vân/Antigravity)
@@ -48,6 +51,10 @@ CHANGELOG:
 │   │   └── workers.py       # Luồng phụ xử lý bất đồng bộ (QThread Workers)
 │   └── views/               # Giao diện của từng phòng ban
 │       ├── __init__.py
+│       ├── du_an_view.py    # Màn hình quản lý dự án (Container ghép nối)
+│       ├── du_an/           # Thư mục chứa các module con quản lý dự án
+│       │   ├── project_widget.py # Widget quản lý thông tin dự án
+│       │   └── section_widget.py # Widget quản lý hạng mục dự án
 │       ├── thiet_ke_view.py # Màn hình ban hành bản vẽ (Thiết kế)
 │       └── ke_hoach_view.py # Màn hình tiếp nhận, in ấn bản vẽ (Kế hoạch)
 │
@@ -56,7 +63,7 @@ CHANGELOG:
 │       ├── ARCHITECTURE_MAP.md # File này (Bản đồ Master)
 │       └── MAP_GRAPH.md        # Đồ thị liên kết codebase
 │
-├── scripts/                 # CÔNG CỤ ĐẢM BẢO CHẤT LƯỢNG (Audit, Linter, Git Guard)
+├── scripts/                 # CÔNG CỤ ĐẢM BẢO CHẤT LƯỢNG & MIGRATION (Audit, Linter, Git Guard, migrate_project_roles.py, migrate_section_roles.py)
 └── .agents/                 # AI ASSISTANT RULES & WORKFLOWS
 ```
 

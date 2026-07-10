@@ -46,10 +46,12 @@ graph TD
     core_services_project_service_get_project["⚙️ get_project()"]:::func
     core_services_project_service_list_active_projects["⚙️ list_active_projects()"]:::func
     core_services_project_service_update_project_status["⚙️ update_project_status()"]:::func
+    core_services_project_service_update_project["⚙️ update_project()"]:::func
     core_services_section_service["📄 section_service.py"]:::file
     core_services_section_service_create_section["⚙️ create_section()"]:::func
     core_services_section_service_list_project_sections["⚙️ list_project_sections()"]:::func
     core_services_section_service_delete_section["⚙️ delete_section()"]:::func
+    core_services_section_service_update_section["⚙️ update_section()"]:::func
     core_services_session_manager["📄 session_manager.py"]:::file
     core_services_session_manager_SessionManager["🧩 SessionManager"]:::cls
     core_services_session_manager_SessionManager_save_session["⚙️ save_session()"]:::func
@@ -80,9 +82,11 @@ graph TD
     core_services_project_service -->|contains| core_services_project_service_get_project
     core_services_project_service -->|contains| core_services_project_service_list_active_projects
     core_services_project_service -->|contains| core_services_project_service_update_project_status
+    core_services_project_service -->|contains| core_services_project_service_update_project
     core_services_section_service -->|contains| core_services_section_service_create_section
     core_services_section_service -->|contains| core_services_section_service_list_project_sections
     core_services_section_service -->|contains| core_services_section_service_delete_section
+    core_services_section_service -->|contains| core_services_section_service_update_section
     core_services_session_manager -->|contains| core_services_session_manager_SessionManager
     core_services_session_manager_SessionManager -->|contains| core_services_session_manager_SessionManager_save_session
     core_services_session_manager_SessionManager -->|contains| core_services_session_manager_SessionManager_load_session

@@ -1,6 +1,9 @@
 # Tên file: core/models.py
 # CHỨC NĂNG: Khai báo cấu trúc bảng cơ sở dữ liệu SQLAlchemy cho dự án ERP
 # CHANGELOG:
+# - 15:24:09 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
+# - 15:08:00 10/07/2026: [UPDATE] Bổ sung designer_email vào model ProjectSection (Lê Thanh Vân/Antigravity)
+# - 14:49:00 10/07/2026: [UPDATE] Bổ sung cột sales_email và designer_email vào model Project (Lê Thanh Vân/Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:07:00 08/07/2026: [NEW] Khởi tạo model ProjectSection và liên kết cột section_id trong Drawing (Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
@@ -26,6 +29,12 @@ class Project(Base):
     status = Column(
         String(50), default="Khởi tạo"
     )  # Khởi tạo, Đang chạy, Tạm dừng, Hoàn thành
+    sales_email = Column(
+        String(100), nullable=True
+    )  # Email của nhân viên Kinh doanh (Sales)
+    designer_email = Column(
+        String(100), nullable=True
+    )  # Email của nhân viên Thiết kế chủ trì
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Các quan hệ
@@ -42,7 +51,7 @@ class Project(Base):
         Returns:
             str: Chuỗi thông tin dự án.
         """
-        return f"<Project(id='{self.project_id}', name='{self.project_name}', status='{self.status}')>"
+        return f"<Project(id='{self.project_id}', name='{self.project_name}', status='{self.status}', sales='{self.sales_email}', designer='{self.designer_email}')>"
 
 
 class ProjectSection(Base):
@@ -61,6 +70,7 @@ class ProjectSection(Base):
     )
     section_code = Column(String(50), nullable=False)  # Ví dụ: NX1, NX2...
     section_name = Column(String(150), nullable=False)  # Ví dụ: Nhà xưởng 1...
+    designer_email = Column(String(100), nullable=True)  # Email kỹ sư thiết kế phụ trách hạng mục này
 
     # Các quan hệ
     project = relationship("Project", back_populates="sections")
@@ -72,7 +82,7 @@ class ProjectSection(Base):
         Returns:
             str: Chuỗi thông tin hạng mục.
         """
-        return f"<ProjectSection(id={self.section_id}, project='{self.project_id}', code='{self.section_code}', name='{self.section_name}')>"
+        return f"<ProjectSection(id={self.section_id}, project='{self.project_id}', code='{self.section_code}', name='{self.section_name}', designer='{self.designer_email}')>"
 
 
 class Drawing(Base):

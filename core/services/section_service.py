@@ -1,6 +1,9 @@
 # Tên file: core/services/section_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Hạng mục Dự án (ProjectSection)
 # CHANGELOG:
+# - 15:24:09 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
+# - 15:20:00 10/07/2026: [UPDATE] Thêm hàm update_section để chỉnh sửa thông tin hạng mục (Lê Thanh Vân/Antigravity)
+# - 15:15:00 10/07/2026: [UPDATE] Cập nhật create_section nhận details chứa vai trò designer_email (Lê Thanh Vân/Antigravity)
 # - 18:19:45 08/07/2026: [NEW] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:08:00 08/07/2026: [NEW] Khởi tạo tầng dịch vụ quản lý Hạng mục Dự án (Antigravity)
 
@@ -13,24 +16,30 @@ logger = logging.getLogger(__name__)
 
 
 def create_section(
-    db: Session, project_id: str, section_code: str, section_name: str
+    db: Session,
+    project_id: str,
+    details: dict[str, str | None],
 ) -> ProjectSection | None:
     """Tạo mới một hạng mục dự án trong cơ sở dữ liệu.
 
     Args:
         db: Session kết nối database hiện thời.
         project_id: Mã dự án liên kết.
-        section_code: Kí hiệu hạng mục (ví dụ: NX1, NX2).
-        section_name: Tên hạng mục chi tiết (ví dụ: Nhà xưởng 1).
+        details: Dictionary chứa thông tin hạng mục ('code', 'name', 'designer').
 
     Returns:
         ProjectSection | None: Hạng mục được tạo mới hoặc None nếu thất bại.
     """
+    section_code = details.get("code", "").strip()
+    section_name = details.get("name", "").strip()
+    designer_email = details.get("designer")
+
     logger.info(
-        "Yêu cầu tạo hạng mục mới: ProjectID=%s, Code=%s, Name=%s",
+        "Yêu cầu tạo hạng mục mới: ProjectID=%s, Code=%s, Name=%s, Designer=%s",
         project_id,
         section_code,
         section_name,
+        designer_email,
     )
     try:
         # Kiểm tra xem mã hạng mục trong dự án này đã tồn tại hay chưa
@@ -54,6 +63,7 @@ def create_section(
             project_id=project_id,
             section_code=section_code,
             section_name=section_name,
+            designer_email=designer_email,
         )
         db.add(db_section)
         db.commit()
@@ -133,3 +143,55 @@ def delete_section(db: Session, section_id: int) -> bool:
             exc_info=True,
         )
         return False
+
+
+def update_section(
+    db: Session,
+    section_id: int,
+    details: dict[str, str | None],
+) -> ProjectSection | None:
+    """Cập nhật thông tin chi tiết của hạng mục dự án hiện có.
+
+    Args:
+        db: Session kết nối database hiện thời.
+        section_id: Khóa chính của hạng mục cần cập nhật.
+        details: Dictionary chứa thông tin hạng mục ('name', 'designer').
+
+    Returns:
+        ProjectSection | None: Đối tượng ProjectSection sau khi cập nhật, hoặc None nếu thất bại.
+    """
+    section_name = details.get("name", "").strip()
+    designer_email = details.get("designer")
+
+    logger.info(
+        "Yêu cầu cập nhật hạng mục: ID=%d, Name=%s, Designer=%s",
+        section_id,
+        section_name,
+        designer_email,
+    )
+    try:
+        section = (
+            db.query(ProjectSection)
+            .filter(ProjectSection.section_id == section_id)
+            .first()
+        )
+        if not section:
+            logger.warning("Không tìm thấy hạng mục ID=%d để cập nhật.", section_id)
+            return None
+
+        section.section_name = section_name
+        section.designer_email = designer_email
+
+        db.commit()
+        db.refresh(section)
+        logger.info("Cập nhật hạng mục thành công: ID=%d", section_id)
+        return section
+    except SQLAlchemyError as e:
+        db.rollback()
+        logger.error(
+            "Lỗi cơ sở dữ liệu khi cập nhật hạng mục ID=%d: %s",
+            section_id,
+            str(e),
+            exc_info=True,
+        )
+        return None

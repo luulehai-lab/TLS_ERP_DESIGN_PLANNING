@@ -1,6 +1,8 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 15:24:10 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
+# - 14:58:00 10/07/2026: [UPDATE] Cập nhật ProjectLoaderThread để lấy thêm sales_email và designer_email (Lê Thanh Vân/Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:08:00 08/07/2026: [UPDATE] Cập nhật DrawingLoaderThread để nạp thêm section_name của bản vẽ (Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
@@ -77,6 +79,8 @@ class ProjectLoaderThread(QThread):
                         "project_id": p.project_id,
                         "project_name": p.project_name,
                         "status": p.status,
+                        "sales_email": p.sales_email,
+                        "designer_email": p.designer_email,
                     }
                 )
 
