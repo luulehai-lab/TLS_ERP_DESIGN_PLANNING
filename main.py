@@ -1,6 +1,7 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 12:35:53 10/07/2026: [FIX] fix(ui): convert database UTC time representation to GMT+7 local time for display (Antigravity)
 # - 15:14:00 11/07/2026: [UPDATE] Kiểm tra whitelist email khi auto-login từ session cũ (Antigravity)
@@ -101,16 +102,21 @@ def main() -> None:
         # Kết nối sự kiện đăng nhập thành công
         login_win.login_success.connect(on_login_success)
 
-        # Kiểm tra và xử lý tự động đăng nhập
         session = SessionManager.load_session()
         if session and is_email_authorized(session["email"]):
+            from core.services.project_service import get_staff_role
+
+            role = get_staff_role(session["email"])
+            dept = "Kế hoạch"
+            if role in ["Thiết kế", "Admin", "Kinh doanh"]:
+                dept = "Thiết kế"
+
             logger.info(
-                "Phát hiện phiên đăng nhập cũ (%s). Tự động đăng nhập...",
+                "Phát hiện phiên đăng nhập cũ (%s, Vai trò: %s). Tự động đăng nhập...",
                 session["email"],
+                role,
             )
-            main_win = MainWindow(
-                user_email=session["email"], user_dept=session["department"]
-            )
+            main_win = MainWindow(user_email=session["email"], user_dept=dept)
             main_win.logout_clicked.connect(on_logout_requested)
             main_win.show()
         else:

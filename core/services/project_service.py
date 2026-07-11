@@ -1,6 +1,7 @@
 # Tên file: core/services/project_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Dự án (Project)
 # CHANGELOG:
+# - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Eager load sections trong list_active_projects cho phân quyền (Antigravity)
@@ -336,8 +337,7 @@ def get_project_safe(project_id: str) -> Project | None:
 def is_email_authorized(email: str) -> bool:
     """Kiểm tra email có quyền truy cập hệ thống hay không.
 
-    Email hợp lệ nếu là admin hoặc được gán vào ít nhất 1 dự án
-    (sales_email, designer_email, hoặc section designer_email).
+    Email hợp lệ nếu tồn tại trong bảng staffs.
 
     Args:
         email: Địa chỉ email cần kiểm tra.
@@ -346,43 +346,77 @@ def is_email_authorized(email: str) -> bool:
         True nếu email được phép truy cập, False nếu không.
     """
     from core.database import SessionLocal
-    from core.models import ProjectSection
-
-    # Admin và phòng Kế hoạch luôn được phép truy cập
-    email_lower = email.lower()
-    if email_lower in ["luu.lehai@gmail.com", "phongkehoachkythuat25@gmail.com"]:
-        return True
+    from core.models import Staff
 
     db = SessionLocal()
     try:
         email_lower = email.lower()
-
-        # Kiểm tra sales_email hoặc designer_email ở cấp Project
-        project_match = (
-            db.query(Project)
-            .filter(
-                (Project.sales_email.ilike(email_lower))
-                | (Project.designer_email.ilike(email_lower))
-            )
-            .first()
-        )
-        if project_match:
-            return True
-
-        # Kiểm tra designer_email ở cấp Section (hạng mục)
-        section_match = (
-            db.query(ProjectSection)
-            .filter(ProjectSection.designer_email.ilike(email_lower))
-            .first()
-        )
-        return section_match is not None
+        staff = db.query(Staff).filter(Staff.email.ilike(email_lower)).first()
+        return staff is not None
     except SQLAlchemyError as e:
         logger.error(
-            "Lỗi khi kiểm tra quyền truy cập email '%s': %s",
+            "Lỗi khi kiểm tra quyền truy cập email '%s' từ database: %s",
             email,
             str(e),
             exc_info=True,
         )
         return False
+    finally:
+        db.close()
+
+
+def get_staff_role(email: str) -> str | None:
+    """Lấy vai trò của nhân sự theo email đăng nhập.
+
+    Args:
+        email: Địa chỉ email nhân viên.
+
+    Returns:
+        str | None: Vai trò của nhân sự (Admin, Thiết kế, Kế hoạch, Kinh doanh), hoặc None.
+    """
+    from core.database import SessionLocal
+    from core.models import Staff
+
+    db = SessionLocal()
+    try:
+        email_lower = email.lower()
+        staff = db.query(Staff).filter(Staff.email.ilike(email_lower)).first()
+        return staff.role if staff else None
+    except SQLAlchemyError as e:
+        logger.error(
+            "Lỗi khi lấy vai trò của email '%s' từ database: %s",
+            email,
+            str(e),
+            exc_info=True,
+        )
+        return None
+    finally:
+        db.close()
+
+
+def list_staffs_by_role(role: str) -> list[dict]:
+    """Lấy danh sách thông tin nhân sự theo vai trò.
+
+    Args:
+        role: Vai trò cần truy vấn (Admin, Thiết kế, Kế hoạch, Kinh doanh).
+
+    Returns:
+        list[dict]: Danh sách dict thô chứa tên và email nhân sự.
+    """
+    from core.database import SessionLocal
+    from core.models import Staff
+
+    db = SessionLocal()
+    try:
+        staffs = db.query(Staff).filter(Staff.role == role).order_by(Staff.name).all()
+        return [{"name": s.name, "email": s.email} for s in staffs]
+    except SQLAlchemyError as e:
+        logger.error(
+            "Lỗi khi truy vấn danh sách nhân sự có vai trò '%s': %s",
+            role,
+            str(e),
+            exc_info=True,
+        )
+        return []
     finally:
         db.close()

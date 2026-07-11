@@ -1,6 +1,7 @@
 # Tên file: tests/test_ke_hoach_view.py
 # CHỨC NĂNG: Unit test cho giao diện KeHoachView (Dropdown Người Thực Hiện và trạng thái 2 nút bấm)
 # CHANGELOG:
+# - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:33:04 11/07/2026: [NEW] feat(auth): add 2-tier permission filter, whitelist unauthorized emails and add unit tests (Antigravity)
 # - 16:32:00 11/07/2026: [NEW] Viết unit test giao diện dropdown người thực hiện và kiểm soát nút bấm (Antigravity)
 
@@ -29,10 +30,10 @@ def test_performer_combobox_items(ke_hoach_view) -> None:
     """Kiểm tra danh sách người thực hiện trong Combobox có khớp yêu cầu."""
     combobox = ke_hoach_view.cb_performed_by
     expected_names = [
-        "Trần Mạnh Linh",
+        "Lê Viết Hiệu",
         "Nguyễn Hồng Thái",
         "Nguyễn Mạnh Tuấn",
-        "Lê Viết Hiệu",
+        "Trần Mạnh Linh",
     ]
 
     # Vị trí 0 là placeholder
@@ -57,9 +58,9 @@ def test_buttons_enabled_when_performer_selected(ke_hoach_view) -> None:
     """Kiểm tra 2 nút bấm phải được enabled khi chọn một người thực hiện hợp lệ."""
     combobox = ke_hoach_view.cb_performed_by
 
-    # Chọn index 1 ("Trần Mạnh Linh")
+    # Chọn index 1 ("Lê Viết Hiệu")
     combobox.setCurrentIndex(1)
-    assert combobox.currentData() == "Trần Mạnh Linh"
+    assert combobox.currentData() == "Lê Viết Hiệu"
     assert ke_hoach_view.btn_open_link.isEnabled() is True
     assert ke_hoach_view.btn_confirm_prod.isEnabled() is True
 

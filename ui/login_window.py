@@ -1,6 +1,7 @@
 # Tên file: ui/login_window.py
 # CHỨC NĂNG: Giao diện và luồng xử lý xác thực đăng nhập Google OAuth2 của hệ thống.
 # CHANGELOG:
+# - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 15:14:00 11/07/2026: [UPDATE] Chặn email không đăng ký (whitelist check) không cho vào app (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
@@ -32,7 +33,6 @@ from PyQt6.QtGui import QDesktopServices
 from ui.styles.theme import TLSTheme
 from core.services.auth_service import GoogleAuthManager
 from core.services.project_service import is_email_authorized
-import config
 
 logger = logging.getLogger(__name__)
 
@@ -235,11 +235,19 @@ class LoginWindow(QMainWindow):
             return
 
         # Phân quyền phòng ban
+        from core.services.project_service import get_staff_role
+
+        role = get_staff_role(email)
         department = "Kế hoạch"
-        if email.lower() in [e.lower() for e in config.DESIGN_DEPARTMENT_EMAILS]:
+        if role in ["Thiết kế", "Admin", "Kinh doanh"]:
             department = "Thiết kế"
 
-        logger.info("Người dùng %s được gán vào phòng ban: %s", email, department)
+        logger.info(
+            "Người dùng %s (Vai trò: %s) được gán vào phòng ban: %s",
+            email,
+            role,
+            department,
+        )
 
         # Phát tín hiệu báo đăng nhập thành công
         self.login_success.emit(email, department)

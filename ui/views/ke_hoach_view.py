@@ -1,6 +1,7 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng - kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 14:45:04 11/07/2026: [UPDATE] feat(drawing): add notes field to drawing issuance form and table (Antigravity)
 # - 14:38:00 11/07/2026: [UPDATE] Đổi Người Thực Hiện thành dropdown QComboBox, disable nút khi chưa chọn (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
@@ -81,16 +82,26 @@ class KeHoachView(BaseDrawingView):
         grid.addWidget(QLabel("Người Thực Hiện:", group), 0, 0)
         self.cb_performed_by = QComboBox(group)
         self.cb_performed_by.addItem("--- Chọn người thực hiện ---", "")
-        for name in [
-            "Trần Mạnh Linh",
-            "Nguyễn Hồng Thái",
-            "Nguyễn Mạnh Tuấn",
-            "Lê Viết Hiệu",
-        ]:
-            self.cb_performed_by.addItem(name, name)
-        self.cb_performed_by.currentIndexChanged.connect(
-            self._on_performer_changed
-        )
+        from core.services.project_service import list_staffs_by_role
+
+        try:
+            planners = list_staffs_by_role("Kế hoạch")
+            for p in planners:
+                if p["name"] == "Phòng Kế Hoạch":
+                    continue
+                self.cb_performed_by.addItem(p["name"], p["name"])
+        except Exception as e:
+            logger.error(
+                "Lỗi khi load danh sách Kế hoạch từ DB: %s", str(e), exc_info=True
+            )
+            for name in [
+                "Trần Mạnh Linh",
+                "Nguyễn Hồng Thái",
+                "Nguyễn Mạnh Tuấn",
+                "Lê Viết Hiệu",
+            ]:
+                self.cb_performed_by.addItem(name, name)
+        self.cb_performed_by.currentIndexChanged.connect(self._on_performer_changed)
         grid.addWidget(self.cb_performed_by, 0, 1)
 
         grid.addWidget(QLabel("Ghi Chú Triển Khai:", group), 1, 0)
@@ -181,9 +192,7 @@ class KeHoachView(BaseDrawingView):
             return
 
         if not performed_by:
-            QMessageBox.warning(
-                self, "Cảnh báo", "Vui lòng chọn người thực hiện!"
-            )
+            QMessageBox.warning(self, "Cảnh báo", "Vui lòng chọn người thực hiện!")
             return
 
         update_data = {

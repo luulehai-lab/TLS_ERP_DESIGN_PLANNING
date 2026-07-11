@@ -1,6 +1,8 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Tích hợp Sidebar và Header modular)
 # CHANGELOG:
+# - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
+# - 16:59:00 11/07/2026: [UPDATE] Tích hợp View Quản lý Nhân sự vào content_stack của MainWindow (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:35:00 10/07/2026: [REFACTOR] Tách logic Sidebar và Header ra các widget con độc lập, áp dụng TLSTheme dùng chung (Lê Thanh Vân/Antigravity)
@@ -141,6 +143,12 @@ class MainWindow(QMainWindow):
         self.content_stack.addWidget(self.thiet_ke_view)
         self.content_stack.addWidget(self.ke_hoach_view)
 
+        # Thêm View Quản lý Nhân sự (chỉ Admin)
+        from ui.views.staff_view import StaffManagementView
+
+        self.staff_view = StaffManagementView(self)
+        self.content_stack.addWidget(self.staff_view)
+
         # Hiển thị View mặc định dựa vào phân quyền phòng ban
         if self.user_dept == "Kế hoạch":
             self._switch_view(2)
@@ -209,3 +217,5 @@ class MainWindow(QMainWindow):
             self.thiet_ke_view.set_project(self.current_project_id)
         elif active_idx == 2 and hasattr(self, "ke_hoach_view"):
             self.ke_hoach_view.set_project(self.current_project_id)
+        elif active_idx == 3 and hasattr(self, "staff_view"):
+            self.staff_view.load_staffs()

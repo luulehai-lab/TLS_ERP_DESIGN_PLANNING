@@ -1,6 +1,7 @@
 # Tên file: tests/test_permission_filter.py
 # CHỨC NĂNG: Test phân quyền xem dự án và bản vẽ theo email đăng nhập
 # CHANGELOG:
+# - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [NEW] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 15:05:00 11/07/2026: [NEW] Viết test phân quyền 2 tầng (dự án + hạng mục) (Antigravity)
@@ -251,3 +252,34 @@ class TestDrawingPermissionFilter:
         """Phòng Kế hoạch xem được TẤT CẢ bản vẽ."""
         result = filter_drawings_by_permission(MOCK_DRAWINGS_VAN_LOC, PLANNING_EMAIL)
         assert len(result) == 4
+
+
+class TestStaffDatabaseIntegration:
+    """Test tích hợp với database SQLite in-memory cho các hàm nhân sự."""
+
+    def test_authorized_emails(self) -> None:
+        from core.services.project_service import is_email_authorized
+
+        assert is_email_authorized("luu.lehai@gmail.com") is True
+        assert is_email_authorized("phongkehoachkythuat25@gmail.com") is True
+        assert is_email_authorized("quanxu23@gmail.com") is True
+        assert is_email_authorized("stranger@gmail.com") is False
+
+    def test_get_staff_role(self) -> None:
+        from core.services.project_service import get_staff_role
+
+        assert get_staff_role("luu.lehai@gmail.com") == "Admin"
+        assert get_staff_role("quanxu23@gmail.com") == "Kinh doanh"
+        assert get_staff_role("ha91steel@gmail.com") == "Thiết kế"
+        assert get_staff_role("linh.tran@tls.vn") == "Kế hoạch"
+        assert get_staff_role("stranger@gmail.com") is None
+
+    def test_list_staffs_by_role(self) -> None:
+        from core.services.project_service import list_staffs_by_role
+
+        planners = list_staffs_by_role("Kế hoạch")
+        # Phải chứa đủ 5 người (4 nhân viên + 1 email phòng ban chung)
+        assert len(planners) == 5
+        names = [p["name"] for p in planners]
+        assert "Trần Mạnh Linh" in names
+        assert "Phòng Kế Hoạch" in names

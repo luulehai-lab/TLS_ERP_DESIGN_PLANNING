@@ -1,6 +1,8 @@
 # Tên file: core/models.py
 # CHỨC NĂNG: Khai báo cấu trúc bảng cơ sở dữ liệu SQLAlchemy cho dự án ERP
 # CHANGELOG:
+# - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
+# - 16:45:00 11/07/2026: [NEW] Thêm model Staff quản lý nhân sự phân quyền (Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
 # - 14:30:00 11/07/2026: [UPDATE] Thêm cột notes (ghi chú) vào model Drawing (Antigravity)
 # - 15:08:00 10/07/2026: [UPDATE] Bổ sung designer_email vào model ProjectSection (Lê Thanh Vân/Antigravity)
@@ -71,7 +73,9 @@ class ProjectSection(Base):
     )
     section_code = Column(String(50), nullable=False)  # Ví dụ: NX1, NX2...
     section_name = Column(String(150), nullable=False)  # Ví dụ: Nhà xưởng 1...
-    designer_email = Column(String(100), nullable=True)  # Email kỹ sư thiết kế phụ trách hạng mục này
+    designer_email = Column(
+        String(100), nullable=True
+    )  # Email kỹ sư thiết kế phụ trách hạng mục này
 
     # Các quan hệ
     project = relationship("Project", back_populates="sections")
@@ -209,3 +213,25 @@ class BOMDetail(Base):
             str: Chuỗi thông tin chi tiết BOM.
         """
         return f"<BOMDetail(id={self.bom_id}, drawing='{self.drawing_id}', mark='{self.mark}', profile='{self.profile}')>"
+
+
+class Staff(Base):
+    """
+    Model quản lý thông tin nhân sự và vai trò phân quyền.
+    """
+
+    __tablename__ = "staffs"
+
+    staff_id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(100), nullable=False)
+    email = Column(String(100), unique=True, index=True, nullable=False)
+    role = Column(String(50), nullable=False)  # Admin, Thiết kế, Kế hoạch, Kinh doanh
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    def __repr__(self) -> str:
+        """Đại diện dạng chuỗi của đối tượng Staff.
+
+        Returns:
+            str: Chuỗi thông tin nhân sự.
+        """
+        return f"<Staff(id={self.staff_id}, name='{self.name}', email='{self.email}', role='{self.role}')>"

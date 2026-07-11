@@ -1,6 +1,8 @@
 # Tên file: ui/header.py
 # CHỨC NĂNG: Thanh Header nằm ngang phía trên điều phối đăng xuất và chuyển đổi các màn hình nghiệp vụ
 # CHANGELOG:
+# - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
+# - 16:59:00 11/07/2026: [UPDATE] Tích hợp tab Quản lý Nhân sự dành riêng cho Admin (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:30:00 10/07/2026: [NEW] Tách HeaderWidget từ MainWindow phục vụ tối ưu hóa cấu trúc (Lê Thanh Vân/Antigravity)
@@ -111,10 +113,22 @@ class HeaderWidget(QFrame):
         self.button_group.addButton(self.btn_ke_hoach)
         header_layout.addWidget(self.btn_ke_hoach)
 
-        # Ẩn nút Thiết kế & Dự án nếu người dùng là phòng Kế hoạch
+        # Nút chuyển màn hình Nhân sự (chỉ Admin thấy)
+        self.btn_nhan_su = QPushButton("👥 QUẢN LÝ NHÂN SỰ", self)
+        self.btn_nhan_su.setObjectName("navButton")
+        self.btn_nhan_su.setCheckable(True)
+        self.btn_nhan_su.clicked.connect(lambda: self.view_switched.emit(3))
+        self.button_group.addButton(self.btn_nhan_su)
+        header_layout.addWidget(self.btn_nhan_su)
+        self.btn_nhan_su.hide()
+
+        # Phân quyền hiển thị nút điều hướng
         if self.user_dept == "Kế hoạch":
             self.btn_du_an.hide()
             self.btn_thiet_ke.hide()
+        
+        if self.user_email.lower() == "luu.lehai@gmail.com":
+            self.btn_nhan_su.show()
 
     def _setup_user_profile(self, header_layout: QHBoxLayout) -> None:
         """Thiết lập phần hiển thị thông tin người dùng đăng nhập và nút đăng xuất.
@@ -169,3 +183,5 @@ class HeaderWidget(QFrame):
             self.btn_thiet_ke.setChecked(True)
         elif index == 2:
             self.btn_ke_hoach.setChecked(True)
+        elif index == 3:
+            self.btn_nhan_su.setChecked(True)
