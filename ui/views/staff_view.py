@@ -1,6 +1,7 @@
 # Tên file: ui/views/staff_view.py
 # CHỨC NĂNG: Giao diện Quản lý Nhân sự dành riêng cho Admin (thêm, sửa, xóa, phân quyền email)
 # CHANGELOG:
+# - 17:30:15 11/07/2026: [UPDATE] feat(du-an): load sales and designers dropdowns dynamically from database staff table (Antigravity)
 # - 17:07:38 11/07/2026: [NEW] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:59:00 11/07/2026: [NEW] Khởi tạo giao diện Quản lý Nhân sự StaffManagementView (Antigravity)
 
@@ -165,7 +166,9 @@ class StaffManagementView(QWidget):
 
         except Exception as e:
             logger.error("Lỗi khi load danh sách nhân viên: %s", str(e), exc_info=True)
-            QMessageBox.critical(self, "Lỗi", f"Không thể tải danh sách nhân viên: {str(e)}")
+            QMessageBox.critical(
+                self, "Lỗi", f"Không thể tải danh sách nhân viên: {str(e)}"
+            )
         finally:
             db.close()
 
@@ -186,7 +189,7 @@ class StaffManagementView(QWidget):
 
         self.txt_name.setText(name)
         self.txt_email.setText(email)
-        
+
         idx = self.cb_role.findText(role)
         if idx >= 0:
             self.cb_role.setCurrentIndex(idx)
@@ -210,44 +213,60 @@ class StaffManagementView(QWidget):
         role = self.cb_role.currentText()
 
         if not name or not email:
-            QMessageBox.warning(self, "Cảnh báo", "Vui lòng nhập đầy đủ Họ Tên và Email!")
+            QMessageBox.warning(
+                self, "Cảnh báo", "Vui lòng nhập đầy đủ Họ Tên và Email!"
+            )
             return
 
         db = SessionLocal()
         try:
             # Check trùng email nếu thêm mới
             existing = db.query(Staff).filter(Staff.email.ilike(email)).first()
-            
+
             if self.selected_staff_id is None:
                 # Thêm mới
                 if existing:
-                    QMessageBox.warning(self, "Cảnh báo", f"Email '{email}' đã tồn tại trong hệ thống!")
+                    QMessageBox.warning(
+                        self, "Cảnh báo", f"Email '{email}' đã tồn tại trong hệ thống!"
+                    )
                     return
-                
+
                 new_staff = Staff(name=name, email=email.lower(), role=role)
                 db.add(new_staff)
                 db.commit()
-                QMessageBox.information(self, "Thành công", f"Đã thêm nhân viên: {name}")
+                QMessageBox.information(
+                    self, "Thành công", f"Đã thêm nhân viên: {name}"
+                )
             else:
                 # Cập nhật
-                staff = db.query(Staff).filter(Staff.staff_id == self.selected_staff_id).first()
+                staff = (
+                    db.query(Staff)
+                    .filter(Staff.staff_id == self.selected_staff_id)
+                    .first()
+                )
                 if staff:
                     if existing and existing.staff_id != self.selected_staff_id:
-                        QMessageBox.warning(self, "Cảnh báo", f"Email '{email}' đã được dùng bởi nhân viên khác!")
+                        QMessageBox.warning(
+                            self,
+                            "Cảnh báo",
+                            f"Email '{email}' đã được dùng bởi nhân viên khác!",
+                        )
                         return
-                    
+
                     staff.name = name
                     staff.email = email.lower()
                     staff.role = role
                     db.commit()
-                    QMessageBox.information(self, "Thành công", f"Đã cập nhật thông tin cho: {name}")
+                    QMessageBox.information(
+                        self, "Thành công", f"Đã cập nhật thông tin cho: {name}"
+                    )
 
             self.load_staffs()
             self.clear_form()
-            
+
             # Đồng bộ lại dropdown ở tab Kế hoạch
             if self.main_window and hasattr(self.main_window, "ke_hoach_view"):
-                self.main_window.ke_hoach_view.load_projects()  # Hoặc hàm load list planner riêng
+                self.main_window.ke_hoach_view.reload_planners()
 
         except Exception as e:
             db.rollback()
@@ -263,7 +282,9 @@ class StaffManagementView(QWidget):
 
         db = SessionLocal()
         try:
-            staff = db.query(Staff).filter(Staff.staff_id == self.selected_staff_id).first()
+            staff = (
+                db.query(Staff).filter(Staff.staff_id == self.selected_staff_id).first()
+            )
             if not staff:
                 return
 
@@ -280,10 +301,16 @@ class StaffManagementView(QWidget):
 
             db.delete(staff)
             db.commit()
-            QMessageBox.information(self, "Thành công", "Đã xóa nhân viên khỏi hệ thống.")
-            
+            QMessageBox.information(
+                self, "Thành công", "Đã xóa nhân viên khỏi hệ thống."
+            )
+
             self.load_staffs()
             self.clear_form()
+
+            # Đồng bộ lại dropdown ở tab Kế hoạch
+            if self.main_window and hasattr(self.main_window, "ke_hoach_view"):
+                self.main_window.ke_hoach_view.reload_planners()
 
         except Exception as e:
             db.rollback()
