@@ -43,6 +43,10 @@ graph TD
     core_services_drawing_service_get_project_drawings["⚙️ get_project_drawings()"]:::func
     core_services_drawing_service_create_drawing_safe["⚙️ create_drawing_safe()"]:::func
     core_services_drawing_service_get_project_drawings_safe["⚙️ get_project_drawings_safe()"]:::func
+    core_services_drawing_service_get_drawing["⚙️ get_drawing()"]:::func
+    core_services_drawing_service_get_drawing_safe["⚙️ get_drawing_safe()"]:::func
+    core_services_drawing_service_revise_drawing["⚙️ revise_drawing()"]:::func
+    core_services_drawing_service_revise_drawing_safe["⚙️ revise_drawing_safe()"]:::func
     core_services_project_service["📄 project_service.py"]:::file
     core_services_project_service_create_project["⚙️ create_project()"]:::func
     core_services_project_service_get_project["⚙️ get_project()"]:::func
@@ -94,6 +98,10 @@ graph TD
     core_services_drawing_service -->|contains| core_services_drawing_service_get_project_drawings
     core_services_drawing_service -->|contains| core_services_drawing_service_create_drawing_safe
     core_services_drawing_service -->|contains| core_services_drawing_service_get_project_drawings_safe
+    core_services_drawing_service -->|contains| core_services_drawing_service_get_drawing
+    core_services_drawing_service -->|contains| core_services_drawing_service_get_drawing_safe
+    core_services_drawing_service -->|contains| core_services_drawing_service_revise_drawing
+    core_services_drawing_service -->|contains| core_services_drawing_service_revise_drawing_safe
     core_services_project_service -->|contains| core_services_project_service_create_project
     core_services_project_service -->|contains| core_services_project_service_get_project
     core_services_project_service -->|contains| core_services_project_service_list_active_projects
@@ -129,6 +137,8 @@ graph TD
     core_services_auth_service_GoogleAuthManager__async_close ==>|calls| core_services_auth_service_GoogleAuthManager_shutdown
     core_services_drawing_service_create_drawing_safe ==>|calls| core_services_drawing_service_create_drawing
     core_services_drawing_service_get_project_drawings_safe ==>|calls| core_services_drawing_service_get_project_drawings
+    core_services_drawing_service_get_drawing_safe ==>|calls| core_services_drawing_service_get_drawing
+    core_services_drawing_service_revise_drawing_safe ==>|calls| core_services_drawing_service_revise_drawing
     core_services_project_service_delete_project_safe ==>|calls| core_services_project_service_delete_project
     core_services_project_service_create_project_safe ==>|calls| core_services_project_service_create_project
     core_services_project_service_update_project_safe ==>|calls| core_services_project_service_update_project

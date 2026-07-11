@@ -1,6 +1,8 @@
 # Tên file: core/services/drawing_service.py
 # CHỨC NĂNG: Xử lý các nghiệp vụ Quản lý bản vẽ (Drawing) và Nhật ký bản vẽ (DrawingLog)
 # CHANGELOG:
+# - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
+# - 18:03:00 11/07/2026: [UPDATE] Bổ sung hàm revise_drawing và revise_drawing_safe hỗ trợ cập nhật phiên bản (Lê Thanh Vân/Antigravity)
 # - 17:59:58 11/07/2026: [FIX] fix(staff-ui): resolve AttributeError by calling reload_planners on save and delete (Antigravity)
 # - 17:50:00 11/07/2026: [UPDATE] Bổ sung trường current_version khi ban hành bản vẽ mới (Lê Thanh Vân/Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
@@ -222,5 +224,141 @@ def get_project_drawings_safe(project_id: str) -> list[Drawing]:
     db = SessionLocal()
     try:
         return get_project_drawings(db, project_id)
+    finally:
+        db.close()
+
+
+def get_drawing(db: Session, drawing_id: str) -> Drawing | None:
+    """Lấy thông tin chi tiết một bản vẽ dựa vào ID.
+
+    Args:
+        db: Session kết nối database hiện thời.
+        drawing_id: Mã bản vẽ cần tìm.
+
+    Returns:
+        Drawing | None: Đối tượng Drawing tìm thấy, hoặc None.
+    """
+    try:
+        return db.query(Drawing).filter(Drawing.drawing_id == drawing_id).first()
+    except SQLAlchemyError as e:
+        logger.error(
+            "Lỗi cơ sở dữ liệu khi truy vấn bản vẽ ID '%s': %s",
+            drawing_id,
+            str(e),
+            exc_info=True,
+        )
+        return None
+
+
+def get_drawing_safe(drawing_id: str) -> Drawing | None:
+    """Lấy thông tin bản vẽ tự động quản lý vòng đời Session (Safe).
+
+    Args:
+        drawing_id: Mã bản vẽ.
+
+    Returns:
+        Drawing đối tượng hoặc None.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return get_drawing(db, drawing_id)
+    finally:
+        db.close()
+
+
+def revise_drawing(
+    db: Session, drawing_id: str, revise_data: dict[str, Any]
+) -> Drawing | None:
+    """Nâng cấp phiên bản (Revise) bản vẽ đã tồn tại trên hệ thống.
+
+    Args:
+        db: Session kết nối database hiện thời.
+        drawing_id: Mã bản vẽ cần nâng cấp phiên bản.
+        revise_data: Từ điển chứa thông tin phiên bản mới bao gồm:
+            - "current_version" (str): Mã phiên bản mới.
+            - "drive_link" (str, optional): Đường link Google Drive chứa file PDF bản vẽ mới.
+            - "notes" (str, optional): Ghi chú lý do thay đổi phiên bản.
+            - "performed_by" (str): Người thực hiện hành động này.
+
+    Returns:
+        Drawing | None: Đối tượng Drawing sau khi nâng cấp, hoặc None nếu thất bại.
+    """
+    version = revise_data.get("current_version", "V2")
+    drive_link = revise_data.get("drive_link")
+    notes = revise_data.get("notes")
+    performed_by = revise_data.get("performed_by", "Kỹ sư Thiết kế")
+
+    logger.info(
+        "Yêu cầu nâng cấp phiên bản bản vẽ ID=%s lên %s bởi %s",
+        drawing_id,
+        version,
+        performed_by,
+    )
+    try:
+        drawing = db.query(Drawing).filter(Drawing.drawing_id == drawing_id).first()
+        if not drawing:
+            logger.warning(
+                "Không tìm thấy bản vẽ ID '%s' để nâng cấp phiên bản.", drawing_id
+            )
+            return None
+
+        # Lưu lại thông tin phiên bản cũ vào log trước khi cập nhật đè
+        old_version = drawing.current_version
+        old_link = drawing.drive_link or "Không có link"
+
+        # Cập nhật thông tin bản vẽ
+        drawing.current_version = version
+        if drive_link is not None:
+            drawing.drive_link = drive_link
+        if notes is not None:
+            drawing.notes = notes
+        drawing.status = "Chờ triển khai"  # Reset về chờ triển khai
+
+        # Ghi log lịch sử thay đổi phiên bản
+        db_log = DrawingLog(
+            drawing_id=drawing_id,
+            version=version,
+            action=f"Nâng cấp phiên bản: {old_version} -> {version}",
+            performed_by=performed_by,
+            note=f"Link cũ: {old_link}. Ghi chú mới: {notes or ''}",
+        )
+        db.add(db_log)
+
+        db.commit()
+        db.refresh(drawing)
+        logger.info(
+            "Nâng cấp phiên bản bản vẽ thành công: ID=%s, Version=%s",
+            drawing_id,
+            version,
+        )
+        return drawing
+    except SQLAlchemyError as e:
+        db.rollback()
+        logger.error(
+            "Lỗi cơ sở dữ liệu khi nâng cấp phiên bản bản vẽ ID '%s': %s",
+            drawing_id,
+            str(e),
+            exc_info=True,
+        )
+        return None
+
+
+def revise_drawing_safe(drawing_id: str, revise_data: dict[str, Any]) -> Drawing | None:
+    """Nâng cấp phiên bản bản vẽ tự động quản lý vòng đời Session (Safe).
+
+    Args:
+        drawing_id: Mã bản vẽ.
+        revise_data: Từ điển chứa dữ liệu nâng cấp phiên bản.
+
+    Returns:
+        Drawing đối tượng sau khi nâng cấp hoặc None.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return revise_drawing(db, drawing_id, revise_data)
     finally:
         db.close()

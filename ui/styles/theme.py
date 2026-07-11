@@ -1,6 +1,7 @@
 # Tên file: ui/styles/theme.py
 # CHỨC NĂNG: Hệ thống Design Token và QSS Generator dùng chung cho ứng dụng ERP TK-KH TLS
 # CHANGELOG:
+# - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:26:00 10/07/2026: [NEW] Khởi tạo hệ thống theme và QSS dùng chung (Lê Thanh Vân/Antigravity)
@@ -459,6 +460,31 @@ class TLSTheme:
             }}
             QPushButton:hover {{
                 background-color: {cls.SLATE_800};
+            }}
+        """
+
+    @classmethod
+    def dark_action_button_stylesheet(cls) -> str:
+        """Trả về stylesheet QSS cho nút hành động tối màu (ví dụ nút tải QR).
+
+        Returns:
+            Chuỗi stylesheet QSS của nút hành động tối màu.
+        """
+        return f"""
+            QPushButton {{
+                background-color: {cls.SLATE_900};
+                color: {cls.WHITE};
+                border: none;
+                border-radius: 4px;
+                padding: 6px 12px;
+                font-weight: bold;
+            }}
+            QPushButton:hover {{
+                background-color: {cls.SLATE_800};
+            }}
+            QPushButton:disabled {{
+                background-color: #E2E8F0;
+                color: #94A3B8;
             }}
         """
 

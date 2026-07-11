@@ -1,6 +1,8 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
+# - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
+# - 18:08:00 11/07/2026: [UPDATE] Tích hợp QRPreviewWidget hiển thị QR Code động bên cạnh bảng bản vẽ (Lê Thanh Vân/Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Filter bảng bản vẽ theo phân quyền designer cấp hạng mục (Antigravity)
@@ -82,6 +84,10 @@ class BaseDrawingView(QWidget):
         table_actions_layout.addWidget(self.btn_refresh)
         layout.addLayout(table_actions_layout)
 
+        # Layout ngang chứa bảng bản vẽ bên trái và QR Widget bên phải
+        content_layout = QHBoxLayout()
+        content_layout.setSpacing(15)
+
         self.tbl_drawings = QTableWidget(group)
         self.tbl_drawings.setColumnCount(8)
         self.tbl_drawings.setHorizontalHeaderLabels(
@@ -106,8 +112,17 @@ class BaseDrawingView(QWidget):
             QTableWidget.SelectionBehavior.SelectRows
         )
         self.tbl_drawings.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
+        self.tbl_drawings.itemSelectionChanged.connect(self._on_table_selection_changed)
 
-        layout.addWidget(self.tbl_drawings)
+        content_layout.addWidget(self.tbl_drawings, 4)
+
+        # Nhúng QRPreviewWidget
+        from ui.common.qr_widget import QRPreviewWidget
+
+        self.qr_widget = QRPreviewWidget(group)
+        content_layout.addWidget(self.qr_widget, 1)
+
+        layout.addLayout(content_layout)
         return group
 
     def set_project(self, project_id: str) -> None:
@@ -258,6 +273,9 @@ class BaseDrawingView(QWidget):
 
         if target_row_to_select != -1:
             self.tbl_drawings.selectRow(target_row_to_select)
+        else:
+            if hasattr(self, "qr_widget"):
+                self.qr_widget.clear_qr()
 
         self._restore_column_widths()
 
@@ -326,3 +344,25 @@ class BaseDrawingView(QWidget):
             header.setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
             header.setSectionResizeMode(6, QHeaderView.ResizeMode.Stretch)
             header.setSectionResizeMode(7, QHeaderView.ResizeMode.ResizeToContents)
+
+    def _on_table_selection_changed(self) -> None:
+        """Xử lý khi người dùng chọn một bản vẽ khác trong bảng."""
+        selected_ranges = self.tbl_drawings.selectedRanges()
+        if not selected_ranges:
+            if hasattr(self, "qr_widget"):
+                self.qr_widget.clear_qr()
+            return
+        row = selected_ranges[0].topRow()
+        item_id = self.tbl_drawings.item(row, 0)
+        item_version = self.tbl_drawings.item(row, 5)
+        item_link = self.tbl_drawings.item(row, 6)
+
+        drawing_id = item_id.text() if item_id else ""
+        version = item_version.text() if item_version else "V1"
+        drive_link = item_link.text() if item_link else ""
+
+        if drive_link == "Trống":
+            drive_link = ""
+
+        if hasattr(self, "qr_widget"):
+            self.qr_widget.set_drawing(drawing_id, version, drive_link)

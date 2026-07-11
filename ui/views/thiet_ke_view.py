@@ -1,6 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
+# - 18:10:00 11/07/2026: [UPDATE] Tích hợp cơ chế hỏi đáp nâng cấp phiên bản (Revise) khi trùng mã bản vẽ (Lê Thanh Vân/Antigravity)
 # - 17:59:58 11/07/2026: [FIX] fix(staff-ui): resolve AttributeError by calling reload_planners on save and delete (Antigravity)
 # - 17:51:00 11/07/2026: [UPDATE] Thêm trường Phiên bản (Version) vào Form Ban hành Bản vẽ mới (Lê Thanh Vân/Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
@@ -26,7 +28,11 @@ from PyQt6.QtWidgets import (
 from ui.styles.theme import TLSTheme
 from ui.common.base_drawing_view import BaseDrawingView
 from core.services.section_service import list_project_sections_safe
-from core.services.drawing_service import create_drawing_safe
+from core.services.drawing_service import (
+    create_drawing_safe,
+    get_drawing_safe,
+    revise_drawing_safe,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -189,6 +195,16 @@ class ThietKeView(BaseDrawingView):
             )
             return
 
+        # Kiểm tra xem bản vẽ đã tồn tại để xác định tạo mới hay cập nhật phiên bản (Revise)
+        existing_draw = get_drawing_safe(drawing_id)
+
+        # Lấy email người đăng nhập làm performed_by
+        performed_by = "Kỹ sư Thiết kế"
+        if self.main_window and hasattr(self.main_window, "user_email"):
+            user_email = self.main_window.user_email
+            if user_email:
+                performed_by = user_email
+
         drawing_data = {
             "drawing_id": drawing_id,
             "drawing_name": drawing_name,
@@ -196,22 +212,48 @@ class ThietKeView(BaseDrawingView):
             "notes": notes,
             "drive_link": drive_link,
             "section_id": section_id,
+            "performed_by": performed_by,
         }
 
         created_success = False
-        try:
-            draw = create_drawing_safe(project_id, drawing_data)
-            if draw:
-                created_success = True
-        except Exception as e:
-            logger.error(
-                "ThietKeView: Lỗi khi ban hành bản vẽ: %s", str(e), exc_info=True
+        action_type = "create"
+
+        if existing_draw:
+            # Nếu trùng cả phiên bản ➔ Báo lỗi không cho đè
+            if existing_draw.current_version == version:
+                QMessageBox.warning(
+                    self,
+                    "Bản vẽ đã tồn tại",
+                    f"Bản vẽ '{drawing_id}' đã tồn tại với phiên bản '{version}' trên hệ thống.\n"
+                    "Vui lòng nhập số phiên bản mới hơn để tiến hành Cập nhật (Revise) bản vẽ!",
+                )
+                return
+
+            # Nếu khác phiên bản ➔ Hỏi ý kiến nâng cấp phiên bản
+            ret = QMessageBox.question(
+                self,
+                "Cập nhật Phiên bản (Revise)",
+                f"Bản vẽ '{drawing_id}' đang tồn tại với phiên bản '{existing_draw.current_version}'.\n"
+                f"Bạn có chắc chắn muốn nâng cấp lên phiên bản '{version}' không?\n"
+                "(Phiên bản cũ và link cũ sẽ được lưu lại trong lịch sử hệ thống)",
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No,
             )
+            if ret == QMessageBox.StandardButton.No:
+                return
+
+            action_type = "revise"
+            created_success = self._handle_drawing_revision(drawing_id, drawing_data)
+        else:
+            created_success = self._handle_drawing_creation(project_id, drawing_data)
 
         if created_success:
-            QMessageBox.information(
-                self, "Thông báo", f"Ban hành thành công bản vẽ: {drawing_id}"
+            msg = (
+                f"Cập nhật thành công phiên bản mới '{version}' cho bản vẽ: {drawing_id}"
+                if action_type == "revise"
+                else f"Ban hành thành công bản vẽ: {drawing_id}"
             )
+            QMessageBox.information(self, "Thông báo", msg)
             self.txt_drawing_id.clear()
             self.txt_drawing_name.clear()
             self.txt_version.setText("V1")
@@ -222,5 +264,49 @@ class ThietKeView(BaseDrawingView):
             QMessageBox.critical(
                 self,
                 "Lỗi",
-                "Ban hành bản vẽ thất bại. Vui lòng xem lại log hệ thống hoặc kết nối.",
+                "Thao tác thất bại. Vui lòng xem lại log hệ thống hoặc kiểm tra kết nối.",
             )
+
+    def _handle_drawing_revision(
+        self, drawing_id: str, drawing_data: dict[str, Any]
+    ) -> bool:
+        """Thực hiện xử lý cập nhật phiên bản bản vẽ (Revise) xuống backend.
+
+        Args:
+            drawing_id: Mã bản vẽ cần cập nhật.
+            drawing_data: Từ điển dữ liệu phiên bản mới.
+
+        Returns:
+            bool: True nếu cập nhật thành công, ngược lại False.
+        """
+        try:
+            draw = revise_drawing_safe(drawing_id, drawing_data)
+            return draw is not None
+        except Exception as e:
+            logger.error(
+                "ThietKeView: Lỗi khi nâng cấp phiên bản bản vẽ: %s",
+                str(e),
+                exc_info=True,
+            )
+            return False
+
+    def _handle_drawing_creation(
+        self, project_id: str, drawing_data: dict[str, Any]
+    ) -> bool:
+        """Thực hiện gửi yêu cầu tạo mới bản vẽ xuống backend.
+
+        Args:
+            project_id: Mã dự án sở hữu.
+            drawing_data: Dữ liệu bản vẽ mới.
+
+        Returns:
+            bool: True nếu tạo mới thành công, ngược lại False.
+        """
+        try:
+            draw = create_drawing_safe(project_id, drawing_data)
+            return draw is not None
+        except Exception as e:
+            logger.error(
+                "ThietKeView: Lỗi khi ban hành bản vẽ: %s", str(e), exc_info=True
+            )
+            return False
