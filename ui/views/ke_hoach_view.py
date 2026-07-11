@@ -1,6 +1,8 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng - kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 14:45:04 11/07/2026: [UPDATE] feat(drawing): add notes field to drawing issuance form and table (Antigravity)
+# - 14:38:00 11/07/2026: [UPDATE] Đổi Người Thực Hiện thành dropdown QComboBox, disable nút khi chưa chọn (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:48:00 10/07/2026: [REFACTOR] Kế thừa BaseDrawingView để tối ưu hóa code và sử dụng theme dùng chung (Lê Thanh Vân/Antigravity)
 
@@ -12,6 +14,7 @@ from PyQt6.QtWidgets import (
     QGridLayout,
     QLabel,
     QLineEdit,
+    QComboBox,
     QPushButton,
     QGroupBox,
     QMessageBox,
@@ -76,9 +79,19 @@ class KeHoachView(BaseDrawingView):
         grid.setSpacing(10)
 
         grid.addWidget(QLabel("Người Thực Hiện:", group), 0, 0)
-        self.txt_performed_by = QLineEdit(group)
-        self.txt_performed_by.setPlaceholderText("Tên nhân viên Kế hoạch...")
-        grid.addWidget(self.txt_performed_by, 0, 1)
+        self.cb_performed_by = QComboBox(group)
+        self.cb_performed_by.addItem("--- Chọn người thực hiện ---", "")
+        for name in [
+            "Trần Mạnh Linh",
+            "Nguyễn Hồng Thái",
+            "Nguyễn Mạnh Tuấn",
+            "Lê Viết Hiệu",
+        ]:
+            self.cb_performed_by.addItem(name, name)
+        self.cb_performed_by.currentIndexChanged.connect(
+            self._on_performer_changed
+        )
+        grid.addWidget(self.cb_performed_by, 0, 1)
 
         grid.addWidget(QLabel("Ghi Chú Triển Khai:", group), 1, 0)
         self.txt_note = QLineEdit(group)
@@ -89,17 +102,25 @@ class KeHoachView(BaseDrawingView):
         btn_layout = QHBoxLayout()
         self.btn_open_link = QPushButton("🌐 Mở File/Thư mục (Drive)", group)
         self.btn_open_link.setStyleSheet("background-color: #0284C7;")  # Sky 600
+        self.btn_open_link.setEnabled(False)
         self.btn_open_link.clicked.connect(self._on_open_link)
         btn_layout.addWidget(self.btn_open_link)
 
         self.btn_confirm_prod = QPushButton("✔ Xác Nhận Chuyển Xưởng", group)
         self.btn_confirm_prod.setStyleSheet("background-color: #16A34A;")  # Green 600
+        self.btn_confirm_prod.setEnabled(False)
         self.btn_confirm_prod.clicked.connect(self._on_confirm_production)
         btn_layout.addWidget(self.btn_confirm_prod)
 
         grid.addLayout(btn_layout, 2, 0, 1, 2)
 
         return group
+
+    def _on_performer_changed(self) -> None:
+        """Bật/tắt nút hành động tùy theo việc đã chọn người thực hiện hay chưa."""
+        has_performer = bool(self.cb_performed_by.currentData())
+        self.btn_open_link.setEnabled(has_performer)
+        self.btn_confirm_prod.setEnabled(has_performer)
 
     def _on_open_link(self) -> None:
         """Xử lý sự kiện click nút [Mở Bản Vẽ (Drive)].
@@ -150,7 +171,7 @@ class KeHoachView(BaseDrawingView):
     def _on_confirm_production(self) -> None:
         """Xử lý sự kiện click nút [Xác Nhận Chuyển Xưởng]."""
         drawing_id = self._get_selected_drawing_id()
-        performed_by = self.txt_performed_by.text().strip()
+        performed_by = self.cb_performed_by.currentData() or ""
         note = self.txt_note.text().strip()
 
         if not drawing_id:
@@ -161,7 +182,7 @@ class KeHoachView(BaseDrawingView):
 
         if not performed_by:
             QMessageBox.warning(
-                self, "Cảnh báo", "Vui lòng nhập tên người tiếp nhận vận hành!"
+                self, "Cảnh báo", "Vui lòng chọn người thực hiện!"
             )
             return
 
