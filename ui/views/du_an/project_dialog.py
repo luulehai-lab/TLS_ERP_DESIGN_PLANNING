@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/project_dialog.py
 # CHỨC NĂNG: Hộp thoại popup nhập liệu để tạo mới một Dự án kết cấu thép
 # CHANGELOG:
+# - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 16:23:44 10/07/2026: [NEW] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
 # - 16:22:00 10/07/2026: [NEW] Khởi tạo CreateProjectDialog tách từ main_window.py để tuân thủ giới hạn 800 dòng (Lê Thanh Vân/Antigravity)
@@ -51,21 +52,40 @@ class CreateProjectDialog(QDialog):
         layout.addRow("Tên Dự án:", self.txt_project_name)
 
         self.cb_sales = QComboBox(self)
-        self.cb_sales.addItem(
-            "Nguyễn Văn Quân - quanxu23@gmail.com", "quanxu23@gmail.com"
-        )
-        self.cb_sales.addItem(
-            "Trịnh Văn Phúc - vanphuctrinh2211@gmail.com", "vanphuctrinh2211@gmail.com"
-        )
+        from core.services.project_service import list_staffs_by_role
+
+        try:
+            sales = list_staffs_by_role("Kinh doanh")
+            for s in sales:
+                self.cb_sales.addItem(f"{s['name']} - {s['email']}", s["email"])
+        except Exception as e:
+            logger.error(
+                "Lỗi khi load danh sách Kinh doanh từ DB: %s", str(e), exc_info=True
+            )
+            self.cb_sales.addItem(
+                "Nguyễn Văn Quân - quanxu23@gmail.com", "quanxu23@gmail.com"
+            )
+            self.cb_sales.addItem(
+                "Trịnh Văn Phúc - vanphuctrinh2211@gmail.com",
+                "vanphuctrinh2211@gmail.com",
+            )
         layout.addRow("Kinh doanh (Sales):", self.cb_sales)
 
         self.cb_designer = QComboBox(self)
-        self.cb_designer.addItem(
-            "Vũ Thanh Hà - ha91steel@gmail.com", "ha91steel@gmail.com"
-        )
-        self.cb_designer.addItem(
-            "Nguyễn Văn Trịnh - trinh58xd2@gmail.com", "trinh58xd2@gmail.com"
-        )
+        try:
+            designers = list_staffs_by_role("Thiết kế")
+            for d in designers:
+                self.cb_designer.addItem(f"{d['name']} - {d['email']}", d["email"])
+        except Exception as e:
+            logger.error(
+                "Lỗi khi load danh sách Thiết kế từ DB: %s", str(e), exc_info=True
+            )
+            self.cb_designer.addItem(
+                "Vũ Thanh Hà - ha91steel@gmail.com", "ha91steel@gmail.com"
+            )
+            self.cb_designer.addItem(
+                "Nguyễn Văn Trịnh - trinh58xd2@gmail.com", "trinh58xd2@gmail.com"
+            )
         layout.addRow("Chủ trì Thiết kế:", self.cb_designer)
 
         self.button_box = QDialogButtonBox(

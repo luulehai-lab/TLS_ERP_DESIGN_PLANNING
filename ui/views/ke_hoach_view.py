@@ -1,6 +1,8 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng - kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
+# - 17:08:00 11/07/2026: [UPDATE] Thêm hàm reload_planners nạp động danh sách người thực hiện từ DB khi chuyển tab (Antigravity)
 # - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 14:45:04 11/07/2026: [UPDATE] feat(drawing): add notes field to drawing issuance form and table (Antigravity)
 # - 14:38:00 11/07/2026: [UPDATE] Đổi Người Thực Hiện thành dropdown QComboBox, disable nút khi chưa chọn (Antigravity)
@@ -81,26 +83,6 @@ class KeHoachView(BaseDrawingView):
 
         grid.addWidget(QLabel("Người Thực Hiện:", group), 0, 0)
         self.cb_performed_by = QComboBox(group)
-        self.cb_performed_by.addItem("--- Chọn người thực hiện ---", "")
-        from core.services.project_service import list_staffs_by_role
-
-        try:
-            planners = list_staffs_by_role("Kế hoạch")
-            for p in planners:
-                if p["name"] == "Phòng Kế Hoạch":
-                    continue
-                self.cb_performed_by.addItem(p["name"], p["name"])
-        except Exception as e:
-            logger.error(
-                "Lỗi khi load danh sách Kế hoạch từ DB: %s", str(e), exc_info=True
-            )
-            for name in [
-                "Trần Mạnh Linh",
-                "Nguyễn Hồng Thái",
-                "Nguyễn Mạnh Tuấn",
-                "Lê Viết Hiệu",
-            ]:
-                self.cb_performed_by.addItem(name, name)
         self.cb_performed_by.currentIndexChanged.connect(self._on_performer_changed)
         grid.addWidget(self.cb_performed_by, 0, 1)
 
@@ -125,7 +107,47 @@ class KeHoachView(BaseDrawingView):
 
         grid.addLayout(btn_layout, 2, 0, 1, 2)
 
+        # Nạp danh sách lần đầu (gọi sau khi đã tạo xong các nút bấm)
+        self.reload_planners()
+
         return group
+
+    def reload_planners(self) -> None:
+        """Nạp lại danh sách nhân viên Kế hoạch từ database vào Combobox."""
+        current_sel = self.cb_performed_by.currentData() or ""
+
+        self.cb_performed_by.blockSignals(True)
+        self.cb_performed_by.clear()
+        self.cb_performed_by.addItem("--- Chọn người thực hiện ---", "")
+
+        from core.services.project_service import list_staffs_by_role
+
+        try:
+            planners = list_staffs_by_role("Kế hoạch")
+            for p in planners:
+                if p["name"] == "Phòng Kế Hoạch":
+                    continue
+                self.cb_performed_by.addItem(p["name"], p["name"])
+        except Exception as e:
+            logger.error(
+                "Lỗi khi load danh sách Kế hoạch từ DB: %s", str(e), exc_info=True
+            )
+            for name in [
+                "Trần Mạnh Linh",
+                "Nguyễn Hồng Thái",
+                "Nguyễn Mạnh Tuấn",
+                "Lê Viết Hiệu",
+            ]:
+                self.cb_performed_by.addItem(name, name)
+
+        idx = self.cb_performed_by.findData(current_sel)
+        if idx >= 0:
+            self.cb_performed_by.setCurrentIndex(idx)
+        else:
+            self.cb_performed_by.setCurrentIndex(0)
+
+        self.cb_performed_by.blockSignals(False)
+        self._on_performer_changed()
 
     def _on_performer_changed(self) -> None:
         """Bật/tắt nút hành động tùy theo việc đã chọn người thực hiện hay chưa."""

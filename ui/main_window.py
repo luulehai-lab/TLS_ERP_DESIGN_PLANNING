@@ -1,6 +1,7 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Tích hợp Sidebar và Header modular)
 # CHANGELOG:
+# - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
 # - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:59:00 11/07/2026: [UPDATE] Tích hợp View Quản lý Nhân sự vào content_stack của MainWindow (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
@@ -217,5 +218,6 @@ class MainWindow(QMainWindow):
             self.thiet_ke_view.set_project(self.current_project_id)
         elif active_idx == 2 and hasattr(self, "ke_hoach_view"):
             self.ke_hoach_view.set_project(self.current_project_id)
+            self.ke_hoach_view.reload_planners()
         elif active_idx == 3 and hasattr(self, "staff_view"):
             self.staff_view.load_staffs()

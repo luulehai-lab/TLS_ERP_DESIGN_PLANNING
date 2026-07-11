@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/section_widget.py
 # CHỨC NĂNG: Giao diện quản lý Hạng mục Dự án cho phòng Thiết kế
 # CHANGELOG:
+# - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:05:31 10/07/2026: [REFACTOR] refactor(ui): modularize CreateProjectDialog and restructure project management to vertical stacked layout (Antigravity)
 # - 16:35:00 10/07/2026: [UPDATE] Tích hợp lưu và khôi phục chiều rộng cột cho bảng hạng mục bằng QSettings (Lê Thanh Vân/Antigravity)
@@ -116,12 +117,22 @@ class SectionWidget(QWidget):
 
         grid.addWidget(QLabel("Thiết kế phụ trách:", group), 3, 0)
         self.cb_designer = QComboBox(group)
-        self.cb_designer.addItem(
-            "Vũ Thanh Hà - ha91steel@gmail.com", "ha91steel@gmail.com"
-        )
-        self.cb_designer.addItem(
-            "Nguyễn Văn Trịnh - trinh58xd2@gmail.com", "trinh58xd2@gmail.com"
-        )
+        from core.services.project_service import list_staffs_by_role
+
+        try:
+            designers = list_staffs_by_role("Thiết kế")
+            for d in designers:
+                self.cb_designer.addItem(f"{d['name']} - {d['email']}", d["email"])
+        except Exception as e:
+            logger.error(
+                "Lỗi khi load danh sách Thiết kế từ DB: %s", str(e), exc_info=True
+            )
+            self.cb_designer.addItem(
+                "Vũ Thanh Hà - ha91steel@gmail.com", "ha91steel@gmail.com"
+            )
+            self.cb_designer.addItem(
+                "Nguyễn Văn Trịnh - trinh58xd2@gmail.com", "trinh58xd2@gmail.com"
+            )
         grid.addWidget(self.cb_designer, 3, 1)
 
     def _setup_form_buttons(self, grid: QGridLayout, group: QGroupBox) -> None:

@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/project_widget.py
 # CHỨC NĂNG: Giao diện hiển thị & chỉnh sửa thông tin Dự án hiện hành dạng hàng ngang nhỏ gọn
 # CHANGELOG:
+# - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 16:23:44 10/07/2026: [UPDATE] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
 # - 16:10:00 10/07/2026: [REFACTOR] Thay đổi thành Form xem/sửa dự án hiện hành dạng hàng ngang nhỏ gọn, loại bỏ bảng danh sách dự án (Lê Thanh Vân/Antigravity)
@@ -86,22 +87,41 @@ class ProjectWidget(QWidget):
         # Hàng 1: Sales, Designer
         grid.addWidget(QLabel("Kinh doanh (Sales):", self.group_box), 1, 0)
         self.cb_sales = QComboBox(self.group_box)
-        self.cb_sales.addItem(
-            "Nguyễn Văn Quân - quanxu23@gmail.com", "quanxu23@gmail.com"
-        )
-        self.cb_sales.addItem(
-            "Trịnh Văn Phúc - vanphuctrinh2211@gmail.com", "vanphuctrinh2211@gmail.com"
-        )
+        from core.services.project_service import list_staffs_by_role
+
+        try:
+            sales = list_staffs_by_role("Kinh doanh")
+            for s in sales:
+                self.cb_sales.addItem(f"{s['name']} - {s['email']}", s["email"])
+        except Exception as e:
+            logger.error(
+                "Lỗi khi load danh sách Kinh doanh từ DB: %s", str(e), exc_info=True
+            )
+            self.cb_sales.addItem(
+                "Nguyễn Văn Quân - quanxu23@gmail.com", "quanxu23@gmail.com"
+            )
+            self.cb_sales.addItem(
+                "Trịnh Văn Phúc - vanphuctrinh2211@gmail.com",
+                "vanphuctrinh2211@gmail.com",
+            )
         grid.addWidget(self.cb_sales, 1, 1)
 
         grid.addWidget(QLabel("Chủ trì Thiết kế:", self.group_box), 1, 2)
         self.cb_designer = QComboBox(self.group_box)
-        self.cb_designer.addItem(
-            "Vũ Thanh Hà - ha91steel@gmail.com", "ha91steel@gmail.com"
-        )
-        self.cb_designer.addItem(
-            "Nguyễn Văn Trịnh - trinh58xd2@gmail.com", "trinh58xd2@gmail.com"
-        )
+        try:
+            designers = list_staffs_by_role("Thiết kế")
+            for d in designers:
+                self.cb_designer.addItem(f"{d['name']} - {d['email']}", d["email"])
+        except Exception as e:
+            logger.error(
+                "Lỗi khi load danh sách Thiết kế từ DB: %s", str(e), exc_info=True
+            )
+            self.cb_designer.addItem(
+                "Vũ Thanh Hà - ha91steel@gmail.com", "ha91steel@gmail.com"
+            )
+            self.cb_designer.addItem(
+                "Nguyễn Văn Trịnh - trinh58xd2@gmail.com", "trinh58xd2@gmail.com"
+            )
         grid.addWidget(self.cb_designer, 1, 3)
 
     def _setup_action_buttons(self, grid: QGridLayout) -> None:
