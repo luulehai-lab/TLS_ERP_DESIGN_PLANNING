@@ -1,6 +1,7 @@
 # Tên file: core/services/auth_service.py
 # CHỨC NĂNG: Xử lý xác thực Google OAuth2 và chạy local HTTP server nhận callback
 # CHANGELOG:
+# - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
 # - 16:35:00 08/07/2026: [FIX] Sửa do_GET hỗ trợ code ở root path và chuyển đóng server sang luồng phụ tránh deadlock socket (Lê Thanh Vân/Antigravity)
 # - 14:13:50 08/07/2026: [NEW] chore(db): update database port connection and sync codebase graph (Antigravity)
@@ -111,8 +112,8 @@ MOCK_LOGIN_HTML: str = """<!DOCTYPE html>
         <a href="/callback?code=mock_code_1&email=luu.lehai@gmail.com" class="btn">
             🔑 luu.lehai@gmail.com (Phòng Thiết Kế)
         </a>
-        <a href="/callback?code=mock_code_2&email=kehoach.viet@gmail.com" class="btn btn-kehoach">
-            💼 kehoach.viet@gmail.com (Phòng Kế Hoạch)
+        <a href="/callback?code=mock_code_2&email=phongkehoachkythuat25@gmail.com" class="btn btn-kehoach">
+            💼 phongkehoachkythuat25@gmail.com (Phòng Kế Hoạch)
         </a>
         <a href="/callback?code=mock_code_3&email=guest@gmail.com" class="btn" style="background-color: #475569; color: white;">
             👤 guest@gmail.com (Khách vãng lai)

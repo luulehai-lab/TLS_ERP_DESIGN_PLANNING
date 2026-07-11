@@ -1,6 +1,7 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
+# - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Filter bảng bản vẽ theo phân quyền designer cấp hạng mục (Antigravity)
 # - 14:30:00 11/07/2026: [UPDATE] Thêm cột Ghi Chú vào bảng danh sách bản vẽ (Antigravity)
@@ -178,6 +179,13 @@ class BaseDrawingView(QWidget):
         if self.main_window and hasattr(self.main_window, "user_email"):
             user_email = (self.main_window.user_email or "").lower()
         is_admin = user_email == "luu.lehai@gmail.com"
+        # Lấy phòng ban của user
+        user_dept = ""
+        if self.main_window and hasattr(self.main_window, "user_dept"):
+            user_dept = self.main_window.user_dept
+        is_planning = (
+            user_dept == "Kế hoạch" or user_email == "phongkehoachkythuat25@gmail.com"
+        )
 
         # Kiểm tra user có phải là Sale của dự án này không
         is_project_sale = False
@@ -185,7 +193,7 @@ class BaseDrawingView(QWidget):
             p_sales = (drawings[0].get("project_sales_email") or "").lower()
             is_project_sale = user_email == p_sales
 
-        if not is_admin and not is_project_sale and user_email:
+        if not is_admin and not is_planning and not is_project_sale and user_email:
             filtered = []
             for d in drawings:
                 s_designer = (d.get("section_designer_email") or "").lower()

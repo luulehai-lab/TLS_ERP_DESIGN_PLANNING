@@ -1,6 +1,7 @@
 # Tên file: core/services/project_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Dự án (Project)
 # CHANGELOG:
+# - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Eager load sections trong list_active_projects cho phân quyền (Antigravity)
 # - 15:33:49 10/07/2026: [UPDATE] feat(ui): add edit mode and designer roles for projects and sections (Antigravity)
@@ -347,8 +348,9 @@ def is_email_authorized(email: str) -> bool:
     from core.database import SessionLocal
     from core.models import ProjectSection
 
-    # Admin luôn được phép
-    if email.lower() == "luu.lehai@gmail.com":
+    # Admin và phòng Kế hoạch luôn được phép truy cập
+    email_lower = email.lower()
+    if email_lower in ["luu.lehai@gmail.com", "phongkehoachkythuat25@gmail.com"]:
         return True
 
     db = SessionLocal()

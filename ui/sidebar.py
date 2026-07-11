@@ -1,6 +1,7 @@
 # Tên file: ui/sidebar.py
 # CHỨC NĂNG: Thanh Sidebar bên trái chứa danh sách dự án và các nút tạo mới/xóa dự án
 # CHANGELOG:
+# - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Mở rộng filter dự án: check thêm section_designer_emails (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
@@ -171,12 +172,16 @@ class SidebarWidget(QFrame):
 
         for p in projects:
             # Phân quyền: chỉ hiển thị dự án mà user đăng nhập là sale hoặc thiết kế
-            # Admin (luu.lehai@gmail.com) xem được tất cả
-            if self.user_email != "luu.lehai@gmail.com":
+            # Admin (luu.lehai@gmail.com) và phòng Kế hoạch xem được tất cả dự án
+            current_email = self.user_email.lower()
+            is_planning = (
+                self.user_dept == "Kế hoạch"
+                or current_email == "phongkehoachkythuat25@gmail.com"
+            )
+            if current_email != "luu.lehai@gmail.com" and not is_planning:
                 p_sales = (p.get("sales_email") or "").lower()
                 p_designer = (p.get("designer_email") or "").lower()
                 section_emails = p.get("section_designer_emails", [])
-                current_email = self.user_email.lower()
                 if (
                     current_email != p_sales
                     and current_email != p_designer

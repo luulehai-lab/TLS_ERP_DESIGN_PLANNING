@@ -1,6 +1,7 @@
 # Tên file: tests/test_permission_filter.py
 # CHỨC NĂNG: Test phân quyền xem dự án và bản vẽ theo email đăng nhập
 # CHANGELOG:
+# - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [NEW] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 15:05:00 11/07/2026: [NEW] Viết test phân quyền 2 tầng (dự án + hạng mục) (Antigravity)
 
@@ -13,7 +14,6 @@ Mô phỏng dữ liệu thực tế:
 - Dự án SONG_HONG: sale=phuc@tls.vn, designer=trinhA@tls.vn (dự án nhỏ không có hạng mục)
 - Dự án DAI_PHONG: sale=nam@tls.vn, designer=haB@tls.vn
 """
-
 
 
 # ============================================================================
@@ -89,6 +89,7 @@ MOCK_DRAWINGS_VAN_LOC = [
 # ============================================================================
 
 ADMIN_EMAIL = "luu.lehai@gmail.com"
+PLANNING_EMAIL = "phongkehoachkythuat25@gmail.com"
 
 
 def filter_projects_by_permission(projects: list[dict], user_email: str) -> list[dict]:
@@ -101,7 +102,7 @@ def filter_projects_by_permission(projects: list[dict], user_email: str) -> list
     Returns:
         Danh sách dự án mà user có quyền xem.
     """
-    if user_email == ADMIN_EMAIL:
+    if user_email.lower() in [ADMIN_EMAIL.lower(), PLANNING_EMAIL.lower()]:
         return projects
 
     result = []
@@ -131,10 +132,9 @@ def filter_drawings_by_permission(drawings: list[dict], user_email: str) -> list
     Returns:
         Danh sách bản vẽ mà user có quyền xem.
     """
-    if user_email == ADMIN_EMAIL:
-        return drawings
-
     current_email = user_email.lower()
+    if current_email in [ADMIN_EMAIL.lower(), PLANNING_EMAIL.lower()]:
+        return drawings
 
     # Sale của dự án xem được tất cả bản vẽ
     if drawings:
@@ -204,6 +204,11 @@ class TestProjectPermissionFilter:
         result = filter_projects_by_permission(MOCK_PROJECTS, "PHUC@TLS.VN")
         assert len(result) == 2
 
+    def test_planning_sees_all_projects(self) -> None:
+        """Phòng Kế hoạch xem được TẤT CẢ dự án."""
+        result = filter_projects_by_permission(MOCK_PROJECTS, PLANNING_EMAIL)
+        assert len(result) == 3
+
 
 class TestDrawingPermissionFilter:
     """Test phân quyền xem bản vẽ theo hạng mục."""
@@ -241,3 +246,8 @@ class TestDrawingPermissionFilter:
         result = filter_drawings_by_permission(MOCK_DRAWINGS_VAN_LOC, "stranger@tls.vn")
         assert len(result) == 1
         assert result[0]["drawing_id"] == "VL-CHUNG-01"
+
+    def test_planning_sees_all_drawings(self) -> None:
+        """Phòng Kế hoạch xem được TẤT CẢ bản vẽ."""
+        result = filter_drawings_by_permission(MOCK_DRAWINGS_VAN_LOC, PLANNING_EMAIL)
+        assert len(result) == 4
