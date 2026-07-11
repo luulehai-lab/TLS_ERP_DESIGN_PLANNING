@@ -51,6 +51,7 @@ graph TD
     core_services_project_service_create_project["⚙️ create_project()"]:::func
     core_services_project_service_get_project["⚙️ get_project()"]:::func
     core_services_project_service_list_active_projects["⚙️ list_active_projects()"]:::func
+    core_services_project_service_list_active_projects_safe["⚙️ list_active_projects_safe()"]:::func
     core_services_project_service_update_project_status["⚙️ update_project_status()"]:::func
     core_services_project_service_update_project["⚙️ update_project()"]:::func
     core_services_project_service_delete_project["⚙️ delete_project()"]:::func
@@ -61,6 +62,16 @@ graph TD
     core_services_project_service_is_email_authorized["⚙️ is_email_authorized()"]:::func
     core_services_project_service_get_staff_role["⚙️ get_staff_role()"]:::func
     core_services_project_service_list_staffs_by_role["⚙️ list_staffs_by_role()"]:::func
+    core_services_report_service["📄 report_service.py"]:::file
+    core_services_report_service__apply_permission_filter["⚙️ _apply_permission_filter()"]:::func
+    core_services_report_service_get_drawing_status_stats["⚙️ get_drawing_status_stats()"]:::func
+    core_services_report_service_get_section_drawing_stats["⚙️ get_section_drawing_stats()"]:::func
+    core_services_report_service_get_designer_productivity_stats["⚙️ get_designer_productivity_stats()"]:::func
+    core_services_report_service_get_release_timeline_stats["⚙️ get_release_timeline_stats()"]:::func
+    core_services_report_service_get_drawing_status_stats_safe["⚙️ get_drawing_status_stats_safe()"]:::func
+    core_services_report_service_get_section_drawing_stats_safe["⚙️ get_section_drawing_stats_safe()"]:::func
+    core_services_report_service_get_designer_productivity_stats_safe["⚙️ get_designer_productivity_stats_safe()"]:::func
+    core_services_report_service_get_release_timeline_stats_safe["⚙️ get_release_timeline_stats_safe()"]:::func
     core_services_section_service["📄 section_service.py"]:::file
     core_services_section_service_create_section["⚙️ create_section()"]:::func
     core_services_section_service_list_project_sections["⚙️ list_project_sections()"]:::func
@@ -105,6 +116,7 @@ graph TD
     core_services_project_service -->|contains| core_services_project_service_create_project
     core_services_project_service -->|contains| core_services_project_service_get_project
     core_services_project_service -->|contains| core_services_project_service_list_active_projects
+    core_services_project_service -->|contains| core_services_project_service_list_active_projects_safe
     core_services_project_service -->|contains| core_services_project_service_update_project_status
     core_services_project_service -->|contains| core_services_project_service_update_project
     core_services_project_service -->|contains| core_services_project_service_delete_project
@@ -115,6 +127,15 @@ graph TD
     core_services_project_service -->|contains| core_services_project_service_is_email_authorized
     core_services_project_service -->|contains| core_services_project_service_get_staff_role
     core_services_project_service -->|contains| core_services_project_service_list_staffs_by_role
+    core_services_report_service -->|contains| core_services_report_service__apply_permission_filter
+    core_services_report_service -->|contains| core_services_report_service_get_drawing_status_stats
+    core_services_report_service -->|contains| core_services_report_service_get_section_drawing_stats
+    core_services_report_service -->|contains| core_services_report_service_get_designer_productivity_stats
+    core_services_report_service -->|contains| core_services_report_service_get_release_timeline_stats
+    core_services_report_service -->|contains| core_services_report_service_get_drawing_status_stats_safe
+    core_services_report_service -->|contains| core_services_report_service_get_section_drawing_stats_safe
+    core_services_report_service -->|contains| core_services_report_service_get_designer_productivity_stats_safe
+    core_services_report_service -->|contains| core_services_report_service_get_release_timeline_stats_safe
     core_services_section_service -->|contains| core_services_section_service_create_section
     core_services_section_service -->|contains| core_services_section_service_list_project_sections
     core_services_section_service -->|contains| core_services_section_service_delete_section
@@ -139,9 +160,16 @@ graph TD
     core_services_drawing_service_get_project_drawings_safe ==>|calls| core_services_drawing_service_get_project_drawings
     core_services_drawing_service_get_drawing_safe ==>|calls| core_services_drawing_service_get_drawing
     core_services_drawing_service_revise_drawing_safe ==>|calls| core_services_drawing_service_revise_drawing
+    core_services_project_service_list_active_projects_safe ==>|calls| core_services_project_service_list_active_projects
     core_services_project_service_delete_project_safe ==>|calls| core_services_project_service_delete_project
     core_services_project_service_create_project_safe ==>|calls| core_services_project_service_create_project
     core_services_project_service_update_project_safe ==>|calls| core_services_project_service_update_project
+    core_services_report_service_get_drawing_status_stats ==>|calls| core_services_report_service__apply_permission_filter
+    core_services_report_service_get_release_timeline_stats ==>|calls| core_services_report_service__apply_permission_filter
+    core_services_report_service_get_drawing_status_stats_safe ==>|calls| core_services_report_service_get_drawing_status_stats
+    core_services_report_service_get_section_drawing_stats_safe ==>|calls| core_services_report_service_get_section_drawing_stats
+    core_services_report_service_get_designer_productivity_stats_safe ==>|calls| core_services_report_service_get_designer_productivity_stats
+    core_services_report_service_get_release_timeline_stats_safe ==>|calls| core_services_report_service_get_release_timeline_stats
     core_services_section_service_list_project_sections_safe ==>|calls| core_services_section_service_list_project_sections
     core_services_section_service_delete_section_safe ==>|calls| core_services_section_service_delete_section
     core_services_section_service_create_section_safe ==>|calls| core_services_section_service_create_section

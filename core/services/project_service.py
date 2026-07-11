@@ -1,6 +1,8 @@
 # Tên file: core/services/project_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Dự án (Project)
 # CHANGELOG:
+# - 18:49:29 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
+# - 18:22:00 11/07/2026: [UPDATE] Bổ sung hàm list_active_projects_safe tự động quản lý session (Lê Thanh Vân/Antigravity)
 # - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
@@ -125,6 +127,21 @@ def list_active_projects(db: Session) -> list[Project]:
             "Lỗi cơ sở dữ liệu khi lấy danh sách dự án: %s", str(e), exc_info=True
         )
         return []
+
+
+def list_active_projects_safe() -> list[Project]:
+    """Lấy danh sách các dự án đang hoạt động an toàn tự động đóng mở Session.
+
+    Returns:
+        list[Project]: Danh sách dự án đang hoạt động.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return list_active_projects(db)
+    finally:
+        db.close()
 
 
 def update_project_status(db: Session, project_id: str, status: str) -> Project | None:

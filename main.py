@@ -1,6 +1,9 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 18:49:30 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
+# - 18:40:00 11/07/2026: [FIX] Thêm sys.excepthook toàn cục để ghi mọi unhandled exception vào app_run.log (Lê Thanh Vân/Antigravity)
+# - 18:24:00 11/07/2026: [UPDATE] Cải tiến cơ chế log: Di chuyển import vào try/except block của main() và bắt lỗi module-level để ghi vào app_run.log (Lê Thanh Vân/Antigravity)
 # - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 12:35:53 10/07/2026: [FIX] fix(ui): convert database UTC time representation to GMT+7 local time for display (Antigravity)
@@ -40,11 +43,29 @@ logging.basicConfig(
 )
 logger = logging.getLogger("main")
 
-from PyQt6.QtWidgets import QApplication  # noqa: E402
-from ui.login_window import LoginWindow  # noqa: E402
-from ui.main_window import MainWindow  # noqa: E402
-from core.services.session_manager import SessionManager  # noqa: E402
-from core.services.project_service import is_email_authorized  # noqa: E402
+
+def _global_exception_hook(
+    exc_type: type, exc_value: BaseException, exc_tb: object
+) -> None:
+    """Hook toàn cục bắt mọi unhandled exception và ghi vào log file.
+
+    PyQt6 event loop nuốt exception trong slot/callback và chỉ in ra stderr.
+    Hook này đảm bảo tất cả lỗi runtime đều được ghi vào app_run.log.
+
+    Args:
+        exc_type: Kiểu exception.
+        exc_value: Giá trị exception.
+        exc_tb: Traceback object.
+    """
+    # Bỏ qua KeyboardInterrupt để user vẫn Ctrl+C thoát được
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_tb)
+        return
+    logger.critical("Unhandled Exception", exc_info=(exc_type, exc_value, exc_tb))
+
+
+# Gắn hook toàn cục ngay khi module được load
+sys.excepthook = _global_exception_hook
 
 
 def main() -> None:
@@ -53,8 +74,14 @@ def main() -> None:
     Thiết lập đối tượng ứng dụng PyQt6, nạp giao diện đăng nhập (LoginWindow)
     và điều phối chuyển đổi sang giao diện chính (MainWindow) khi xác thực thành công.
     """
-    logger.info("Khởi động ứng dụng ERP TK-KH TLS...")
     try:
+        from PyQt6.QtWidgets import QApplication
+        from ui.login_window import LoginWindow
+        from ui.main_window import MainWindow
+        from core.services.session_manager import SessionManager
+        from core.services.project_service import is_email_authorized
+
+        logger.info("Khởi động ứng dụng ERP TK-KH TLS...")
         app = QApplication(sys.argv)
 
         # Thiết lập style tổng thể của hệ thống cho đồng bộ
@@ -140,4 +167,10 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        logger.critical(
+            "Lỗi nghiêm trọng ở cấp độ module khởi chạy: %s", str(e), exc_info=True
+        )
+        sys.exit(1)

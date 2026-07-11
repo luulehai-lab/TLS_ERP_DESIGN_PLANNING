@@ -1,6 +1,8 @@
 # Tên file: ui/main_window.py
 # CHỨC NĂNG: Cửa sổ chính điều hướng ứng dụng ERP PyQt6 (Tích hợp Sidebar và Header modular)
 # CHANGELOG:
+# - 18:49:30 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
+# - 18:20:00 11/07/2026: [UPDATE] Tích hợp View Báo cáo Thống kê trực quan (BaoCaoView) vào content_stack của MainWindow (Lê Thanh Vân/Antigravity)
 # - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
 # - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:59:00 11/07/2026: [UPDATE] Tích hợp View Quản lý Nhân sự vào content_stack của MainWindow (Antigravity)
@@ -25,6 +27,7 @@ from ui.sidebar import SidebarWidget
 from ui.header import HeaderWidget
 from ui.views.thiet_ke_view import ThietKeView
 from ui.views.ke_hoach_view import KeHoachView
+from ui.views.bao_cao_view import BaoCaoView
 
 logger = logging.getLogger(__name__)
 
@@ -144,11 +147,15 @@ class MainWindow(QMainWindow):
         self.content_stack.addWidget(self.thiet_ke_view)
         self.content_stack.addWidget(self.ke_hoach_view)
 
-        # Thêm View Quản lý Nhân sự (chỉ Admin)
+        # Thêm View Quản lý Nhân sự (chỉ Admin) - Index 3
         from ui.views.staff_view import StaffManagementView
 
         self.staff_view = StaffManagementView(self)
         self.content_stack.addWidget(self.staff_view)
+
+        # Thêm View Báo cáo Thống kê - Index 4
+        self.bao_cao_view = BaoCaoView(self)
+        self.content_stack.addWidget(self.bao_cao_view)
 
         # Hiển thị View mặc định dựa vào phân quyền phòng ban
         if self.user_dept == "Kế hoạch":
@@ -221,3 +228,5 @@ class MainWindow(QMainWindow):
             self.ke_hoach_view.reload_planners()
         elif active_idx == 3 and hasattr(self, "staff_view"):
             self.staff_view.load_staffs()
+        elif active_idx == 4 and hasattr(self, "bao_cao_view"):
+            self.bao_cao_view.set_project(self.current_project_id)

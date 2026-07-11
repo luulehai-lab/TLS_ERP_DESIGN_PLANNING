@@ -1,6 +1,8 @@
 # Tên file: ui/header.py
 # CHỨC NĂNG: Thanh Header nằm ngang phía trên điều phối đăng xuất và chuyển đổi các màn hình nghiệp vụ
 # CHANGELOG:
+# - 18:49:30 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
+# - 18:18:00 11/07/2026: [UPDATE] Bổ sung nút chuyển tab Báo cáo Thống kê công khai cho mọi vai trò (Lê Thanh Vân/Antigravity)
 # - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:59:00 11/07/2026: [UPDATE] Tích hợp tab Quản lý Nhân sự dành riêng cho Admin (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
@@ -113,6 +115,14 @@ class HeaderWidget(QFrame):
         self.button_group.addButton(self.btn_ke_hoach)
         header_layout.addWidget(self.btn_ke_hoach)
 
+        # Nút chuyển màn hình Báo cáo (Hiển thị công khai)
+        self.btn_bao_cao = QPushButton("📊 BÁO CÁO THỐNG KÊ", self)
+        self.btn_bao_cao.setObjectName("navButton")
+        self.btn_bao_cao.setCheckable(True)
+        self.btn_bao_cao.clicked.connect(lambda: self.view_switched.emit(4))
+        self.button_group.addButton(self.btn_bao_cao)
+        header_layout.addWidget(self.btn_bao_cao)
+
         # Nút chuyển màn hình Nhân sự (chỉ Admin thấy)
         self.btn_nhan_su = QPushButton("👥 QUẢN LÝ NHÂN SỰ", self)
         self.btn_nhan_su.setObjectName("navButton")
@@ -126,7 +136,7 @@ class HeaderWidget(QFrame):
         if self.user_dept == "Kế hoạch":
             self.btn_du_an.hide()
             self.btn_thiet_ke.hide()
-        
+
         if self.user_email.lower() == "luu.lehai@gmail.com":
             self.btn_nhan_su.show()
 
@@ -185,3 +195,5 @@ class HeaderWidget(QFrame):
             self.btn_ke_hoach.setChecked(True)
         elif index == 3:
             self.btn_nhan_su.setChecked(True)
+        elif index == 4:
+            self.btn_bao_cao.setChecked(True)
