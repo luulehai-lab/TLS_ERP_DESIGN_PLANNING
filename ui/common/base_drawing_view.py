@@ -1,7 +1,8 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
-# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
+# - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
+# - 14:30:00 11/07/2026: [UPDATE] Thêm cột Ghi Chú vào bảng danh sách bản vẽ (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:40:00 10/07/2026: [NEW] Khởi tạo BaseDrawingView gom logic bảng bản vẽ bất đồng bộ (Lê Thanh Vân/Antigravity)
 
@@ -80,12 +81,13 @@ class BaseDrawingView(QWidget):
         layout.addLayout(table_actions_layout)
 
         self.tbl_drawings = QTableWidget(group)
-        self.tbl_drawings.setColumnCount(7)
+        self.tbl_drawings.setColumnCount(8)
         self.tbl_drawings.setHorizontalHeaderLabels(
             [
                 "Mã Bản Vẽ",
                 "Hạng Mục",
                 "Tên Bản Vẽ",
+                "Ghi Chú",
                 "Trạng Thái",
                 "Phiên Bản",
                 "Link Drive",
@@ -182,6 +184,9 @@ class BaseDrawingView(QWidget):
             item_name = QTableWidgetItem(d["drawing_name"])
             item_name.setFlags(item_name.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
+            item_notes = QTableWidgetItem(d.get("notes", ""))
+            item_notes.setFlags(item_notes.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
             item_status = QTableWidgetItem(d["status"])
             item_status.setFlags(item_status.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
@@ -208,10 +213,11 @@ class BaseDrawingView(QWidget):
             self.tbl_drawings.setItem(r, 0, item_id)
             self.tbl_drawings.setItem(r, 1, item_section)
             self.tbl_drawings.setItem(r, 2, item_name)
-            self.tbl_drawings.setItem(r, 3, item_status)
-            self.tbl_drawings.setItem(r, 4, item_version)
-            self.tbl_drawings.setItem(r, 5, item_link)
-            self.tbl_drawings.setItem(r, 6, item_time)
+            self.tbl_drawings.setItem(r, 3, item_notes)
+            self.tbl_drawings.setItem(r, 4, item_status)
+            self.tbl_drawings.setItem(r, 5, item_version)
+            self.tbl_drawings.setItem(r, 6, item_link)
+            self.tbl_drawings.setItem(r, 7, item_time)
 
             if (
                 self.last_selected_drawing_id
@@ -286,5 +292,6 @@ class BaseDrawingView(QWidget):
         else:
             header = self.tbl_drawings.horizontalHeader()
             header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
-            header.setSectionResizeMode(5, QHeaderView.ResizeMode.Stretch)
-            header.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
+            header.setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(6, QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(7, QHeaderView.ResizeMode.ResizeToContents)

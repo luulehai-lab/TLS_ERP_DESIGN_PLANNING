@@ -1,7 +1,8 @@
 # Tên file: core/services/drawing_service.py
 # CHỨC NĂNG: Xử lý các nghiệp vụ Quản lý bản vẽ (Drawing) và Nhật ký bản vẽ (DrawingLog)
 # CHANGELOG:
-# - 18:28:00 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
+# - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
+# - 14:30:00 11/07/2026: [UPDATE] Thêm xử lý trường notes khi ban hành bản vẽ (Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
 # - 18:08:00 08/07/2026: [UPDATE] Cập nhật create_drawing hỗ trợ section_id và get_project_drawings sử dụng joinedload tối ưu (Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
@@ -28,6 +29,7 @@ def create_drawing(
             - "drawing_id" (str): Mã bản vẽ duy nhất.
             - "drawing_name" (str): Tên bản vẽ.
             - "drive_link" (str, optional): Đường link Google Drive chứa file PDF bản vẽ.
+            - "notes" (str, optional): Ghi chú kỹ thuật khi ban hành.
 
     Returns:
         Drawing | None: Đối tượng Drawing được tạo mới, hoặc None nếu thất bại.
@@ -35,6 +37,7 @@ def create_drawing(
     drawing_id = drawing_data.get("drawing_id", "")
     drawing_name = drawing_data.get("drawing_name", "")
     drive_link = drawing_data.get("drive_link")
+    notes = drawing_data.get("notes")
     section_id = drawing_data.get("section_id")
 
     logger.info(
@@ -57,6 +60,7 @@ def create_drawing(
             drawing_id=drawing_id,
             project_id=project_id,
             drawing_name=drawing_name,
+            notes=notes,
             drive_link=drive_link,
             status="Chờ triển khai",
             section_id=section_id,

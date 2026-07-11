@@ -1,7 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
-# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
+# - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
+# - 14:30:00 11/07/2026: [UPDATE] Thêm ô nhập Ghi chú vào form ban hành bản vẽ (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:45:00 10/07/2026: [REFACTOR] Kế thừa BaseDrawingView để tối ưu hóa code và sử dụng theme dùng chung (Lê Thanh Vân/Antigravity)
 
@@ -94,16 +95,21 @@ class ThietKeView(BaseDrawingView):
         self.txt_drawing_name.setPlaceholderText("Tên bản vẽ dầm, cột, kèo...")
         grid.addWidget(self.txt_drawing_name, 3, 1)
 
-        grid.addWidget(QLabel("Google Drive Link:", group), 4, 0)
+        grid.addWidget(QLabel("Ghi chú:", group), 4, 0)
+        self.txt_notes = QLineEdit(group)
+        self.txt_notes.setPlaceholderText("Ghi chú kỹ thuật (nếu có)...")
+        grid.addWidget(self.txt_notes, 4, 1)
+
+        grid.addWidget(QLabel("Google Drive Link:", group), 5, 0)
         self.txt_drive_link = QLineEdit(group)
         self.txt_drive_link.setPlaceholderText(
             "Dán URL File hoặc Thư mục Google Drive..."
         )
-        grid.addWidget(self.txt_drive_link, 4, 1)
+        grid.addWidget(self.txt_drive_link, 5, 1)
 
         self.btn_create_draw = QPushButton("🚀 Ban hành Bản vẽ", group)
         self.btn_create_draw.clicked.connect(self._on_create_drawing)
-        grid.addWidget(self.btn_create_draw, 5, 0, 1, 2)
+        grid.addWidget(self.btn_create_draw, 6, 0, 1, 2)
 
         return group
 
@@ -138,6 +144,7 @@ class ThietKeView(BaseDrawingView):
         project_id = self.current_project_id
         drawing_id = self.txt_drawing_id.text().strip()
         drawing_name = self.txt_drawing_name.text().strip()
+        notes = self.txt_notes.text().strip()
         drive_link = self.txt_drive_link.text().strip()
         section_id = self.cb_sections.currentData()
 
@@ -158,6 +165,7 @@ class ThietKeView(BaseDrawingView):
         drawing_data = {
             "drawing_id": drawing_id,
             "drawing_name": drawing_name,
+            "notes": notes,
             "drive_link": drive_link,
             "section_id": section_id,
         }
@@ -178,6 +186,7 @@ class ThietKeView(BaseDrawingView):
             )
             self.txt_drawing_id.clear()
             self.txt_drawing_name.clear()
+            self.txt_notes.clear()
             self.txt_drive_link.clear()
             self.load_drawings()
         else:

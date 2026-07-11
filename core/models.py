@@ -1,7 +1,8 @@
 # Tên file: core/models.py
 # CHỨC NĂNG: Khai báo cấu trúc bảng cơ sở dữ liệu SQLAlchemy cho dự án ERP
 # CHANGELOG:
-# - 15:24:09 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
+# - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
+# - 14:30:00 11/07/2026: [UPDATE] Thêm cột notes (ghi chú) vào model Drawing (Antigravity)
 # - 15:08:00 10/07/2026: [UPDATE] Bổ sung designer_email vào model ProjectSection (Lê Thanh Vân/Antigravity)
 # - 14:49:00 10/07/2026: [UPDATE] Bổ sung cột sales_email và designer_email vào model Project (Lê Thanh Vân/Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
@@ -99,6 +100,7 @@ class Drawing(Base):
         nullable=False,
     )
     drawing_name = Column(String(200), nullable=False)
+    notes = Column(String(500), nullable=True)  # Ghi chú kỹ thuật khi ban hành
     drive_link = Column(
         String(500), nullable=True
     )  # Đường link file PDF trên Google Drive
