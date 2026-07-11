@@ -1,6 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 17:59:58 11/07/2026: [FIX] fix(staff-ui): resolve AttributeError by calling reload_planners on save and delete (Antigravity)
+# - 17:51:00 11/07/2026: [UPDATE] Thêm trường Phiên bản (Version) vào Form Ban hành Bản vẽ mới (Lê Thanh Vân/Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Filter combobox hạng mục theo designer email đăng nhập (Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
@@ -97,21 +99,27 @@ class ThietKeView(BaseDrawingView):
         self.txt_drawing_name.setPlaceholderText("Tên bản vẽ dầm, cột, kèo...")
         grid.addWidget(self.txt_drawing_name, 3, 1)
 
-        grid.addWidget(QLabel("Ghi chú:", group), 4, 0)
+        grid.addWidget(QLabel("Phiên bản:", group), 4, 0)
+        self.txt_version = QLineEdit(group)
+        self.txt_version.setText("V1")
+        self.txt_version.setPlaceholderText("Ví dụ: V1, V2, Rev 0...")
+        grid.addWidget(self.txt_version, 4, 1)
+
+        grid.addWidget(QLabel("Ghi chú:", group), 5, 0)
         self.txt_notes = QLineEdit(group)
         self.txt_notes.setPlaceholderText("Ghi chú kỹ thuật (nếu có)...")
-        grid.addWidget(self.txt_notes, 4, 1)
+        grid.addWidget(self.txt_notes, 5, 1)
 
-        grid.addWidget(QLabel("Google Drive Link:", group), 5, 0)
+        grid.addWidget(QLabel("Google Drive Link:", group), 6, 0)
         self.txt_drive_link = QLineEdit(group)
         self.txt_drive_link.setPlaceholderText(
             "Dán URL File hoặc Thư mục Google Drive..."
         )
-        grid.addWidget(self.txt_drive_link, 5, 1)
+        grid.addWidget(self.txt_drive_link, 6, 1)
 
         self.btn_create_draw = QPushButton("🚀 Ban hành Bản vẽ", group)
         self.btn_create_draw.clicked.connect(self._on_create_drawing)
-        grid.addWidget(self.btn_create_draw, 6, 0, 1, 2)
+        grid.addWidget(self.btn_create_draw, 7, 0, 1, 2)
 
         return group
 
@@ -162,6 +170,7 @@ class ThietKeView(BaseDrawingView):
         project_id = self.current_project_id
         drawing_id = self.txt_drawing_id.text().strip()
         drawing_name = self.txt_drawing_name.text().strip()
+        version = self.txt_version.text().strip()
         notes = self.txt_notes.text().strip()
         drive_link = self.txt_drive_link.text().strip()
         section_id = self.cb_sections.currentData()
@@ -183,6 +192,7 @@ class ThietKeView(BaseDrawingView):
         drawing_data = {
             "drawing_id": drawing_id,
             "drawing_name": drawing_name,
+            "current_version": version,
             "notes": notes,
             "drive_link": drive_link,
             "section_id": section_id,
@@ -204,6 +214,7 @@ class ThietKeView(BaseDrawingView):
             )
             self.txt_drawing_id.clear()
             self.txt_drawing_name.clear()
+            self.txt_version.setText("V1")
             self.txt_notes.clear()
             self.txt_drive_link.clear()
             self.load_drawings()

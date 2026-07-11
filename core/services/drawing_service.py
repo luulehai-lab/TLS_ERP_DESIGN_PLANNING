@@ -1,6 +1,8 @@
 # Tên file: core/services/drawing_service.py
 # CHỨC NĂNG: Xử lý các nghiệp vụ Quản lý bản vẽ (Drawing) và Nhật ký bản vẽ (DrawingLog)
 # CHANGELOG:
+# - 17:59:58 11/07/2026: [FIX] fix(staff-ui): resolve AttributeError by calling reload_planners on save and delete (Antigravity)
+# - 17:50:00 11/07/2026: [UPDATE] Bổ sung trường current_version khi ban hành bản vẽ mới (Lê Thanh Vân/Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
 # - 14:30:00 11/07/2026: [UPDATE] Thêm xử lý trường notes khi ban hành bản vẽ (Antigravity)
 # - 18:19:45 08/07/2026: [UPDATE] feat(ui): split design tab into project management and drawing release views (Antigravity)
@@ -39,13 +41,15 @@ def create_drawing(
     drive_link = drawing_data.get("drive_link")
     notes = drawing_data.get("notes")
     section_id = drawing_data.get("section_id")
+    version = drawing_data.get("current_version", "V1") or "V1"
 
     logger.info(
-        "Yêu cầu ban hành bản vẽ mới: ProjectID=%s, DrawingID=%s, Name=%s, SectionID=%s",
+        "Yêu cầu ban hành bản vẽ mới: ProjectID=%s, DrawingID=%s, Name=%s, SectionID=%s, Version=%s",
         project_id,
         drawing_id,
         drawing_name,
         section_id,
+        version,
     )
     try:
         # Kiểm tra trùng lặp bản vẽ
@@ -62,6 +66,7 @@ def create_drawing(
             drawing_name=drawing_name,
             notes=notes,
             drive_link=drive_link,
+            current_version=version,
             status="Chờ triển khai",
             section_id=section_id,
         )
@@ -70,7 +75,7 @@ def create_drawing(
         # Ghi log lịch sử ban hành bản vẽ lần đầu
         db_log = DrawingLog(
             drawing_id=drawing_id,
-            version="V1",
+            version=version,
             action="Ban hành",
             performed_by="Kỹ sư Thiết kế",  # Giá trị mặc định khi ban hành
             note="Khởi tạo bản vẽ và ban hành lần đầu",
@@ -182,7 +187,9 @@ def get_project_drawings(db: Session, project_id: str) -> list[Drawing]:
         return []
 
 
-def create_drawing_safe(project_id: str, drawing_data: dict[str, str]) -> Drawing | None:
+def create_drawing_safe(
+    project_id: str, drawing_data: dict[str, str]
+) -> Drawing | None:
     """Tạo mới bản vẽ tự động quản lý vòng đời Session (Safe).
 
     Args:
@@ -217,4 +224,3 @@ def get_project_drawings_safe(project_id: str) -> list[Drawing]:
         return get_project_drawings(db, project_id)
     finally:
         db.close()
-
