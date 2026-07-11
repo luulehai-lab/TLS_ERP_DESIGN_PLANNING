@@ -1,6 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
+# - 14:57:00 11/07/2026: [UPDATE] Filter combobox hạng mục theo designer email đăng nhập (Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
 # - 14:30:00 11/07/2026: [UPDATE] Thêm ô nhập Ghi chú vào form ban hành bản vẽ (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
@@ -121,14 +123,30 @@ class ThietKeView(BaseDrawingView):
         self.load_sections()
 
     def load_sections(self) -> None:
-        """Nạp danh sách hạng mục của dự án hiện tại vào Combobox."""
+        """Nạp danh sách hạng mục của dự án hiện tại vào Combobox.
+
+        Designer chỉ thấy hạng mục được gán cho mình. Admin/Sale thấy tất cả.
+        """
         self.cb_sections.clear()
         self.cb_sections.addItem("--- Không chọn hạng mục ---", None)
         if not self.current_project_id:
             return
         try:
             sections = list_project_sections_safe(self.current_project_id)
+
+            # Lấy email đăng nhập từ MainWindow
+            user_email = ""
+            if self.main_window and hasattr(self.main_window, "user_email"):
+                user_email = (self.main_window.user_email or "").lower()
+
+            is_admin = user_email == "luu.lehai@gmail.com"
+
             for s in sections:
+                # Designer chỉ thấy hạng mục được gán cho mình
+                if not is_admin and user_email:
+                    s_designer = (s.designer_email or "").lower()
+                    if s_designer and s_designer != user_email:
+                        continue
                 self.cb_sections.addItem(
                     f"{s.section_code} - {s.section_name}", s.section_id
                 )

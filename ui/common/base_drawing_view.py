@@ -1,7 +1,8 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
-# - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
+# - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
+# - 14:57:00 11/07/2026: [UPDATE] Filter bảng bản vẽ theo phân quyền designer cấp hạng mục (Antigravity)
 # - 14:30:00 11/07/2026: [UPDATE] Thêm cột Ghi Chú vào bảng danh sách bản vẽ (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:40:00 10/07/2026: [NEW] Khởi tạo BaseDrawingView gom logic bảng bản vẽ bất đồng bộ (Lê Thanh Vân/Antigravity)
@@ -171,6 +172,28 @@ class BaseDrawingView(QWidget):
         Args:
             drawings: Danh sách bản vẽ dạng dict thô.
         """
+        # Phân quyền: designer chỉ thấy bản vẽ thuộc hạng mục được gán
+        # Sale và Admin xem được tất cả bản vẽ
+        user_email = ""
+        if self.main_window and hasattr(self.main_window, "user_email"):
+            user_email = (self.main_window.user_email or "").lower()
+        is_admin = user_email == "luu.lehai@gmail.com"
+
+        # Kiểm tra user có phải là Sale của dự án này không
+        is_project_sale = False
+        if drawings and user_email:
+            p_sales = (drawings[0].get("project_sales_email") or "").lower()
+            is_project_sale = user_email == p_sales
+
+        if not is_admin and not is_project_sale and user_email:
+            filtered = []
+            for d in drawings:
+                s_designer = (d.get("section_designer_email") or "").lower()
+                # Hiện bản vẽ nếu: section không gán designer, hoặc designer khớp
+                if not s_designer or s_designer == user_email:
+                    filtered.append(d)
+            drawings = filtered
+
         self.tbl_drawings.setRowCount(len(drawings))
         target_row_to_select: int = -1
 

@@ -1,6 +1,8 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
+# - 14:57:00 11/07/2026: [UPDATE] Bổ sung section_designer_emails và section_designer_email vào loader threads (Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
 # - 14:30:00 11/07/2026: [UPDATE] Bổ sung trường notes vào DrawingLoaderThread serialize (Antigravity)
 # - 14:58:00 10/07/2026: [UPDATE] Cập nhật ProjectLoaderThread để lấy thêm sales_email và designer_email (Lê Thanh Vân/Antigravity)
@@ -75,6 +77,10 @@ class ProjectLoaderThread(QThread):
             # tránh DetachedInstanceError khi session bị đóng.
             raw_projects = []
             for p in projects:
+                # Thu thập danh sách designer email từ các hạng mục
+                section_emails = list(
+                    {s.designer_email.lower() for s in p.sections if s.designer_email}
+                )
                 raw_projects.append(
                     {
                         "project_id": p.project_id,
@@ -82,6 +88,7 @@ class ProjectLoaderThread(QThread):
                         "status": p.status,
                         "sales_email": p.sales_email,
                         "designer_email": p.designer_email,
+                        "section_designer_emails": section_emails,
                     }
                 )
 
@@ -141,6 +148,14 @@ class DrawingLoaderThread(QThread):
                         "drive_link": d.drive_link,
                         "updated_at": d.updated_at,
                         "section_name": d.section.section_name if d.section else "",
+                        "section_designer_email": (
+                            d.section.designer_email if d.section else ""
+                        )
+                        or "",
+                        "project_sales_email": (
+                            d.project.sales_email if d.project else ""
+                        )
+                        or "",
                     }
                 )
 

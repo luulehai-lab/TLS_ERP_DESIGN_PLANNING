@@ -1,7 +1,8 @@
 # Tên file: ui/login_window.py
 # CHỨC NĂNG: Giao diện và luồng xử lý xác thực đăng nhập Google OAuth2 của hệ thống.
 # CHANGELOG:
-# - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
+# - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
+# - 15:14:00 11/07/2026: [UPDATE] Chặn email không đăng ký (whitelist check) không cho vào app (Antigravity)
 # - 17:29:28 10/07/2026: [FIX] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 18:03:18 08/07/2026: [UPDATE] feat(ui): support Google Drive folder URLs for drawing packages (Antigravity)
 # - 18:00:00 08/07/2026: [UPDATE] Cập nhật màu sắc nhãn phiên bản sáng lên để dễ nhìn trên nền tối (Antigravity)
@@ -30,6 +31,7 @@ from PyQt6.QtGui import QDesktopServices
 
 from ui.styles.theme import TLSTheme
 from core.services.auth_service import GoogleAuthManager
+from core.services.project_service import is_email_authorized
 import config
 
 logger = logging.getLogger(__name__)
@@ -215,6 +217,22 @@ class LoginWindow(QMainWindow):
 
         # Trì hoãn shutdown local HTTP server 1 giây để đảm bảo socket kết thúc gửi response hoàn toàn
         QTimer.singleShot(1000, self.auth_manager.shutdown)
+
+        # Kiểm tra email có quyền truy cập hệ thống không
+        if not is_email_authorized(email):
+            logger.warning(
+                "Email '%s' không có quyền truy cập hệ thống. Từ chối đăng nhập.",
+                email,
+            )
+            self.lbl_status.setText("❌ Email chưa được đăng ký trong hệ thống.")
+            self.btn_login.setEnabled(True)
+            QMessageBox.warning(
+                self,
+                "Truy Cập Bị Từ Chối",
+                f"Email '{email}' chưa được đăng ký trong hệ thống ERP.\n\n"
+                f"Vui lòng liên hệ Quản trị viên (Anh Lưu) để được cấp quyền.",
+            )
+            return
 
         # Phân quyền phòng ban
         department = "Kế hoạch"

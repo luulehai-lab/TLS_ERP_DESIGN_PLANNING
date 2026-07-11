@@ -1,7 +1,9 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 12:35:53 10/07/2026: [FIX] fix(ui): convert database UTC time representation to GMT+7 local time for display (Antigravity)
+# - 15:14:00 11/07/2026: [UPDATE] Kiểm tra whitelist email khi auto-login từ session cũ (Antigravity)
 # - 12:40:00 10/07/2026: [UPDATE] Tích hợp SessionManager hỗ trợ tự động đăng nhập và đăng xuất (Lê Thanh Vân/Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
 # - 16:35:00 08/07/2026: [UPDATE] Khởi chạy DatabasePrewarmerThread ngay khi bật app để tối ưu hiệu năng kết nối (Lê Thanh Vân/Antigravity)
@@ -41,6 +43,7 @@ from PyQt6.QtWidgets import QApplication  # noqa: E402
 from ui.login_window import LoginWindow  # noqa: E402
 from ui.main_window import MainWindow  # noqa: E402
 from core.services.session_manager import SessionManager  # noqa: E402
+from core.services.project_service import is_email_authorized  # noqa: E402
 
 
 def main() -> None:
@@ -100,7 +103,7 @@ def main() -> None:
 
         # Kiểm tra và xử lý tự động đăng nhập
         session = SessionManager.load_session()
-        if session:
+        if session and is_email_authorized(session["email"]):
             logger.info(
                 "Phát hiện phiên đăng nhập cũ (%s). Tự động đăng nhập...",
                 session["email"],
@@ -111,6 +114,12 @@ def main() -> None:
             main_win.logout_clicked.connect(on_logout_requested)
             main_win.show()
         else:
+            if session:
+                logger.warning(
+                    "Email '%s' không còn quyền truy cập. Xóa session cũ.",
+                    session["email"],
+                )
+                SessionManager.clear_session()
             login_win.show()
 
         logger.info(

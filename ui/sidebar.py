@@ -1,6 +1,8 @@
 # Tên file: ui/sidebar.py
 # CHỨC NĂNG: Thanh Sidebar bên trái chứa danh sách dự án và các nút tạo mới/xóa dự án
 # CHANGELOG:
+# - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
+# - 14:57:00 11/07/2026: [UPDATE] Mở rộng filter dự án: check thêm section_designer_emails (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 17:29:28 10/07/2026: [NEW] fix(ui): resolve QSplitter sidebar resize and save column/splitter state (Antigravity)
 # - 17:28:00 10/07/2026: [NEW] Tách SidebarWidget từ MainWindow để tối ưu cấu trúc module (Lê Thanh Vân/Antigravity)
@@ -168,6 +170,20 @@ class SidebarWidget(QFrame):
         prev_selected_id = self.current_project_id
 
         for p in projects:
+            # Phân quyền: chỉ hiển thị dự án mà user đăng nhập là sale hoặc thiết kế
+            # Admin (luu.lehai@gmail.com) xem được tất cả
+            if self.user_email != "luu.lehai@gmail.com":
+                p_sales = (p.get("sales_email") or "").lower()
+                p_designer = (p.get("designer_email") or "").lower()
+                section_emails = p.get("section_designer_emails", [])
+                current_email = self.user_email.lower()
+                if (
+                    current_email != p_sales
+                    and current_email != p_designer
+                    and current_email not in section_emails
+                ):
+                    continue
+
             p_id = p["project_id"]
             p_name = p["project_name"]
             item = QListWidgetItem(f"🏢 {p_id} - {p_name}")

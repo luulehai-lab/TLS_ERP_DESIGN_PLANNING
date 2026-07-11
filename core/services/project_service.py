@@ -1,7 +1,8 @@
 # Tên file: core/services/project_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Dự án (Project)
 # CHANGELOG:
-# - 18:28:00 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
+# - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
+# - 14:57:00 11/07/2026: [UPDATE] Eager load sections trong list_active_projects cho phân quyền (Antigravity)
 # - 15:33:49 10/07/2026: [UPDATE] feat(ui): add edit mode and designer roles for projects and sections (Antigravity)
 # - 15:28:00 10/07/2026: [UPDATE] Thêm hàm delete_project để xóa dự án theo ID (Lê Thanh Vân/Antigravity)
 # - 15:24:09 10/07/2026: [UPDATE] feat(auth): support auto login with SessionManager (Antigravity)
@@ -109,7 +110,14 @@ def list_active_projects(db: Session) -> list[Project]:
     """
     logger.debug("Lấy danh sách dự án đang hoạt động")
     try:
-        return db.query(Project).filter(Project.status != "Hoàn thành").all()
+        from sqlalchemy.orm import joinedload
+
+        return (
+            db.query(Project)
+            .filter(Project.status != "Hoàn thành")
+            .options(joinedload(Project.sections))
+            .all()
+        )
     except SQLAlchemyError as e:
         logger.error(
             "Lỗi cơ sở dữ liệu khi lấy danh sách dự án: %s", str(e), exc_info=True
@@ -324,3 +332,55 @@ def get_project_safe(project_id: str) -> Project | None:
         db.close()
 
 
+def is_email_authorized(email: str) -> bool:
+    """Kiểm tra email có quyền truy cập hệ thống hay không.
+
+    Email hợp lệ nếu là admin hoặc được gán vào ít nhất 1 dự án
+    (sales_email, designer_email, hoặc section designer_email).
+
+    Args:
+        email: Địa chỉ email cần kiểm tra.
+
+    Returns:
+        True nếu email được phép truy cập, False nếu không.
+    """
+    from core.database import SessionLocal
+    from core.models import ProjectSection
+
+    # Admin luôn được phép
+    if email.lower() == "luu.lehai@gmail.com":
+        return True
+
+    db = SessionLocal()
+    try:
+        email_lower = email.lower()
+
+        # Kiểm tra sales_email hoặc designer_email ở cấp Project
+        project_match = (
+            db.query(Project)
+            .filter(
+                (Project.sales_email.ilike(email_lower))
+                | (Project.designer_email.ilike(email_lower))
+            )
+            .first()
+        )
+        if project_match:
+            return True
+
+        # Kiểm tra designer_email ở cấp Section (hạng mục)
+        section_match = (
+            db.query(ProjectSection)
+            .filter(ProjectSection.designer_email.ilike(email_lower))
+            .first()
+        )
+        return section_match is not None
+    except SQLAlchemyError as e:
+        logger.error(
+            "Lỗi khi kiểm tra quyền truy cập email '%s': %s",
+            email,
+            str(e),
+            exc_info=True,
+        )
+        return False
+    finally:
+        db.close()
