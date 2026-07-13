@@ -1,6 +1,7 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 17:18:22 13/07/2026: [FIX] feat(auth): dynamic redirect uri and detailed debug page for oauth issues (Antigravity)
 # - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
 # - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
@@ -76,6 +77,23 @@ class ThietKeView(BaseDrawingView):
 
         # Khung ban hành bản vẽ (tràn hết chiều ngang)
         drawing_group = self._create_drawing_group()
+        
+        # Phân quyền: Chỉ cho phép Admin hoặc phòng Kế hoạch (người duyệt/ban hành) thấy form này
+        from core.services.session_manager import SessionManager
+        session = SessionManager.load_session()
+        if session:
+            user_email = session.get("email", "").lower()
+            user_dept = session.get("department", "")
+            is_admin_or_planning = (
+                user_email == "luu.lehai@gmail.com"
+                or user_email == "phongkehoachkythuat25@gmail.com"
+                or user_dept == "Kế hoạch"
+            )
+            if not is_admin_or_planning:
+                drawing_group.setVisible(False)
+        else:
+            drawing_group.setVisible(False)
+
         layout.addWidget(drawing_group, 0)
 
         # Khung bảng danh sách bản vẽ đã ban hành (Kế thừa từ BaseDrawingView)
