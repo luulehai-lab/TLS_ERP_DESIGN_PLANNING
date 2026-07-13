@@ -1,6 +1,7 @@
 # Tên file: ui/login_window.py
 # CHỨC NĂNG: Giao diện và luồng xử lý xác thực đăng nhập Google OAuth2 của hệ thống.
 # CHANGELOG:
+# - 15:01:02 13/07/2026: [UPDATE] feat(drawing-service): sort drawings by project section code and drawing id for grouping (Antigravity)
 # - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 15:14:00 11/07/2026: [UPDATE] Chặn email không đăng ký (whitelist check) không cho vào app (Antigravity)
@@ -28,7 +29,7 @@ from PyQt6.QtWidgets import (
     QFrame,
 )
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl, QTimer
-from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtGui import QDesktopServices, QPixmap
 
 from ui.styles.theme import TLSTheme
 from core.services.auth_service import GoogleAuthManager
@@ -127,6 +128,19 @@ class LoginWindow(QMainWindow):
             card: Khung Card chứa nhãn.
             card_layout: Bố cục dọc của Card.
         """
+        import os
+        logo_label = QLabel(card)
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        logo_path = os.path.join(base_path, "LOGO.JPG")
+
+        if os.path.exists(logo_path):
+            pixmap = QPixmap(logo_path)
+            # Scale logo về chiều rộng 110px cho màn hình Login
+            scaled_pixmap = pixmap.scaledToWidth(110, Qt.TransformationMode.SmoothTransformation)
+            logo_label.setPixmap(scaled_pixmap)
+            logo_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            card_layout.addWidget(logo_label)
+
         brand_label = QLabel("TUAN LONG STEEL", card)
         brand_label.setObjectName("brandLabel")
         brand_label.setAlignment(Qt.AlignmentFlag.AlignCenter)

@@ -1,6 +1,7 @@
 # Tên file: scripts/build_exe.py
 # CHỨC NĂNG: Tự động đóng gói ứng dụng PyQt6 thành file exe bằng PyInstaller
 # CHANGELOG:
+# - 15:01:02 13/07/2026: [UPDATE] feat(drawing-service): sort drawings by project section code and drawing id for grouping (Antigravity)
 # - 17:53:55 08/07/2026: [NEW] fix(ui): fix white text on white background in Windows Dark Mode for QLineEdit, QTableWidget, and QMessageBox (Antigravity)
 # - 17:20:00 08/07/2026: [NEW] Khởi tạo script đóng gói ERP_TuanLong.exe với cấu hình tối ưu (Lê Thanh Vân/Antigravity)
 
@@ -93,7 +94,7 @@ def run_pyinstaller() -> bool:
 
 
 def copy_env_config() -> None:
-    """Sao chép tệp .env hiện tại hoặc tạo tệp .env.example sang thư mục dist."""
+    """Sao chép tệp .env hiện tại hoặc tạo tệp .env.example sang thư mục dist, và sao chép logo công ty."""
     logger.info("Cấu hình tệp .env cho môi trường production...")
     env_source = BASE_DIR / ".env"
     env_target = DIST_DIR / ".env"
@@ -124,12 +125,23 @@ def copy_env_config() -> None:
         except Exception as e:
             logger.error("Lỗi khi tạo tệp .env mẫu: %s", str(e), exc_info=True)
 
+    # Sao chép LOGO.JPG
+    logo_source = BASE_DIR / "LOGO.JPG"
+    logo_target = DIST_DIR / "LOGO.JPG"
+    if logo_source.exists():
+        try:
+            shutil.copy(logo_source, logo_target)
+            logger.info("Đã sao chép tệp LOGO.JPG sang %s", logo_target)
+        except Exception as e:
+            logger.error("Lỗi khi sao chép LOGO.JPG: %s", str(e), exc_info=True)
+
 
 def create_release_zip() -> None:
-    """Nén file exe và file .env cấu hình thành tệp zip duy nhất để phân phối."""
+    """Nén file exe, file .env cấu hình và file LOGO.JPG thành tệp zip duy nhất để phân phối."""
     zip_path = DIST_DIR / "ERP_TuanLong_Release.zip"
     exe_file = DIST_DIR / "ERP_TuanLong.exe"
     env_file = DIST_DIR / ".env"
+    logo_file = DIST_DIR / "LOGO.JPG"
 
     if not exe_file.exists():
         logger.error("Không tìm thấy file exe để nén: %s", exe_file)
@@ -145,6 +157,10 @@ def create_release_zip() -> None:
             if env_file.exists():
                 zipf.write(env_file, arcname=".env")
                 logger.info("Đã thêm .env vào zip")
+            # Nén logo
+            if logo_file.exists():
+                zipf.write(logo_file, arcname="LOGO.JPG")
+                logger.info("Đã thêm LOGO.JPG vào zip")
         logger.info("Đã tạo tệp phát hành thành công: %s", zip_path)
     except Exception as e:
         logger.error("Lỗi khi tạo tệp nén ZIP: %s", str(e), exc_info=True)

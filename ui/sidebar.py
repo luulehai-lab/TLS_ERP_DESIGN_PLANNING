@@ -1,6 +1,7 @@
 # Tên file: ui/sidebar.py
 # CHỨC NĂNG: Thanh Sidebar bên trái chứa danh sách dự án và các nút tạo mới/xóa dự án
 # CHANGELOG:
+# - 15:01:02 13/07/2026: [UPDATE] feat(drawing-service): sort drawings by project section code and drawing id for grouping (Antigravity)
 # - 13:12:37 13/07/2026: [UPDATE] docs: sync codebase graph and update modular graph (Antigravity)
 # - 13:10:00 13/07/2026: [NEW] feat(search): add project search field in SidebarWidget with client-side filter (Lê Thanh Vân/Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
@@ -24,6 +25,7 @@ from PyQt6.QtWidgets import (
     QLineEdit,
 )
 from PyQt6.QtCore import Qt, pyqtSignal, QPoint
+from PyQt6.QtGui import QPixmap
 
 from ui.common.workers import ProjectLoaderThread
 from core.services.project_service import delete_project_safe
@@ -93,6 +95,19 @@ class SidebarWidget(QFrame):
         Args:
             layout: Bố cục chính của Sidebar.
         """
+        import os
+        logo_label = QLabel(self)
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        logo_path = os.path.join(base_path, "LOGO.JPG")
+
+        if os.path.exists(logo_path):
+            pixmap = QPixmap(logo_path)
+            # Scale logo về chiều rộng 70px, giữ tỷ lệ và áp dụng làm mượt
+            scaled_pixmap = pixmap.scaledToWidth(70, Qt.TransformationMode.SmoothTransformation)
+            logo_label.setPixmap(scaled_pixmap)
+            logo_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            layout.addWidget(logo_label)
+
         brand_label = QLabel("TUAN LONG STEEL", self)
         brand_label.setObjectName("brandLabel")
         brand_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
