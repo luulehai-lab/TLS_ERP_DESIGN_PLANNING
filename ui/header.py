@@ -1,6 +1,7 @@
 # Tên file: ui/header.py
 # CHỨC NĂNG: Thanh Header nằm ngang phía trên điều phối đăng xuất và chuyển đổi các màn hình nghiệp vụ
 # CHANGELOG:
+# - 17:26:45 13/07/2026: [UPDATE] feat(ui): restrict drawing release form to admin and planning users only (Antigravity)
 # - 18:49:30 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
 # - 18:18:00 11/07/2026: [UPDATE] Bổ sung nút chuyển tab Báo cáo Thống kê công khai cho mọi vai trò (Lê Thanh Vân/Antigravity)
 # - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
@@ -133,7 +134,11 @@ class HeaderWidget(QFrame):
         self.btn_nhan_su.hide()
 
         # Phân quyền hiển thị nút điều hướng
-        if self.user_dept == "Kế hoạch":
+        is_planning = (
+            self.user_dept == "Kế hoạch"
+            or self.user_email.lower() == "phongkehoachkythuat25@gmail.com"
+        )
+        if is_planning:
             self.btn_du_an.hide()
             self.btn_thiet_ke.hide()
 
