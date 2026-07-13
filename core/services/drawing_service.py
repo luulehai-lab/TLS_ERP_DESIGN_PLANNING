@@ -1,6 +1,7 @@
 # Tên file: core/services/drawing_service.py
 # CHỨC NĂNG: Xử lý các nghiệp vụ Quản lý bản vẽ (Drawing) và Nhật ký bản vẽ (DrawingLog)
 # CHANGELOG:
+# - 14:58:03 13/07/2026: [UPDATE] feat(project-ui): support local_path attribute for projects and auto open path on drawing release (Antigravity)
 # - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:03:00 11/07/2026: [UPDATE] Bổ sung hàm revise_drawing và revise_drawing_safe hỗ trợ cập nhật phiên bản (Lê Thanh Vân/Antigravity)
 # - 17:59:58 11/07/2026: [FIX] fix(staff-ui): resolve AttributeError by calling reload_planners on save and delete (Antigravity)
@@ -16,7 +17,7 @@ import logging
 from typing import Any
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from core.models import Drawing, DrawingLog
+from core.models import Drawing, DrawingLog, ProjectSection
 
 logger = logging.getLogger(__name__)
 
@@ -160,7 +161,7 @@ def update_drawing_status(
 
 
 def get_project_drawings(db: Session, project_id: str) -> list[Drawing]:
-    """Lấy toàn bộ danh sách bản vẽ của một dự án cụ thể.
+    """Lấy toàn bộ danh sách bản vẽ của một dự án cụ thể, sắp xếp theo hạng mục và mã bản vẽ.
 
     Args:
         db: Session kết nối database hiện thời.
@@ -175,8 +176,13 @@ def get_project_drawings(db: Session, project_id: str) -> list[Drawing]:
 
         return (
             db.query(Drawing)
+            .outerjoin(ProjectSection, Drawing.section_id == ProjectSection.section_id)
             .filter(Drawing.project_id == project_id)
             .options(joinedload(Drawing.section))
+            .order_by(
+                ProjectSection.section_code.asc().nulls_last(),
+                Drawing.drawing_id.asc(),
+            )
             .all()
         )
     except SQLAlchemyError as e:
