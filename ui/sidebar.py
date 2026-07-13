@@ -1,6 +1,8 @@
 # Tên file: ui/sidebar.py
 # CHỨC NĂNG: Thanh Sidebar bên trái chứa danh sách dự án và các nút tạo mới/xóa dự án
 # CHANGELOG:
+# - 13:12:37 13/07/2026: [UPDATE] docs: sync codebase graph and update modular graph (Antigravity)
+# - 13:10:00 13/07/2026: [NEW] feat(search): add project search field in SidebarWidget with client-side filter (Lê Thanh Vân/Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Mở rộng filter dự án: check thêm section_designer_emails (Antigravity)
@@ -19,6 +21,7 @@ from PyQt6.QtWidgets import (
     QMenu,
     QMessageBox,
     QDialog,
+    QLineEdit,
 )
 from PyQt6.QtCore import Qt, pyqtSignal, QPoint
 
@@ -132,6 +135,13 @@ class SidebarWidget(QFrame):
 
         layout.addWidget(self.btn_new_project)
 
+        # Ô tìm kiếm dự án
+        self.txt_search_project = QLineEdit(self)
+        self.txt_search_project.setPlaceholderText("🔍 Tìm dự án (ID, Tên)...")
+        self.txt_search_project.setClearButtonEnabled(True)
+        self.txt_search_project.textChanged.connect(self._filter_projects)
+        layout.addWidget(self.txt_search_project)
+
         # Danh sách dự án
         self.lst_projects = QListWidget(self)
         self.lst_projects.setObjectName("projectList")
@@ -209,6 +219,10 @@ class SidebarWidget(QFrame):
             self.lst_projects.setCurrentRow(found_idx)
         else:
             self._on_project_selected()
+
+        # Áp dụng bộ lọc tìm kiếm hiện hành
+        if hasattr(self, "txt_search_project"):
+            self._filter_projects(self.txt_search_project.text())
 
         self.project_list_reloaded.emit()
 
@@ -334,3 +348,26 @@ class SidebarWidget(QFrame):
                 "Lỗi",
                 f"Không thể xóa dự án '{project_id}'. Vui lòng kiểm tra lại kết nối database.",
             )
+
+    def _filter_projects(self, text: str) -> None:
+        """Lọc danh sách dự án dựa theo từ khóa tìm kiếm (Client-side).
+
+        Args:
+            text: Từ khóa tìm kiếm.
+        """
+        search_term = text.strip().lower()
+        for i in range(self.lst_projects.count()):
+            item = self.lst_projects.item(i)
+            if not item:
+                continue
+
+            project_id = item.data(Qt.ItemDataRole.UserRole)
+            if not project_id or project_id in [
+                "RETRY",
+                "🔄 Đang kết nối database Cloud...",
+            ]:
+                continue
+
+            item_text = item.text().lower()
+            is_match = search_term in item_text
+            self.lst_projects.setRowHidden(i, not is_match)

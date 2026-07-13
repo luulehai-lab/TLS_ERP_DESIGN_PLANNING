@@ -1,6 +1,8 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
+# - 13:12:37 13/07/2026: [UPDATE] docs: sync codebase graph and update modular graph (Antigravity)
+# - 13:10:00 13/07/2026: [NEW] feat(search): add drawing search field with multi-column client-side filter (Lê Thanh Vân/Antigravity)
 # - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:08:00 11/07/2026: [UPDATE] Tích hợp QRPreviewWidget hiển thị QR Code động bên cạnh bảng bản vẽ (Lê Thanh Vân/Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
@@ -21,6 +23,7 @@ from PyQt6.QtWidgets import (
     QTableWidgetItem,
     QGroupBox,
     QHeaderView,
+    QLineEdit,
 )
 from PyQt6.QtCore import Qt, QTimer, QSettings
 
@@ -75,6 +78,16 @@ class BaseDrawingView(QWidget):
 
         # Thanh tiêu đề / công cụ cho bảng
         table_actions_layout = QHBoxLayout()
+
+        self.txt_search_drawing = QLineEdit(group)
+        self.txt_search_drawing.setPlaceholderText(
+            "🔍 Tìm bản vẽ (Mã, tên, ghi chú...)..."
+        )
+        self.txt_search_drawing.setClearButtonEnabled(True)
+        self.txt_search_drawing.setFixedWidth(250)
+        self.txt_search_drawing.textChanged.connect(self.filter_drawings)
+        table_actions_layout.addWidget(self.txt_search_drawing)
+
         table_actions_layout.addStretch()
 
         self.btn_refresh = QPushButton("🔄 Làm mới", group)
@@ -279,6 +292,10 @@ class BaseDrawingView(QWidget):
 
         self._restore_column_widths()
 
+        # Áp dụng bộ lọc tìm kiếm hiện hành
+        if hasattr(self, "txt_search_drawing"):
+            self.filter_drawings(self.txt_search_drawing.text())
+
     def _on_load_error(self, error_msg: str) -> None:
         """Callback hiển thị thông báo lỗi khi không thể tải bản vẽ.
 
@@ -366,3 +383,22 @@ class BaseDrawingView(QWidget):
 
         if hasattr(self, "qr_widget"):
             self.qr_widget.set_drawing(drawing_id, version, drive_link)
+
+    def filter_drawings(self, text: str) -> None:
+        """Lọc danh sách bản vẽ trên bảng dựa theo từ khóa tìm kiếm (Client-side).
+
+        Args:
+            text: Từ khóa tìm kiếm.
+        """
+        search_term = text.strip().lower()
+        for r in range(self.tbl_drawings.rowCount()):
+            # Lọc theo nhiều cột: Mã bản vẽ (0), Hạng mục (1), Tên bản vẽ (2), Ghi chú (3), Trạng thái (4)
+            row_visible = False
+            for col in range(5):
+                item = self.tbl_drawings.item(r, col)
+                if item and search_term in item.text().lower():
+                    row_visible = True
+                    break
+
+            # Ẩn hoặc hiển thị hàng
+            self.tbl_drawings.setRowHidden(r, not row_visible)
