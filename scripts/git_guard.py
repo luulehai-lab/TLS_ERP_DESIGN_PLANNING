@@ -1,7 +1,10 @@
 # Tên file: scripts/git_guard.py
 # CHỨC NĂNG: Gác cổng Git tự động (Pre-commit Hook) kiểm tra an toàn dữ liệu, modularity và chạy test trước khi commit.
 # CHANGELOG:
+# - 09:42:18 13/07/2026: [FIX] feat(report): add visual report dashboard with charts, fix combobox/permission bugs and install global exception hook (Antigravity)
+# - 09:39:00 13/07/2026: [UPDATE] Tích hợp Dynamic Import Validator để bắt lỗi NameError/SyntaxError khi commit. (Antigravity)
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
+
 # - 11:52:19 23/06/2026: [REFACTOR] refactor(core-indexing): convert strategy index signatures to keyword-only and shorten search_globally (Antigravity)
 # - 11:52:09 23/06/2026: [REFACTOR] refactor(core-indexing): convert strategy index signatures to keyword-only and shorten search_globally (Antigravity)
 # - 11:45:00 23/06/2026: [FIX] Cập nhật run_command để tự động bổ sung PYTHONPATH khi thực thi subprocess. Trích xuất helper _find_related_test_files từ run_tests để giải quyết lỗi Ruff C901. (Lê Thanh Vân/Antigravity)
@@ -67,7 +70,13 @@ def run_command(args: list[str], cwd: Path) -> tuple[int, str, str]:
         env = os.environ.copy()
         env["PYTHONPATH"] = str(cwd) + os.pathsep + env.get("PYTHONPATH", "")
         result = subprocess.run(
-            args, cwd=str(cwd), env=env, capture_output=True, text=True, encoding="utf-8", errors="ignore"
+            args,
+            cwd=str(cwd),
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="ignore",
         )
         return result.returncode, result.stdout.strip(), result.stderr.strip()
     except Exception as e:
@@ -78,7 +87,9 @@ def get_staged_files(project_root: Path) -> list[Path]:
     """
     Lấy danh sách các tệp tin đã staged (chuẩn bị commit).
     """
-    code, stdout, _ = run_command(["git", "diff", "--cached", "--name-only"], project_root)
+    code, stdout, _ = run_command(
+        ["git", "diff", "--cached", "--name-only"], project_root
+    )
     if code != 0 or not stdout:
         return []
 
@@ -87,7 +98,10 @@ def get_staged_files(project_root: Path) -> list[Path]:
         file_path = project_root / line.strip()
         if file_path.exists() and file_path.is_file():
             # Kiểm tra xem có nằm trong thư mục loại trừ không
-            if not any(part in file_path.relative_to(project_root).parts for part in EXCLUDE_DIRS):
+            if not any(
+                part in file_path.relative_to(project_root).parts
+                for part in EXCLUDE_DIRS
+            ):
                 staged_files.append(file_path)
     return staged_files
 
@@ -101,7 +115,17 @@ def check_secrets(files: list[Path]) -> bool:
 
     for file_path in files:
         # Chỉ quét các file văn bản logic/cấu hình
-        if file_path.suffix not in {".py", ".json", ".js", ".bat", ".sh", ".ini", ".yaml", ".yml", ".env"}:
+        if file_path.suffix not in {
+            ".py",
+            ".json",
+            ".js",
+            ".bat",
+            ".sh",
+            ".ini",
+            ".yaml",
+            ".yml",
+            ".env",
+        }:
             continue
 
         try:
@@ -117,7 +141,9 @@ def check_secrets(files: list[Path]) -> bool:
                             # Cho phép bỏ qua nếu có từ khóa bypass rõ ràng ở cuối dòng
                             if "bypass-secrets-check" in line:
                                 continue
-                            print(f"   ❌ PHÁT HIỆN SECRET tại `{file_path.name}:{line_idx}`: `{stripped[:40]}...`")
+                            print(
+                                f"   ❌ PHÁT HIỆN SECRET tại `{file_path.name}:{line_idx}`: `{stripped[:40]}...`"
+                            )
                             violation_found = True
         except Exception as e:
             print(f"   ⚠️ Lỗi đọc file khi quét bảo mật {file_path.name}: {e}")
@@ -125,8 +151,12 @@ def check_secrets(files: list[Path]) -> bool:
     if violation_found:
         print("\n> [!CAUTION]")
         print("> **Phát hiện API Key hoặc Mật khẩu nhúng cứng trong mã nguồn!**")
-        print("> Vui lòng sử dụng biến môi trường hoặc file cấu hình ngoài (như app_secrets.py đã ignore).")
-        print("> Nếu muốn bỏ qua cảnh báo này cho dòng code đó, hãy thêm comment `# bypass-secrets-check` ở cuối dòng.")
+        print(
+            "> Vui lòng sử dụng biến môi trường hoặc file cấu hình ngoài (như app_secrets.py đã ignore)."
+        )
+        print(
+            "> Nếu muốn bỏ qua cảnh báo này cho dòng code đó, hãy thêm comment `# bypass-secrets-check` ở cuối dòng."
+        )
         return False
 
     print("   ✅ Đạt yêu cầu bảo mật. Không phát hiện rò rỉ secrets.")
@@ -155,7 +185,9 @@ def check_modularity(files: list[Path], project_root: Path) -> bool:
         total, _, _ = checker.count_lines(file_path)
         # 800 dòng là giới hạn cực hạn (HARD_LIMIT) của dự án
         if total > 800:
-            print(f"   ❌ VI PHẠM MODULARITY: File `{file_path.name}` dài quá giới hạn ({total}/800 dòng).")
+            print(
+                f"   ❌ VI PHẠM MODULARITY: File `{file_path.name}` dài quá giới hạn ({total}/800 dòng)."
+            )
             violation_found = True
         elif total > 500:
             print(
@@ -165,7 +197,9 @@ def check_modularity(files: list[Path], project_root: Path) -> bool:
     if violation_found:
         print("\n> [!WARNING]")
         print("> **CẤM SỬA TRỰC TIẾP FILE VƯỢT QUÁ 800 DÒNG!**")
-        print("> Vui lòng thực hiện thiết kế Modularity: Tách logic mới sang module/file mới độc lập.")
+        print(
+            "> Vui lòng thực hiện thiết kế Modularity: Tách logic mới sang module/file mới độc lập."
+        )
         return False
 
     print("   ✅ Đạt yêu cầu Modularity.")
@@ -243,7 +277,8 @@ def run_tests(staged_files: list[Path], project_root: Path) -> bool:
 
         # Chạy bằng unittest discover để tự động set PYTHONPATH đúng là project root
         code, stdout, stderr = run_command(
-            ["python", "-m", "unittest", "discover", "-s", "tests", "-p", tf.name], project_root
+            ["python", "-m", "unittest", "discover", "-s", "tests", "-p", tf.name],
+            project_root,
         )
         if code != 0:
             # Fallback chạy trực tiếp bằng python nếu discover lỗi
@@ -291,7 +326,9 @@ def auto_update_work_log(project_root: Path) -> bool:
     Tự động chạy cập nhật nhật ký công việc khi commit thành công.
     """
     print("📝 4. Đang tự động cập nhật nhật ký công việc (Work Log)...")
-    code, stdout, stderr = run_command(["python", "scripts/update_work_log.py"], project_root)
+    code, stdout, stderr = run_command(
+        ["python", "scripts/update_work_log.py"], project_root
+    )
     if code == 0:
         if stdout:
             print(f"   {stdout}")
@@ -336,7 +373,9 @@ def check_code_quality(files: list[Path], project_root: Path) -> bool:
         return True
 
     print("🛡️ 2.4. Đang chạy Code Quality Auditor (Clean Code & Ranh giới kiến trúc)...")
-    cmd = ["python", "scripts/audit_code_quality.py", "--files"] + [str(f) for f in py_files]
+    cmd = ["python", "scripts/audit_code_quality.py", "--files"] + [
+        str(f) for f in py_files
+    ]
     code, stdout, stderr = run_command(cmd, project_root)
 
     if stdout:
@@ -349,6 +388,72 @@ def check_code_quality(files: list[Path], project_root: Path) -> bool:
         return False
 
     print("   ✅ Đạt chuẩn Clean Code & Kiến trúc của dự án.")
+    return True
+
+
+def check_staged_imports(files: list[Path], project_root: Path) -> bool:
+    """Nạp thử (import) động các file staged qua subprocess để kiểm tra lỗi runtime import.
+
+    Args:
+        files: Danh sách các tệp tin đã staged.
+        project_root: Thư mục gốc của dự án.
+
+    Returns:
+        True nếu tất cả module import thành công, ngược lại là False.
+    """
+    py_files = [f for f in files if f.suffix == ".py"]
+    if not py_files:
+        return True
+
+    # Bỏ qua các file test, nháp R&D, và các file configs
+    valid_files = []
+    for f in py_files:
+        path_str = f.as_posix()
+        if any(
+            pat in path_str
+            for pat in [
+                "tests",
+                "scratch",
+                "tmp",
+                "vulture_whitelist.py",
+                "app_secrets.py",
+                "dxf_to_excel_boq.py",
+            ]
+        ):
+            continue
+        if f.name.endswith(".bak") or "_bak" in f.name:
+            continue
+        valid_files.append(f)
+
+    if not valid_files:
+        return True
+
+    print("🛡️ 2.5. Đang chạy Dynamic Import Validator (Kiểm tra lỗi nạp module)...")
+
+    for file_path in valid_files:
+        try:
+            rel_path = file_path.relative_to(project_root)
+            parts = list(rel_path.with_suffix("").parts)
+            module_name = ".".join(parts) if len(parts) > 1 else parts[0]
+
+            code, stdout, stderr = run_command(
+                [sys.executable, "-c", f"import {module_name}"], project_root
+            )
+
+            if code != 0:
+                print(f"   ❌ LỖI NẠP MODULE: Không thể import `{module_name}`.")
+                print(f"      Chi tiết lỗi:\n{stderr or stdout}")
+                print("\n> [!CAUTION]")
+                print(
+                    "> **CẤM COMMIT CODE CÓ LỖI IMPORT HOẶC LỖI CÚ PHÁP (SyntaxError/NameError)!**"
+                )
+                print("> Vui lòng sửa lại code để đảm bảo module có thể nạp sạch sẽ.")
+                return False
+        except Exception as e:
+            print(f"   ⚠️ Lỗi khi kiểm tra module {file_path.name}: {e}")
+            return False
+
+    print("   ✅ Tất cả file thay đổi đều import thành công.")
     return True
 
 
@@ -379,7 +484,9 @@ def install_hook(project_root: Path) -> bool:
             # Trên Windows có thể lỗi khi chmod, gán e để tránh silent exception
             _ = e
 
-        print(f"✅ Đã cài đặt thành công Git Guard tại: `{hook_file.relative_to(project_root)}`")
+        print(
+            f"✅ Đã cài đặt thành công Git Guard tại: `{hook_file.relative_to(project_root)}`"
+        )
         return True
     except Exception as e:
         print(f"🚨 Lỗi ghi file hook: {e}")
@@ -388,7 +495,9 @@ def install_hook(project_root: Path) -> bool:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Git Guard - Bộ gác cổng Git tự động")
-    parser.add_argument("--install", action="store_true", help="Cài đặt Git Guard làm pre-commit hook")
+    parser.add_argument(
+        "--install", action="store_true", help="Cài đặt Git Guard làm pre-commit hook"
+    )
     args = parser.parse_args()
 
     if args.install:
@@ -418,6 +527,10 @@ def main() -> None:
 
     # 2.4. Chạy Code Quality Auditor
     if not check_code_quality(staged_files, PROJECT_ROOT):
+        sys.exit(1)
+
+    # 2.5. Chạy Dynamic Import Validator
+    if not check_staged_imports(staged_files, PROJECT_ROOT):
         sys.exit(1)
 
     # 3. Chạy Unit Tests

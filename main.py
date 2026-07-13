@@ -1,6 +1,7 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 09:42:18 13/07/2026: [FIX] feat(report): add visual report dashboard with charts, fix combobox/permission bugs and install global exception hook (Antigravity)
 # - 18:49:30 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
 # - 18:40:00 11/07/2026: [FIX] Thêm sys.excepthook toàn cục để ghi mọi unhandled exception vào app_run.log (Lê Thanh Vân/Antigravity)
 # - 18:24:00 11/07/2026: [UPDATE] Cải tiến cơ chế log: Di chuyển import vào try/except block của main() và bắt lỗi module-level để ghi vào app_run.log (Lê Thanh Vân/Antigravity)
@@ -18,54 +19,14 @@
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:40:00 02/07/2026: [NEW] Khởi tạo tệp khởi chạy chính của ứng dụng PyQt6 (Lê Thanh Vân/Antigravity)
 
-import sys
 import logging
-from logging.handlers import RotatingFileHandler
-from pathlib import Path
+import sys
+from core.logging_bootstrap import bootstrap_logging
 
-# Cấu hình logging toàn cục sớm nhất có thể trước khi các module khác được import
-BASE_DIR = Path(__file__).parent.resolve()
-log_dir = BASE_DIR / "logs"
-log_dir.mkdir(exist_ok=True)
-log_file = log_dir / "app_run.log"
+# Khởi tạo hệ thống logging toàn cục sớm nhất, bắt unhandled crash và redirect stdout/stderr
+bootstrap_logging(log_file="app_run.log")
 
-log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-
-stream_handler = logging.StreamHandler(sys.stdout)
-file_handler = RotatingFileHandler(
-    log_file, maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8"
-)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format=log_format,
-    handlers=[stream_handler, file_handler],
-)
 logger = logging.getLogger("main")
-
-
-def _global_exception_hook(
-    exc_type: type, exc_value: BaseException, exc_tb: object
-) -> None:
-    """Hook toàn cục bắt mọi unhandled exception và ghi vào log file.
-
-    PyQt6 event loop nuốt exception trong slot/callback và chỉ in ra stderr.
-    Hook này đảm bảo tất cả lỗi runtime đều được ghi vào app_run.log.
-
-    Args:
-        exc_type: Kiểu exception.
-        exc_value: Giá trị exception.
-        exc_tb: Traceback object.
-    """
-    # Bỏ qua KeyboardInterrupt để user vẫn Ctrl+C thoát được
-    if issubclass(exc_type, KeyboardInterrupt):
-        sys.__excepthook__(exc_type, exc_value, exc_tb)
-        return
-    logger.critical("Unhandled Exception", exc_info=(exc_type, exc_value, exc_tb))
-
-
-# Gắn hook toàn cục ngay khi module được load
-sys.excepthook = _global_exception_hook
 
 
 def main() -> None:

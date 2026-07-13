@@ -1,11 +1,13 @@
 # Tên file: scripts/generate_boilerplate_test.py
 # CHỨC NĂNG: Tự động sinh khung unit test (pytest boilerplate) từ tệp logic nguồn Python.
 # CHANGELOG:
+# - 09:42:18 13/07/2026: [FIX] feat(report): add visual report dashboard with charts, fix combobox/permission bugs and install global exception hook (Antigravity)
 # - 15:17:43 11/07/2026: [NEW] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:18:00 11/07/2026: [NEW] Sao chép công cụ sinh khung test tự động từ dự án ZZZ.DANG TEST. (Antigravity)
 
 import argparse
 import ast
+import logging
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -16,9 +18,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-from core.logger import get_logger  # noqa: E402
-
-logger = get_logger("TestGenerator")
+logger = logging.getLogger("TestGenerator")
 
 
 def analyze_source_file(file_path: Path) -> dict[str, Any]:
@@ -67,7 +67,11 @@ def get_import_path(file_path: Path, project_root: Path) -> str:
     try:
         relative_path = file_path.relative_to(project_root)
         parts = list(relative_path.parts)
-        parts[-1] = relative_path.prefix if hasattr(relative_path, "prefix") else relative_path.stem  # Bỏ đuôi .py
+        parts[-1] = (
+            relative_path.prefix
+            if hasattr(relative_path, "prefix")
+            else relative_path.stem
+        )  # Bỏ đuôi .py
         return ".".join(parts)
     except ValueError:
         # Nếu tệp nằm ngoài project_root, lấy trực tiếp stem
@@ -90,7 +94,7 @@ def generate_test_content(
         Mã nguồn tệp test hoàn chỉnh.
     """
     time_str = datetime.now().strftime("%H:%M:%S %d/%m/%Y")
-    
+
     # Header chuẩn của dự án
     content = f"""# Tên file: {test_file_rel}
 # CHỨC NĂNG: Tự động kiểm thử cho module {import_path}
@@ -141,12 +145,14 @@ def test_{fn}() -> None:
             instance_var = "obj"
 
         content += f"\n\nclass Test{class_name}:\n"
-        content += f"    \"\"\"Bộ kiểm thử cho class `{class_name}`.\"\"\"\n\n"
+        content += f'    """Bộ kiểm thử cho class `{class_name}`."""\n\n'
 
         # Fixture khởi tạo mặc định
         content += "    @pytest.fixture\n"
         content += f"    def {instance_var}_fixture(self) -> {class_name}:\n"
-        content += f"        \"\"\"Khởi tạo đối tượng `{class_name}` cho từng test case.\"\"\"\n"
+        content += (
+            f'        """Khởi tạo đối tượng `{class_name}` cho từng test case."""\n'
+        )
         content += "        # Arrange: Cấu hình tham số khởi tạo nếu cần\n"
         content += "        # TODO: Cập nhật đối số khởi tạo\n"
         content += f"        return {class_name}()\n"
@@ -156,7 +162,7 @@ def test_{fn}() -> None:
                 continue
             content += "\n"
             content += f"    def test_{method}(self, {instance_var}_fixture: {class_name}) -> None:\n"
-            content += f"        \"\"\"Kiểm thử phương thức `{method}`.\"\"\"\n"
+            content += f'        """Kiểm thử phương thức `{method}`."""\n'
             content += "        # Arrange: Thiết lập trạng thái và tham số\n"
             content += "        # TODO: Setup data\n"
             content += "        expected = None\n\n"
@@ -207,12 +213,10 @@ def main() -> None:
     parser.add_argument(
         "source_file",
         type=str,
-        help="Đường dẫn đến file logic nguồn Python cần viết test."
+        help="Đường dẫn đến file logic nguồn Python cần viết test.",
     )
     parser.add_argument(
-        "--force",
-        action="store_true",
-        help="Ghi đè file test nếu đã tồn tại."
+        "--force", action="store_true", help="Ghi đè file test nếu đã tồn tại."
     )
     args = parser.parse_args()
 
@@ -249,9 +253,7 @@ def main() -> None:
     with open(test_path, "w", encoding="utf-8") as f:
         f.write(test_content)
 
-    logger.info(
-        f"✅ Sinh thành công tệp kiểm thử tại: {test_file_rel}"
-    )
+    logger.info(f"✅ Sinh thành công tệp kiểm thử tại: {test_file_rel}")
 
 
 if __name__ == "__main__":
