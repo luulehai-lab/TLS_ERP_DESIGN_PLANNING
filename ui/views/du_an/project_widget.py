@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/project_widget.py
 # CHỨC NĂNG: Giao diện hiển thị & chỉnh sửa thông tin Dự án hiện hành dạng hàng ngang nhỏ gọn
 # CHANGELOG:
+# - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 16:23:44 10/07/2026: [UPDATE] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
@@ -13,12 +14,14 @@ from typing import Any
 from PyQt6.QtWidgets import (
     QWidget,
     QGridLayout,
+    QHBoxLayout,
     QLabel,
     QLineEdit,
     QPushButton,
     QGroupBox,
     QMessageBox,
     QComboBox,
+    QFileDialog,
 )
 from PyQt6.QtCore import pyqtSignal
 
@@ -124,16 +127,41 @@ class ProjectWidget(QWidget):
             )
         grid.addWidget(self.cb_designer, 1, 3)
 
+        # Hàng 2: Thư mục bản vẽ cục bộ
+        grid.addWidget(QLabel("Thư mục cục bộ:", self.group_box), 2, 0)
+
+        path_layout = QHBoxLayout()
+        self.txt_local_path = QLineEdit(self.group_box)
+        self.txt_local_path.setReadOnly(True)
+        self.txt_local_path.setPlaceholderText("Chưa cấu hình thư mục cục bộ chứa bản vẽ...")
+        self.txt_local_path.setStyleSheet("background-color: #F1F5F9; color: #1E293B;")
+
+        self.btn_select_local_path = QPushButton("📁 Chọn...", self.group_box)
+        self.btn_select_local_path.setStyleSheet(TLSTheme.secondary_button_stylesheet())
+        self.btn_select_local_path.clicked.connect(self._on_select_local_path)
+
+        path_layout.addWidget(self.txt_local_path)
+        path_layout.addWidget(self.btn_select_local_path)
+
+        grid.addLayout(path_layout, 2, 1, 1, 3)
+
     def _setup_action_buttons(self, grid: QGridLayout) -> None:
         """Thiết lập các nút điều khiển của Form.
 
         Args:
             grid: Bố cục lưới của GroupBox.
         """
-        self.btn_save = QPushButton("💾 Lưu Thay Đổi", self.group_box)
+        self.btn_save = QPushButton("💾 Lưu\nThay Đổi", self.group_box)
         self.btn_save.setStyleSheet(TLSTheme.save_button_stylesheet())
+        # Nút Lưu có kích thước lớn hơn chiếm cả hàng 1 và hàng 2 ở cột 4
         self.btn_save.clicked.connect(self._on_save_project)
-        grid.addWidget(self.btn_save, 1, 4)
+        grid.addWidget(self.btn_save, 1, 4, 2, 1)
+
+    def _on_select_local_path(self) -> None:
+        """Mở hộp thoại chọn thư mục cục bộ của dự án."""
+        dir_path = QFileDialog.getExistingDirectory(self, "Chọn Thư mục cục bộ của dự án")
+        if dir_path:
+            self.txt_local_path.setText(dir_path)
 
     def set_project_id(self, project_id: str) -> None:
         """Nạp dữ liệu dự án tương ứng từ database lên Form.
@@ -146,6 +174,7 @@ class ProjectWidget(QWidget):
         if not project_id:
             self.txt_project_id.clear()
             self.txt_project_name.clear()
+            self.txt_local_path.clear()
             self.cb_sales.setCurrentIndex(0)
             self.cb_designer.setCurrentIndex(0)
             self.group_box.setEnabled(False)
@@ -160,6 +189,7 @@ class ProjectWidget(QWidget):
             if proj:
                 self.txt_project_id.setText(proj.project_id)
                 self.txt_project_name.setText(proj.project_name)
+                self.txt_local_path.setText(proj.local_path or "")
 
                 # Chọn email Kinh doanh
                 idx_sales = self.cb_sales.findData(proj.sales_email or "")
@@ -184,6 +214,7 @@ class ProjectWidget(QWidget):
         project_name = self.txt_project_name.text().strip()
         sales_email = self.cb_sales.currentData()
         designer_email = self.cb_designer.currentData()
+        local_path = self.txt_local_path.text().strip() or None
 
         if not project_id or not project_name:
             QMessageBox.warning(self, "Cảnh báo", "Vui lòng không để trống Tên dự án!")
@@ -193,7 +224,10 @@ class ProjectWidget(QWidget):
         try:
             roles = {"sales": sales_email, "designer": designer_email}
             updated_proj = update_project_safe(
-                project_id=project_id, project_name=project_name, roles=roles
+                project_id=project_id,
+                project_name=project_name,
+                roles=roles,
+                local_path=local_path,
             )
             if updated_proj:
                 success = True

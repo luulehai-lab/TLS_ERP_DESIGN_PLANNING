@@ -1,6 +1,7 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
 # - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:10:00 11/07/2026: [UPDATE] Tích hợp cơ chế hỏi đáp nâng cấp phiên bản (Revise) khi trùng mã bản vẽ (Lê Thanh Vân/Antigravity)
@@ -34,6 +35,7 @@ from ui.styles.theme import TLSTheme
 from ui.common.base_drawing_view import BaseDrawingView
 from ui.common.workers import DriveUploadWorker
 from core.services.section_service import list_project_sections_safe
+from core.services.project_service import get_project_safe
 from core.services.drawing_service import (
     create_drawing_safe,
     get_drawing_safe,
@@ -300,10 +302,19 @@ class ThietKeView(BaseDrawingView):
 
     def _on_select_file(self) -> None:
         """Hiển thị hộp thoại chọn tệp bản vẽ PDF cục bộ và kích hoạt upload ngầm ngay."""
+        default_dir = ""
+        if self.current_project_id:
+            try:
+                proj = get_project_safe(self.current_project_id)
+                if proj and proj.local_path and os.path.exists(proj.local_path):
+                    default_dir = proj.local_path
+            except Exception as e:
+                logger.error("ThietKeView: Lỗi lấy local_path dự án: %s", str(e))
+
         file_path, _ = QFileDialog.getOpenFileName(
             self,
             "Chọn Bản vẽ thiết kế (PDF)",
-            "",
+            default_dir,
             "Bản vẽ PDF (*.pdf);;All Files (*)",
         )
         if file_path:
@@ -325,8 +336,17 @@ class ThietKeView(BaseDrawingView):
 
     def _on_select_folder(self) -> None:
         """Hiển thị hộp thoại chọn thư mục bản vẽ cục bộ và kích hoạt upload ngầm ngay."""
+        default_dir = ""
+        if self.current_project_id:
+            try:
+                proj = get_project_safe(self.current_project_id)
+                if proj and proj.local_path and os.path.exists(proj.local_path):
+                    default_dir = proj.local_path
+            except Exception as e:
+                logger.error("ThietKeView: Lỗi lấy local_path dự án: %s", str(e))
+
         folder_path = QFileDialog.getExistingDirectory(
-            self, "Chọn Thư mục bản vẽ thiết kế"
+            self, "Chọn Thư mục bản vẽ thiết kế", default_dir
         )
         if folder_path:
             self.selected_local_path = folder_path

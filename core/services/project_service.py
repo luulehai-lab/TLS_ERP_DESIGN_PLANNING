@@ -1,6 +1,7 @@
 # Tên file: core/services/project_service.py
 # CHỨC NĂNG: Cung cấp các nghiệp vụ CRUD quản lý Dự án (Project)
 # CHANGELOG:
+# - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 18:49:29 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
 # - 18:22:00 11/07/2026: [UPDATE] Bổ sung hàm list_active_projects_safe tự động quản lý session (Lê Thanh Vân/Antigravity)
 # - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
@@ -28,6 +29,7 @@ def create_project(
     project_id: str,
     project_name: str,
     roles: dict[str, str | None] | None = None,
+    local_path: str | None = None,
 ) -> Project | None:
     """Tạo mới một dự án kết cấu thép trong cơ sở dữ liệu.
 
@@ -36,15 +38,17 @@ def create_project(
         project_id: Mã định danh duy nhất của dự án (ví dụ: TLS-01726).
         project_name: Tên chi tiết của dự án.
         roles: Dictionary chứa thông tin vai trò, ví dụ: {'sales': email, 'designer': email}.
+        local_path: Đường dẫn thư mục cục bộ của dự án.
 
     Returns:
         Project: Đối tượng Project được tạo mới nếu thành công, hoặc None nếu thất bại.
     """
     logger.info(
-        "Yêu cầu tạo dự án mới: ID=%s, Name=%s, Roles=%s",
+        "Yêu cầu tạo dự án mới: ID=%s, Name=%s, Roles=%s, LocalPath=%s",
         project_id,
         project_name,
         roles,
+        local_path,
     )
     sales_email = roles.get("sales") if roles else None
     designer_email = roles.get("designer") if roles else None
@@ -63,6 +67,7 @@ def create_project(
             project_name=project_name,
             sales_email=sales_email,
             designer_email=designer_email,
+            local_path=local_path,
         )
         db.add(db_project)
         db.commit()
@@ -189,6 +194,7 @@ def update_project(
     project_id: str,
     project_name: str,
     roles: dict[str, str | None] | None = None,
+    local_path: str | None = None,
 ) -> Project | None:
     """Cập nhật thông tin chi tiết của dự án kết cấu thép hiện có.
 
@@ -197,15 +203,17 @@ def update_project(
         project_id: Mã định danh duy nhất của dự án cần cập nhật.
         project_name: Tên mới chi tiết của dự án.
         roles: Dictionary chứa vai trò, ví dụ: {'sales': email, 'designer': email}.
+        local_path: Đường dẫn thư mục cục bộ mới.
 
     Returns:
         Project | None: Đối tượng Project sau khi cập nhật, hoặc None nếu thất bại.
     """
     logger.info(
-        "Yêu cầu cập nhật dự án: ID=%s, Name=%s, Roles=%s",
+        "Yêu cầu cập nhật dự án: ID=%s, Name=%s, Roles=%s, LocalPath=%s",
         project_id,
         project_name,
         roles,
+        local_path,
     )
     sales_email = roles.get("sales") if roles else None
     designer_email = roles.get("designer") if roles else None
@@ -219,6 +227,7 @@ def update_project(
         project.project_name = project_name
         project.sales_email = sales_email
         project.designer_email = designer_email
+        project.local_path = local_path
 
         db.commit()
         db.refresh(project)
@@ -289,6 +298,7 @@ def create_project_safe(
     project_id: str,
     project_name: str,
     roles: dict[str, str | None] | None = None,
+    local_path: str | None = None,
 ) -> Project | None:
     """Tạo dự án mới tự động quản lý vòng đời Session (Safe).
 
@@ -296,6 +306,7 @@ def create_project_safe(
         project_id: Mã dự án mới.
         project_name: Tên dự án mới.
         roles: Dictionary chứa các email vai trò.
+        local_path: Đường dẫn thư mục cục bộ của dự án.
 
     Returns:
         Project đối tượng được tạo hoặc None nếu lỗi.
@@ -304,7 +315,7 @@ def create_project_safe(
 
     db = SessionLocal()
     try:
-        return create_project(db, project_id, project_name, roles)
+        return create_project(db, project_id, project_name, roles, local_path)
     finally:
         db.close()
 
@@ -313,6 +324,7 @@ def update_project_safe(
     project_id: str,
     project_name: str,
     roles: dict[str, str | None] | None = None,
+    local_path: str | None = None,
 ) -> Project | None:
     """Cập nhật thông tin dự án tự động quản lý vòng đời Session (Safe).
 
@@ -320,6 +332,7 @@ def update_project_safe(
         project_id: Mã dự án cần cập nhật.
         project_name: Tên dự án mới.
         roles: Dictionary chứa các email vai trò mới.
+        local_path: Đường dẫn thư mục cục bộ của dự án.
 
     Returns:
         Project đối tượng sau cập nhật hoặc None.
@@ -328,7 +341,7 @@ def update_project_safe(
 
     db = SessionLocal()
     try:
-        return update_project(db, project_id, project_name, roles)
+        return update_project(db, project_id, project_name, roles, local_path)
     finally:
         db.close()
 

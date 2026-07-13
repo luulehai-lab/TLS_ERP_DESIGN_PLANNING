@@ -1,6 +1,7 @@
 # Tên file: ui/views/du_an/project_dialog.py
 # CHỨC NĂNG: Hộp thoại popup nhập liệu để tạo mới một Dự án kết cấu thép
 # CHANGELOG:
+# - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
 # - 16:23:44 10/07/2026: [NEW] feat(ui): add right click delete project from sidebar with table reload sync (Antigravity)
@@ -15,6 +16,9 @@ from PyQt6.QtWidgets import (
     QComboBox,
     QLineEdit,
     QMessageBox,
+    QHBoxLayout,
+    QPushButton,
+    QFileDialog,
 )
 
 from core.services.project_service import create_project_safe
@@ -88,6 +92,17 @@ class CreateProjectDialog(QDialog):
             )
         layout.addRow("Chủ trì Thiết kế:", self.cb_designer)
 
+        # Thư mục dự án cục bộ (Local Path)
+        path_layout = QHBoxLayout()
+        self.txt_local_path = QLineEdit(self)
+        self.txt_local_path.setPlaceholderText("Chọn thư mục chứa bản vẽ cục bộ...")
+        self.btn_select_path = QPushButton("📁 Chọn...", self)
+        self.btn_select_path.setStyleSheet(TLSTheme.secondary_button_stylesheet())
+        self.btn_select_path.clicked.connect(self._on_select_local_path)
+        path_layout.addWidget(self.txt_local_path)
+        path_layout.addWidget(self.btn_select_path)
+        layout.addRow("Thư mục cục bộ:", path_layout)
+
         self.button_box = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Save
             | QDialogButtonBox.StandardButton.Cancel,
@@ -98,6 +113,12 @@ class CreateProjectDialog(QDialog):
         layout.addRow(self.button_box)
 
         self.setStyleSheet(TLSTheme.project_dialog_stylesheet())
+
+    def _on_select_local_path(self) -> None:
+        """Mở hộp thoại chọn thư mục cục bộ của dự án."""
+        dir_path = QFileDialog.getExistingDirectory(self, "Chọn Thư mục cục bộ của dự án")
+        if dir_path:
+            self.txt_local_path.setText(dir_path)
 
     def _on_save(self) -> None:
         """Xử lý sự kiện lưu dự án khi người dùng đồng ý."""
@@ -114,8 +135,12 @@ class CreateProjectDialog(QDialog):
 
         try:
             roles = {"sales": sales_email, "designer": designer_email}
+            local_path = self.txt_local_path.text().strip() or None
             new_proj = create_project_safe(
-                project_id=project_id, project_name=project_name, roles=roles
+                project_id=project_id,
+                project_name=project_name,
+                roles=roles,
+                local_path=local_path,
             )
             if new_proj:
                 QMessageBox.information(

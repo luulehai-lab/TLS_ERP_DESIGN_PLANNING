@@ -1,6 +1,7 @@
 # Tên file: core/models.py
 # CHỨC NĂNG: Khai báo cấu trúc bảng cơ sở dữ liệu SQLAlchemy cho dự án ERP
 # CHANGELOG:
+# - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:45:00 11/07/2026: [NEW] Thêm model Staff quản lý nhân sự phân quyền (Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
@@ -38,6 +39,9 @@ class Project(Base):
     designer_email = Column(
         String(100), nullable=True
     )  # Email của nhân viên Thiết kế chủ trì
+    local_path = Column(
+        String(500), nullable=True
+    )  # Đường dẫn thư mục cục bộ của dự án
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Các quan hệ
@@ -54,7 +58,7 @@ class Project(Base):
         Returns:
             str: Chuỗi thông tin dự án.
         """
-        return f"<Project(id='{self.project_id}', name='{self.project_name}', status='{self.status}', sales='{self.sales_email}', designer='{self.designer_email}')>"
+        return f"<Project(id='{self.project_id}', name='{self.project_name}', status='{self.status}', sales='{self.sales_email}', designer='{self.designer_email}', local_path='{self.local_path}')>"
 
 
 class ProjectSection(Base):

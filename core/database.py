@@ -1,6 +1,7 @@
 # Tên file: core/database.py
 # CHỨC NĂNG: Cấu hình SQLAlchemy kết nối PostgreSQL (hoặc SQLite dự phòng)
 # CHANGELOG:
+# - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 13:38:53 08/07/2026: [UPDATE] feat(db): add script to enable Row-Level Security and update code graph (Antigravity)
 # - 13:30:00 08/07/2026: [REFACTOR] Loại bỏ logging.basicConfig() cục bộ để tránh ghi đè cấu hình logging của file chính (Lê Thanh Vân/Antigravity)
 # - 13:21:00 08/07/2026: [UPDATE] Cấu hình connect_timeout cho engine kết nối PostgreSQL để tránh treo vô hạn khi mạng lỗi (Lê Thanh Vân/Antigravity)
@@ -53,3 +54,13 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
+
+
+# Chạy migration gọn nhẹ bổ sung cột local_path vào bảng projects nếu chưa tồn tại
+try:
+    from sqlalchemy import text
+    with engine.begin() as conn:
+        conn.execute(text("ALTER TABLE projects ADD COLUMN IF NOT EXISTS local_path VARCHAR(500);"))
+    logger.info("Database migration: Cột local_path đã được kiểm tra/thêm thành công.")
+except Exception as e:
+    logger.error("Lỗi khi chạy di trú tự động thêm cột local_path: %s", str(e))

@@ -133,9 +133,9 @@ sequenceDiagram
 
 ## 📈 4. KẾ HOẠCH TRIỂN KHAI PHẦN MỀM (Roadmap)
 
-- [x] **Giai đoạn 1.1**: Khởi tạo database trên Supabase & Thiết lập Model SQLAlchemy (`core/models.py`).
-- [x] **Giai đoạn 1.2**: Viết tầng Core Logic (`core/services/`): Project & Drawing Services.
-- [x] **Giai đoạn 1.3**: Dựng bộ khung giao diện PyQt6 (`ui/main_window.py`).
-- [x] **Giai đoạn 1.4**: Hoàn thiện màn hình Thiết kế (`ui/views/thiet_ke_view.py`).
-- [x] **Giai đoạn 1.5**: Hoàn thiện màn hình Kế hoạch (`ui/views/ke_hoach_view.py`).
-- [x] **Giai đoạn 1.6**: Đóng gói ứng dụng thành file `.exe` chạy độc lập và bàn giao.
+- [X] **Giai đoạn 1.1**: Khởi tạo database trên Supabase & Thiết lập Model SQLAlchemy (`core/models.py`).
+- [X] **Giai đoạn 1.2**: Viết tầng Core Logic (`core/services/`): Project & Drawing Services.
+- [X] **Giai đoạn 1.3**: Dựng bộ khung giao diện PyQt6 (`ui/main_window.py`).
+- [X] **Giai đoạn 1.4**: Hoàn thiện màn hình Thiết kế (`ui/views/thiet_ke_view.py`).
+- [X] **Giai đoạn 1.5**: Hoàn thiện màn hình Kế hoạch (`ui/views/ke_hoach_view.py`).
+- [X] **Giai đoạn 1.6**: Đóng gói ứng dụng thành file `.exe` chạy độc lập và bàn giao.
