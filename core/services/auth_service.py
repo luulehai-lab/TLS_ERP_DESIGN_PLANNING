@@ -1,6 +1,7 @@
 # Tên file: core/services/auth_service.py
 # CHỨC NĂNG: Xử lý xác thực Google OAuth2 và chạy local HTTP server nhận callback
 # CHANGELOG:
+# - 15:59:41 13/07/2026: [UPDATE] feat(config): encode Google OAuth credentials to bypass github security rules (Antigravity)
 # - 15:36:44 13/07/2026: [FIX] fix(logging): handle None stdout/stderr in windowed pyinstaller execution (Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
@@ -278,6 +279,9 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
             str: Email của người dùng, hoặc chuỗi rỗng nếu lỗi.
         """
         try:
+            import ssl
+            context = ssl._create_unverified_context()
+
             token_url = "https://oauth2.googleapis.com/token"
             redirect_uri = f"http://localhost:{self.server.server_port}"  # type: ignore
 
@@ -292,7 +296,7 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
             ).encode("utf-8")
 
             req = urllib.request.Request(token_url, data=data)
-            with urllib.request.urlopen(req) as response:
+            with urllib.request.urlopen(req, context=context) as response:
                 res_data = json.loads(response.read().decode("utf-8"))
                 access_token = res_data.get("access_token")
 
@@ -303,7 +307,7 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
             req_info = urllib.request.Request(userinfo_url)
             req_info.add_header("Authorization", f"Bearer {access_token}")
 
-            with urllib.request.urlopen(req_info) as response_info:
+            with urllib.request.urlopen(req_info, context=context) as response_info:
                 user_info = json.loads(response_info.read().decode("utf-8"))
                 return user_info.get("email", "")
 

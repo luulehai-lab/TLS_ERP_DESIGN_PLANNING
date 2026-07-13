@@ -11,7 +11,7 @@
       "label": "_decode_secret",
       "type": "function",
       "file_path": "config.py",
-      "line": 46
+      "line": 47
     },
     {
       "id": "main",
@@ -1558,14 +1558,14 @@
       "label": "GoogleAuthServer",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 328
+      "line": 331
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager",
       "label": "GoogleAuthManager",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 342
+      "line": 345
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler.log_message",
@@ -1607,63 +1607,63 @@
       "label": "_send_html_response",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 316
+      "line": 319
     },
     {
       "id": "core.services.auth_service.GoogleAuthServer.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 331
+      "line": 334
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 345
+      "line": 348
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.start_server",
       "label": "start_server",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 356
+      "line": 359
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager._run_server",
       "label": "_run_server",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 377
+      "line": 380
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
       "label": "get_auth_url",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 385
+      "line": 388
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
       "label": "get_authenticated_email",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 407
+      "line": 410
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.shutdown",
       "label": "shutdown",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 417
+      "line": 420
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager._async_close",
       "label": "_async_close",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 426
+      "line": 429
     },
     {
       "id": "core.services.drawing_service",
@@ -6882,39 +6882,39 @@
     "config": {
       "module_name": "config",
       "file_path": "config.py",
-      "mtime": 1783932138.8793442,
+      "mtime": 1783932168.1186633,
       "imports": [
         {
           "type": "direct",
           "name": "os",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "direct",
           "name": "base64",
           "asname": null,
-          "line": 13
+          "line": 14
         },
         {
           "type": "from",
           "module": "pathlib",
           "name": "Path",
           "asname": null,
-          "line": 14
+          "line": 15
         },
         {
           "type": "from",
           "module": "dotenv",
           "name": "load_dotenv",
           "asname": null,
-          "line": 15
+          "line": 16
         },
         {
           "type": "direct",
           "name": "sys",
           "asname": null,
-          "line": 17
+          "line": 18
         }
       ],
       "classes": [],
@@ -6931,8 +6931,8 @@
             "encoded_str": "str"
           },
           "return_hint": "str",
-          "line": 46,
-          "end_line": 50
+          "line": 47,
+          "end_line": 51
         }
       ],
       "calls": [
@@ -6940,19 +6940,19 @@
           "caller": "config._decode_secret",
           "call_name": "decode",
           "caller_obj": "",
-          "line": 48
+          "line": 49
         },
         {
           "caller": "config._decode_secret",
           "call_name": "b64decode",
           "caller_obj": "base64",
-          "line": 48
+          "line": 49
         },
         {
           "caller": "config._decode_secret",
           "call_name": "encode",
           "caller_obj": "encoded_str",
-          "line": 48
+          "line": 49
         }
       ]
     },
@@ -19404,7 +19404,7 @@
     "core.services.auth_service": {
       "module_name": "core.services.auth_service",
       "file_path": "core/services/auth_service.py",
-      "mtime": 1783931804.501779,
+      "mtime": 1783933063.3702881,
       "imports": [
         {
           "type": "direct",
@@ -19462,6 +19462,12 @@
           "name": "config",
           "asname": null,
           "line": 19
+        },
+        {
+          "type": "direct",
+          "name": "ssl",
+          "asname": null,
+          "line": 281
         }
       ],
       "classes": [
@@ -19472,7 +19478,7 @@
             "BaseHTTPRequestHandler"
           ],
           "line": 202,
-          "end_line": 325
+          "end_line": 328
         },
         {
           "id": "core.services.auth_service.GoogleAuthServer",
@@ -19480,15 +19486,15 @@
           "bases": [
             "HTTPServer"
           ],
-          "line": 328,
-          "end_line": 339
+          "line": 331,
+          "end_line": 342
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager",
           "name": "GoogleAuthManager",
           "bases": [],
-          "line": 342,
-          "end_line": 436
+          "line": 345,
+          "end_line": 439
         }
       ],
       "functions": [
@@ -19557,7 +19563,7 @@
           },
           "return_hint": "str",
           "line": 271,
-          "end_line": 314
+          "end_line": 317
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
@@ -19571,8 +19577,8 @@
             "content": "str"
           },
           "return_hint": "None",
-          "line": 316,
-          "end_line": 325
+          "line": 319,
+          "end_line": 328
         },
         {
           "id": "core.services.auth_service.GoogleAuthServer.__init__",
@@ -19588,8 +19594,8 @@
             "handler_class": "Any"
           },
           "return_hint": "None",
-          "line": 331,
-          "end_line": 339
+          "line": 334,
+          "end_line": 342
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.__init__",
@@ -19603,8 +19609,8 @@
             "port": "int"
           },
           "return_hint": "None",
-          "line": 345,
-          "end_line": 354
+          "line": 348,
+          "end_line": 357
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.start_server",
@@ -19614,8 +19620,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 356,
-          "end_line": 375
+          "line": 359,
+          "end_line": 378
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager._run_server",
@@ -19625,8 +19631,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 377,
-          "end_line": 383
+          "line": 380,
+          "end_line": 386
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
@@ -19636,8 +19642,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 385,
-          "end_line": 405
+          "line": 388,
+          "end_line": 408
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
@@ -19647,8 +19653,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 407,
-          "end_line": 415
+          "line": 410,
+          "end_line": 418
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.shutdown",
@@ -19658,8 +19664,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 417,
-          "end_line": 436
+          "line": 420,
+          "end_line": 439
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager._async_close",
@@ -19669,8 +19675,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 426,
-          "end_line": 433
+          "line": 429,
+          "end_line": 436
         }
       ],
       "calls": [
@@ -19778,255 +19784,261 @@
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
+          "call_name": "_create_unverified_context",
+          "caller_obj": "ssl",
+          "line": 282
+        },
+        {
+          "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "encode",
           "caller_obj": "",
-          "line": 284
+          "line": 287
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlencode",
           "caller_obj": "urllib.parse",
-          "line": 284
+          "line": 287
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "Request",
           "caller_obj": "urllib.request",
-          "line": 294
+          "line": 297
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlopen",
           "caller_obj": "urllib.request",
-          "line": 295
+          "line": 298
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "loads",
           "caller_obj": "json",
-          "line": 296
+          "line": 299
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "decode",
           "caller_obj": "",
-          "line": 296
+          "line": 299
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "read",
           "caller_obj": "response",
-          "line": 296
+          "line": 299
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "get",
           "caller_obj": "res_data",
-          "line": 297
+          "line": 300
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "Request",
           "caller_obj": "urllib.request",
-          "line": 303
+          "line": 306
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "add_header",
           "caller_obj": "req_info",
-          "line": 304
+          "line": 307
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlopen",
           "caller_obj": "urllib.request",
-          "line": 306
+          "line": 309
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "loads",
           "caller_obj": "json",
-          "line": 307
+          "line": 310
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "decode",
           "caller_obj": "",
-          "line": 307
+          "line": 310
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "read",
           "caller_obj": "response_info",
-          "line": 307
+          "line": 310
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "get",
           "caller_obj": "user_info",
-          "line": 308
+          "line": 311
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 311
+          "line": 314
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "str",
           "caller_obj": null,
-          "line": 312
+          "line": 315
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "send_response",
           "caller_obj": "self",
-          "line": 322
+          "line": 325
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "send_header",
           "caller_obj": "self",
-          "line": 323
+          "line": 326
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "end_headers",
           "caller_obj": "self",
-          "line": 324
+          "line": 327
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "write",
           "caller_obj": "self.wfile",
-          "line": 325
+          "line": 328
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "encode",
           "caller_obj": "content",
-          "line": 325
+          "line": 328
         },
         {
           "caller": "core.services.auth_service.GoogleAuthServer.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 338
+          "line": 341
         },
         {
           "caller": "core.services.auth_service.GoogleAuthServer.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 338
+          "line": 341
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "GoogleAuthServer",
           "caller_obj": null,
-          "line": 362
+          "line": 365
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "Thread",
           "caller_obj": "threading",
-          "line": 366
+          "line": 369
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "start",
           "caller_obj": "self.thread",
-          "line": 367
+          "line": 370
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 368
+          "line": 371
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 370
+          "line": 373
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "str",
           "caller_obj": null,
-          "line": 373
+          "line": 376
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "serve_forever",
           "caller_obj": "self.server",
-          "line": 381
+          "line": 384
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 383
+          "line": 386
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "str",
           "caller_obj": null,
-          "line": 383
+          "line": 386
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.get_auth_url",
           "call_name": "urlencode",
           "caller_obj": "urllib.parse",
-          "line": 403
+          "line": 406
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 420
+          "line": 423
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "shutdown",
           "caller_obj": "server_to_close",
-          "line": 429
+          "line": 432
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "server_close",
           "caller_obj": "server_to_close",
-          "line": 430
+          "line": 433
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 431
+          "line": 434
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 433
+          "line": 436
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "str",
           "caller_obj": null,
-          "line": 433
+          "line": 436
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "start",
           "caller_obj": "",
-          "line": 435
+          "line": 438
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "Thread",
           "caller_obj": "threading",
-          "line": 435
+          "line": 438
         }
       ]
     },
