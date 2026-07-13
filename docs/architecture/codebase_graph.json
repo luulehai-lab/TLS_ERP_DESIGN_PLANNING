@@ -57,98 +57,98 @@
       "label": "DummyStream",
       "type": "class",
       "file_path": "core/logging_bootstrap.py",
-      "line": 15
+      "line": 16
     },
     {
       "id": "core.logging_bootstrap.TeeStream",
       "label": "TeeStream",
       "type": "class",
       "file_path": "core/logging_bootstrap.py",
-      "line": 33
+      "line": 34
     },
     {
       "id": "core.logging_bootstrap.DummyStream.write",
       "label": "write",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 18
+      "line": 19
     },
     {
       "id": "core.logging_bootstrap.DummyStream.flush",
       "label": "flush",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 21
+      "line": 22
     },
     {
       "id": "core.logging_bootstrap.DummyStream.encoding",
       "label": "encoding",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 25
+      "line": 26
     },
     {
       "id": "core.logging_bootstrap.DummyStream.errors",
       "label": "errors",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 29
+      "line": 30
     },
     {
       "id": "core.logging_bootstrap.TeeStream.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 36
+      "line": 37
     },
     {
       "id": "core.logging_bootstrap.TeeStream.write",
       "label": "write",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 47
+      "line": 48
     },
     {
       "id": "core.logging_bootstrap.TeeStream.flush",
       "label": "flush",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 71
+      "line": 72
     },
     {
       "id": "core.logging_bootstrap.TeeStream.encoding",
       "label": "encoding",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 80
+      "line": 81
     },
     {
       "id": "core.logging_bootstrap.TeeStream.errors",
       "label": "errors",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 89
+      "line": 90
     },
     {
       "id": "core.logging_bootstrap._handle_unhandled_exception",
       "label": "_handle_unhandled_exception",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 98
+      "line": 99
     },
     {
       "id": "core.logging_bootstrap._handle_thread_exception",
       "label": "_handle_thread_exception",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 119
+      "line": 120
     },
     {
       "id": "core.logging_bootstrap.bootstrap_logging",
       "label": "bootstrap_logging",
       "type": "function",
       "file_path": "core/logging_bootstrap.py",
-      "line": 132
+      "line": 133
     },
     {
       "id": "core.models",
@@ -1544,119 +1544,119 @@
       "label": "OAuthCallbackHandler",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 170
+      "line": 201
     },
     {
       "id": "core.services.auth_service.GoogleAuthServer",
       "label": "GoogleAuthServer",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 296
+      "line": 327
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager",
       "label": "GoogleAuthManager",
       "type": "class",
       "file_path": "core/services/auth_service.py",
-      "line": 310
+      "line": 341
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler.log_message",
       "label": "log_message",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 173
+      "line": 204
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler.do_GET",
       "label": "do_GET",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 182
+      "line": 213
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
       "label": "_serve_mock_login_page",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 203
+      "line": 234
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
       "label": "_handle_callback",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 207
+      "line": 238
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
       "label": "_exchange_code_for_email",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 239
+      "line": 270
     },
     {
       "id": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
       "label": "_send_html_response",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 284
+      "line": 315
     },
     {
       "id": "core.services.auth_service.GoogleAuthServer.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 299
+      "line": 330
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.__init__",
       "label": "__init__",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 313
+      "line": 344
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.start_server",
       "label": "start_server",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 324
+      "line": 355
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager._run_server",
       "label": "_run_server",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 345
+      "line": 376
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
       "label": "get_auth_url",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 353
+      "line": 384
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
       "label": "get_authenticated_email",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 375
+      "line": 406
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager.shutdown",
       "label": "shutdown",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 385
+      "line": 416
     },
     {
       "id": "core.services.auth_service.GoogleAuthManager._async_close",
       "label": "_async_close",
       "type": "function",
       "file_path": "core/services/auth_service.py",
-      "line": 394
+      "line": 425
     },
     {
       "id": "core.services.drawing_service",
@@ -19351,7 +19351,7 @@
     "core.services.auth_service": {
       "module_name": "core.services.auth_service",
       "file_path": "core/services/auth_service.py",
-      "mtime": 1783762690.1850986,
+      "mtime": 1783931730.1366155,
       "imports": [
         {
           "type": "direct",
@@ -19418,8 +19418,8 @@
           "bases": [
             "BaseHTTPRequestHandler"
           ],
-          "line": 170,
-          "end_line": 293
+          "line": 201,
+          "end_line": 324
         },
         {
           "id": "core.services.auth_service.GoogleAuthServer",
@@ -19427,15 +19427,15 @@
           "bases": [
             "HTTPServer"
           ],
-          "line": 296,
-          "end_line": 307
+          "line": 327,
+          "end_line": 338
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager",
           "name": "GoogleAuthManager",
           "bases": [],
-          "line": 310,
-          "end_line": 404
+          "line": 341,
+          "end_line": 435
         }
       ],
       "functions": [
@@ -19451,8 +19451,8 @@
             "format_str": "str"
           },
           "return_hint": "None",
-          "line": 173,
-          "end_line": 180
+          "line": 204,
+          "end_line": 211
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler.do_GET",
@@ -19462,8 +19462,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 182,
-          "end_line": 201
+          "line": 213,
+          "end_line": 232
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
@@ -19473,8 +19473,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 203,
-          "end_line": 205
+          "line": 234,
+          "end_line": 236
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
@@ -19488,8 +19488,8 @@
             "query_params": "dict[Tuple[str, list[str]]]"
           },
           "return_hint": "None",
-          "line": 207,
-          "end_line": 237
+          "line": 238,
+          "end_line": 268
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
@@ -19503,8 +19503,8 @@
             "code": "str"
           },
           "return_hint": "str",
-          "line": 239,
-          "end_line": 282
+          "line": 270,
+          "end_line": 313
         },
         {
           "id": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
@@ -19518,8 +19518,8 @@
             "content": "str"
           },
           "return_hint": "None",
-          "line": 284,
-          "end_line": 293
+          "line": 315,
+          "end_line": 324
         },
         {
           "id": "core.services.auth_service.GoogleAuthServer.__init__",
@@ -19535,8 +19535,8 @@
             "handler_class": "Any"
           },
           "return_hint": "None",
-          "line": 299,
-          "end_line": 307
+          "line": 330,
+          "end_line": 338
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.__init__",
@@ -19550,8 +19550,8 @@
             "port": "int"
           },
           "return_hint": "None",
-          "line": 313,
-          "end_line": 322
+          "line": 344,
+          "end_line": 353
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.start_server",
@@ -19561,8 +19561,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 324,
-          "end_line": 343
+          "line": 355,
+          "end_line": 374
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager._run_server",
@@ -19572,8 +19572,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 345,
-          "end_line": 351
+          "line": 376,
+          "end_line": 382
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.get_auth_url",
@@ -19583,8 +19583,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 353,
-          "end_line": 373
+          "line": 384,
+          "end_line": 404
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.get_authenticated_email",
@@ -19594,8 +19594,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 375,
-          "end_line": 383
+          "line": 406,
+          "end_line": 414
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager.shutdown",
@@ -19605,8 +19605,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 385,
-          "end_line": 404
+          "line": 416,
+          "end_line": 435
         },
         {
           "id": "core.services.auth_service.GoogleAuthManager._async_close",
@@ -19616,8 +19616,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 394,
-          "end_line": 401
+          "line": 425,
+          "end_line": 432
         }
       ],
       "calls": [
@@ -19625,355 +19625,355 @@
           "caller": "core.services.auth_service.OAuthCallbackHandler.log_message",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 180
+          "line": 211
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "urlparse",
           "caller_obj": "urllib.parse",
-          "line": 184
+          "line": 215
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "parse_qs",
           "caller_obj": "urllib.parse",
-          "line": 185
+          "line": 216
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_handle_callback",
           "caller_obj": "self",
-          "line": 189
+          "line": 220
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_serve_mock_login_page",
           "caller_obj": "self",
-          "line": 192
+          "line": 223
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 194
+          "line": 225
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "_handle_callback",
           "caller_obj": "self",
-          "line": 198
+          "line": 229
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "send_response",
           "caller_obj": "self",
-          "line": 200
+          "line": 231
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler.do_GET",
           "call_name": "end_headers",
           "caller_obj": "self",
-          "line": 201
+          "line": 232
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._serve_mock_login_page",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 205
+          "line": 236
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "get",
           "caller_obj": "query_params",
-          "line": 213
+          "line": 244
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 215
+          "line": 246
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "get",
           "caller_obj": "query_params",
-          "line": 224
+          "line": 255
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "_exchange_code_for_email",
           "caller_obj": "self",
-          "line": 228
+          "line": 259
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "format",
           "caller_obj": "SUCCESS_LOGIN_HTML_TEMPLATE",
-          "line": 232
+          "line": 263
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 233
+          "line": 264
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._handle_callback",
           "call_name": "_send_html_response",
           "caller_obj": "self",
-          "line": 235
+          "line": 266
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "encode",
           "caller_obj": "",
-          "line": 252
+          "line": 283
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlencode",
           "caller_obj": "urllib.parse",
-          "line": 252
+          "line": 283
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "Request",
           "caller_obj": "urllib.request",
-          "line": 262
+          "line": 293
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlopen",
           "caller_obj": "urllib.request",
-          "line": 263
+          "line": 294
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "loads",
           "caller_obj": "json",
-          "line": 264
+          "line": 295
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "decode",
           "caller_obj": "",
-          "line": 264
+          "line": 295
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "read",
           "caller_obj": "response",
-          "line": 264
+          "line": 295
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "get",
           "caller_obj": "res_data",
-          "line": 265
+          "line": 296
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "Request",
           "caller_obj": "urllib.request",
-          "line": 271
+          "line": 302
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "add_header",
           "caller_obj": "req_info",
-          "line": 272
+          "line": 303
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "urlopen",
           "caller_obj": "urllib.request",
-          "line": 274
+          "line": 305
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "loads",
           "caller_obj": "json",
-          "line": 275
+          "line": 306
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "decode",
           "caller_obj": "",
-          "line": 275
+          "line": 306
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "read",
           "caller_obj": "response_info",
-          "line": 275
+          "line": 306
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "get",
           "caller_obj": "user_info",
-          "line": 276
+          "line": 307
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 279
+          "line": 310
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._exchange_code_for_email",
           "call_name": "str",
           "caller_obj": null,
-          "line": 280
+          "line": 311
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "send_response",
           "caller_obj": "self",
-          "line": 290
+          "line": 321
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "send_header",
           "caller_obj": "self",
-          "line": 291
+          "line": 322
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "end_headers",
           "caller_obj": "self",
-          "line": 292
+          "line": 323
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "write",
           "caller_obj": "self.wfile",
-          "line": 293
+          "line": 324
         },
         {
           "caller": "core.services.auth_service.OAuthCallbackHandler._send_html_response",
           "call_name": "encode",
           "caller_obj": "content",
-          "line": 293
+          "line": 324
         },
         {
           "caller": "core.services.auth_service.GoogleAuthServer.__init__",
           "call_name": "__init__",
           "caller_obj": "",
-          "line": 306
+          "line": 337
         },
         {
           "caller": "core.services.auth_service.GoogleAuthServer.__init__",
           "call_name": "super",
           "caller_obj": null,
-          "line": 306
+          "line": 337
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "GoogleAuthServer",
           "caller_obj": null,
-          "line": 330
+          "line": 361
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "Thread",
           "caller_obj": "threading",
-          "line": 334
+          "line": 365
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "start",
           "caller_obj": "self.thread",
-          "line": 335
+          "line": 366
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 336
+          "line": 367
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 338
+          "line": 369
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.start_server",
           "call_name": "str",
           "caller_obj": null,
-          "line": 341
+          "line": 372
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "serve_forever",
           "caller_obj": "self.server",
-          "line": 349
+          "line": 380
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "debug",
           "caller_obj": "logger",
-          "line": 351
+          "line": 382
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._run_server",
           "call_name": "str",
           "caller_obj": null,
-          "line": 351
+          "line": 382
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.get_auth_url",
           "call_name": "urlencode",
           "caller_obj": "urllib.parse",
-          "line": 371
+          "line": 402
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 388
+          "line": 419
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "shutdown",
           "caller_obj": "server_to_close",
-          "line": 397
+          "line": 428
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "server_close",
           "caller_obj": "server_to_close",
-          "line": 398
+          "line": 429
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "info",
           "caller_obj": "logger",
-          "line": 399
+          "line": 430
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "error",
           "caller_obj": "logger",
-          "line": 401
+          "line": 432
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager._async_close",
           "call_name": "str",
           "caller_obj": null,
-          "line": 401
+          "line": 432
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "start",
           "caller_obj": "",
-          "line": 403
+          "line": 434
         },
         {
           "caller": "core.services.auth_service.GoogleAuthManager.shutdown",
           "call_name": "Thread",
           "caller_obj": "threading",
-          "line": 403
+          "line": 434
         }
       ]
     },
@@ -37086,51 +37086,51 @@
     "core.logging_bootstrap": {
       "module_name": "core.logging_bootstrap",
       "file_path": "core/logging_bootstrap.py",
-      "mtime": 1783931044.3901958,
+      "mtime": 1783931079.1867595,
       "imports": [
         {
           "type": "direct",
           "name": "logging",
           "asname": null,
-          "line": 7
+          "line": 8
         },
         {
           "type": "direct",
           "name": "logging.handlers",
           "asname": null,
-          "line": 8
+          "line": 9
         },
         {
           "type": "direct",
           "name": "os",
           "asname": null,
-          "line": 9
+          "line": 10
         },
         {
           "type": "direct",
           "name": "sys",
           "asname": null,
-          "line": 10
+          "line": 11
         },
         {
           "type": "direct",
           "name": "threading",
           "asname": null,
-          "line": 11
+          "line": 12
         },
         {
           "type": "from",
           "module": "typing",
           "name": "Any",
           "asname": null,
-          "line": 12
+          "line": 13
         },
         {
           "type": "from",
           "module": "typing",
           "name": "TextIO",
           "asname": null,
-          "line": 12
+          "line": 13
         }
       ],
       "classes": [
@@ -37138,15 +37138,15 @@
           "id": "core.logging_bootstrap.DummyStream",
           "name": "DummyStream",
           "bases": [],
-          "line": 15,
-          "end_line": 30
+          "line": 16,
+          "end_line": 31
         },
         {
           "id": "core.logging_bootstrap.TeeStream",
           "name": "TeeStream",
           "bases": [],
-          "line": 33,
-          "end_line": 95
+          "line": 34,
+          "end_line": 96
         }
       ],
       "functions": [
@@ -37162,8 +37162,8 @@
             "message": "str"
           },
           "return_hint": "int",
-          "line": 18,
-          "end_line": 19
+          "line": 19,
+          "end_line": 20
         },
         {
           "id": "core.logging_bootstrap.DummyStream.flush",
@@ -37173,8 +37173,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 21,
-          "end_line": 22
+          "line": 22,
+          "end_line": 23
         },
         {
           "id": "core.logging_bootstrap.DummyStream.encoding",
@@ -37184,8 +37184,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 25,
-          "end_line": 26
+          "line": 26,
+          "end_line": 27
         },
         {
           "id": "core.logging_bootstrap.DummyStream.errors",
@@ -37195,8 +37195,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "Any",
-          "line": 29,
-          "end_line": 30
+          "line": 30,
+          "end_line": 31
         },
         {
           "id": "core.logging_bootstrap.TeeStream.__init__",
@@ -37212,8 +37212,8 @@
             "logger_func": "Any"
           },
           "return_hint": "None",
-          "line": 36,
-          "end_line": 45
+          "line": 37,
+          "end_line": 46
         },
         {
           "id": "core.logging_bootstrap.TeeStream.write",
@@ -37227,8 +37227,8 @@
             "message": "str"
           },
           "return_hint": "int",
-          "line": 47,
-          "end_line": 69
+          "line": 48,
+          "end_line": 70
         },
         {
           "id": "core.logging_bootstrap.TeeStream.flush",
@@ -37238,8 +37238,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "None",
-          "line": 71,
-          "end_line": 77
+          "line": 72,
+          "end_line": 78
         },
         {
           "id": "core.logging_bootstrap.TeeStream.encoding",
@@ -37249,8 +37249,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "str",
-          "line": 80,
-          "end_line": 86
+          "line": 81,
+          "end_line": 87
         },
         {
           "id": "core.logging_bootstrap.TeeStream.errors",
@@ -37260,8 +37260,8 @@
           "args": [],
           "args_hints": {},
           "return_hint": "Any",
-          "line": 89,
-          "end_line": 95
+          "line": 90,
+          "end_line": 96
         },
         {
           "id": "core.logging_bootstrap._handle_unhandled_exception",
@@ -37279,8 +37279,8 @@
             "exc_traceback": "Any"
           },
           "return_hint": "None",
-          "line": 98,
-          "end_line": 116
+          "line": 99,
+          "end_line": 117
         },
         {
           "id": "core.logging_bootstrap._handle_thread_exception",
@@ -37294,8 +37294,8 @@
             "args": "Any"
           },
           "return_hint": "None",
-          "line": 119,
-          "end_line": 129
+          "line": 120,
+          "end_line": 130
         },
         {
           "id": "core.logging_bootstrap.bootstrap_logging",
@@ -37313,8 +37313,8 @@
             "level": "int"
           },
           "return_hint": "None",
-          "line": 132,
-          "end_line": 206
+          "line": 133,
+          "end_line": 207
         }
       ],
       "calls": [
@@ -37322,247 +37322,247 @@
           "caller": "core.logging_bootstrap.DummyStream.write",
           "call_name": "len",
           "caller_obj": null,
-          "line": 19
+          "line": 20
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.__init__",
           "call_name": "Lock",
           "caller_obj": "threading",
-          "line": 45
+          "line": 46
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.write",
           "call_name": "write",
           "caller_obj": "self.original_stream",
-          "line": 62
+          "line": 63
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.write",
           "call_name": "rstrip",
           "caller_obj": "message",
-          "line": 66
+          "line": 67
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.write",
           "call_name": "logger_func",
           "caller_obj": "self",
-          "line": 68
+          "line": 69
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.write",
           "call_name": "len",
           "caller_obj": null,
-          "line": 69
+          "line": 70
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.flush",
           "call_name": "flush",
           "caller_obj": "self.original_stream",
-          "line": 75
+          "line": 76
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.encoding",
           "call_name": "getattr",
           "caller_obj": null,
-          "line": 86
+          "line": 87
         },
         {
           "caller": "core.logging_bootstrap.TeeStream.errors",
           "call_name": "getattr",
           "caller_obj": null,
-          "line": 95
+          "line": 96
         },
         {
           "caller": "core.logging_bootstrap._handle_unhandled_exception",
           "call_name": "issubclass",
           "caller_obj": null,
-          "line": 108
+          "line": 109
         },
         {
           "caller": "core.logging_bootstrap._handle_unhandled_exception",
           "call_name": "__excepthook__",
           "caller_obj": "sys",
-          "line": 109
+          "line": 110
         },
         {
           "caller": "core.logging_bootstrap._handle_unhandled_exception",
           "call_name": "getLogger",
           "caller_obj": "logging",
-          "line": 112
-        },
-        {
-          "caller": "core.logging_bootstrap._handle_unhandled_exception",
-          "call_name": "critical",
-          "caller_obj": "logger",
           "line": 113
         },
         {
+          "caller": "core.logging_bootstrap._handle_unhandled_exception",
+          "call_name": "critical",
+          "caller_obj": "logger",
+          "line": 114
+        },
+        {
           "caller": "core.logging_bootstrap._handle_thread_exception",
           "call_name": "getLogger",
           "caller_obj": "logging",
-          "line": 125
+          "line": 126
         },
         {
           "caller": "core.logging_bootstrap._handle_thread_exception",
           "call_name": "critical",
           "caller_obj": "logger",
-          "line": 126
+          "line": 127
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "abspath",
           "caller_obj": "os.path",
-          "line": 143
+          "line": 144
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "makedirs",
           "caller_obj": "os",
-          "line": 144
+          "line": 145
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "join",
           "caller_obj": "os.path",
-          "line": 145
+          "line": 146
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "Formatter",
           "caller_obj": "logging",
-          "line": 150
+          "line": 151
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "getLogger",
           "caller_obj": "logging",
-          "line": 153
+          "line": 154
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "setLevel",
           "caller_obj": "root_logger",
-          "line": 154
+          "line": 155
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "list",
           "caller_obj": null,
-          "line": 157
+          "line": 158
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "removeHandler",
           "caller_obj": "root_logger",
-          "line": 158
+          "line": 159
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "TimedRotatingFileHandler",
           "caller_obj": "logging.handlers",
-          "line": 162
+          "line": 163
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "setFormatter",
-          "caller_obj": "file_handler",
-          "line": 169
-        },
-        {
-          "caller": "core.logging_bootstrap.bootstrap_logging",
-          "call_name": "setLevel",
           "caller_obj": "file_handler",
           "line": 170
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
+          "call_name": "setLevel",
+          "caller_obj": "file_handler",
+          "line": 171
+        },
+        {
+          "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "addHandler",
           "caller_obj": "root_logger",
-          "line": 171
+          "line": 172
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "write",
           "caller_obj": "sys.__stderr__",
-          "line": 175
+          "line": 176
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "StreamHandler",
           "caller_obj": "logging",
-          "line": 181
+          "line": 182
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "setFormatter",
           "caller_obj": "console_handler",
-          "line": 182
+          "line": 183
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "setLevel",
           "caller_obj": "console_handler",
-          "line": 183
+          "line": 184
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "addHandler",
           "caller_obj": "root_logger",
-          "line": 184
+          "line": 185
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "captureWarnings",
           "caller_obj": "logging",
-          "line": 191
+          "line": 192
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "TeeStream",
           "caller_obj": null,
-          "line": 195
+          "line": 196
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "getLogger",
           "caller_obj": "logging",
-          "line": 195
+          "line": 196
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "DummyStream",
           "caller_obj": null,
-          "line": 197
+          "line": 198
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "TeeStream",
           "caller_obj": null,
-          "line": 200
+          "line": 201
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "getLogger",
           "caller_obj": "logging",
-          "line": 200
+          "line": 201
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "DummyStream",
           "caller_obj": null,
-          "line": 202
+          "line": 203
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "info",
           "caller_obj": "",
-          "line": 204
+          "line": 205
         },
         {
           "caller": "core.logging_bootstrap.bootstrap_logging",
           "call_name": "getLogger",
           "caller_obj": "logging",
-          "line": 204
+          "line": 205
         }
       ]
     },

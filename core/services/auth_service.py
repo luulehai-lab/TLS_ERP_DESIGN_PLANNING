@@ -1,6 +1,7 @@
 # Tên file: core/services/auth_service.py
 # CHỨC NĂNG: Xử lý xác thực Google OAuth2 và chạy local HTTP server nhận callback
 # CHANGELOG:
+# - 15:36:44 13/07/2026: [FIX] fix(logging): handle None stdout/stderr in windowed pyinstaller execution (Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 16:40:16 08/07/2026: [UPDATE] feat(auth): add Google OAuth2 login with department-based access control (Antigravity)
 # - 16:35:00 08/07/2026: [FIX] Sửa do_GET hỗ trợ code ở root path và chuyển đóng server sang luồng phụ tránh deadlock socket (Lê Thanh Vân/Antigravity)
@@ -20,7 +21,7 @@ import config
 logger = logging.getLogger(__name__)
 
 # Hằng số giao diện HTML Mock Google Login (Premium Dark Slate Style)
-MOCK_LOGIN_HTML: str = """<!DOCTYPE html>
+MOCK_LOGIN_HTML: str = r"""<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -118,11 +119,42 @@ MOCK_LOGIN_HTML: str = """<!DOCTYPE html>
         <a href="/callback?code=mock_code_3&email=guest@gmail.com" class="btn" style="background-color: #475569; color: white;">
             👤 guest@gmail.com (Khách vãng lai)
         </a>
+
+        <div style="margin: 20px 0 10px 0; border-top: 1px dashed #334155; padding-top: 20px;">
+            <div class="title" style="font-size: 14px; margin-bottom: 12px; color: #94A3B8;">Hoặc nhập Email nhân sự bất kỳ:</div>
+            <input type="email" id="customEmail" placeholder="vd: designer@gmail.com" 
+                   style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #334155; background-color: #0F172A; color: #F8FAFC; font-size: 14px; margin-bottom: 12px; box-sizing: border-box; text-align: center; outline: none;">
+            <button onclick="submitCustomEmail()" class="btn" style="background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%); color: white; border: none; margin-bottom: 0;">
+                ⚡ Đăng nhập Mock
+            </button>
+        </div>
         
         <div class="footer">
             Chế độ Mock Login tự động kích hoạt do chưa cấu hình Google Client ID trong tệp tin .env
         </div>
     </div>
+
+    <script>
+        function submitCustomEmail() {
+            var email = document.getElementById('customEmail').value.trim();
+            if (!email) {
+                alert('Vui lòng nhập địa chỉ email!');
+                return;
+            }
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Địa chỉ email không hợp lệ!');
+                return;
+            }
+            window.location.href = '/callback?code=mock_custom&email=' + encodeURIComponent(email);
+        }
+
+        document.getElementById('customEmail').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitCustomEmail();
+            }
+        });
+    </script>
 </body>
 </html>
 """
