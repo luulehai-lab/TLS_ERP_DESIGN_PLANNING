@@ -1,6 +1,7 @@
 # Tên file: core/logging_bootstrap.py
 # CHỨC NĂNG: Khởi tạo cấu hình logging toàn cục, excepthook, và redirect stdout/stderr cho dự án ERP.
 # CHANGELOG:
+# - 15:24:39 13/07/2026: [UPDATE] feat(branding): add LOGO.JPG image to sidebar and login windows and bundle it in release zip (Antigravity)
 # - 09:42:18 13/07/2026: [NEW] feat(report): add visual report dashboard with charts, fix combobox/permission bugs and install global exception hook (Antigravity)
 # - 09:39:00 13/07/2026: [NEW] Tạo mới module bootstrap_logging hỗ trợ TeeStream và bẫy lỗi Thread phụ cho app ERP. (Antigravity)
 
@@ -10,6 +11,24 @@ import os
 import sys
 import threading
 from typing import Any, TextIO
+
+
+class DummyStream:
+    """Stream dummy câm lặng để tránh lỗi ghi file trên môi trường windowed đóng gói."""
+
+    def write(self, message: str) -> int:
+        return len(message)
+
+    def flush(self) -> None:
+        pass
+
+    @property
+    def encoding(self) -> str:
+        return "utf-8"
+
+    @property
+    def errors(self) -> str | None:
+        return None
 
 
 class TeeStream:
@@ -38,8 +57,12 @@ class TeeStream:
         if not message:
             return 0
         with self._lock:
-            # Ghi trực tiếp ra console thật
-            self.original_stream.write(message)
+            # Ghi trực tiếp ra console thật nếu tồn tại
+            if self.original_stream is not None:
+                try:
+                    self.original_stream.write(message)
+                except Exception:
+                    pass
             # Loại bỏ ký tự xuống dòng thừa ở cuối khi gửi sang logger
             clean_msg = message.rstrip()
             if clean_msg:
@@ -48,7 +71,11 @@ class TeeStream:
 
     def flush(self) -> None:
         """Đẩy toàn bộ dữ liệu trong bộ đệm ra stream gốc."""
-        self.original_stream.flush()
+        if self.original_stream is not None:
+            try:
+                self.original_stream.flush()
+            except Exception:
+                pass
 
     @property
     def encoding(self) -> str:
@@ -57,7 +84,7 @@ class TeeStream:
         Returns:
             Tên bảng mã.
         """
-        return getattr(self.original_stream, "encoding", "utf-8")
+        return getattr(self.original_stream, "encoding", "utf-8") if self.original_stream else "utf-8"
 
     @property
     def errors(self) -> str | None:
@@ -66,7 +93,7 @@ class TeeStream:
         Returns:
             Cơ chế xử lý lỗi.
         """
-        return getattr(self.original_stream, "errors", None)
+        return getattr(self.original_stream, "errors", None) if self.original_stream else None
 
 
 def _handle_unhandled_exception(
@@ -144,13 +171,18 @@ def bootstrap_logging(
         file_handler.setLevel(level)
         root_logger.addHandler(file_handler)
     except Exception as e:
-        sys.__stderr__.write(f"Không thể khởi tạo File Logger: {e}\n")
+        if sys.__stderr__ is not None:
+            try:
+                sys.__stderr__.write(f"Không thể khởi tạo File Logger: {e}\n")
+            except Exception:
+                pass
 
-    # 5. Console Handler (Ghi trực tiếp ra console gốc sys.__stdout__ để tránh đệ quy)
-    console_handler = logging.StreamHandler(sys.__stdout__)
-    console_handler.setFormatter(formatter)
-    console_handler.setLevel(level)
-    root_logger.addHandler(console_handler)
+    # 5. Console Handler (Chỉ ghi ra console gốc nếu tồn tại để tránh crash khi chạy exe windowed)
+    if sys.__stdout__ is not None:
+        console_handler = logging.StreamHandler(sys.__stdout__)
+        console_handler.setFormatter(formatter)
+        console_handler.setLevel(level)
+        root_logger.addHandler(console_handler)
 
     # 6. Thiết lập bẫy Exception
     sys.excepthook = _handle_unhandled_exception
@@ -160,8 +192,15 @@ def bootstrap_logging(
     logging.captureWarnings(True)
 
     # 8. Redirect sys.stdout và sys.stderr để hứng mọi print()
-    sys.stdout = TeeStream(sys.__stdout__, logging.getLogger("STDOUT").info)  # type: ignore
-    sys.stderr = TeeStream(sys.__stderr__, logging.getLogger("STDERR").error)  # type: ignore
+    if sys.stdout is not None and sys.__stdout__ is not None:
+        sys.stdout = TeeStream(sys.__stdout__, logging.getLogger("STDOUT").info)  # type: ignore
+    else:
+        sys.stdout = DummyStream()  # type: ignore
+
+    if sys.stderr is not None and sys.__stderr__ is not None:
+        sys.stderr = TeeStream(sys.__stderr__, logging.getLogger("STDERR").error)  # type: ignore
+    else:
+        sys.stderr = DummyStream()  # type: ignore
 
     logging.getLogger("SystemBootstrap").info(
         "Hệ thống logging toàn cục đã được khởi động thành công (UTF-8, Day-Rotate)."
