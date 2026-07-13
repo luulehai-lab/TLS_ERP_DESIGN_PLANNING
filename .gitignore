@@ -24,3 +24,5 @@ build/
 dist/
 *.spec
 .session.json
+service_account.json
+logs/

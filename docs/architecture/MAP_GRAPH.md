@@ -47,6 +47,13 @@ graph TD
     core_services_drawing_service_get_drawing_safe["⚙️ get_drawing_safe()"]:::func
     core_services_drawing_service_revise_drawing["⚙️ revise_drawing()"]:::func
     core_services_drawing_service_revise_drawing_safe["⚙️ revise_drawing_safe()"]:::func
+    core_services_drive_service["📄 drive_service.py"]:::file
+    core_services_drive_service__get_drive_service["⚙️ _get_drive_service()"]:::func
+    core_services_drive_service_create_drive_folder["⚙️ create_drive_folder()"]:::func
+    core_services_drive_service_set_anyone_read_permission["⚙️ set_anyone_read_permission()"]:::func
+    core_services_drive_service_upload_single_file["⚙️ upload_single_file()"]:::func
+    core_services_drive_service_upload_local_directory["⚙️ upload_local_directory()"]:::func
+    core_services_drive_service_upload_single_file_no_share["⚙️ upload_single_file_no_share()"]:::func
     core_services_project_service["📄 project_service.py"]:::file
     core_services_project_service_create_project["⚙️ create_project()"]:::func
     core_services_project_service_get_project["⚙️ get_project()"]:::func
@@ -113,6 +120,12 @@ graph TD
     core_services_drawing_service -->|contains| core_services_drawing_service_get_drawing_safe
     core_services_drawing_service -->|contains| core_services_drawing_service_revise_drawing
     core_services_drawing_service -->|contains| core_services_drawing_service_revise_drawing_safe
+    core_services_drive_service -->|contains| core_services_drive_service__get_drive_service
+    core_services_drive_service -->|contains| core_services_drive_service_create_drive_folder
+    core_services_drive_service -->|contains| core_services_drive_service_set_anyone_read_permission
+    core_services_drive_service -->|contains| core_services_drive_service_upload_single_file
+    core_services_drive_service -->|contains| core_services_drive_service_upload_local_directory
+    core_services_drive_service -->|contains| core_services_drive_service_upload_single_file_no_share
     core_services_project_service -->|contains| core_services_project_service_create_project
     core_services_project_service -->|contains| core_services_project_service_get_project
     core_services_project_service -->|contains| core_services_project_service_list_active_projects
@@ -160,6 +173,14 @@ graph TD
     core_services_drawing_service_get_project_drawings_safe ==>|calls| core_services_drawing_service_get_project_drawings
     core_services_drawing_service_get_drawing_safe ==>|calls| core_services_drawing_service_get_drawing
     core_services_drawing_service_revise_drawing_safe ==>|calls| core_services_drawing_service_revise_drawing
+    core_services_drive_service_create_drive_folder ==>|calls| core_services_drive_service__get_drive_service
+    core_services_drive_service_set_anyone_read_permission ==>|calls| core_services_drive_service__get_drive_service
+    core_services_drive_service_upload_single_file ==>|calls| core_services_drive_service__get_drive_service
+    core_services_drive_service_upload_single_file ==>|calls| core_services_drive_service_set_anyone_read_permission
+    core_services_drive_service_upload_local_directory ==>|calls| core_services_drive_service__get_drive_service
+    core_services_drive_service_upload_local_directory ==>|calls| core_services_drive_service_create_drive_folder
+    core_services_drive_service_upload_local_directory ==>|calls| core_services_drive_service_upload_single_file_no_share
+    core_services_drive_service_upload_local_directory ==>|calls| core_services_drive_service_set_anyone_read_permission
     core_services_project_service_list_active_projects_safe ==>|calls| core_services_project_service_list_active_projects
     core_services_project_service_delete_project_safe ==>|calls| core_services_project_service_delete_project
     core_services_project_service_create_project_safe ==>|calls| core_services_project_service_create_project

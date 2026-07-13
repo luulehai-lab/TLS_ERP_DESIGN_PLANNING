@@ -1,6 +1,7 @@
 # Tên file: config.py
 # CHỨC NĂNG: Quản lý cấu hình dự án (Database, API, Thư mục)
 # CHANGELOG:
+# - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
 # - 17:15:26 08/07/2026: [FIX] fix(auth): fix socket deadlock, redirect issues and optimize DB connection performance (Antigravity)
 # - 14:13:50 08/07/2026: [UPDATE] chore(db): update database port connection and sync codebase graph (Antigravity)
 # - 14:05:00 08/07/2026: [UPDATE] Bổ sung cấu hình OAuth và phân quyền email phòng ban (Lê Thanh Vân/Antigravity)
@@ -32,6 +33,9 @@ if not DATABASE_URL:
 
 # Cấu hình Google Drive (nếu có dùng API tự động sau này)
 GOOGLE_DRIVE_FOLDER_ID: str = os.getenv("GOOGLE_DRIVE_FOLDER_ID", "")
+GOOGLE_SERVICE_ACCOUNT_FILE: str = os.getenv(
+    "GOOGLE_SERVICE_ACCOUNT_FILE", os.path.join(str(BASE_DIR), "service_account.json")
+)
 
 # Cấu hình Google OAuth
 GOOGLE_CLIENT_ID: str = os.getenv("GOOGLE_CLIENT_ID", "")

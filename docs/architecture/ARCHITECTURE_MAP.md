@@ -2,6 +2,7 @@
 File: docs/architecture/ARCHITECTURE_MAP.md
 CHỨC NĂNG: Bản đồ master kiến trúc kỹ thuật dự án ERP Thiết kế - Kế hoạch (TLS)
 CHANGELOG:
+- 14:15:00 13/07/2026: [UPDATE] Cập nhật bản đồ kiến trúc: Tích hợp tính năng tự động upload bản vẽ lên Google Drive qua Service Account và ban hành tự động (Lê Thanh Vân/Antigravity)
 - 17:55:00 10/07/2026: [REFACTOR] Modular hóa UI MainWindow thành SidebarWidget & HeaderWidget, tạo BaseDrawingView dùng chung cho ThietKeView/KeHoachView và áp dụng TLSTheme (Lê Thanh Vân/Antigravity)
 - 16:30:00 10/07/2026: [UPDATE] Tái cấu trúc UI màn hình Quản lý Dự án xếp lớp dọc, tách project_dialog.py và nút tạo Sidebar (Lê Thanh Vân/Antigravity)
 - 15:20:00 10/07/2026: [UPDATE] Bổ sung trường designer_email vào model ProjectSection và script migrate_section_roles.py (Lê Thanh Vân/Antigravity)
@@ -42,7 +43,8 @@ CHANGELOG:
 │       ├── auth_service.py    # Xử lý Google OAuth2, chạy Local HTTP Server callback & Mock Login
 │       ├── session_manager.py # Quản lý phiên đăng nhập (Session) của người dùng cục bộ
 │       ├── project_service.py # Logic nghiệp vụ Quản lý Dự án
-│       └── drawing_service.py # Logic nghiệp vụ Ban hành, Cập nhật trạng thái bản vẽ
+│       ├── drawing_service.py # Logic nghiệp vụ Ban hành, Cập nhật trạng thái bản vẽ
+│       └── drive_service.py   # Dịch vụ upload file/folder tự động lên Google Drive bằng Service Account
 │
 ├── ui/                      # TẦNG GIAO DIỆN (PyQt6 - Chỉ xử lý hiển thị, cấm truy vấn DB trực tiếp)
 │   ├── __init__.py
@@ -92,11 +94,12 @@ sequenceDiagram
     actor KH as Nhân viên Kế hoạch
 
     Note over TK, GD: Chặng 1: Ban hành Bản vẽ
-    TK->>GD: Upload file PDF bản vẽ nặng vào thư mục dự án
-    GD-->>TK: Lấy shareable link (Google Drive URL)
-    TK->>UI: Nhập mã bản vẽ, tên bản vẽ & dán link Drive URL vào App
-    TK->>UI: Bấm nút [Ban hành bản vẽ]
-    UI->>DB: Ghi log trạng thái "Chờ triển khai" & thông tin bản vẽ
+    TK->>UI: Chọn File bản vẽ (PDF) hoặc Thư mục trên máy tính local
+    UI->>UI: Trích xuất tên file để tự động gợi ý điền Mã Bản vẽ
+    TK->>UI: Nhập tên bản vẽ, ghi chú & bấm [Ban hành bản vẽ]
+    UI->>GD: DriveUploadWorker upload ngầm lên thư mục Drive chung bằng Service Account
+    GD-->>UI: Trả về link Google Drive chia sẻ (webViewLink)
+    UI->>DB: Ghi dữ liệu bản vẽ kèm link Drive & đặt trạng thái "Chờ triển khai"
     DB-->>UI: Xác nhận ghi thành công (Success)
     UI-->>TK: Thông báo "Ban hành thành công"
 

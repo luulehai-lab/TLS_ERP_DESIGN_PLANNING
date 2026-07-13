@@ -1,6 +1,7 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Bổ sung section_designer_emails và section_designer_email vào loader threads (Antigravity)
 # - 14:34:36 11/07/2026: [REFACTOR] refactor(ui-modularity): complete modular refactoring of codebase graph tools and adopt UI-Backend Separation rules (Antigravity)
@@ -175,3 +176,79 @@ class DrawingLoaderThread(QThread):
             self.error.emit(str(e))
         finally:
             db.close()
+
+
+class DriveUploadWorker(QThread):
+    """Luồng phụ chuyên trách upload file hoặc thư mục lên Google Drive ngầm.
+
+    Giúp giao diện không bị treo đơ (Not Responding) khi đang upload các bản vẽ PDF
+    hoặc thư mục bản vẽ dung lượng lớn lên Google Drive qua mạng.
+    """
+
+    progress = pyqtSignal(str)
+    finished = pyqtSignal(str)
+    error = pyqtSignal(str)
+
+    def __init__(self, local_path: str, parent_folder_id: str) -> None:
+        """Khởi tạo luồng upload.
+
+        Args:
+            local_path: Đường dẫn file hoặc thư mục cục bộ cần upload.
+            parent_folder_id: ID thư mục Google Drive đích.
+        """
+        super().__init__()
+        self.local_path = local_path
+        self.parent_folder_id = parent_folder_id
+
+    def run(self) -> None:
+        """Thực thi upload ở luồng phụ."""
+        import os
+        from core.services import drive_service
+
+        logger.info(
+            "DriveUploadWorker: Bắt đầu tải lên Google Drive. Nguồn cục bộ='%s', Thư mục đích='%s'",
+            self.local_path,
+            self.parent_folder_id,
+        )
+        try:
+            if not self.local_path or not os.path.exists(self.local_path):
+                self.error.emit("Đường dẫn tệp tin hoặc thư mục cục bộ không tồn tại.")
+                return
+
+            if not self.parent_folder_id:
+                self.error.emit(
+                    "Chưa cấu hình ID thư mục Google Drive đích (GOOGLE_DRIVE_FOLDER_ID)."
+                )
+                return
+
+            self.progress.emit(
+                "Đang kết nối tới Google Drive API và tải lên dữ liệu..."
+            )
+
+            if os.path.isdir(self.local_path):
+                link = drive_service.upload_local_directory(
+                    self.local_path, self.parent_folder_id
+                )
+            else:
+                link = drive_service.upload_single_file(
+                    self.local_path, self.parent_folder_id
+                )
+
+            if link:
+                logger.info("DriveUploadWorker: Tải lên thành công. Link='%s'", link)
+                self.finished.emit(link)
+            else:
+                logger.error(
+                    "DriveUploadWorker: Upload thất bại (Drive API trả về None)."
+                )
+                self.error.emit(
+                    "Đã xảy ra lỗi trong quá trình upload lên Google Drive. Vui lòng kiểm tra lại log."
+                )
+        except Exception as e:
+            logger.error(
+                "DriveUploadWorker: Lỗi nghiêm trọng trong luồng upload: %s",
+                str(e),
+                exc_info=True,
+            )
+            self.error.emit(str(e))
+
