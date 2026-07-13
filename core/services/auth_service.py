@@ -1,6 +1,7 @@
 # Tên file: core/services/auth_service.py
 # CHỨC NĂNG: Xử lý xác thực Google OAuth2 và chạy local HTTP server nhận callback
 # CHANGELOG:
+# - 16:44:38 13/07/2026: [FIX] fix(auth): bypass ssl cert verification for google api calls (Antigravity)
 # - 15:59:41 13/07/2026: [UPDATE] feat(config): encode Google OAuth credentials to bypass github security rules (Antigravity)
 # - 15:36:44 13/07/2026: [FIX] fix(logging): handle None stdout/stderr in windowed pyinstaller execution (Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
@@ -253,27 +254,83 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
         code = code_list[0]
         email = ""
 
+        # Lấy redirect_uri động từ Host header để đảm bảo khớp 100% với trình duyệt
+        host_header = self.headers.get("Host", f"localhost:{self.server.server_port}")  # type: ignore
+        redirect_uri = f"http://{host_header}"
+
         if not config.GOOGLE_CLIENT_ID:
             email_list = query_params.get("email")
             if email_list:
                 email = email_list[0]
         else:
-            email = self._exchange_code_for_email(code)
+            email = self._exchange_code_for_email(code, redirect_uri)
 
         if email:
             self.server.authenticated_email = email  # type: ignore
             success_html = SUCCESS_LOGIN_HTML_TEMPLATE.format(email=email)
             self._send_html_response(success_html)
         else:
-            self._send_html_response(
-                "<h1>Lỗi xác thực</h1><p>Không thể lấy thông tin email từ Google.</p>"
-            )
+            # Lấy thông tin lỗi chi tiết nhất để hiển thị trực quan cho người dùng debug
+            error_detail = getattr(self.server, "last_auth_error", "Không xác định được lỗi")
+            error_html = f"""<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lỗi xác thực - TUAN LONG STEEL</title>
+    <style>
+        body {{
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0F172A;
+            color: #F8FAFC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }}
+        .card {{
+            background-color: #1E293B;
+            border: 1px solid #EF4444;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }}
+        h1 {{ color: #EF4444; font-size: 24px; margin-bottom: 20px; }}
+        p {{ color: #94A3B8; font-size: 15px; line-height: 1.6; }}
+        pre {{
+            background-color: #0F172A;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: left;
+            overflow-x: auto;
+            color: #F43F5E;
+            font-size: 13px;
+            border: 1px solid #334155;
+            margin-top: 15px;
+        }}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>❌ Lỗi xác thực Google</h1>
+        <p>Không thể lấy thông tin email từ dịch vụ Google OAuth2.</p>
+        <p><strong>Chi tiết lỗi kỹ thuật:</strong></p>
+        <pre>{error_detail}</pre>
+        <p style="font-size: 12px; color: #64748B; margin-top: 20px;">Vui lòng chụp ảnh màn hình này gửi lại cho em hỗ trợ nhé ạ!</p>
+    </div>
+</body>
+</html>"""
+            self._send_html_response(error_html)
 
-    def _exchange_code_for_email(self, code: str) -> str:
+    def _exchange_code_for_email(self, code: str, redirect_uri: str) -> str:
         """Đổi authorization code lấy email người dùng qua Google API.
 
         Args:
             code: Mã authorization code nhận được từ Google.
+            redirect_uri: URI redirect động khớp với request.
 
         Returns:
             str: Email của người dùng, hoặc chuỗi rỗng nếu lỗi.
@@ -283,8 +340,6 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
             context = ssl._create_unverified_context()
 
             token_url = "https://oauth2.googleapis.com/token"
-            redirect_uri = f"http://localhost:{self.server.server_port}"  # type: ignore
-
             data = urllib.parse.urlencode(
                 {
                     "code": code,
@@ -295,26 +350,42 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
                 }
             ).encode("utf-8")
 
+            # Khởi tạo lưu lỗi trên server
+            self.server.last_auth_error = ""  # type: ignore
+
             req = urllib.request.Request(token_url, data=data)
-            with urllib.request.urlopen(req, context=context) as response:
-                res_data = json.loads(response.read().decode("utf-8"))
-                access_token = res_data.get("access_token")
+            try:
+                with urllib.request.urlopen(req, context=context) as response:
+                    res_data = json.loads(response.read().decode("utf-8"))
+                    access_token = res_data.get("access_token")
+            except urllib.error.HTTPError as he:
+                error_body = he.read().decode("utf-8")
+                self.server.last_auth_error = f"HTTP Error {he.code}: {he.reason}\nBody: {error_body}"  # type: ignore
+                raise Exception(self.server.last_auth_error)  # type: ignore
 
             if not access_token:
+                self.server.last_auth_error = "Không có access_token trong phản hồi Google."  # type: ignore
                 return ""
 
             userinfo_url = "https://www.googleapis.com/oauth2/v3/userinfo"
             req_info = urllib.request.Request(userinfo_url)
             req_info.add_header("Authorization", f"Bearer {access_token}")
 
-            with urllib.request.urlopen(req_info, context=context) as response_info:
-                user_info = json.loads(response_info.read().decode("utf-8"))
-                return user_info.get("email", "")
+            try:
+                with urllib.request.urlopen(req_info, context=context) as response_info:
+                    user_info = json.loads(response_info.read().decode("utf-8"))
+                    return user_info.get("email", "")
+            except urllib.error.HTTPError as he:
+                error_body = he.read().decode("utf-8")
+                self.server.last_auth_error = f"UserInfo HTTP Error {he.code}: {he.reason}\nBody: {error_body}"  # type: ignore
+                raise Exception(self.server.last_auth_error)  # type: ignore
 
         except Exception as e:
             logger.error(
                 "Lỗi khi trao đổi mã lấy token Google: %s", str(e), exc_info=True
             )
+            if not getattr(self.server, "last_auth_error", None):
+                self.server.last_auth_error = str(e)  # type: ignore
             return ""
 
     def _send_html_response(self, content: str) -> None:
