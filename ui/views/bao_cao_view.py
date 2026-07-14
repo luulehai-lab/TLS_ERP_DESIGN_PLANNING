@@ -1,6 +1,8 @@
 # Tên file: ui/views/bao_cao_view.py
 # CHỨC NĂNG: Giao diện Tab Báo cáo & Thống kê trực quan dành cho tất cả phòng ban
 # CHANGELOG:
+# - 20:05:49 14/07/2026: [FIX] fix(drive): resolve personal Google Drive upload storage quota limit by adopting user OAuth2 credentials (Antigravity)
+# - 17:57:00 14/07/2026: [UPDATE] Cân chỉnh Grid layout biểu đồ, chuyển combobox sang Mã dự án, và tích hợp Tab Tiến độ chuyển xưởng trực quan (Lê Thanh Vân/Antigravity)
 # - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:34:00 14/07/2026: [REFACTOR] Tách logic Tab Lịch sử tải sang DownloadHistoryWidget và di chuyển ReportLoaderThread để rút gọn file xuống dưới 550 dòng (Lê Thanh Vân/Antigravity)
 # - 11:28:00 14/07/2026: [UPDATE] Tích hợp Tab thống kê lượt tải bản vẽ dạng Master-Detail bất đồng bộ vào BaoCaoView (Lê Thanh Vân/Antigravity)
@@ -113,6 +115,9 @@ class BaoCaoView(QWidget):
         # Tab 2: Lịch sử tải bản vẽ
         self._init_download_tab()
 
+        # Tab 3: Tiến độ chuyển xưởng
+        self._init_timeline_tab()
+
         # Áp dụng stylesheet dùng chung
         self.setStyleSheet(TLSTheme.content_view_stylesheet())
 
@@ -123,6 +128,13 @@ class BaoCaoView(QWidget):
         """Thiết lập cấu trúc layout giao diện tab Lịch sử tải bản vẽ."""
         self.download_widget = DownloadHistoryWidget(self)
         self.tabs.addTab(self.download_widget, "📥 Lịch sử tải bản vẽ")
+
+    def _init_timeline_tab(self) -> None:
+        """Thiết lập cấu trúc layout giao diện tab Tiến độ chuyển xưởng."""
+        from ui.views.bao_cao.drawing_timeline_widget import DrawingTimelineWidget
+
+        self.timeline_widget = DrawingTimelineWidget(self)
+        self.tabs.addTab(self.timeline_widget, "🕒 Tiến độ chuyển xưởng")
 
     def set_project(self, project_id: str) -> None:
         """Đồng bộ dự án hiện hành từ MainWindow sang.
@@ -174,7 +186,7 @@ class BaoCaoView(QWidget):
                     filtered_projects.append(p)
 
             for p in filtered_projects:
-                self.cb_projects.addItem(p.project_name, p.project_id)
+                self.cb_projects.addItem(p.project_id, p.project_id)
         except Exception as e:
             logger.error(
                 "BaoCaoView: Lỗi nạp danh sách dự án: %s", str(e), exc_info=True
@@ -237,12 +249,20 @@ class BaoCaoView(QWidget):
 
     def _clear_grid(self) -> None:
         """Xóa sạch các widget trong khung Grid biểu đồ và reset các bảng tải."""
+        # Khôi phục stretches về trạng thái mặc định (0) để thông báo Loading hiển thị cân đối
+        self.layout_grid.setColumnStretch(0, 0)
+        self.layout_grid.setColumnStretch(1, 0)
+        self.layout_grid.setRowStretch(0, 0)
+        self.layout_grid.setRowStretch(1, 0)
+
         while self.layout_grid.count():
             child = self.layout_grid.takeAt(0)
             if child.widget():
                 child.widget().deleteLater()
         if hasattr(self, "download_widget"):
             self.download_widget.clear()
+        if hasattr(self, "timeline_widget"):
+            self.timeline_widget.clear()
 
     def _on_load_error(self, err_msg: str) -> None:
         """Callback khi luồng nạp dữ liệu gặp lỗi.
@@ -274,6 +294,10 @@ class BaoCaoView(QWidget):
             # Đổ dữ liệu lịch sử tải bản vẽ
             if "downloads" in stats:
                 self.download_widget.load_data(stats["downloads"])
+
+            # Đổ dữ liệu tiến độ dòng đời bản vẽ
+            if "lifecycle" in stats:
+                self.timeline_widget.load_data(stats["lifecycle"])
         except Exception:
             logger.error(
                 "BaoCaoView: Lỗi khi dựng biểu đồ/bảng thống kê", exc_info=True
@@ -308,6 +332,12 @@ class BaoCaoView(QWidget):
         view_timeline = QChartView(chart_timeline)
         view_timeline.setStyleSheet("border: 1px solid #E2E8F0; border-radius: 8px;")
         self.layout_grid.addWidget(view_timeline, 1, 1)
+
+        # Thiết lập stretches để chia đều không gian Grid 2x2
+        self.layout_grid.setColumnStretch(0, 1)
+        self.layout_grid.setColumnStretch(1, 1)
+        self.layout_grid.setRowStretch(0, 1)
+        self.layout_grid.setRowStretch(1, 1)
 
     def _create_donut_chart(self, status_stats: dict) -> Any:
         """Khởi tạo Biểu đồ Donut thống kê trạng thái.
@@ -573,3 +603,9 @@ class BaoCaoView(QWidget):
 
         layout_right.addWidget(table_sec)
         self.layout_grid.addWidget(widget_right, 0, 1)
+
+        # Thiết lập stretches cho giao diện fallback (1 hàng, 2 cột)
+        self.layout_grid.setColumnStretch(0, 1)
+        self.layout_grid.setColumnStretch(1, 1)
+        self.layout_grid.setRowStretch(0, 1)
+        self.layout_grid.setRowStretch(1, 0)

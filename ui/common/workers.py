@@ -1,6 +1,7 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 20:05:49 14/07/2026: [FIX] fix(drive): resolve personal Google Drive upload storage quota limit by adopting user OAuth2 credentials (Antigravity)
 # - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:32:00 14/07/2026: [NEW] Di chuyển ReportLoaderThread từ bao_cao_view.py sang để tối ưu modularity (Lê Thanh Vân/Antigravity)
 # - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
@@ -280,7 +281,10 @@ class ReportLoaderThread(QThread):
                 get_section_drawing_stats_safe,
                 get_designer_productivity_stats_safe,
                 get_release_timeline_stats_safe,
+            )
+            from core.services.report_history_service import (
                 get_drawing_download_summary_safe,
+                get_drawing_lifecycle_history_safe,
             )
 
             stats = {
@@ -299,6 +303,9 @@ class ReportLoaderThread(QThread):
                 "downloads": get_drawing_download_summary_safe(
                     self.project_id, self.user_email
                 ),
+                "lifecycle": get_drawing_lifecycle_history_safe(
+                    self.project_id, self.user_email
+                ),
             }
             self.finished.emit(stats)
         except Exception as e:
@@ -306,4 +313,3 @@ class ReportLoaderThread(QThread):
                 "ReportLoaderThread: Lỗi nạp dữ liệu: %s", str(e), exc_info=True
             )
             self.error.emit(str(e))
-

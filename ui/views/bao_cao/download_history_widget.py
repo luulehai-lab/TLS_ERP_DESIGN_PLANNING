@@ -1,6 +1,7 @@
 # Tên file: ui/views/bao_cao/download_history_widget.py
 # CHỨC NĂNG: Widget quản lý và hiển thị lịch sử tải bản vẽ (Master-Detail)
 # CHANGELOG:
+# - 20:05:49 14/07/2026: [FIX] fix(drive): resolve personal Google Drive upload storage quota limit by adopting user OAuth2 credentials (Antigravity)
 # - 11:39:58 14/07/2026: [NEW] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:30:00 14/07/2026: [NEW] Khởi tạo widget lịch sử tải bản vẽ để modular hóa BaoCaoView (Lê Thanh Vân/Antigravity)
 
@@ -163,7 +164,9 @@ class DownloadHistoryWidget(QWidget):
         drawing_id = item_id.text()
 
         # Truy vấn lịch sử tải chi tiết của bản vẽ này
-        from core.services.report_service import get_drawing_download_details_safe
+        from core.services.report_history_service import (
+            get_drawing_download_details_safe,
+        )
 
         details = get_drawing_download_details_safe(drawing_id)
 

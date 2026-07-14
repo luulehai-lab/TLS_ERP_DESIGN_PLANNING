@@ -1,6 +1,7 @@
 # Tên file: tests/test_report_service.py
 # CHỨC NĂNG: Unit test cho tầng nghiệp vụ báo cáo thống kê report_service.py
 # CHANGELOG:
+# - 20:05:49 14/07/2026: [FIX] fix(drive): resolve personal Google Drive upload storage quota limit by adopting user OAuth2 credentials (Antigravity)
 # - 18:49:30 11/07/2026: [NEW] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
 # - 18:25:00 11/07/2026: [NEW] Khởi tạo unit tests cho report_service.py có phân quyền dữ liệu (Lê Thanh Vân/Antigravity)
 
@@ -16,6 +17,9 @@ from core.services.report_service import (
     get_section_drawing_stats,
     get_designer_productivity_stats,
     get_release_timeline_stats,
+)
+from core.services.report_history_service import (
+    get_drawing_lifecycle_history,
 )
 
 
@@ -201,3 +205,42 @@ class TestReportService(unittest.TestCase):
         self.assertEqual(len(timeline_ha), 1)
         self.assertEqual(timeline_ha[0]["date"], "2026-07-11")
         self.assertEqual(timeline_ha[0]["count"], 1)
+
+    def test_drawing_lifecycle_history(self) -> None:
+        """Kiểm tra báo cáo dòng đời bản vẽ có trích xuất đúng mốc và phân quyền."""
+        # Thêm log chuyển xưởng cho bản vẽ VL-NX1-02 để test mốc Chuyển xưởng
+        self.db.add(
+            DrawingLog(
+                drawing_id="VL-NX1-02",
+                version="V1",
+                action="Chuyển trạng thái -> Đang sản xuất",
+                performed_by="phuc@tls.vn",
+                timestamp=datetime(2026, 7, 12, 10, 0, 0),
+            )
+        )
+        self.db.commit()
+
+        # Admin xem dòng đời
+        history = get_drawing_lifecycle_history(
+            self.db, self.project_id, "luu.lehai@gmail.com"
+        )
+        # Sẽ trả về 4 bản vẽ: VL-CHUNG-01, VL-NX1-01, VL-NX1-02, VL-NX2-01
+        self.assertEqual(len(history), 4)
+
+        # Kiểm tra chi tiết mốc của bản vẽ VL-NX1-02
+        nx1_02_item = next(x for x in history if x["drawing_id"] == "VL-NX1-02")
+        self.assertEqual(nx1_02_item["status"], "Đang sản xuất")
+        self.assertIsNotNone(nx1_02_item["issued_at"])
+        self.assertEqual(nx1_02_item["issued_by"], "trinh@tls.vn")
+        # Phải nhận đúng mốc chuyển xưởng đã add
+        self.assertIsNotNone(nx1_02_item["factory_at"])
+        self.assertEqual(nx1_02_item["factory_by"], "phuc@tls.vn")
+        self.assertEqual(nx1_02_item["completed_at"], "")
+
+        # Designer Trịnh chỉ thấy bản vẽ của mình phụ trách + bản vẽ chung (NX1 và CHUNG)
+        history_trinh = get_drawing_lifecycle_history(
+            self.db, self.project_id, "trinh@tls.vn"
+        )
+        # Chỉ gồm: VL-CHUNG-01, VL-NX1-01, VL-NX1-02 (không có NX2 của Hà)
+        self.assertEqual(len(history_trinh), 3)
+        self.assertNotIn("VL-NX2-01", [x["drawing_id"] for x in history_trinh])
