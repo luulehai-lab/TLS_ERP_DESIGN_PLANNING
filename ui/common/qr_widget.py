@@ -1,6 +1,8 @@
 # Tên file: ui/common/qr_widget.py
 # CHỨC NĂNG: Widget hiển thị mã QR Code của bản vẽ hiện hành (Hỗ trợ offline + online fallback)
 # CHANGELOG:
+# - 12:25:25 14/07/2026: [UPDATE] feat(report): implement drawing download stats and master-detail report widget (Antigravity)
+# - 12:06:00 14/07/2026: [FIX] Loại bỏ tham số format="PNG" trong hàm save của ảnh QR vì không tương thích với PyPNGImage (Antigravity)
 # - 18:09:38 11/07/2026: [NEW] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:05:00 11/07/2026: [NEW] Khởi tạo component QRPreviewWidget hỗ trợ sinh mã QR và lưu ảnh (Lê Thanh Vân/Antigravity)
 
@@ -148,7 +150,7 @@ class QRPreviewWidget(QGroupBox):
             img = qr.make_image(fill_color="black", back_color="white")
 
             buffer = BytesIO()
-            img.save(buffer, format="PNG")
+            img.save(buffer)
             qimage = QImage()
             if qimage.loadFromData(buffer.getvalue(), "PNG"):
                 return QPixmap.fromImage(qimage)
