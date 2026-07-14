@@ -1,6 +1,8 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
+# - 11:20:42 14/07/2026: [UPDATE] feat(ui): strictly hide release tab for planning and limit release form to admin (Antigravity)
+# - 11:16:00 14/07/2026: [UPDATE] Bổ sung tính năng click trực tiếp vào Link Drive trên bảng để mở liên kết tải xuống (Lê Thanh Vân/Antigravity)
 # - 13:12:37 13/07/2026: [UPDATE] docs: sync codebase graph and update modular graph (Antigravity)
 # - 13:10:00 13/07/2026: [NEW] feat(search): add drawing search field with multi-column client-side filter (Lê Thanh Vân/Antigravity)
 # - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
@@ -126,6 +128,7 @@ class BaseDrawingView(QWidget):
         )
         self.tbl_drawings.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         self.tbl_drawings.itemSelectionChanged.connect(self._on_table_selection_changed)
+        self.tbl_drawings.cellClicked.connect(self._on_cell_clicked)
 
         content_layout.addWidget(self.tbl_drawings, 4)
 
@@ -234,50 +237,7 @@ class BaseDrawingView(QWidget):
         target_row_to_select: int = -1
 
         for r, d in enumerate(drawings):
-            item_id = QTableWidgetItem(d["drawing_id"])
-            item_id.setFlags(item_id.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            item_section = QTableWidgetItem(d.get("section_name", "") or "---")
-            item_section.setFlags(item_section.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            item_name = QTableWidgetItem(d["drawing_name"])
-            item_name.setFlags(item_name.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            item_notes = QTableWidgetItem(d.get("notes", ""))
-            item_notes.setFlags(item_notes.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            item_status = QTableWidgetItem(d["status"])
-            item_status.setFlags(item_status.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            status_str = d["status"]
-            if status_str == "Chờ triển khai":
-                item_status.setForeground(Qt.GlobalColor.darkYellow)
-            elif status_str == "Đang sản xuất":
-                item_status.setForeground(Qt.GlobalColor.blue)
-            elif status_str == "Đã hoàn thành":
-                item_status.setForeground(Qt.GlobalColor.darkGreen)
-
-            item_version = QTableWidgetItem(d["current_version"])
-            item_version.setFlags(item_version.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            item_link = QTableWidgetItem(d["drive_link"] or "Trống")
-            item_link.setFlags(item_link.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            from datetime import timedelta
-
-            local_time = d["updated_at"] + timedelta(hours=7)
-            item_time = QTableWidgetItem(local_time.strftime("%d/%m/%y_%H:%M:%S"))
-            item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
-
-            self.tbl_drawings.setItem(r, 0, item_id)
-            self.tbl_drawings.setItem(r, 1, item_section)
-            self.tbl_drawings.setItem(r, 2, item_name)
-            self.tbl_drawings.setItem(r, 3, item_notes)
-            self.tbl_drawings.setItem(r, 4, item_status)
-            self.tbl_drawings.setItem(r, 5, item_version)
-            self.tbl_drawings.setItem(r, 6, item_link)
-            self.tbl_drawings.setItem(r, 7, item_time)
-
+            self._populate_row(r, d)
             if (
                 self.last_selected_drawing_id
                 and d["drawing_id"] == self.last_selected_drawing_id
@@ -295,6 +255,66 @@ class BaseDrawingView(QWidget):
         # Áp dụng bộ lọc tìm kiếm hiện hành
         if hasattr(self, "txt_search_drawing"):
             self.filter_drawings(self.txt_search_drawing.text())
+
+    def _populate_row(self, row: int, d: dict[str, Any]) -> None:
+        """Khởi tạo và gán các ô dữ liệu cho một hàng trong bảng bản vẽ.
+
+        Args:
+            row: Chỉ số hàng trong bảng.
+            d: Dữ liệu bản vẽ dạng dict.
+        """
+        item_id = QTableWidgetItem(d["drawing_id"])
+        item_id.setFlags(item_id.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
+        item_section = QTableWidgetItem(d.get("section_name", "") or "---")
+        item_section.setFlags(item_section.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
+        item_name = QTableWidgetItem(d["drawing_name"])
+        item_name.setFlags(item_name.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
+        item_notes = QTableWidgetItem(d.get("notes", ""))
+        item_notes.setFlags(item_notes.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
+        item_status = QTableWidgetItem(d["status"])
+        item_status.setFlags(item_status.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
+        status_str = d["status"]
+        if status_str == "Chờ triển khai":
+            item_status.setForeground(Qt.GlobalColor.darkYellow)
+        elif status_str == "Đang sản xuất":
+            item_status.setForeground(Qt.GlobalColor.blue)
+        elif status_str == "Đã hoàn thành":
+            item_status.setForeground(Qt.GlobalColor.darkGreen)
+
+        item_version = QTableWidgetItem(d["current_version"])
+        item_version.setFlags(item_version.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
+        drive_link = d["drive_link"] or "Trống"
+        item_link = QTableWidgetItem(drive_link)
+        item_link.setFlags(item_link.flags() ^ Qt.ItemFlag.ItemIsEditable)
+        if drive_link != "Trống" and drive_link.startswith("http"):
+            from PyQt6.QtGui import QColor
+
+            item_link.setForeground(QColor("#1B76FF"))
+            font = item_link.font()
+            font.setUnderline(True)
+            item_link.setFont(font)
+            item_link.setToolTip("Click để mở liên kết Google Drive")
+
+        from datetime import timedelta
+
+        local_time = d["updated_at"] + timedelta(hours=7)
+        item_time = QTableWidgetItem(local_time.strftime("%d/%m/%y_%H:%M:%S"))
+        item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
+
+        self.tbl_drawings.setItem(row, 0, item_id)
+        self.tbl_drawings.setItem(row, 1, item_section)
+        self.tbl_drawings.setItem(row, 2, item_name)
+        self.tbl_drawings.setItem(row, 3, item_notes)
+        self.tbl_drawings.setItem(row, 4, item_status)
+        self.tbl_drawings.setItem(row, 5, item_version)
+        self.tbl_drawings.setItem(row, 6, item_link)
+        self.tbl_drawings.setItem(row, 7, item_time)
 
     def _on_load_error(self, error_msg: str) -> None:
         """Callback hiển thị thông báo lỗi khi không thể tải bản vẽ.
@@ -383,6 +403,34 @@ class BaseDrawingView(QWidget):
 
         if hasattr(self, "qr_widget"):
             self.qr_widget.set_drawing(drawing_id, version, drive_link)
+
+    def _on_cell_clicked(self, row: int, column: int) -> None:
+        """Xử lý khi người dùng click vào một ô trong bảng.
+
+        Nếu click vào cột Link Drive, thực hiện mở liên kết trong trình duyệt.
+
+        Args:
+            row: Chỉ số hàng được click.
+            column: Chỉ số cột được click.
+        """
+        if column == 6:  # Cột Link Drive
+            item = self.tbl_drawings.item(row, column)
+            if item:
+                link = item.text().strip()
+                if link and link != "Trống" and link.startswith("http"):
+                    from PyQt6.QtCore import QUrl
+                    from PyQt6.QtGui import QDesktopServices
+
+                    url = QUrl(link)
+                    opened = QDesktopServices.openUrl(url)
+                    if opened:
+                        logger.info(
+                            "BaseDrawingView: Đã mở link Drive từ bảng: %s", link
+                        )
+                    else:
+                        logger.warning(
+                            "BaseDrawingView: Không thể mở link Drive: %s", link
+                        )
 
     def filter_drawings(self, text: str) -> None:
         """Lọc danh sách bản vẽ trên bảng dựa theo từ khóa tìm kiếm (Client-side).
