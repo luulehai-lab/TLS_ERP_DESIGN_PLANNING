@@ -1,6 +1,8 @@
 # Tên file: core/services/release_evidence_service.py
 # CHỨC NĂNG: Dịch vụ tự động sinh ảnh bằng chứng ban hành bản vẽ (Release Evidence Image)
 # CHANGELOG:
+# - 16:43:18 14/07/2026: [UPDATE] feat(drawing-evidence): auto generate release evidence image in local folder (Antigravity)
+# - 16:30:00 14/07/2026: [UPDATE] Bổ sung Mã dự án, Hạng mục, Ghi chú vào ảnh và điều chỉnh chiều cao ảnh lên 550px (Lê Thanh Vân/Antigravity)
 # - 14:05:01 14/07/2026: [NEW] fix(ui): remove format argument from qr image save for PyPNGImage compatibility (Antigravity)
 # - 14:02:00 14/07/2026: [REFACTOR] Phân tách hàm generate_release_evidence_image thành các hàm helper để vượt qua kiểm toán độ dài hàm < 100 dòng (Lê Thanh Vân/Antigravity)
 # - 13:45:00 14/07/2026: [NEW] Khởi tạo module sinh ảnh PNG bằng chứng ban hành dùng Pillow (Lê Thanh Vân/Antigravity)
@@ -52,9 +54,7 @@ def _draw_cad_grid(draw: ImageDraw.Draw, width: int, height: int) -> None:
     """
     grid_color = (51, 65, 85)
     for i in range(0, 300, 40):
-        draw.line(
-            [(width - i, height), (width, height - i)], fill=grid_color, width=1
-        )
+        draw.line([(width - i, height), (width, height - i)], fill=grid_color, width=1)
     draw.arc(
         [width - 150, height - 150, width + 150, height + 150],
         180,
@@ -100,9 +100,7 @@ def _draw_header(draw: ImageDraw.Draw, width: int) -> None:
 
     # Vẽ Badge "RELEASED" màu xanh lá (#10B981) ở góc phải
     draw.rectangle([width - 170, 32, width - 35, 72], fill=(16, 185, 129))
-    draw.text(
-        (width - 145, 42), "RELEASED", font=font_subtitle, fill=(255, 255, 255)
-    )
+    draw.text((width - 145, 42), "RELEASED", font=font_subtitle, fill=(255, 255, 255))
 
 
 def _draw_details(
@@ -120,14 +118,17 @@ def _draw_details(
     font_value_highlight = _get_system_font(20)
     font_footer = _get_system_font(12)
 
-    start_x, start_y = 45, 120
-    line_height = 42
+    start_x, start_y = 45, 115
+    line_height = 38
 
     labels = [
-        ("Dự án:", drawing_data.get("project_name", "N/A")),
+        ("Mã dự án:", drawing_data.get("project_id", "N/A")),
+        ("Tên dự án:", drawing_data.get("project_name", "N/A")),
+        ("Hạng mục:", drawing_data.get("section_name", "N/A")),
         ("Mã bản vẽ:", drawing_data.get("drawing_id", "N/A")),
         ("Tên bản vẽ:", drawing_data.get("drawing_name", "N/A")),
         ("Phiên bản:", f"Revision {drawing_data.get('current_version', 'N/A')}"),
+        ("Ghi chú:", drawing_data.get("notes") or "Không có"),
         ("Người ban hành:", drawing_data.get("performed_by", "N/A")),
         (
             "Thời gian:",
@@ -152,6 +153,10 @@ def _draw_details(
             )
         elif label_text == "Phiên bản:":
             draw.text((val_x, y_pos), val_text, font=font_value, fill=(45, 212, 191))
+        elif label_text == "Mã dự án:":
+            draw.text((val_x, y_pos), val_text, font=font_value, fill=(45, 212, 191))
+        elif label_text == "Ghi chú:" and val_text == "Không có":
+            draw.text((val_x, y_pos), val_text, font=font_value, fill=(100, 116, 139))
         else:
             draw.text((val_x, y_pos), val_text, font=font_value, fill=(255, 255, 255))
 
@@ -183,7 +188,7 @@ def generate_release_evidence_image(
         str: Đường dẫn tuyệt đối đến file ảnh được sinh ra, hoặc chuỗi rỗng nếu thất bại.
     """
     try:
-        width, height = 800, 450
+        width, height = 800, 550
         img = Image.new("RGB", (width, height), color=(15, 23, 42))
         draw = ImageDraw.Draw(img)
 

@@ -1,6 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 16:43:18 14/07/2026: [UPDATE] feat(drawing-evidence): auto generate release evidence image in local folder (Antigravity)
+# - 16:30:00 14/07/2026: [UPDATE] Bổ sung truyền Mã dự án, Hạng mục, Ghi chú cho service sinh ảnh bằng chứng (Lê Thanh Vân/Antigravity)
 # - 14:05:01 14/07/2026: [FIX] fix(ui): remove format argument from qr image save for PyPNGImage compatibility (Antigravity)
 # - 13:50:00 14/07/2026: [UPDATE] Tích hợp tự động sinh ảnh bằng chứng ban hành bản vẽ vào thư mục cục bộ (Lê Thanh Vân/Antigravity)
 # - 17:26:45 13/07/2026: [UPDATE] feat(ui): restrict drawing release form to admin and planning users only (Antigravity)
@@ -497,11 +499,14 @@ class ThietKeView(BaseDrawingView):
                         performed_by = user_email
 
                 drawing_data = {
+                    "project_id": self.current_project_id,
                     "project_name": project_name,
+                    "section_name": self.cb_sections.currentText().strip(),
                     "drawing_id": drawing_id,
                     "drawing_name": self.txt_drawing_name.text().strip(),
                     "current_version": version,
                     "performed_by": performed_by,
+                    "notes": self.txt_notes.text().strip(),
                 }
                 evidence_file = generate_release_evidence_image(
                     drawing_data, output_dir
