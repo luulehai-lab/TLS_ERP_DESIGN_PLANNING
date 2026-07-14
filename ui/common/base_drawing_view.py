@@ -1,6 +1,7 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
+# - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:20:42 14/07/2026: [UPDATE] feat(ui): strictly hide release tab for planning and limit release form to admin (Antigravity)
 # - 11:16:00 14/07/2026: [UPDATE] Bổ sung tính năng click trực tiếp vào Link Drive trên bảng để mở liên kết tải xuống (Lê Thanh Vân/Antigravity)
 # - 13:12:37 13/07/2026: [UPDATE] docs: sync codebase graph and update modular graph (Antigravity)
@@ -407,7 +408,7 @@ class BaseDrawingView(QWidget):
     def _on_cell_clicked(self, row: int, column: int) -> None:
         """Xử lý khi người dùng click vào một ô trong bảng.
 
-        Nếu click vào cột Link Drive, thực hiện mở liên kết trong trình duyệt.
+        Nếu click vào cột Link Drive, thực hiện mở liên kết trong trình duyệt và ghi log.
 
         Args:
             row: Chỉ số hàng được click.
@@ -427,6 +428,16 @@ class BaseDrawingView(QWidget):
                         logger.info(
                             "BaseDrawingView: Đã mở link Drive từ bảng: %s", link
                         )
+                        # Lấy thông tin bản vẽ để ghi log
+                        item_id = self.tbl_drawings.item(row, 0)
+                        drawing_id = item_id.text() if item_id else ""
+
+                        user_email = "Không rõ"
+                        if self.main_window and hasattr(self.main_window, "user_email"):
+                            user_email = (self.main_window.user_email or "Không rõ").lower()
+
+                        from core.services.drawing_service import log_drawing_download_safe
+                        log_drawing_download_safe(drawing_id, user_email)
                     else:
                         logger.warning(
                             "BaseDrawingView: Không thể mở link Drive: %s", link

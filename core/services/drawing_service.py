@@ -1,6 +1,8 @@
 # Tên file: core/services/drawing_service.py
 # CHỨC NĂNG: Xử lý các nghiệp vụ Quản lý bản vẽ (Drawing) và Nhật ký bản vẽ (DrawingLog)
 # CHANGELOG:
+# - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
+# - 11:25:00 14/07/2026: [NEW] Bổ sung các hàm ghi log lượt mở liên kết tải bản vẽ (Lê Thanh Vân/Antigravity)
 # - 14:58:03 13/07/2026: [UPDATE] feat(project-ui): support local_path attribute for projects and auto open path on drawing release (Antigravity)
 # - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:03:00 11/07/2026: [UPDATE] Bổ sung hàm revise_drawing và revise_drawing_safe hỗ trợ cập nhật phiên bản (Lê Thanh Vân/Antigravity)
@@ -366,5 +368,74 @@ def revise_drawing_safe(drawing_id: str, revise_data: dict[str, Any]) -> Drawing
     db = SessionLocal()
     try:
         return revise_drawing(db, drawing_id, revise_data)
+    finally:
+        db.close()
+
+
+def log_drawing_download(
+    db: Session, drawing_id: str, performed_by: str, note: str = ""
+) -> DrawingLog | None:
+    """Ghi log lịch sử mở liên kết Drive tải bản vẽ.
+
+    Args:
+        db: Session kết nối database hiện thời.
+        drawing_id: Mã bản vẽ.
+        performed_by: Email người thực hiện hành động.
+        note: Ghi chú bổ sung.
+
+    Returns:
+        DrawingLog | None: Đối tượng DrawingLog được tạo hoặc None.
+    """
+    logger.info(
+        "Ghi log tải bản vẽ: ID=%s, User=%s",
+        drawing_id,
+        performed_by,
+    )
+    try:
+        # Lấy phiên bản hiện tại từ DB
+        drawing = db.query(Drawing).filter(Drawing.drawing_id == drawing_id).first()
+        version = drawing.current_version if drawing else "V1"
+
+        db_log = DrawingLog(
+            drawing_id=drawing_id,
+            version=version,
+            action="Mở liên kết Drive",
+            performed_by=performed_by,
+            note=note,
+        )
+        db.add(db_log)
+        db.commit()
+        db.refresh(db_log)
+        return db_log
+    except SQLAlchemyError as e:
+        db.rollback()
+        logger.error(
+            "Lỗi ghi log tải bản vẽ ID '%s' bởi '%s': %s",
+            drawing_id,
+            performed_by,
+            str(e),
+            exc_info=True,
+        )
+        return None
+
+
+def log_drawing_download_safe(
+    drawing_id: str, performed_by: str, note: str = ""
+) -> DrawingLog | None:
+    """Ghi log tải bản vẽ an toàn tự động đóng mở Session.
+
+    Args:
+        drawing_id: Mã bản vẽ.
+        performed_by: Email người thực hiện.
+        note: Ghi chú bổ sung.
+
+    Returns:
+        DrawingLog | None: Đối tượng log được tạo hoặc None.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return log_drawing_download(db, drawing_id, performed_by, note)
     finally:
         db.close()

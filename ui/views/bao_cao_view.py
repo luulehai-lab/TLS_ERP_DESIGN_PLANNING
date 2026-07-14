@@ -1,6 +1,9 @@
 # Tên file: ui/views/bao_cao_view.py
 # CHỨC NĂNG: Giao diện Tab Báo cáo & Thống kê trực quan dành cho tất cả phòng ban
 # CHANGELOG:
+# - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
+# - 11:34:00 14/07/2026: [REFACTOR] Tách logic Tab Lịch sử tải sang DownloadHistoryWidget và di chuyển ReportLoaderThread để rút gọn file xuống dưới 550 dòng (Lê Thanh Vân/Antigravity)
+# - 11:28:00 14/07/2026: [UPDATE] Tích hợp Tab thống kê lượt tải bản vẽ dạng Master-Detail bất đồng bộ vào BaoCaoView (Lê Thanh Vân/Antigravity)
 # - 18:49:30 11/07/2026: [NEW] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
 # - 18:36:00 11/07/2026: [FIX] Sửa lỗi combobox trống, typo grid_layout, phân quyền hardcoded email, thông báo sai ngữ cảnh (Lê Thanh Vân/Antigravity)
 # - 18:15:00 11/07/2026: [NEW] Khởi tạo màn hình BaoCaoView tích hợp PyQt6-Charts và cơ chế fallback (Lê Thanh Vân/Antigravity)
@@ -8,7 +11,7 @@
 import logging
 from typing import Any
 
-from PyQt6.QtCore import QThread, pyqtSignal, Qt
+from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QColor
 from PyQt6.QtWidgets import (
     QComboBox,
@@ -22,16 +25,13 @@ from PyQt6.QtWidgets import (
     QTableWidgetItem,
     QVBoxLayout,
     QWidget,
+    QTabWidget,
 )
 
 from ui.styles.theme import TLSTheme
 from core.services.project_service import list_active_projects_safe, get_staff_role
-from core.services.report_service import (
-    get_drawing_status_stats_safe,
-    get_section_drawing_stats_safe,
-    get_designer_productivity_stats_safe,
-    get_release_timeline_stats_safe,
-)
+from ui.common.workers import ReportLoaderThread
+from ui.views.bao_cao.download_history_widget import DownloadHistoryWidget
 
 logger = logging.getLogger(__name__)
 
@@ -56,46 +56,7 @@ except ImportError:
     )
 
 
-class ReportLoaderThread(QThread):
-    """Luồng chạy ngầm để nạp dữ liệu báo cáo bất đồng bộ tránh gây treo UI."""
-
-    finished = pyqtSignal(dict)
-    error = pyqtSignal(str)
-
-    def __init__(self, project_id: str, user_email: str) -> None:
-        """Khởi tạo ReportLoaderThread.
-
-        Args:
-            project_id: Mã dự án.
-            user_email: Email người dùng đăng nhập.
-        """
-        super().__init__()
-        self.project_id = project_id
-        self.user_email = user_email
-
-    def run(self) -> None:
-        """Thực thi luồng nạp dữ liệu thống kê từ PostgreSQL."""
-        try:
-            stats = {
-                "status": get_drawing_status_stats_safe(
-                    self.project_id, self.user_email
-                ),
-                "sections": get_section_drawing_stats_safe(
-                    self.project_id, self.user_email
-                ),
-                "designers": get_designer_productivity_stats_safe(
-                    self.project_id, self.user_email
-                ),
-                "timeline": get_release_timeline_stats_safe(
-                    self.project_id, self.user_email
-                ),
-            }
-            self.finished.emit(stats)
-        except Exception as e:
-            logger.error(
-                "ReportLoaderThread: Lỗi nạp dữ liệu: %s", str(e), exc_info=True
-            )
-            self.error.emit(str(e))
+# Loader thread được quản lý tập trung tại ui.common.workers
 
 
 class BaoCaoView(QWidget):
@@ -139,16 +100,29 @@ class BaoCaoView(QWidget):
 
         layout.addLayout(header_layout)
 
-        # 2. Khung vẽ Grid chứa các biểu đồ
-        self.layout_grid = QGridLayout()
+        # 2. Tạo QTabWidget
+        self.tabs = QTabWidget(self)
+        layout.addWidget(self.tabs)
+
+        # Tab 1: Biểu đồ tiến độ
+        self.tab_charts = QWidget(self)
+        self.layout_grid = QGridLayout(self.tab_charts)
         self.layout_grid.setSpacing(20)
-        layout.addLayout(self.layout_grid)
+        self.tabs.addTab(self.tab_charts, "📈 Biểu đồ tiến độ")
+
+        # Tab 2: Lịch sử tải bản vẽ
+        self._init_download_tab()
 
         # Áp dụng stylesheet dùng chung
         self.setStyleSheet(TLSTheme.content_view_stylesheet())
 
         # Load danh sách dự án lần đầu
         self.reload_projects()
+
+    def _init_download_tab(self) -> None:
+        """Thiết lập cấu trúc layout giao diện tab Lịch sử tải bản vẽ."""
+        self.download_widget = DownloadHistoryWidget(self)
+        self.tabs.addTab(self.download_widget, "📥 Lịch sử tải bản vẽ")
 
     def set_project(self, project_id: str) -> None:
         """Đồng bộ dự án hiện hành từ MainWindow sang.
@@ -262,11 +236,13 @@ class BaoCaoView(QWidget):
         self.layout_grid.addWidget(lbl, 0, 0, 1, 1)
 
     def _clear_grid(self) -> None:
-        """Xóa sạch các widget trong khung Grid biểu đồ."""
+        """Xóa sạch các widget trong khung Grid biểu đồ và reset các bảng tải."""
         while self.layout_grid.count():
             child = self.layout_grid.takeAt(0)
             if child.widget():
                 child.widget().deleteLater()
+        if hasattr(self, "download_widget"):
+            self.download_widget.clear()
 
     def _on_load_error(self, err_msg: str) -> None:
         """Callback khi luồng nạp dữ liệu gặp lỗi.
@@ -294,6 +270,10 @@ class BaoCaoView(QWidget):
                 self._render_charts(stats)
             else:
                 self._render_fallback_tables(stats)
+
+            # Đổ dữ liệu lịch sử tải bản vẽ
+            if "downloads" in stats:
+                self.download_widget.load_data(stats["downloads"])
         except Exception:
             logger.error(
                 "BaoCaoView: Lỗi khi dựng biểu đồ/bảng thống kê", exc_info=True

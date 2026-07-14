@@ -1,7 +1,9 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng - kế thừa BaseDrawingView)
 # CHANGELOG:
-# - 17:24:43 11/07/2026: [UPDATE] feat(staff-ui): create staff management view and tab navigation for admin (Antigravity)
+# - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
+# - 11:27:00 14/07/2026: [UPDATE] Ghi log lượt tải bản vẽ khi click nút Mở bản vẽ (Lê Thanh Vân/Antigravity)
+# - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
 # - 17:08:00 11/07/2026: [UPDATE] Thêm hàm reload_planners nạp động danh sách người thực hiện từ DB khi chuyển tab (Antigravity)
 # - 17:07:38 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 14:45:04 11/07/2026: [UPDATE] feat(drawing): add notes field to drawing issuance form and table (Antigravity)
@@ -183,6 +185,12 @@ class KeHoachView(BaseDrawingView):
                         drawing_id,
                         drawing.drive_link,
                     )
+                    # Ghi log lịch sử tải bản vẽ
+                    user_email = "Không rõ"
+                    if self.main_window and hasattr(self.main_window, "user_email"):
+                        user_email = (self.main_window.user_email or "Không rõ").lower()
+
+                    drawing_service.log_drawing_download(db, drawing_id, user_email)
                 else:
                     QMessageBox.warning(
                         self, "Cảnh báo", "Không thể mở đường dẫn URL này!"

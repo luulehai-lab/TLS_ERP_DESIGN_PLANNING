@@ -47,6 +47,8 @@ graph TD
     core_services_drawing_service_get_drawing_safe["⚙️ get_drawing_safe()"]:::func
     core_services_drawing_service_revise_drawing["⚙️ revise_drawing()"]:::func
     core_services_drawing_service_revise_drawing_safe["⚙️ revise_drawing_safe()"]:::func
+    core_services_drawing_service_log_drawing_download["⚙️ log_drawing_download()"]:::func
+    core_services_drawing_service_log_drawing_download_safe["⚙️ log_drawing_download_safe()"]:::func
     core_services_drive_service["📄 drive_service.py"]:::file
     core_services_drive_service__get_drive_service["⚙️ _get_drive_service()"]:::func
     core_services_drive_service_create_drive_folder["⚙️ create_drive_folder()"]:::func
@@ -79,6 +81,10 @@ graph TD
     core_services_report_service_get_section_drawing_stats_safe["⚙️ get_section_drawing_stats_safe()"]:::func
     core_services_report_service_get_designer_productivity_stats_safe["⚙️ get_designer_productivity_stats_safe()"]:::func
     core_services_report_service_get_release_timeline_stats_safe["⚙️ get_release_timeline_stats_safe()"]:::func
+    core_services_report_service_get_drawing_download_summary["⚙️ get_drawing_download_summary()"]:::func
+    core_services_report_service_get_drawing_download_details["⚙️ get_drawing_download_details()"]:::func
+    core_services_report_service_get_drawing_download_summary_safe["⚙️ get_drawing_download_summary_safe()"]:::func
+    core_services_report_service_get_drawing_download_details_safe["⚙️ get_drawing_download_details_safe()"]:::func
     core_services_section_service["📄 section_service.py"]:::file
     core_services_section_service_create_section["⚙️ create_section()"]:::func
     core_services_section_service_list_project_sections["⚙️ list_project_sections()"]:::func
@@ -120,6 +126,8 @@ graph TD
     core_services_drawing_service -->|contains| core_services_drawing_service_get_drawing_safe
     core_services_drawing_service -->|contains| core_services_drawing_service_revise_drawing
     core_services_drawing_service -->|contains| core_services_drawing_service_revise_drawing_safe
+    core_services_drawing_service -->|contains| core_services_drawing_service_log_drawing_download
+    core_services_drawing_service -->|contains| core_services_drawing_service_log_drawing_download_safe
     core_services_drive_service -->|contains| core_services_drive_service__get_drive_service
     core_services_drive_service -->|contains| core_services_drive_service_create_drive_folder
     core_services_drive_service -->|contains| core_services_drive_service_set_anyone_read_permission
@@ -149,6 +157,10 @@ graph TD
     core_services_report_service -->|contains| core_services_report_service_get_section_drawing_stats_safe
     core_services_report_service -->|contains| core_services_report_service_get_designer_productivity_stats_safe
     core_services_report_service -->|contains| core_services_report_service_get_release_timeline_stats_safe
+    core_services_report_service -->|contains| core_services_report_service_get_drawing_download_summary
+    core_services_report_service -->|contains| core_services_report_service_get_drawing_download_details
+    core_services_report_service -->|contains| core_services_report_service_get_drawing_download_summary_safe
+    core_services_report_service -->|contains| core_services_report_service_get_drawing_download_details_safe
     core_services_section_service -->|contains| core_services_section_service_create_section
     core_services_section_service -->|contains| core_services_section_service_list_project_sections
     core_services_section_service -->|contains| core_services_section_service_delete_section
@@ -173,6 +185,7 @@ graph TD
     core_services_drawing_service_get_project_drawings_safe ==>|calls| core_services_drawing_service_get_project_drawings
     core_services_drawing_service_get_drawing_safe ==>|calls| core_services_drawing_service_get_drawing
     core_services_drawing_service_revise_drawing_safe ==>|calls| core_services_drawing_service_revise_drawing
+    core_services_drawing_service_log_drawing_download_safe ==>|calls| core_services_drawing_service_log_drawing_download
     core_services_drive_service_create_drive_folder ==>|calls| core_services_drive_service__get_drive_service
     core_services_drive_service_set_anyone_read_permission ==>|calls| core_services_drive_service__get_drive_service
     core_services_drive_service_upload_single_file ==>|calls| core_services_drive_service__get_drive_service
@@ -191,6 +204,9 @@ graph TD
     core_services_report_service_get_section_drawing_stats_safe ==>|calls| core_services_report_service_get_section_drawing_stats
     core_services_report_service_get_designer_productivity_stats_safe ==>|calls| core_services_report_service_get_designer_productivity_stats
     core_services_report_service_get_release_timeline_stats_safe ==>|calls| core_services_report_service_get_release_timeline_stats
+    core_services_report_service_get_drawing_download_summary ==>|calls| core_services_report_service__apply_permission_filter
+    core_services_report_service_get_drawing_download_summary_safe ==>|calls| core_services_report_service_get_drawing_download_summary
+    core_services_report_service_get_drawing_download_details_safe ==>|calls| core_services_report_service_get_drawing_download_details
     core_services_section_service_list_project_sections_safe ==>|calls| core_services_section_service_list_project_sections
     core_services_section_service_delete_section_safe ==>|calls| core_services_section_service_delete_section
     core_services_section_service_create_section_safe ==>|calls| core_services_section_service_create_section

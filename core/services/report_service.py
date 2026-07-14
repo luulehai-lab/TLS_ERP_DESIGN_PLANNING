@@ -1,6 +1,8 @@
 # Tên file: core/services/report_service.py
 # CHỨC NĂNG: Cung cấp các dịch vụ truy vấn và thống kê dữ liệu báo cáo (có phân quyền)
 # CHANGELOG:
+# - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
+# - 11:26:00 14/07/2026: [NEW] Bổ sung dịch vụ thống kê tổng lượt tải và lịch sử chi tiết của bản vẽ (Lê Thanh Vân/Antigravity)
 # - 18:49:30 11/07/2026: [NEW] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
 # - 18:15:00 11/07/2026: [NEW] Khởi tạo tầng dịch vụ báo cáo report_service.py (Lê Thanh Vân/Antigravity)
 
@@ -412,5 +414,150 @@ def get_release_timeline_stats_safe(
     db = SessionLocal()
     try:
         return get_release_timeline_stats(db, project_id, user_email)
+    finally:
+        db.close()
+
+
+def get_drawing_download_summary(
+    db: Session, project_id: str, user_email: str
+) -> list[dict[str, Any]]:
+    """Thống kê tổng số lượt tải của từng bản vẽ thuộc dự án (có phân quyền).
+
+    Args:
+        db: Session kết nối database hiện thời.
+        project_id: Mã dự án.
+        user_email: Email người dùng đăng nhập.
+
+    Returns:
+        list[dict[str, Any]]: Danh sách thống kê lượt tải của bản vẽ.
+    """
+    logger.info(
+        "Truy vấn thống kê lượt tải bản vẽ: ProjectID=%s, Email=%s",
+        project_id,
+        user_email,
+    )
+    try:
+        # Query các bản vẽ thuộc dự án được phân quyền
+        query = db.query(Drawing)
+        query = _apply_permission_filter(db, query, project_id, user_email)
+        drawings = query.all()
+
+        stats_list = []
+        for d in drawings:
+            # Đếm số log có action = "Mở liên kết Drive"
+            count = (
+                db.query(func.count(DrawingLog.log_id))
+                .filter(
+                    DrawingLog.drawing_id == d.drawing_id,
+                    DrawingLog.action == "Mở liên kết Drive",
+                )
+                .scalar()
+                or 0
+            )
+            stats_list.append(
+                {
+                    "drawing_id": d.drawing_id,
+                    "drawing_name": d.drawing_name,
+                    "version": d.current_version,
+                    "download_count": count,
+                }
+            )
+        # Sắp xếp lượt tải giảm dần, mã bản vẽ tăng dần
+        stats_list.sort(key=lambda x: (-x["download_count"], x["drawing_id"]))
+        return stats_list
+    except SQLAlchemyError as e:
+        logger.error(
+            "Lỗi khi thống kê lượt tải bản vẽ dự án '%s': %s",
+            project_id,
+            str(e),
+            exc_info=True,
+        )
+        return []
+
+
+def get_drawing_download_details(db: Session, drawing_id: str) -> list[dict[str, Any]]:
+    """Lấy chi tiết lịch sử các lần tải của bản vẽ cụ thể.
+
+    Args:
+        db: Session kết nối database hiện thời.
+        drawing_id: Mã bản vẽ.
+
+    Returns:
+        list[dict[str, Any]]: Danh sách lịch sử chi tiết.
+    """
+    logger.info("Truy vấn chi tiết lượt tải của bản vẽ: ID=%s", drawing_id)
+    try:
+        logs = (
+            db.query(DrawingLog)
+            .filter(
+                DrawingLog.drawing_id == drawing_id,
+                DrawingLog.action == "Mở liên kết Drive",
+            )
+            .order_by(DrawingLog.timestamp.desc(), DrawingLog.log_id.desc())
+            .all()
+        )
+
+        details = []
+        for log in logs:
+            # Chuyển đổi timezone UTC sang Việt Nam (+7) để hiển thị chính xác
+            from datetime import timedelta
+
+            local_time = log.timestamp + timedelta(hours=7)
+            time_str = local_time.strftime("%d/%m/%y_%H:%M:%S")
+
+            details.append(
+                {
+                    "performed_by": log.performed_by,
+                    "timestamp": time_str,
+                    "version": log.version,
+                    "note": log.note or "",
+                }
+            )
+        return details
+    except SQLAlchemyError as e:
+        logger.error(
+            "Lỗi khi lấy chi tiết lượt tải bản vẽ ID '%s': %s",
+            drawing_id,
+            str(e),
+            exc_info=True,
+        )
+        return []
+
+
+def get_drawing_download_summary_safe(
+    project_id: str, user_email: str
+) -> list[dict[str, Any]]:
+    """Thống kê lượt tải bản vẽ an toàn tự động đóng mở Session.
+
+    Args:
+        project_id: Mã dự án.
+        user_email: Email người dùng.
+
+    Returns:
+        list[dict[str, Any]]: Kết quả thống kê.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return get_drawing_download_summary(db, project_id, user_email)
+    finally:
+        db.close()
+
+
+def get_drawing_download_details_safe(drawing_id: str) -> list[dict[str, Any]]:
+    """Lấy chi tiết lượt tải bản vẽ an toàn tự động đóng mở Session.
+
+    Args:
+        drawing_id: Mã bản vẽ.
+
+    Returns:
+        list[dict[str, Any]]: Kết quả lịch sử chi tiết.
+    """
+    from core.database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return get_drawing_download_details(db, drawing_id)
     finally:
         db.close()

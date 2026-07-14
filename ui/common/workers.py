@@ -1,6 +1,8 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
+# - 11:32:00 14/07/2026: [NEW] Di chuyển ReportLoaderThread từ bao_cao_view.py sang để tối ưu modularity (Lê Thanh Vân/Antigravity)
 # - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
 # - 15:17:43 11/07/2026: [UPDATE] feat(ke-hoach): replace performer text input with dropdown and enforce selection (Antigravity)
 # - 14:57:00 11/07/2026: [UPDATE] Bổ sung section_designer_emails và section_designer_email vào loader threads (Antigravity)
@@ -249,6 +251,59 @@ class DriveUploadWorker(QThread):
                 "DriveUploadWorker: Lỗi nghiêm trọng trong luồng upload: %s",
                 str(e),
                 exc_info=True,
+            )
+            self.error.emit(str(e))
+
+
+class ReportLoaderThread(QThread):
+    """Luồng chạy ngầm để nạp dữ liệu báo cáo bất đồng bộ tránh gây treo UI."""
+
+    finished = pyqtSignal(dict)
+    error = pyqtSignal(str)
+
+    def __init__(self, project_id: str, user_email: str) -> None:
+        """Khởi tạo ReportLoaderThread.
+
+        Args:
+            project_id: Mã dự án.
+            user_email: Email người dùng đăng nhập.
+        """
+        super().__init__()
+        self.project_id = project_id
+        self.user_email = user_email
+
+    def run(self) -> None:
+        """Thực thi luồng nạp dữ liệu thống kê từ PostgreSQL."""
+        try:
+            from core.services.report_service import (
+                get_drawing_status_stats_safe,
+                get_section_drawing_stats_safe,
+                get_designer_productivity_stats_safe,
+                get_release_timeline_stats_safe,
+                get_drawing_download_summary_safe,
+            )
+
+            stats = {
+                "status": get_drawing_status_stats_safe(
+                    self.project_id, self.user_email
+                ),
+                "sections": get_section_drawing_stats_safe(
+                    self.project_id, self.user_email
+                ),
+                "designers": get_designer_productivity_stats_safe(
+                    self.project_id, self.user_email
+                ),
+                "timeline": get_release_timeline_stats_safe(
+                    self.project_id, self.user_email
+                ),
+                "downloads": get_drawing_download_summary_safe(
+                    self.project_id, self.user_email
+                ),
+            }
+            self.finished.emit(stats)
+        except Exception as e:
+            logger.error(
+                "ReportLoaderThread: Lỗi nạp dữ liệu: %s", str(e), exc_info=True
             )
             self.error.emit(str(e))
 
