@@ -1,6 +1,8 @@
 # Tên file: ui/views/thiet_ke_view.py
 # CHỨC NĂNG: Giao diện ban hành bản vẽ dành cho phòng Thiết kế (kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 14:05:01 14/07/2026: [FIX] fix(ui): remove format argument from qr image save for PyPNGImage compatibility (Antigravity)
+# - 13:50:00 14/07/2026: [UPDATE] Tích hợp tự động sinh ảnh bằng chứng ban hành bản vẽ vào thư mục cục bộ (Lê Thanh Vân/Antigravity)
 # - 17:26:45 13/07/2026: [UPDATE] feat(ui): restrict drawing release form to admin and planning users only (Antigravity)
 # - 17:18:22 13/07/2026: [FIX] feat(auth): dynamic redirect uri and detailed debug page for oauth issues (Antigravity)
 # - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
@@ -43,6 +45,7 @@ from core.services.drawing_service import (
     get_drawing_safe,
     revise_drawing_safe,
 )
+from core.services.release_evidence_service import generate_release_evidence_image
 
 logger = logging.getLogger(__name__)
 
@@ -78,10 +81,11 @@ class ThietKeView(BaseDrawingView):
 
         # Khung ban hành bản vẽ (tràn hết chiều ngang)
         drawing_group = self._create_drawing_group()
-        
+
         # Phân quyền: Chỉ cho phép Admin (người ban hành) thấy form này.
         # Nhân viên Thiết kế chỉ được xem danh sách, Kế hoạch thì không được vào Tab này.
         from core.services.session_manager import SessionManager
+
         session = SessionManager.load_session()
         if session:
             user_email = session.get("email", "").lower()
@@ -312,7 +316,9 @@ class ThietKeView(BaseDrawingView):
         else:
             created_success = self._handle_drawing_creation(project_id, drawing_data)
 
-        self._finalize_drawing_creation(created_success, action_type, drawing_id, version)
+        self._finalize_drawing_creation(
+            created_success, action_type, drawing_id, version
+        )
 
     def _on_select_file(self) -> None:
         """Hiển thị hộp thoại chọn tệp bản vẽ PDF cục bộ và kích hoạt upload ngầm ngay."""
@@ -460,12 +466,66 @@ class ThietKeView(BaseDrawingView):
             version: Phiên bản bản vẽ.
         """
         if created_success:
+            # 1. Tự động sinh ảnh bằng chứng ban hành vào thư mục cục bộ
+            project_name = "N/A"
+            output_dir = ""
+            if self.current_project_id:
+                try:
+                    proj = get_project_safe(self.current_project_id)
+                    if proj:
+                        project_name = proj.project_name
+                        if proj.local_path and os.path.exists(proj.local_path):
+                            output_dir = proj.local_path
+                except Exception as e:
+                    logger.error(
+                        "ThietKeView: Lỗi lấy thông tin dự án để sinh ảnh: %s", str(e)
+                    )
+
+            # Ưu tiên sử dụng thư mục của file được chọn ban hành
+            if self.selected_local_path and os.path.exists(self.selected_local_path):
+                if os.path.isdir(self.selected_local_path):
+                    output_dir = self.selected_local_path
+                else:
+                    output_dir = os.path.dirname(self.selected_local_path)
+
+            evidence_file = ""
+            if output_dir:
+                performed_by = "Kỹ sư Thiết kế"
+                if self.main_window and hasattr(self.main_window, "user_email"):
+                    user_email = self.main_window.user_email
+                    if user_email:
+                        performed_by = user_email
+
+                drawing_data = {
+                    "project_name": project_name,
+                    "drawing_id": drawing_id,
+                    "drawing_name": self.txt_drawing_name.text().strip(),
+                    "current_version": version,
+                    "performed_by": performed_by,
+                }
+                evidence_file = generate_release_evidence_image(
+                    drawing_data, output_dir
+                )
+
             msg = (
                 f"Cập nhật thành công phiên bản mới '{version}' cho bản vẽ: {drawing_id}"
                 if action_type == "revise"
                 else f"Ban hành thành công bản vẽ: {drawing_id}"
             )
+            if evidence_file:
+                msg += f"\n\n📸 Đã tạo ảnh bằng chứng ban hành tại thư mục cục bộ:\n{os.path.basename(evidence_file)}"
+
             QMessageBox.information(self, "Thông báo", msg)
+
+            # Tự động mở thư mục chứa ảnh để người dùng xem trực tiếp
+            if evidence_file and os.path.exists(evidence_file):
+                try:
+                    os.startfile(os.path.dirname(evidence_file))
+                except Exception as e:
+                    logger.error(
+                        "ThietKeView: Không thể tự động mở thư mục: %s", str(e)
+                    )
+
             self.txt_drawing_id.clear()
             self.txt_drawing_name.clear()
             self.txt_version.setText("V1")
