@@ -1,6 +1,8 @@
 # Tên file: core/services/drive_service.py
 # CHỨC NĂNG: Xử lý tương tác Google Drive API (tạo thư mục, tải tệp, cấp quyền chia sẻ)
 # CHANGELOG:
+# - 17:09:30 14/07/2026: [UPDATE] feat(drawing-evidence): add project_id, section_name, and notes to release evidence image (Antigravity)
+# - 17:15:00 14/07/2026: [UPDATE] feat(drive): integrate OAuth2 personal credentials and supportsAllDrives=True (Antigravity)
 # - 14:25:54 13/07/2026: [NEW] feat(search): implement project and drawing search with client-side filters (Antigravity)
 # - 14:10:00 13/07/2026: [NEW] Khởi tạo drive_service.py quản lý upload bản vẽ bằng Service Account (Antigravity)
 
@@ -21,6 +23,35 @@ def _get_drive_service() -> Any:
     Returns:
         Đối tượng service kết nối Google Drive API hoặc None nếu lỗi.
     """
+    import json
+
+    # 1. Ưu tiên nạp credentials từ drive_token.json của tài khoản Google cá nhân
+    token_path = os.path.join(str(config.BASE_DIR), "drive_token.json")
+    if os.path.exists(token_path):
+        try:
+            with open(token_path, "r", encoding="utf-8") as f:
+                token_data = json.load(f)
+            from google.oauth2.credentials import Credentials
+
+            creds = Credentials(
+                token=token_data.get("access_token"),
+                refresh_token=token_data.get("refresh_token"),
+                token_uri="https://oauth2.googleapis.com/token",
+                client_id=config.GOOGLE_CLIENT_ID,
+                client_secret=config.GOOGLE_CLIENT_SECRET,
+                scopes=["https://www.googleapis.com/auth/drive"],
+            )
+            logger.info(
+                "DriveService: Sử dụng tài khoản Google cá nhân của người dùng để kết nối."
+            )
+            return build("drive", "v3", credentials=creds)
+        except Exception as e:
+            logger.error(
+                "DriveService: Lỗi khởi tạo credentials cá nhân: %s. Fallback về Service Account.",
+                str(e),
+            )
+
+    # 2. Fallback về Service Account mặc định
     credentials_file = config.GOOGLE_SERVICE_ACCOUNT_FILE
     if not credentials_file or not os.path.exists(credentials_file):
         logger.error(
@@ -34,10 +65,11 @@ def _get_drive_service() -> Any:
         creds = service_account.Credentials.from_service_account_file(
             credentials_file, scopes=scopes
         )
+        logger.info("DriveService: Sử dụng Service Account của hệ thống để kết nối.")
         return build("drive", "v3", credentials=creds)
     except Exception as e:
         logger.error(
-            "DriveService: Lỗi khởi tạo Google Drive Service: %s",
+            "DriveService: Lỗi khởi tạo Google Drive Service qua Service Account: %s",
             str(e),
             exc_info=True,
         )
@@ -71,7 +103,9 @@ def create_drive_folder(folder_name: str, parent_id: str) -> str | None:
         }
         folder = (
             service.files()
-            .create(body=file_metadata, fields="id, webViewLink")
+            .create(
+                body=file_metadata, fields="id, webViewLink", supportsAllDrives=True
+            )
             .execute()
         )
         folder_id = folder.get("id")
@@ -104,7 +138,9 @@ def set_anyone_read_permission(file_id: str) -> bool:
     )
     try:
         permission = {"type": "anyone", "role": "reader"}
-        service.permissions().create(fileId=file_id, body=permission).execute()
+        service.permissions().create(
+            fileId=file_id, body=permission, supportsAllDrives=True
+        ).execute()
         logger.info("DriveService: Đã cấp quyền xem công khai thành công.")
         return True
     except Exception as e:
@@ -131,9 +167,7 @@ def upload_single_file(local_file_path: str, parent_id: str) -> str | None:
         return None
 
     if not os.path.exists(local_file_path):
-        logger.error(
-            "DriveService: File cục bộ không tồn tại: '%s'", local_file_path
-        )
+        logger.error("DriveService: File cục bộ không tồn tại: '%s'", local_file_path)
         return None
 
     file_name = os.path.basename(local_file_path)
@@ -148,7 +182,12 @@ def upload_single_file(local_file_path: str, parent_id: str) -> str | None:
         media = MediaFileUpload(local_file_path, resumable=True)
         uploaded_file = (
             service.files()
-            .create(body=file_metadata, media_body=media, fields="id, webViewLink")
+            .create(
+                body=file_metadata,
+                media_body=media,
+                fields="id, webViewLink",
+                supportsAllDrives=True,
+            )
             .execute()
         )
 
@@ -184,9 +223,7 @@ def upload_local_directory(local_dir_path: str, parent_id: str) -> str | None:
         return None
 
     if not os.path.isdir(local_dir_path):
-        logger.error(
-            "DriveService: Thư mục cục bộ không hợp lệ: '%s'", local_dir_path
-        )
+        logger.error("DriveService: Thư mục cục bộ không hợp lệ: '%s'", local_dir_path)
         return None
 
     dir_name = os.path.basename(local_dir_path.rstrip("/\\"))
@@ -204,7 +241,7 @@ def upload_local_directory(local_dir_path: str, parent_id: str) -> str | None:
         # Lấy link webViewLink của thư mục vừa tạo
         folder_info = (
             service.files()
-            .get(fileId=drive_folder_id, fields="webViewLink")
+            .get(fileId=drive_folder_id, fields="webViewLink", supportsAllDrives=True)
             .execute()
         )
         folder_link = folder_info.get("webViewLink")
@@ -219,9 +256,7 @@ def upload_local_directory(local_dir_path: str, parent_id: str) -> str | None:
         # Cấp quyền cho thư mục cha (thư mục vừa tạo), tự động áp dụng cho các file con bên trong
         set_anyone_read_permission(drive_folder_id)
 
-        logger.info(
-            "DriveService: Tải thư mục thành công. Link: %s", folder_link
-        )
+        logger.info("DriveService: Tải thư mục thành công. Link: %s", folder_link)
         return folder_link
     except Exception as e:
         logger.error(
@@ -232,7 +267,9 @@ def upload_local_directory(local_dir_path: str, parent_id: str) -> str | None:
         return None
 
 
-def upload_single_file_no_share(service: Any, local_file_path: str, parent_id: str) -> str | None:
+def upload_single_file_no_share(
+    service: Any, local_file_path: str, parent_id: str
+) -> str | None:
     """Tải tệp tin lên nhưng không set quyền riêng biệt (dành cho hàm upload thư mục để tránh API calls liên tục).
 
     Args:
@@ -252,7 +289,12 @@ def upload_single_file_no_share(service: Any, local_file_path: str, parent_id: s
         media = MediaFileUpload(local_file_path, resumable=True)
         uploaded_file = (
             service.files()
-            .create(body=file_metadata, media_body=media, fields="id")
+            .create(
+                body=file_metadata,
+                media_body=media,
+                fields="id",
+                supportsAllDrives=True,
+            )
             .execute()
         )
         return uploaded_file.get("id")

@@ -26,3 +26,5 @@ dist/
 .session.json
 service_account.json
 logs/
+drive_token.json
+
