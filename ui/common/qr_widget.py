@@ -1,14 +1,13 @@
 # Tên file: ui/common/qr_widget.py
 # CHỨC NĂNG: Widget hiển thị mã QR Code của bản vẽ hiện hành (Hỗ trợ offline + online fallback)
 # CHANGELOG:
+# - 10:57:18 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
 # - 12:25:25 14/07/2026: [UPDATE] feat(report): implement drawing download stats and master-detail report widget (Antigravity)
 # - 12:06:00 14/07/2026: [FIX] Loại bỏ tham số format="PNG" trong hàm save của ảnh QR vì không tương thích với PyPNGImage (Antigravity)
 # - 18:09:38 11/07/2026: [NEW] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:05:00 11/07/2026: [NEW] Khởi tạo component QRPreviewWidget hỗ trợ sinh mã QR và lưu ảnh (Lê Thanh Vân/Antigravity)
 
 import logging
-import urllib.parse
-import urllib.request
 from io import BytesIO
 from typing import Any
 
@@ -135,49 +134,7 @@ class QRPreviewWidget(QGroupBox):
         Returns:
             QPixmap chứa ảnh QR Code, hoặc None nếu thất bại.
         """
-        # 1. Thử sinh offline bằng thư viện qrcode
-        try:
-            import qrcode
-
-            qr = qrcode.QRCode(
-                version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_L,
-                box_size=10,
-                border=2,
-            )
-            qr.add_data(data)
-            qr.make(fit=True)
-            img = qr.make_image(fill_color="black", back_color="white")
-
-            buffer = BytesIO()
-            img.save(buffer)
-            qimage = QImage()
-            if qimage.loadFromData(buffer.getvalue(), "PNG"):
-                return QPixmap.fromImage(qimage)
-        except Exception as e:
-            logger.warning(
-                "QRPreviewWidget: Lỗi tạo QR offline, chuyển sang fallback online: %s",
-                str(e),
-            )
-
-        # 2. Fallback sinh online dùng API công cộng
-        try:
-            encoded_data = urllib.parse.quote(data)
-            api_url = f"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={encoded_data}"
-            req = urllib.request.Request(api_url, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=3) as response:
-                img_data = response.read()
-                qimage = QImage()
-                if qimage.loadFromData(img_data):
-                    return QPixmap.fromImage(qimage)
-        except Exception as ex:
-            logger.error(
-                "QRPreviewWidget: Lỗi tạo QR online fallback: %s",
-                str(ex),
-                exc_info=True,
-            )
-
-        return None
+        return generate_qr_pixmap(data)
 
     def _on_save_qr(self) -> None:
         """Xử lý tải ảnh QR Code về máy dạng file PNG."""
@@ -207,3 +164,107 @@ class QRPreviewWidget(QGroupBox):
             QMessageBox.critical(
                 self, "Lỗi", f"Có lỗi xảy ra khi lưu tệp tin:\n{str(e)}"
             )
+
+
+def generate_qr_pixmap(data: str) -> QPixmap | None:
+    """Sinh mã QR dạng QPixmap hỗ trợ offline & online fallback.
+
+    Args:
+        data: Dữ liệu cần mã hóa vào mã QR.
+
+    Returns:
+        QPixmap chứa ảnh QR Code, hoặc None nếu thất bại.
+    """
+
+    # 1. Thử sinh offline bằng thư viện qrcode
+    try:
+        import qrcode
+
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=2,
+        )
+        qr.add_data(data)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+
+        buffer = BytesIO()
+        img.save(buffer)
+        qimage = QImage()
+        if qimage.loadFromData(buffer.getvalue(), "PNG"):
+            return QPixmap.fromImage(qimage)
+    except Exception as e:
+        logger.warning(
+            "generate_qr_pixmap: Lỗi tạo QR offline, chuyển sang fallback online: %s",
+            str(e),
+        )
+
+    # 2. Fallback sinh online dùng API công cộng
+    try:
+        import urllib.parse
+        import urllib.request
+
+        encoded_data = urllib.parse.quote(data)
+        api_url = f"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={encoded_data}"
+        req = urllib.request.Request(api_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=3) as response:
+            img_data = response.read()
+            qimage = QImage()
+            if qimage.loadFromData(img_data):
+                return QPixmap.fromImage(qimage)
+    except Exception as ex:
+        logger.error(
+            "generate_qr_pixmap: Lỗi tạo QR online fallback: %s",
+            str(ex),
+            exc_info=True,
+        )
+
+    return None
+
+
+class QRWidget(QLabel):
+    """Widget đơn giản hiển thị QR Code dạng QLabel."""
+
+    def __init__(self, parent: Any = None, size: int = 150) -> None:
+        """Khởi tạo QRWidget.
+
+        Args:
+            parent: Widget cha.
+            size: Kích thước pixel vuông.
+        """
+        super().__init__(parent)
+        self.qr_size = size
+        self.setFixedSize(size, size)
+        self.setStyleSheet("border: 1px solid #CBD5E1; background-color: #FFFFFF;")
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self._pixmap: QPixmap = QPixmap()
+
+    def generate_qr(self, data: str) -> None:
+        """Sinh và hiển thị mã QR.
+
+        Args:
+            data: Dữ liệu văn bản cần mã hóa.
+        """
+        pixmap = generate_qr_pixmap(data)
+        if pixmap:
+            self._pixmap = pixmap
+            self.setPixmap(
+                pixmap.scaled(
+                    self.size(),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation,
+                )
+            )
+        else:
+            self.setText("⚠️ Lỗi QR")
+            self._pixmap = QPixmap()
+
+    def get_qr_pixmap(self) -> QPixmap:
+        """Trả về QPixmap của ảnh QR Code hiện tại.
+
+        Returns:
+            QPixmap: Ảnh QR Code, có thể là pixmap rỗng nếu sinh lỗi.
+        """
+        return self._pixmap

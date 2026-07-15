@@ -1,6 +1,12 @@
 # Tên file: ui/common/workers.py
 # CHỨC NĂNG: Khai báo các luồng phụ xử lý bất đồng bộ (QThread Workers)
 # CHANGELOG:
+# - 10:57:18 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 09:58:00 15/07/2026: [UPDATE] Đọc trực tiếp released_at/factory_transferred_at từ d.__dict__ để lấy giá trị động trong DrawingLoaderThread (Lê Thanh Vân/Antigravity)
+# - 09:50:00 15/07/2026: [UPDATE] Kiểm tra cờ HAS_RELEASED_AT / HAS_FACTORY_TRANSFERRED_AT trước khi nạp ở DrawingLoaderThread (Lê Thanh Vân/Antigravity)
+# - 09:35:00 15/07/2026: [UPDATE] Loại bỏ gọi run_migrations() trong DatabasePrewarmerThread (Lê Thanh Vân/Antigravity)
+# - 09:22:00 15/07/2026: [UPDATE] Gọi run_migrations ngầm tại DatabasePrewarmerThread.run để tránh block UI Thread (Lê Thanh Vân/Antigravity)
+# - 09:11:00 15/07/2026: [UPDATE] Serialize thêm released_at và factory_transferred_at trong DrawingLoaderThread (Lê Thanh Vân/Antigravity)
 # - 20:05:49 14/07/2026: [FIX] fix(drive): resolve personal Google Drive upload storage quota limit by adopting user OAuth2 credentials (Antigravity)
 # - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:32:00 14/07/2026: [NEW] Di chuyển ReportLoaderThread từ bao_cao_view.py sang để tối ưu modularity (Lê Thanh Vân/Antigravity)
@@ -37,7 +43,7 @@ class DatabasePrewarmerThread(QThread):
     """
 
     def run(self) -> None:
-        """Thực thi câu lệnh truy vấn SELECT 1 để làm nóng connection pool."""
+        """Thực thi câu lệnh truy vấn SELECT 1 để làm nóng connection pool và chạy di trú ngầm."""
         logger.info("Khởi động tiến trình làm nóng Connection Pool database ngầm...")
         db = SessionLocal()
         try:
@@ -47,8 +53,16 @@ class DatabasePrewarmerThread(QThread):
             logger.info(
                 "Làm nóng Connection Pool database thành công. Kết nối đã sẵn sàng."
             )
+
+            # Chạy di trú database ngầm trong thread phụ
+            from core.database import run_migrations
+
+            run_migrations()
         except Exception as e:
-            logger.warning("Không thể làm nóng Connection Pool database: %s", str(e))
+            logger.warning(
+                "Không thể làm nóng Connection Pool database hoặc chạy di trú: %s",
+                str(e),
+            )
         finally:
             db.close()
 
@@ -140,6 +154,7 @@ class DrawingLoaderThread(QThread):
 
             # Bóc tách sang danh sách dict thô để truyền an toàn qua Signal,
             # tránh DetachedInstanceError khi session bị đóng.
+
             raw_drawings = []
             for d in drawings:
                 raw_drawings.append(
@@ -151,6 +166,10 @@ class DrawingLoaderThread(QThread):
                         "current_version": d.current_version,
                         "drive_link": d.drive_link,
                         "updated_at": d.updated_at,
+                        "released_at": d.__dict__.get("released_at"),
+                        "factory_transferred_at": d.__dict__.get(
+                            "factory_transferred_at"
+                        ),
                         "section_name": d.section.section_name if d.section else "",
                         "section_designer_email": (
                             d.section.designer_email if d.section else ""
@@ -160,6 +179,7 @@ class DrawingLoaderThread(QThread):
                             d.project.sales_email if d.project else ""
                         )
                         or "",
+                        "project_id": d.project_id,
                     }
                 )
 

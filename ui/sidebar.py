@@ -1,6 +1,8 @@
 # Tên file: ui/sidebar.py
 # CHỨC NĂNG: Thanh Sidebar bên trái chứa danh sách dự án và các nút tạo mới/xóa dự án
 # CHANGELOG:
+# - 10:57:18 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 09:36:00 15/07/2026: [UPDATE] Đồng bộ ProjectLoaderThread đợi DatabasePrewarmerThread chạy xong di trú để tránh race condition thiếu cột (Lê Thanh Vân/Antigravity)
 # - 15:01:02 13/07/2026: [UPDATE] feat(drawing-service): sort drawings by project section code and drawing id for grouping (Antigravity)
 # - 13:12:37 13/07/2026: [UPDATE] docs: sync codebase graph and update modular graph (Antigravity)
 # - 13:10:00 13/07/2026: [NEW] feat(search): add project search field in SidebarWidget with client-side filter (Lê Thanh Vân/Antigravity)
@@ -96,6 +98,7 @@ class SidebarWidget(QFrame):
             layout: Bố cục chính của Sidebar.
         """
         import os
+
         logo_label = QLabel(self)
         base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         logo_path = os.path.join(base_path, "LOGO.JPG")
@@ -103,7 +106,9 @@ class SidebarWidget(QFrame):
         if os.path.exists(logo_path):
             pixmap = QPixmap(logo_path)
             # Scale logo về chiều rộng 70px, giữ tỷ lệ và áp dụng làm mượt
-            scaled_pixmap = pixmap.scaledToWidth(70, Qt.TransformationMode.SmoothTransformation)
+            scaled_pixmap = pixmap.scaledToWidth(
+                70, Qt.TransformationMode.SmoothTransformation
+            )
             logo_label.setPixmap(scaled_pixmap)
             logo_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
             layout.addWidget(logo_label)
@@ -169,7 +174,7 @@ class SidebarWidget(QFrame):
 
     def load_projects(self) -> None:
         """Truy vấn database bất đồng bộ để nạp danh sách dự án vào QListWidget."""
-        logger.info("Sidebar: Khởi động tiến trình tải danh sách dự án bất đồng bộ...")
+        logger.info("Sidebar: Yêu cầu tải danh sách dự án...")
         self.lst_projects.blockSignals(True)
         self.lst_projects.clear()
 
@@ -178,6 +183,35 @@ class SidebarWidget(QFrame):
         self.lst_projects.addItem(loading_item)
         self.lst_projects.blockSignals(False)
 
+        # Kiểm tra xem DatabasePrewarmerThread (làm ấm & di trú ngầm) có đang chạy không
+        from PyQt6.QtWidgets import QApplication
+
+        prewarmer = getattr(QApplication.instance(), "db_prewarmer", None)
+        if prewarmer and prewarmer.isRunning():
+            logger.info(
+                "Sidebar: DatabasePrewarmerThread đang di trú database. Chờ luồng hoàn tất..."
+            )
+            # Kết nối tín hiệu finished để tự động kích hoạt tải dự án sau khi di trú xong
+            prewarmer.finished.connect(self._start_project_loader)
+        else:
+            logger.info(
+                "Sidebar: DatabasePrewarmerThread đã hoàn tất hoặc không tồn tại. Tải dự án ngay..."
+            )
+            self._start_project_loader()
+
+    def _start_project_loader(self) -> None:
+        """Thực tế khởi chạy ProjectLoaderThread để tải danh sách dự án."""
+        # Ngắt kết nối nếu có để tránh gọi nhiều lần nếu signal được kích hoạt lại
+        from PyQt6.QtWidgets import QApplication
+
+        prewarmer = getattr(QApplication.instance(), "db_prewarmer", None)
+        if prewarmer:
+            try:
+                prewarmer.finished.disconnect(self._start_project_loader)
+            except Exception:
+                pass
+
+        logger.info("Sidebar: Khởi động ProjectLoaderThread...")
         self.project_loader_thread = ProjectLoaderThread()
         self.project_loader_thread.finished.connect(self._on_projects_loaded)
         self.project_loader_thread.error.connect(self._on_projects_load_error)

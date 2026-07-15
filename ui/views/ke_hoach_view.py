@@ -1,6 +1,8 @@
 # Tên file: ui/views/ke_hoach_view.py
 # CHỨC NĂNG: Giao diện phòng Kế hoạch (tiếp nhận bản vẽ, mở Drive in ấn, cập nhật chuyển xưởng - kế thừa BaseDrawingView)
 # CHANGELOG:
+# - 10:57:18 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 09:13:00 15/07/2026: [UPDATE] Override self.headers để hiển thị thêm cột Thời gian chuyển xưởng (Lê Thanh Vân/Antigravity)
 # - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:27:00 14/07/2026: [UPDATE] Ghi log lượt tải bản vẽ khi click nút Mở bản vẽ (Lê Thanh Vân/Antigravity)
 # - 16:38:10 11/07/2026: [UPDATE] test(ke-hoach): add UI unit tests for performer combobox validation (Antigravity)
@@ -49,6 +51,17 @@ class KeHoachView(BaseDrawingView):
             parent: MainWindow chứa view này.
         """
         super().__init__(parent, settings_width_key="ke_hoach_table_widths")
+        self.headers = [
+            "Mã Bản Vẽ",
+            "Hạng Mục",
+            "Tên Bản Vẽ",
+            "Ghi Chú",
+            "Trạng Thái",
+            "Phiên Bản",
+            "Link Drive",
+            "Thời gian Ban hành",
+            "Thời gian chuyển xưởng",
+        ]
         self._init_ui()
 
     def _init_ui(self) -> None:

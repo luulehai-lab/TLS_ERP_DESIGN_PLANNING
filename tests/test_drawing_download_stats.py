@@ -1,6 +1,8 @@
 # Tên file: tests/test_drawing_download_stats.py
 # CHỨC NĂNG: Unit test cho tính năng ghi log lượt tải và thống kê lượt tải bản vẽ
 # CHANGELOG:
+# - 10:57:18 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 09:20:00 15/07/2026: [FIX] Sửa import hàm thống kê từ report_service sang report_history_service (Lê Thanh Vân/Antigravity)
 # - 11:39:58 14/07/2026: [NEW] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:29:00 14/07/2026: [NEW] Khởi tạo tệp tin test kiểm thử thống kê lượt tải bản vẽ (Lê Thanh Vân/Antigravity)
 
@@ -11,7 +13,7 @@ from sqlalchemy.orm import sessionmaker
 from core.database import Base
 from core.models import Project, Staff
 from core.services.drawing_service import create_drawing, log_drawing_download
-from core.services.report_service import (
+from core.services.report_history_service import (
     get_drawing_download_summary,
     get_drawing_download_details,
 )

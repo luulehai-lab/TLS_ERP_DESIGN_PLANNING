@@ -1,6 +1,9 @@
 # Tên file: core/models.py
 # CHỨC NĂNG: Khai báo cấu trúc bảng cơ sở dữ liệu SQLAlchemy cho dự án ERP
 # CHANGELOG:
+# - 10:57:17 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 09:50:00 15/07/2026: [UPDATE] Thêm ORM Query before_compile listener để tự động defer cột mới khi CSDL chưa di trú thành công (Lê Thanh Vân/Antigravity)
+# - 09:09:00 15/07/2026: [UPDATE] Bổ sung released_at và factory_transferred_at vào class Drawing (Lê Thanh Vân/Antigravity)
 # - 14:35:51 13/07/2026: [UPDATE] feat(drawing-ui): integrate auto google drive file/folder upload and auto fill link during drawing release (Antigravity)
 # - 17:07:37 11/07/2026: [UPDATE] feat(auth): support official planning email, bypass filters and add related unit tests (Antigravity)
 # - 16:45:00 11/07/2026: [NEW] Thêm model Staff quản lý nhân sự phân quyền (Antigravity)
@@ -16,7 +19,8 @@
 
 from datetime import datetime
 from sqlalchemy import Column, String, Integer, Float, ForeignKey, DateTime
-from sqlalchemy.orm import relationship
+from sqlalchemy.event import listens_for
+from sqlalchemy.orm import relationship, Query, defer
 
 from core.database import Base
 
@@ -120,6 +124,12 @@ class Drawing(Base):
         String(50), default="Chờ triển khai"
     )  # Chờ triển khai, Đang sản xuất, Đã hoàn thành
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    released_at = Column(
+        DateTime, nullable=True
+    )  # Thời gian ban hành bản vẽ (Thiết kế)
+    factory_transferred_at = Column(
+        DateTime, nullable=True
+    )  # Thời gian chuyển xưởng (Kế hoạch)
     section_id = Column(
         Integer,
         ForeignKey("project_sections.section_id", ondelete="SET NULL"),
@@ -239,3 +249,27 @@ class Staff(Base):
             str: Chuỗi thông tin nhân sự.
         """
         return f"<Staff(id={self.staff_id}, name='{self.name}', email='{self.email}', role='{self.role}')>"
+
+
+# Đăng ký ORM Listener để tự động hoãn nạp (defer) các cột mới nếu CSDL chưa được di trú thành công (do tranh chấp lock trên cloud).
+# Điều này ngăn chặn lỗi UndefinedColumn khi ứng dụng cố gắng truy vấn các cột này trước khi chúng tồn tại.
+
+
+@listens_for(Query, "before_compile", retval=True)
+def before_compile_listener(query: Query) -> Query:
+    """Tự động hoãn nạp (defer) các cột mới của Drawing nếu chúng chưa tồn tại trong DB."""
+    from core.database import HAS_RELEASED_AT, HAS_FACTORY_TRANSFERRED_AT
+
+    has_drawing = False
+    for desc in query.column_descriptions:
+        if desc.get("type") is Drawing:
+            has_drawing = True
+            break
+
+    if has_drawing:
+        if not HAS_RELEASED_AT:
+            query = query.options(defer(Drawing.released_at))
+        if not HAS_FACTORY_TRANSFERRED_AT:
+            query = query.options(defer(Drawing.factory_transferred_at))
+
+    return query

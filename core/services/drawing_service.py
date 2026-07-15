@@ -1,6 +1,11 @@
 # Tên file: core/services/drawing_service.py
 # CHỨC NĂNG: Xử lý các nghiệp vụ Quản lý bản vẽ (Drawing) và Nhật ký bản vẽ (DrawingLog)
 # CHANGELOG:
+# - 10:57:17 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 10:45:00 15/07/2026: [UPDATE] Sử dụng kwargs để khởi tạo Drawing một cách an toàn nhằm bỏ qua released_at khi chưa di trú thành công (Lê Thanh Vân/Antigravity)
+# - 09:58:00 15/07/2026: [UPDATE] Cập nhật get_project_drawings tự động phân tích DrawingLog để lấy chính xác thời gian ban hành/chuyển xưởng khi chưa di trú thành công (Lê Thanh Vân/Antigravity)
+# - 09:50:00 15/07/2026: [UPDATE] Kiểm tra cờ HAS_RELEASED_AT / HAS_FACTORY_TRANSFERRED_AT trước khi gán để tránh lỗi crash khi lưu dữ liệu (Lê Thanh Vân/Antigravity)
+# - 09:10:00 15/07/2026: [UPDATE] Cập nhật create_drawing, revise_drawing và update_drawing_status để lưu released_at và factory_transferred_at (Lê Thanh Vân/Antigravity)
 # - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:25:00 14/07/2026: [NEW] Bổ sung các hàm ghi log lượt mở liên kết tải bản vẽ (Lê Thanh Vân/Antigravity)
 # - 14:58:03 13/07/2026: [UPDATE] feat(project-ui): support local_path attribute for projects and auto open path on drawing release (Antigravity)
@@ -15,6 +20,7 @@
 # - 11:49:13 02/07/2026: [NEW] Cập nhật mã nguồn (Antigravity)
 # - 11:15:00 02/07/2026: [NEW] Khởi tạo tầng dịch vụ quản lý bản vẽ và logs (Lê Thanh Vân/Antigravity)
 
+from datetime import datetime
 import logging
 from typing import Any
 from sqlalchemy.orm import Session
@@ -65,16 +71,22 @@ def create_drawing(
             )
             return existing
 
-        db_drawing = Drawing(
-            drawing_id=drawing_id,
-            project_id=project_id,
-            drawing_name=drawing_name,
-            notes=notes,
-            drive_link=drive_link,
-            current_version=version,
-            status="Chờ triển khai",
-            section_id=section_id,
-        )
+        from core.database import HAS_RELEASED_AT
+
+        drawing_kwargs = {
+            "drawing_id": drawing_id,
+            "project_id": project_id,
+            "drawing_name": drawing_name,
+            "notes": notes,
+            "drive_link": drive_link,
+            "current_version": version,
+            "status": "Chờ triển khai",
+            "section_id": section_id,
+        }
+        if HAS_RELEASED_AT:
+            drawing_kwargs["released_at"] = datetime.utcnow()
+
+        db_drawing = Drawing(**drawing_kwargs)
         db.add(db_drawing)
 
         # Ghi log lịch sử ban hành bản vẽ lần đầu
@@ -136,6 +148,11 @@ def update_drawing_status(
 
         # Cập nhật trạng thái bản vẽ
         drawing.status = status
+        if status == "Đang sản xuất":
+            from core.database import HAS_FACTORY_TRANSFERRED_AT
+
+            if HAS_FACTORY_TRANSFERRED_AT:
+                drawing.factory_transferred_at = datetime.utcnow()
 
         # Ghi nhận log lịch sử thay đổi
         db_log = DrawingLog(
@@ -176,7 +193,7 @@ def get_project_drawings(db: Session, project_id: str) -> list[Drawing]:
     try:
         from sqlalchemy.orm import joinedload
 
-        return (
+        drawings = (
             db.query(Drawing)
             .outerjoin(ProjectSection, Drawing.section_id == ProjectSection.section_id)
             .filter(Drawing.project_id == project_id)
@@ -187,6 +204,79 @@ def get_project_drawings(db: Session, project_id: str) -> list[Drawing]:
             )
             .all()
         )
+
+        # Điền động released_at và factory_transferred_at từ DrawingLog nếu chưa di trú thành công hoặc giá trị trên DB bị NULL (đối với các bản vẽ cũ)
+        from core.database import HAS_RELEASED_AT, HAS_FACTORY_TRANSFERRED_AT
+
+        # Lọc ra các bản vẽ cần nạp động thông tin lịch sử
+        need_fallback_drawings = [
+            d
+            for d in drawings
+            if (not HAS_RELEASED_AT or d.__dict__.get("released_at") is None)
+            or (
+                not HAS_FACTORY_TRANSFERRED_AT
+                or d.__dict__.get("factory_transferred_at") is None
+            )
+        ]
+
+        if need_fallback_drawings:
+            drawing_ids = [d.drawing_id for d in need_fallback_drawings]
+            if drawing_ids:
+                from core.models import DrawingLog
+
+                # Lấy tất cả logs của các bản vẽ này
+                all_logs = (
+                    db.query(DrawingLog)
+                    .filter(DrawingLog.drawing_id.in_(drawing_ids))
+                    .order_by(DrawingLog.timestamp.asc())
+                    .all()
+                )
+
+                # Gom log theo từng drawing_id
+                logs_by_drawing = {}
+                for log in all_logs:
+                    logs_by_drawing.setdefault(log.drawing_id, []).append(log)
+
+                # Phân tích log để lấy thời gian ban hành và chuyển xưởng
+                for d in need_fallback_drawings:
+                    d_logs = logs_by_drawing.get(d.drawing_id, [])
+
+                    # 1. Thời gian Ban hành (released_at)
+                    if not HAS_RELEASED_AT or d.__dict__.get("released_at") is None:
+                        ban_hanh_log = None
+                        for log in d_logs:
+                            if (
+                                "Ban hành" in log.action
+                                or "Khởi tạo" in log.action
+                                or "Nâng cấp" in log.action
+                            ):
+                                ban_hanh_log = log
+                                break
+                        if not ban_hanh_log and d_logs:
+                            ban_hanh_log = d_logs[0]
+                        # Gán thẳng vào __dict__ để tránh lazy loading crash và tránh đánh dấu dirty
+                        d.__dict__["released_at"] = (
+                            ban_hanh_log.timestamp if ban_hanh_log else d.updated_at
+                        )
+
+                    # 2. Thời gian chuyển xưởng (factory_transferred_at)
+                    if (
+                        not HAS_FACTORY_TRANSFERRED_AT
+                        or d.__dict__.get("factory_transferred_at") is None
+                    ):
+                        chuyen_xuong_log = None
+                        for log in d_logs:
+                            if (
+                                "Đang sản xuất" in log.action
+                                or "Chuyển trạng thái -> Đang sản xuất" in log.action
+                            ):
+                                chuyen_xuong_log = log
+                                break
+                        d.__dict__["factory_transferred_at"] = (
+                            chuyen_xuong_log.timestamp if chuyen_xuong_log else None
+                        )
+
+        return drawings
     except SQLAlchemyError as e:
         logger.error(
             "Lỗi cơ sở dữ liệu khi truy vấn danh sách bản vẽ dự án ID '%s': %s",
@@ -323,6 +413,10 @@ def revise_drawing(
         if notes is not None:
             drawing.notes = notes
         drawing.status = "Chờ triển khai"  # Reset về chờ triển khai
+        from core.database import HAS_RELEASED_AT
+
+        if HAS_RELEASED_AT:
+            drawing.released_at = datetime.utcnow()
 
         # Ghi log lịch sử thay đổi phiên bản
         db_log = DrawingLog(

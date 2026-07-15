@@ -1,6 +1,8 @@
 # Tên file: ui/styles/theme.py
 # CHỨC NĂNG: Hệ thống Design Token và QSS Generator dùng chung cho ứng dụng ERP TK-KH TLS
 # CHANGELOG:
+# - 10:57:18 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 10:25:00 15/07/2026: [UPDATE] Bổ sung primary_button_stylesheet vào TLSTheme (Lê Thanh Vân/Antigravity)
 # - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
 # - 18:09:38 11/07/2026: [UPDATE] feat(drawing-ui): add version input field to drawing release form and update backend (Antigravity)
 # - 18:28:01 10/07/2026: [UPDATE] docs(rules): enforce strict UI/Backend separation and no duplicate QSS constraint (Antigravity)
@@ -490,6 +492,32 @@ class TLSTheme:
         """
 
     @classmethod
+    def primary_button_stylesheet(cls) -> str:
+        """Trả về stylesheet QSS cho nút hành động chính (primary button).
+
+        Returns:
+            Chuỗi stylesheet QSS của nút chính.
+        """
+        return f"""
+            QPushButton {{
+                background-color: {cls.SKY_600};
+                color: {cls.WHITE};
+                border: none;
+                border-radius: 5px;
+                padding: 8px 16px;
+                font-weight: bold;
+                font-size: 13px;
+            }}
+            QPushButton:hover {{
+                background-color: {cls.SKY_700};
+            }}
+            QPushButton:disabled {{
+                background-color: #E2E8F0;
+                color: #94A3B8;
+            }}
+        """
+
+    @classmethod
     def secondary_button_stylesheet(cls) -> str:
         """Trả về stylesheet QSS cho nút hành động phụ (secondary button).
 
@@ -573,4 +601,3 @@ class TLSTheme:
                 background-color: {cls.BORDER_FOCUS};
             }}
         """
-

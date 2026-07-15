@@ -1,6 +1,8 @@
 # Tên file: config.py
 # CHỨC NĂNG: Quản lý cấu hình dự án (Database, API, Thư mục)
 # CHANGELOG:
+# - 10:57:17 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 09:25:00 15/07/2026: [UPDATE] Chuyển đổi cổng Supabase Pooler sang 6543 (Transaction Mode) và thêm auto-redirect trong config (Lê Thanh Vân/Antigravity)
 # - 15:42:48 13/07/2026: [UPDATE] feat(auth): add custom email input option to mock login page (Antigravity)
 # - 15:41:56 13/07/2026: [UPDATE] feat(auth): add custom email input option to mock login page (Antigravity)
 # - 14:25:54 13/07/2026: [UPDATE] feat(search): implement project and drawing search with client-side filters (Antigravity)
@@ -31,17 +33,22 @@ if env_path.exists():
 # Cấu hình Database (Mặc định kết nối database Supabase thật của TLS)
 DATABASE_URL: str | None = os.getenv(
     "DATABASE_URL",
-    "postgresql://postgres.gcyfzskkqywzudkwybnx:ddtvleHfNYcMBSJz@aws-1-ap-southeast-1.pooler.supabase.com:5432/postgres"
+    "postgresql://postgres.gcyfzskkqywzudkwybnx:ddtvleHfNYcMBSJz@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres",
 )
+
+# Tự động chuyển đổi cổng kết nối của Supabase Pooler từ 5432 (Session Mode) sang 6543 (Transaction Mode)
+# để tránh lỗi cạn kiệt kết nối EMAXCONNSESSION khi có nhiều client/thread truy cập đồng thời.
+if DATABASE_URL and "pooler.supabase.com" in DATABASE_URL and ":5432" in DATABASE_URL:
+    DATABASE_URL = DATABASE_URL.replace(":5432", ":6543")
 
 # Cấu hình Google Drive (Mặc định folder lưu trữ của TLS)
 GOOGLE_DRIVE_FOLDER_ID: str = os.getenv(
-    "GOOGLE_DRIVE_FOLDER_ID",
-    "16DuQJL9xRzRKK-oKyDwcprfDr_yQGzEa"
+    "GOOGLE_DRIVE_FOLDER_ID", "16DuQJL9xRzRKK-oKyDwcprfDr_yQGzEa"
 )
 GOOGLE_SERVICE_ACCOUNT_FILE: str = os.getenv(
     "GOOGLE_SERVICE_ACCOUNT_FILE", os.path.join(str(BASE_DIR), "service_account.json")
 )
+
 
 # Cấu hình Google OAuth (Mặc định client credentials thật của TLS được mã hóa để tránh cảnh báo GitHub)
 def _decode_secret(encoded_str: str) -> str:
@@ -50,8 +57,13 @@ def _decode_secret(encoded_str: str) -> str:
     except Exception:
         return ""
 
-FALLBACK_CLIENT_ID = _decode_secret("MzQ4Mjk1MDE2NjA4LTdoN2RkYTNzbGptZWM4dGVyOGJoczhjYmhqYXJmczB2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29t")
-FALLBACK_CLIENT_SECRET = _decode_secret("R0NTUFgtdTYtNjRpb1JMMFJ1QzNab3JybWJOMmt4d2FkeQ==")
+
+FALLBACK_CLIENT_ID = _decode_secret(
+    "MzQ4Mjk1MDE2NjA4LTdoN2RkYTNzbGptZWM4dGVyOGJoczhjYmhqYXJmczB2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29t"
+)
+FALLBACK_CLIENT_SECRET = _decode_secret(
+    "R0NTUFgtdTYtNjRpb1JMMFJ1QzNab3JybWJOMmt4d2FkeQ=="
+)
 
 GOOGLE_CLIENT_ID: str = os.getenv("GOOGLE_CLIENT_ID", FALLBACK_CLIENT_ID)
 GOOGLE_CLIENT_SECRET: str = os.getenv("GOOGLE_CLIENT_SECRET", FALLBACK_CLIENT_SECRET)

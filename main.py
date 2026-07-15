@@ -1,6 +1,8 @@
 # Tên file: main.py
 # CHỨC NĂNG: Điểm khởi chạy ứng dụng PyQt6 ERP TK-KH (Tuấn Long Steel)
 # CHANGELOG:
+# - 10:57:17 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 09:34:00 15/07/2026: [UPDATE] Gọi run_migrations() đồng bộ ngay khi khởi chạy app để tránh race condition thiếu cột (Lê Thanh Vân/Antigravity)
 # - 09:42:18 13/07/2026: [FIX] feat(report): add visual report dashboard with charts, fix combobox/permission bugs and install global exception hook (Antigravity)
 # - 18:49:30 11/07/2026: [UPDATE] feat(drawing-version-qr): implement drawing revision logic and dynamic QR code panel (Antigravity)
 # - 18:40:00 11/07/2026: [FIX] Thêm sys.excepthook toàn cục để ghi mọi unhandled exception vào app_run.log (Lê Thanh Vân/Antigravity)

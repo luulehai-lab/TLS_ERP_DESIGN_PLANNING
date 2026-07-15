@@ -1,6 +1,9 @@
 # Tên file: ui/common/base_drawing_view.py
 # CHỨC NĂNG: Class cha dùng chung cho các View hiển thị bảng Bản vẽ (Thiết kế / Kế hoạch)
 # CHANGELOG:
+# - 10:57:18 15/07/2026: [REFACTOR] refactor(report): modularize report service and implement visual drawing timeline (Antigravity)
+# - 10:10:00 15/07/2026: [UPDATE] Tích hợp sự kiện chuột phải mở DrawingDetailDialog, sửa lỗi lưu độ rộng cột 0px của Hiện Link Drive (Lê Thanh Vân/Antigravity)
+# - 09:12:00 15/07/2026: [UPDATE] Bổ sung checkbox chk_show_link cho phép ẩn hiện cột Link Drive, hiển thị Thời gian Ban hành và Thời gian chuyển xưởng (Lê Thanh Vân/Antigravity)
 # - 11:39:58 14/07/2026: [FIX] fix(drawing-ui): click on drive link column to open in browser for download (Antigravity)
 # - 11:20:42 14/07/2026: [UPDATE] feat(ui): strictly hide release tab for planning and limit release form to admin (Antigravity)
 # - 11:16:00 14/07/2026: [UPDATE] Bổ sung tính năng click trực tiếp vào Link Drive trên bảng để mở liên kết tải xuống (Lê Thanh Vân/Antigravity)
@@ -27,6 +30,7 @@ from PyQt6.QtWidgets import (
     QGroupBox,
     QHeaderView,
     QLineEdit,
+    QCheckBox,
 )
 from PyQt6.QtCore import Qt, QTimer, QSettings
 
@@ -59,6 +63,16 @@ class BaseDrawingView(QWidget):
         self.settings = QSettings("TuanLongSteel", "ERP_TK_KH")
         self.settings_width_key: str = settings_width_key
         self.loader_thread: DrawingLoaderThread | None = None
+        self.headers: list[str] = [
+            "Mã Bản Vẽ",
+            "Hạng Mục",
+            "Tên Bản Vẽ",
+            "Ghi Chú",
+            "Trạng Thái",
+            "Phiên Bản",
+            "Link Drive",
+            "Thời gian Ban hành",
+        ]
 
         # Khởi chạy timer tự động làm mới ngầm mỗi 15 giây
         self.refresh_timer = QTimer(self)
@@ -93,6 +107,12 @@ class BaseDrawingView(QWidget):
 
         table_actions_layout.addStretch()
 
+        self.chk_show_link = QCheckBox("Hiện Link Drive", group)
+        show_link_state = self.settings.value("show_drive_link", True, type=bool)
+        self.chk_show_link.setChecked(show_link_state)
+        self.chk_show_link.stateChanged.connect(self._toggle_drive_link_column)
+        table_actions_layout.addWidget(self.chk_show_link)
+
         self.btn_refresh = QPushButton("🔄 Làm mới", group)
         self.btn_refresh.setFixedWidth(100)
         self.btn_refresh.setStyleSheet(TLSTheme.refresh_button_stylesheet())
@@ -105,19 +125,8 @@ class BaseDrawingView(QWidget):
         content_layout.setSpacing(15)
 
         self.tbl_drawings = QTableWidget(group)
-        self.tbl_drawings.setColumnCount(8)
-        self.tbl_drawings.setHorizontalHeaderLabels(
-            [
-                "Mã Bản Vẽ",
-                "Hạng Mục",
-                "Tên Bản Vẽ",
-                "Ghi Chú",
-                "Trạng Thái",
-                "Phiên Bản",
-                "Link Drive",
-                "Cập Nhật Lúc",
-            ]
-        )
+        self.tbl_drawings.setColumnCount(len(self.headers))
+        self.tbl_drawings.setHorizontalHeaderLabels(self.headers)
 
         header = self.tbl_drawings.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
@@ -130,6 +139,8 @@ class BaseDrawingView(QWidget):
         self.tbl_drawings.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         self.tbl_drawings.itemSelectionChanged.connect(self._on_table_selection_changed)
         self.tbl_drawings.cellClicked.connect(self._on_cell_clicked)
+        self.tbl_drawings.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.tbl_drawings.customContextMenuRequested.connect(self._show_context_menu)
 
         content_layout.addWidget(self.tbl_drawings, 4)
 
@@ -234,6 +245,7 @@ class BaseDrawingView(QWidget):
                     filtered.append(d)
             drawings = filtered
 
+        self.current_drawings = drawings
         self.tbl_drawings.setRowCount(len(drawings))
         target_row_to_select: int = -1
 
@@ -250,6 +262,10 @@ class BaseDrawingView(QWidget):
         else:
             if hasattr(self, "qr_widget"):
                 self.qr_widget.clear_qr()
+
+        # Ẩn hiện cột Link Drive theo trạng thái checkbox hiện tại
+        if hasattr(self, "chk_show_link"):
+            self.tbl_drawings.setColumnHidden(6, not self.chk_show_link.isChecked())
 
         self._restore_column_widths()
 
@@ -304,9 +320,13 @@ class BaseDrawingView(QWidget):
 
         from datetime import timedelta
 
-        local_time = d["updated_at"] + timedelta(hours=7)
-        item_time = QTableWidgetItem(local_time.strftime("%d/%m/%y_%H:%M:%S"))
-        item_time.setFlags(item_time.flags() ^ Qt.ItemFlag.ItemIsEditable)
+        # Đọc released_at, fallback về updated_at
+        rel_time = d.get("released_at")
+        if not rel_time:
+            rel_time = d["updated_at"]
+        local_released = rel_time + timedelta(hours=7)
+        item_released = QTableWidgetItem(local_released.strftime("%d/%m/%y_%H:%M:%S"))
+        item_released.setFlags(item_released.flags() ^ Qt.ItemFlag.ItemIsEditable)
 
         self.tbl_drawings.setItem(row, 0, item_id)
         self.tbl_drawings.setItem(row, 1, item_section)
@@ -315,7 +335,30 @@ class BaseDrawingView(QWidget):
         self.tbl_drawings.setItem(row, 4, item_status)
         self.tbl_drawings.setItem(row, 5, item_version)
         self.tbl_drawings.setItem(row, 6, item_link)
-        self.tbl_drawings.setItem(row, 7, item_time)
+        self.tbl_drawings.setItem(row, 7, item_released)
+
+        # Nếu bảng có trên 8 cột (tức là tab Kế hoạch có thêm cột Thời gian chuyển xưởng)
+        if self.tbl_drawings.columnCount() > 8:
+            trans_time = d.get("factory_transferred_at")
+            if trans_time:
+                local_trans = trans_time + timedelta(hours=7)
+                trans_str = local_trans.strftime("%d/%m/%y_%H:%M:%S")
+            else:
+                trans_str = "---"
+            item_transferred = QTableWidgetItem(trans_str)
+            item_transferred.setFlags(
+                item_transferred.flags() ^ Qt.ItemFlag.ItemIsEditable
+            )
+            self.tbl_drawings.setItem(row, 8, item_transferred)
+
+    def _toggle_drive_link_column(self, state: int) -> None:
+        """Ẩn hoặc hiện cột Link Drive dựa trên trạng thái checkbox.
+
+        Cột Link Drive có chỉ số là 6 trong cả 2 bảng.
+        """
+        is_checked = self.chk_show_link.isChecked()
+        self.tbl_drawings.setColumnHidden(6, not is_checked)
+        self.settings.setValue("show_drive_link", is_checked)
 
     def _on_load_error(self, error_msg: str) -> None:
         """Callback hiển thị thông báo lỗi khi không thể tải bản vẽ.
@@ -357,11 +400,18 @@ class BaseDrawingView(QWidget):
         return item.text() if item else None
 
     def _save_column_widths(self) -> None:
-        """Lưu lại độ rộng các cột của bảng bản vẽ."""
-        widths = [
-            self.tbl_drawings.columnWidth(i)
-            for i in range(self.tbl_drawings.columnCount())
-        ]
+        """Lưu lại độ rộng các cột hiện thời vào cấu hình ứng dụng."""
+        widths = []
+        for i in range(self.tbl_drawings.columnCount()):
+            # Nếu cột đang bị ẩn, ta lấy độ rộng cũ đã lưu trong settings thay vì lấy 0
+            if self.tbl_drawings.isColumnHidden(i):
+                old_widths = self.settings.value(self.settings_width_key)
+                if old_widths and i < len(old_widths):
+                    widths.append(int(old_widths[i]))
+                else:
+                    widths.append(150)
+            else:
+                widths.append(self.tbl_drawings.columnWidth(i))
         self.settings.setValue(self.settings_width_key, widths)
 
     def _restore_column_widths(self) -> None:
@@ -372,7 +422,15 @@ class BaseDrawingView(QWidget):
             try:
                 for i, w in enumerate(widths):
                     if i < self.tbl_drawings.columnCount():
-                        self.tbl_drawings.setColumnWidth(i, int(w))
+                        width_val = int(w)
+                        # Nếu cột 6 đang không ẩn nhưng độ rộng cấu hình lại là 0 (do lỗi lưu trước đó)
+                        if (
+                            i == 6
+                            and not self.tbl_drawings.isColumnHidden(6)
+                            and width_val < 10
+                        ):
+                            width_val = 150
+                        self.tbl_drawings.setColumnWidth(i, width_val)
             except Exception as e:
                 logger.error("BaseDrawingView: Lỗi khôi phục độ rộng cột: %s", str(e))
             self.tbl_drawings.horizontalHeader().blockSignals(False)
@@ -382,6 +440,8 @@ class BaseDrawingView(QWidget):
             header.setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
             header.setSectionResizeMode(6, QHeaderView.ResizeMode.Stretch)
             header.setSectionResizeMode(7, QHeaderView.ResizeMode.ResizeToContents)
+            if self.tbl_drawings.columnCount() > 8:
+                header.setSectionResizeMode(8, QHeaderView.ResizeMode.ResizeToContents)
 
     def _on_table_selection_changed(self) -> None:
         """Xử lý khi người dùng chọn một bản vẽ khác trong bảng."""
@@ -434,9 +494,14 @@ class BaseDrawingView(QWidget):
 
                         user_email = "Không rõ"
                         if self.main_window and hasattr(self.main_window, "user_email"):
-                            user_email = (self.main_window.user_email or "Không rõ").lower()
+                            user_email = (
+                                self.main_window.user_email or "Không rõ"
+                            ).lower()
 
-                        from core.services.drawing_service import log_drawing_download_safe
+                        from core.services.drawing_service import (
+                            log_drawing_download_safe,
+                        )
+
                         log_drawing_download_safe(drawing_id, user_email)
                     else:
                         logger.warning(
@@ -461,3 +526,34 @@ class BaseDrawingView(QWidget):
 
             # Ẩn hoặc hiển thị hàng
             self.tbl_drawings.setRowHidden(r, not row_visible)
+
+    def _show_context_menu(self, pos: any) -> None:
+        """Hiển thị menu ngữ cảnh nhấp chuột phải trên bảng bản vẽ."""
+        item = self.tbl_drawings.itemAt(pos)
+        if not item:
+            return
+
+        row = item.row()
+        if not hasattr(self, "current_drawings") or row >= len(self.current_drawings):
+            return
+
+        from PyQt6.QtWidgets import QMenu
+        from PyQt6.QtGui import QAction
+
+        menu = QMenu(self)
+        action_detail = QAction("🔍 Xem chi tiết bản vẽ", self)
+        action_detail.triggered.connect(lambda: self._on_show_drawing_detail(row))
+        menu.addAction(action_detail)
+
+        menu.exec(self.tbl_drawings.viewport().mapToGlobal(pos))
+
+    def _on_show_drawing_detail(self, row: int) -> None:
+        """Mở dialog xem thông tin chi tiết bản vẽ."""
+        if not hasattr(self, "current_drawings") or row >= len(self.current_drawings):
+            return
+
+        drawing_data = self.current_drawings[row]
+        from ui.common.drawing_detail_dialog import DrawingDetailDialog
+
+        dialog = DrawingDetailDialog(self, drawing_data)
+        dialog.exec()
